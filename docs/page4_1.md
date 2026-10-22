@@ -9,7 +9,7 @@
 ---
 
 !!! Note "COMMUNITY MADE WEB GUI"
-    Another GUI version is avilable that is made by our discord community members:
+    Another GUI version is available that is made by our discord community members:
     [PAROL6 WEB commander](https://github.com/Jepson2k/PAROL-Web-Commander) use at your own risk!
    
 ---
