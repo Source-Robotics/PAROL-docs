@@ -15,7 +15,7 @@
 ---
 
 <p align="center">
-<img src="../assets/Web_GUI.PNG" alt="PAROL6 commander window overview" width="2000"/>
+<img src="../assets/Web_GUI.png" alt="PAROL6 commander window overview" width="2000"/>
 </p>
 
 *Fig — Community made Web GUI*

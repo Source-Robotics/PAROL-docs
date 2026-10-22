@@ -177,7 +177,7 @@ Useful guides:
 - [How to find DH parameter tables](https://automaticaddison.com/how-to-find-denavit-hartenberg-parameter-tables/)
 
 <p align="center">
-<img src="../assets/DH_table.png" alt="Denavit-Hartenberg parameter table for the PAROL6 robotic arm" width="800"/>
+<img src="../assets/DH_table.PNG" alt="Denavit-Hartenberg parameter table for the PAROL6 robotic arm" width="800"/>
 </p>
 
 ---
