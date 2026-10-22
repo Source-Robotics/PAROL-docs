@@ -3,6 +3,7 @@ site/
 
 # Virtual environment
 venv/
+.venv/
 
 # MkDocs cache
 .cache/
