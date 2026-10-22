@@ -57,7 +57,7 @@ There are 2 ways to anchor the robot:
 
 The base holes are spaced for easy mounting on 30×30 mm aluminium profiles.
 
-Another option is to use `connectors_4_alu_profiles.STL`, found in the STL folder of the [PAROL6 GitHub repository](https://github.com/PCrnjak/PAROL6-Desktop-robot-arm), to create a base as shown in the image below. You will also need:
+Another option is to use `connectors_4_alu_profiles.STL`, found in the STL folder of the [PAROL6 GitHub repository](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm), to create a base as shown in the image below. You will also need:
 
 - T-nuts for 30×30 mm profile (M5)
 - M5 × 12 mm screws

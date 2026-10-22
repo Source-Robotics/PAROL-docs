@@ -64,7 +64,7 @@ The gripper connects to the connector shown above on the PAROL6 robotic arm. If 
 <img src="../assets/MSG_and_camera.png" alt="SSG48 gripper mounted on the PAROL6 arm" width="600"/>
 </p>
 
-The [MSG gripper](https://github.com/PCrnjak/MSG-compliant-AI-stepper-gripper) works by default with PAROL6 commander software and the control board. There is no need to configure anything — it is plug and play. To build one visit: [Link](https://github.com/PCrnjak/MSG-compliant-AI-stepper-gripper) or to buy one, visit the [Source Robotics shop](https://source-robotics.com/products/msg-gripper).
+The [MSG gripper](https://github.com/Source-Robotics/MSG-compliant-AI-stepper-gripper) works by default with PAROL6 commander software and the control board. There is no need to configure anything — it is plug and play. To build one visit: [Link](https://github.com/Source-Robotics/MSG-compliant-AI-stepper-gripper) or to buy one, visit the [Source Robotics shop](https://source-robotics.com/products/msg-gripper).
 
 ## SSG48 gripper
 
@@ -78,7 +78,7 @@ The gripper connects to the connector shown above on the PAROL6 robotic arm. If 
 <img src="../assets/GRP4.png" alt="SSG48 gripper mounted on the PAROL6 arm" width="600"/>
 </p>
 
-The [SSG48](https://github.com/PCrnjak/SSG-48-adaptive-electric-gripper) works by default with PAROL6 commander software and the control board. There is no need to configure anything — it is plug and play. To build or buy one, visit the [Source Robotics shop](https://source-robotics.com/products/compliant-gripper).
+The [SSG48](https://github.com/Source-Robotics/SSG-48-adaptive-electric-gripper) works by default with PAROL6 commander software and the control board. There is no need to configure anything — it is plug and play. To build or buy one, visit the [Source Robotics shop](https://source-robotics.com/products/compliant-gripper).
 
 !!! note "Change in main.cpp"
 

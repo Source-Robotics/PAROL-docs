@@ -4,7 +4,7 @@
 
 !!! tip "Experimental kinematics branch"
 
-    You can use [Experimental kineamtics branch](https://github.com/PCrnjak/PAROL-commander-software/tree/experimental_kinematics) which resolves most Cartesian jogging errors but introduces potentially dangerous conditions. Use experimental kinematics branch at your own risk, as it may damage the robot! Main branch is safe.
+    You can use [Experimental kineamtics branch](https://github.com/Source-Robotics/PAROL-commander-software/tree/experimental_kinematics) which resolves most Cartesian jogging errors but introduces potentially dangerous conditions. Use experimental kinematics branch at your own risk, as it may damage the robot! Main branch is safe.
 
 ---
 

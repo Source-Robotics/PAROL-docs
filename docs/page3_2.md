@@ -4,7 +4,7 @@
 
 ## Assembly manual
 
-The assembly manual is located in the [PAROL6 GitHub repository](https://github.com/PCrnjak/PAROL6-Desktop-robot-arm/tree/main/Building%20instructions).
+The assembly manual is located in the [PAROL6 GitHub repository](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/tree/main/Building%20instructions).
 
 - If you decide to build or buy a kit, follow the assembly manual to assemble it.
 - The assembly manual is also a useful reference for repairing and upgrading your robot. Make sure you use the latest version.
@@ -15,7 +15,7 @@ After you have built the robot, follow these steps to get it up and running.
 
 ## BOM
 
-If you are building the robot yourself, source the parts from the [Bill of Materials (BOM)](https://github.com/PCrnjak/PAROL6-Desktop-robot-arm/tree/main/BOM).
+If you are building the robot yourself, source the parts from the [Bill of Materials (BOM)](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/tree/main/BOM).
 
 ---
 
@@ -57,7 +57,7 @@ The image above shows the range of Joint 5.
 
 ## SSG48 gripper
 
-If you plan to use the [SSG48 gripper](https://github.com/PCrnjak/SSG-48-adaptive-electric-gripper), first make sure that your PAROL6 works, then attach it to the robot. See the Peripherals section for instructions on how to connect the gripper.
+If you plan to use the [SSG48 gripper](https://github.com/Source-Robotics/SSG-48-adaptive-electric-gripper), first make sure that your PAROL6 works, then attach it to the robot. See the Peripherals section for instructions on how to connect the gripper.
 
 ---
 
@@ -114,7 +114,7 @@ To power off, **grab the robot by the forearm first**, then press the power butt
 
 ## Installing PAROL6 commander software
 
-Commander software is available in the [PAROL Commander GitHub repository](https://github.com/PCrnjak/PAROL-commander-software). Installation instructions are located there.
+Commander software is available in the [PAROL Commander GitHub repository](https://github.com/Source-Robotics/PAROL-commander-software). Installation instructions are located there.
 
 To install using `requirements.txt`, navigate into the commander software folder and run:
 
@@ -124,8 +124,8 @@ pip install -r requirements.txt
 
 Platform-specific installation guides:
 
-- [Windows installation guide](https://github.com/PCrnjak/PAROL-commander-software/blob/main/Windows_install.md)
-- [Linux installation guide](https://github.com/PCrnjak/PAROL-commander-software/blob/main/Linux_install.md)
+- [Windows installation guide](https://github.com/Source-Robotics/PAROL-commander-software/blob/main/Windows_install.md)
+- [Linux installation guide](https://github.com/Source-Robotics/PAROL-commander-software/blob/main/Linux_install.md)
 
 ---
 
@@ -145,7 +145,7 @@ PAROL6 control boards ship fully tested with **test** code preloaded. You can us
 
 You will need working commander software to use the main code, or you can build your own API.
 
-Upload the following code: [PAROL6 main control board software](https://github.com/PCrnjak/PAROL6-Desktop-robot-arm/tree/main/PAROL6%20control%20board%20main%20software)
+Upload the following code: [PAROL6 main control board software](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/tree/main/PAROL6%20control%20board%20main%20software)
 
 If you are having problems uploading code via ST-Link, try installing the ST-Link USB drivers: [STSW-LINK009](https://www.st.com/en/development-tools/stsw-link009.html)
 
@@ -225,7 +225,7 @@ Place the gripper in the position shown above. Note that Joint 6 will rotate in 
 
 ## Testing
 
-To test the PAROL6 control board connection to your robot, you can use the stock software or the dedicated testing software. The testing software is safer and more interactive. It can be found here: [PAROL6 control board test code](https://github.com/PCrnjak/PAROL6-Desktop-robot-arm/tree/main/PAROL6%20control%20board%20test%20code)
+To test the PAROL6 control board connection to your robot, you can use the stock software or the dedicated testing software. The testing software is safer and more interactive. It can be found here: [PAROL6 control board test code](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/tree/main/PAROL6%20control%20board%20test%20code)
 
 Use the testing code to verify individual components (for example, to check if the Joint 1 motor spins or if the Joint 3 limit switch works).
 

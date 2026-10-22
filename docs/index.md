@@ -6,7 +6,7 @@
 
 ---
 
-**PAROL6** is a high-performance 3D-printed desktop robotic arm. The design approach of PAROL6 was to be similar to industrial robots in terms of mechanical design, control software, and usability. Control software, GUI, and robots STL files are open-source. You can build your own PAROL6 robot by following the instructions located in the [GitHub repository](https://github.com/PCrnjak/PAROL6-Desktop-robot-arm).
+**PAROL6** is a high-performance 3D-printed desktop robotic arm. The design approach of PAROL6 was to be similar to industrial robots in terms of mechanical design, control software, and usability. Control software, GUI, and robots STL files are open-source. You can build your own PAROL6 robot by following the instructions located in the [GitHub repository](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm).
 
 !!! note
 
@@ -14,7 +14,7 @@
 
 !!! tip
 
-    PAROL6 now also supports our new open source [MSG grippers](https://github.com/PCrnjak/MSG-compliant-AI-stepper-gripper) go check them out!
+    PAROL6 now also supports our new open source [MSG grippers](https://github.com/Source-Robotics/MSG-compliant-AI-stepper-gripper) go check them out!
 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/bbrFn3aFLaA?si=nWeWMQWQrWvP3h2-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -24,9 +24,9 @@
 ## Project links
 
 - [Source Robotics website](https://source-robotics.com/)
-- [Building instructions](https://github.com/PCrnjak/PAROL6-Desktop-robot-arm/tree/main/Building%20instructions)
-- [PAROL6 project files on GitHub](https://github.com/PCrnjak/PAROL6-Desktop-robot-arm)
-- [PAROL Commander software on GitHub](https://github.com/PCrnjak/PAROL-commander-software)
+- [Building instructions](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/tree/main/Building%20instructions)
+- [PAROL6 project files on GitHub](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm)
+- [PAROL Commander software on GitHub](https://github.com/Source-Robotics/PAROL-commander-software)
 - [PAROL6 Web GUI by Jepson](https://github.com/Jepson2k/PAROL-Web-Commander/tree/main)
 - [PAROL6 Python API — control PAROL6 via custom scripts, terminal, or LLMs](https://github.com/PCrnjak/PAROL6-python-API)
 - [PAROL6 Python API - Alvar version (Stable version that no longer changes)](https://github.com/PCrnjak/PAROL6-python-API-Alvar)
@@ -78,7 +78,7 @@ This project includes experimental software, hardware designs, and assembly docu
 * Hardware performance and safety depend on user assembly, component quality, calibration, and handling, which cannot be guaranteed
 * This project is provided “as is.” If you choose to build a device yourself using these files, designs, or instructions, you do so without any warranties or guarantees, including regarding safety, reliability, or suitability for any particular purpose.
 
-THIS PROJECT INVOLVES LETHAL VOLTAGES AND OTHER SERIOUS HAZARDS THAT CAN CAUSE SEVERE INJURY. YOU MUST READ THE FULL [SAFETY WARNING AND DISCLAIMER DOCUMENT](https://github.com/PCrnjak/PAROL6-Desktop-robot-arm/blob/main/SAFETY_WARNING_AND_DISCLAIMER.md)  BEFORE USING ANY PROJECT FILES. BY PROCEEDING, YOU ACKNOWLEDGE AND ACCEPT ALL RISKS AND AGREE TO USE THIS PROJECT ENTIRELY AT YOUR OWN RESPONSIBILITY.
+THIS PROJECT INVOLVES LETHAL VOLTAGES AND OTHER SERIOUS HAZARDS THAT CAN CAUSE SEVERE INJURY. YOU MUST READ THE FULL [SAFETY WARNING AND DISCLAIMER DOCUMENT](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/blob/main/SAFETY_WARNING_AND_DISCLAIMER.md)  BEFORE USING ANY PROJECT FILES. BY PROCEEDING, YOU ACKNOWLEDGE AND ACCEPT ALL RISKS AND AGREE TO USE THIS PROJECT ENTIRELY AT YOUR OWN RESPONSIBILITY.
 
 ---
 

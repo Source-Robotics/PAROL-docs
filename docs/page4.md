@@ -72,7 +72,7 @@ print(get_robot_io())
 
 ## PAROL6 commander software
 
-Commander software can be found in the [PAROL Commander GitHub repository](https://github.com/PCrnjak/PAROL-commander-software). PAROL6 commander software is written in Python. Its main purpose is to offer an interactive GUI for controlling and programming the PAROL6 robot.
+Commander software can be found in the [PAROL Commander GitHub repository](https://github.com/Source-Robotics/PAROL-commander-software). PAROL6 commander software is written in Python. Its main purpose is to offer an interactive GUI for controlling and programming the PAROL6 robot.
 
 Some of the features of PAROL6 commander software:
 
@@ -96,7 +96,7 @@ Some of the features of PAROL6 commander software:
 
 ### Dependency
 
-The latest stable version uses Python 3.11.0. For dependency details see the [PAROL Commander repository](https://github.com/PCrnjak/PAROL-commander-software).
+The latest stable version uses Python 3.11.0. For dependency details see the [PAROL Commander repository](https://github.com/Source-Robotics/PAROL-commander-software).
 
 ---
 
@@ -104,7 +104,7 @@ The latest stable version uses Python 3.11.0. For dependency details see the [PA
 
 1. Install the correct Python version.
 2. Install all dependencies.
-3. Clone or download the [PAROL Commander repository](https://github.com/PCrnjak/PAROL-commander-software).
+3. Clone or download the [PAROL Commander repository](https://github.com/Source-Robotics/PAROL-commander-software).
 4. Run `Serial_sender_good_latest.py`.
 
 ---
@@ -119,7 +119,7 @@ We recommend using VS Code and PlatformIO to install, edit, and run the code.
 
 1. Install [VS Code](https://code.visualstudio.com/).
 2. In the VS Code extensions marketplace, install PlatformIO.
-3. Clone or download the [PAROL6 GitHub repository](https://github.com/PCrnjak/PAROL6-Desktop-robot-arm).
+3. Clone or download the [PAROL6 GitHub repository](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm).
 4. In VS Code, click **Open Folder** and select the `PAROL control board` folder from the downloaded repository.
 5. PlatformIO will automatically download all necessary configurations to allow you to compile and upload code.
 
@@ -135,7 +135,7 @@ The programming adapter must be connected to the black connector next to the USB
 
 ### How to test the PAROL6 control board
 
-Special testing software is available for testing the PAROL6 control board. Find it in the `TESTING` folder of the [PAROL6 repository](https://github.com/PCrnjak/PAROL6-Desktop-robot-arm).
+Special testing software is available for testing the PAROL6 control board. Find it in the `TESTING` folder of the [PAROL6 repository](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm).
 
 This code allows you to control individual functions of the PAROL6 robot arm (when wired as per the wiring instructions).
 
@@ -288,7 +288,7 @@ int end_bytes[] = {0x01, 0x02};                         // 2 bytes
 
 ### How to run and install
 
-See the [PAROL Commander repository](https://github.com/PCrnjak/PAROL-commander-software) for installation instructions.
+See the [PAROL Commander repository](https://github.com/Source-Robotics/PAROL-commander-software) for installation instructions.
 
 ---
 
