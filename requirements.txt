@@ -1,0 +1,2 @@
+# Used by .github/workflows/ci.yaml and for local builds: pip install -r requirements.txt
+mkdocs-material[imaging]==9.7.7

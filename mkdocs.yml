@@ -1,5 +1,6 @@
 site_name: PAROL6 DOCS 
 site_url: https://docs.source-robotics.com/PAROL-docs/
+site_description: Documentation for the PAROL6 desktop robotic arm by Source Robotics.
 repo_url: https://github.com/Source-Robotics/PAROL-docs
 theme:
   name: material
@@ -20,13 +21,13 @@ theme:
         icon: material/weather-night
         name: Switch to light mode
       primary: blue
-      accent: blur 
+      accent: blue
     - scheme: default 
       toggle:
         icon: material/weather-sunny
         name: Switch to dark mode    
       primary: blue
-      accent: blur
+      accent: blue
 
 plugins:
 - search
