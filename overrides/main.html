@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{#- Banner shown on a version that is not the default alias ("latest"); needs extra.version (mike). -#}
+{% block outdated %}
+  You are reading the documentation for an older firmware release.
+  <a href="{{ '../' ~ base_url }}">
+    <strong>Click here for the latest version.</strong>
+  </a>
+{% endblock %}
+
+{#- Every page ends with the two ways to fix it: edit on GitHub (a pull request) or open a prefilled issue. -#}
+{% block content %}
+  {{ super() }}
+  {% if page and page.edit_url %}
+  <hr>
+  <p class="page-help">
+    Found a mistake on this page?
+    <a href="{{ page.edit_url }}" target="_blank" rel="noopener">Edit it on GitHub</a> ·
+    <a href="{{ config.repo_url }}/issues/new?title={{ ('Docs: ' ~ page.title) | urlencode }}&body={{ ('Page: ' ~ config.site_url ~ page.url ~ '%0A%0AWhat is wrong:%0A') | urlencode }}" target="_blank" rel="noopener">Report it</a>
+    · <a href="{{ 'support/' | url }}">Get help</a>
+  </p>
+  {% endif %}
+{% endblock %}

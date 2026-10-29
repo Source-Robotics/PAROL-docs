@@ -1,0 +1,22 @@
+# Which versions work together. One row per PAROL6 release, newest first. hooks/api_pages.py writes it into the
+# "Versions and compatibility" page (<!-- compatibility-table -->); tools/test_tools.py checks that docs_version
+# has a row.
+columns:
+  - {key: release, title: PAROL6 release}
+  - {key: date, title: Released}
+  - {key: board, title: Control board}
+  - {key: firmware, title: Control board firmware}
+  - {key: python, title: Python API (parol6)}
+  - {key: commander, title: Commander software}
+  - {key: grippers, title: Grippers}
+  - {key: docs, title: Docs}
+
+rows:
+  - release: "1"
+    date: 2025-03-08
+    board: v2.0 (pluggable terminal blocks); v1.2 (spring contacts) is functionally identical
+    firmware: "1 (VERSION 1 in constants.h), main branch"
+    python: "0.2.6 to 0.9.1 (the reference describes 0.9.1); Python 3.11 or newer"
+    commander: main branch (Python 3.10 or 3.11)
+    grippers: "SSG-48 (Spectral Micro firmware 101 or newer), MSG (STEPFOC firmware 103 or newer), pneumatic MHZ2-16D, vacuum"
+    docs: "1"

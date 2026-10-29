@@ -1,0 +1,2270 @@
+{
+  "generated_from": {
+    "repository": "https://github.com/PCrnjak/PAROL6-python-API",
+    "tag": "v0.9.1",
+    "commit": "604d1ec8b4c71be119e75f1506d4cc388322230c",
+    "version": "0.9.1"
+  },
+  "python_requires": ">=3.11",
+  "proto_version": 2,
+  "methods": [
+    {
+      "name": "run_skill",
+      "params": [
+        {
+          "name": "invoke",
+          "annotation": "Callable[[AsyncRobotClient], Coroutine[Any, Any, T]]",
+          "default": null,
+          "kind": "positional"
+        }
+      ],
+      "returns": "T",
+      "doc": "Execute a Python skill using this connection and its existing loop.",
+      "category": "Other",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "robot",
+      "params": [],
+      "returns": "'Robot'",
+      "doc": "The backend this client drives, built on first read when a bare\nclient (what a user script constructs) supplied none.",
+      "category": "Property",
+      "property": true,
+      "async_only": false
+    },
+    {
+      "name": "tool",
+      "params": [],
+      "returns": "SyncTool",
+      "doc": "Active bound tool. Raises if no tool has been set.",
+      "category": "Property",
+      "property": true,
+      "async_only": false
+    },
+    {
+      "name": "close",
+      "params": [],
+      "returns": "None",
+      "doc": "Release UDP transport and background tasks.\n\nSafe to call multiple times.",
+      "category": "Other",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "host",
+      "params": [],
+      "returns": "str",
+      "doc": "",
+      "category": "Property",
+      "property": true,
+      "async_only": false
+    },
+    {
+      "name": "port",
+      "params": [],
+      "returns": "int",
+      "doc": "",
+      "category": "Property",
+      "property": true,
+      "async_only": false
+    },
+    {
+      "name": "home",
+      "params": [
+        {
+          "name": "wait",
+          "annotation": "bool",
+          "default": "False",
+          "kind": "positional"
+        },
+        {
+          "name": "calibrate",
+          "annotation": "bool",
+          "default": "False",
+          "kind": "positional"
+        },
+        {
+          "name": "timeout",
+          "annotation": "float",
+          "default": "60.0",
+          "kind": "positional"
+        }
+      ],
+      "returns": "int",
+      "doc": "Home the robot to its home position.\n\nUncalibrated (first home after power-on), this runs the full\nreferencing sequence: each joint seeks its limit switch, then the\nrobot moves to standby. Calibrated, it returns to standby with a\nnormal planned, collision-checked joint move — unless\n``calibrate=True``, which re-runs the referencing sequence. The\nreferencing sequence is firmware-driven and ignores the collision\nworld, so clear keep-out geometry from the joints' sweep first.\n\nReturns the command index (≥ 0) on success, -1 on failure.\n\nCategory: Motion\n\nExample:\n    rbt.home()\n\nArgs:\n    wait: If True, block until motion completes\n    calibrate: If True, always run the referencing sequence\n    timeout: Maximum time to wait in seconds (only used when wait=True)",
+      "category": "Motion",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "teleport",
+      "params": [
+        {
+          "name": "angles_deg",
+          "annotation": "list[float]",
+          "default": null,
+          "kind": "positional"
+        },
+        {
+          "name": "tool_positions",
+          "annotation": "list[float] | None",
+          "default": "None",
+          "kind": "positional"
+        }
+      ],
+      "returns": "int",
+      "doc": "Instantly set joint angles and optional tool positions (simulator only).\n\nThe pose is exact, so the arm counts as homed afterwards and\nplanned motion may follow. Whatever was driving the arm is\ncancelled with ``MOTN_CANCELLED``.\n\nCategory: Control\n\nExample:\n    rbt.teleport([90, -90, 180, 0, 0, 180])\n    rbt.teleport([90, -90, 180, 0, 0, 180], tool_positions=[1.0])\n\nReturns:\n    1 once the pose is applied, 0 when no reply arrives.\n\nRaises:\n    ValueError: for a non-finite angle, one outside the hard joint\n        limits, or a tool position outside ``[0, 1]``.\n    MotionError: off the simulator (``SYS_NOT_SIMULATOR``), when the\n        tool positions do not match the fitted tool's DOF count, or\n        while the controller is disabled.",
+      "category": "Control",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "stop",
+      "params": [],
+      "returns": "int",
+      "doc": "Stop all motion — cancel the active move and clear the queue.\n\nThe controller stays enabled and holding position; the next motion\ncommand is accepted immediately.\n\nCategory: Control\n\nExample:\n    rbt.stop()\n\nReturns:\n    1 if acknowledged, 0 on failure.",
+      "category": "Control",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "estop",
+      "params": [],
+      "returns": "int",
+      "doc": "Protective stop: stop all motion and latch the controller\ndisabled until ``reset()``.\n\nCategory: Control\n\nExample:\n    rbt.estop()\n\nReturns:\n    1 if acknowledged, 0 on failure.",
+      "category": "Control",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "reset",
+      "params": [],
+      "returns": "int",
+      "doc": "Clear a latched protective stop, re-enabling motion.\n\nCategory: Control\n\nExample:\n    rbt.reset()\n\nReturns:\n    1 if acknowledged, 0 on failure.",
+      "category": "Control",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "simulator",
+      "params": [
+        {
+          "name": "enabled",
+          "annotation": "bool",
+          "default": null,
+          "kind": "positional"
+        }
+      ],
+      "returns": "int",
+      "doc": "Enable or disable simulator mode.\n\nCategory: Control\n\nExample:\n    rbt.simulator(True)",
+      "category": "Control",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "is_simulator",
+      "params": [],
+      "returns": "bool",
+      "doc": "Query whether simulator mode is active.\n\nCategory: Query\n\nExample:\n    active = rbt.is_simulator()",
+      "category": "Query",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "connect_hardware",
+      "params": [
+        {
+          "name": "port_str",
+          "annotation": "str",
+          "default": null,
+          "kind": "positional"
+        }
+      ],
+      "returns": "int",
+      "doc": "Connect to robot hardware via serial port.\n\nCategory: Configuration\n\nExample:\n    rbt.connect_hardware(\"/dev/ttyUSB0\")\n\nArgs:\n    port_str: Serial port path (e.g., '/dev/ttyUSB0' or 'COM3').\n\nReturns:\n    1 if acknowledged, 0 on failure.\n\nRaises:\n    ValueError: If port_str is empty.",
+      "category": "Configuration",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "reset_state",
+      "params": [],
+      "returns": "int",
+      "doc": "Reset program state — world shapes, tool selection, errors, pause,\nmotion profile and execution speed — and discard the queue, each\ndiscarded command failing with ``MOTN_CANCELLED``.\n\nThe arm holds where it is. A protective stop stays latched (only\n``reset()`` clears it), and homed state, digital outputs and the\nserial connection are kept.\n\nCategory: Control\n\nExample:\n    rbt.reset_state()",
+      "category": "Control",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "ping",
+      "params": [],
+      "returns": "PingResult | None",
+      "doc": "Return parsed ping result with hardware_connected status.\n\nCategory: Query\n\nExample:\n    rbt.ping()",
+      "category": "Query",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "angles",
+      "params": [],
+      "returns": "list[float] | None",
+      "doc": "Current joint angles in degrees [J1, J2, J3, J4, J5, J6].\n\nCategory: Query\n\nExample:\n    angles = rbt.angles()",
+      "category": "Query",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "io",
+      "params": [
+        {
+          "name": "*",
+          "annotation": "",
+          "default": null,
+          "kind": "separator"
+        },
+        {
+          "name": "timeout",
+          "annotation": "float | None",
+          "default": "None",
+          "kind": "keyword-only"
+        }
+      ],
+      "returns": "list[int] | None",
+      "doc": "Digital I/O status [in1, in2, out1, out2, estop].\n\n``timeout`` bounds setup, retries, and the reply; None uses client defaults.\n\nCategory: Query\n\nExample:\n    io = rbt.io()",
+      "category": "Query",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "joint_speeds",
+      "params": [],
+      "returns": "list[float] | None",
+      "doc": "Current joint velocities in deg/s [J1, J2, J3, J4, J5, J6], the\nunits of ``StatusBuffer.speeds``.\n\nCategory: Query\n\nExample:\n    speeds = rbt.joint_speeds()",
+      "category": "Query",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "pose",
+      "params": [
+        {
+          "name": "frame",
+          "annotation": "str",
+          "default": "'WRF'",
+          "kind": "positional"
+        }
+      ],
+      "returns": "list[float] | None",
+      "doc": "Current TCP pose as [x, y, z, rx, ry, rz] in mm and degrees.\n\nCategory: Query\n\nExample:\n    pose = rbt.pose()",
+      "category": "Query",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "status",
+      "params": [],
+      "returns": "StatusSnapshot | None",
+      "doc": "Aggregate status snapshot (pose, angles, speeds, io, tool_status).\nIts ``tool_status`` is always a ``ToolStatus``, key ``\"NONE\"`` when\nno tool is fitted.\n\nCategory: Query\n\nExample:\n    status = rbt.status()",
+      "category": "Query",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "loop_stats",
+      "params": [],
+      "returns": "LoopStatsResult | None",
+      "doc": "Fetch control-loop runtime metrics.\n\nCategory: Query\n\nExample:\n    stats = rbt.loop_stats()",
+      "category": "Query",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "reset_loop_stats",
+      "params": [],
+      "returns": "int",
+      "doc": "Reset control-loop min/max metrics and overrun count.\n\nCategory: Query\n\nExample:\n    rbt.reset_loop_stats()",
+      "category": "Query",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "execution_speed",
+      "params": [
+        {
+          "name": "*",
+          "annotation": "",
+          "default": null,
+          "kind": "separator"
+        },
+        {
+          "name": "timeout",
+          "annotation": "float",
+          "default": "3.0",
+          "kind": "keyword-only"
+        }
+      ],
+      "returns": "ExecutionSpeed",
+      "doc": "Read fresh requested, applied, and retained execution scales.\n\nCategory: Query\n\nExample:\n    speed = rbt.execution_speed()",
+      "category": "Query",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "set_execution_speed",
+      "params": [
+        {
+          "name": "scale",
+          "annotation": "float",
+          "default": null,
+          "kind": "positional"
+        },
+        {
+          "name": "*",
+          "annotation": "",
+          "default": null,
+          "kind": "separator"
+        },
+        {
+          "name": "timeout",
+          "annotation": "float",
+          "default": "3.0",
+          "kind": "keyword-only"
+        }
+      ],
+      "returns": "int",
+      "doc": "Select 10–100% of planned queued-motion speed, preserving pause.\n\nCategory: Control\n\nExample:\n    rbt.set_execution_speed(0.5)",
+      "category": "Control",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "pause",
+      "params": [
+        {
+          "name": "*",
+          "annotation": "",
+          "default": null,
+          "kind": "separator"
+        },
+        {
+          "name": "timeout",
+          "annotation": "float",
+          "default": "3.0",
+          "kind": "keyword-only"
+        }
+      ],
+      "returns": "int",
+      "doc": "Request a controlled hold, retaining queued trajectory progress.\n\nA confirmed request returns 1. Read ``execution_speed().paused``\nto confirm the hold. Standalone Python completion timeouts continue.\n\nCategory: Control\n\nExample:\n    rbt.pause()",
+      "category": "Control",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "resume",
+      "params": [
+        {
+          "name": "*",
+          "annotation": "",
+          "default": null,
+          "kind": "separator"
+        },
+        {
+          "name": "timeout",
+          "annotation": "float",
+          "default": "3.0",
+          "kind": "keyword-only"
+        }
+      ],
+      "returns": "int",
+      "doc": "Resume the retained queue at its selected positive speed.\n\nCategory: Control\n\nExample:\n    rbt.resume()",
+      "category": "Control",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "set_status_rate",
+      "params": [
+        {
+          "name": "hz",
+          "annotation": "float",
+          "default": null,
+          "kind": "positional"
+        }
+      ],
+      "returns": "int",
+      "doc": "Set the rate the controller broadcasts status at.\n\nCategory: Configuration\n\nExample:\n    rbt.set_status_rate(100)",
+      "category": "Configuration",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "status_rate",
+      "params": [],
+      "returns": "StatusRate | None",
+      "doc": "Current broadcast rate and the control rate it divides.\n\nCategory: Query\n\nExample:\n    rate = rbt.status_rate()",
+      "category": "Query",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "tools",
+      "params": [],
+      "returns": "ToolResult | None",
+      "doc": "Current tool and available tools.\n\nCategory: Query\n\nExample:\n    tools = rbt.tools()",
+      "category": "Query",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "select_tool",
+      "params": [
+        {
+          "name": "tool_name",
+          "annotation": "str",
+          "default": null,
+          "kind": "positional"
+        },
+        {
+          "name": "variant_key",
+          "annotation": "str",
+          "default": "''",
+          "kind": "positional"
+        }
+      ],
+      "returns": "int",
+      "doc": "Set the active end-effector tool on the controller.\n\nCategory: Configuration\n\nExample:\n    rbt.select_tool(\"PNEUMATIC\")\n\nArgs:\n    tool_name: Name of the tool ('NONE', 'PNEUMATIC', 'SSG-48', 'MSG', 'VACUUM')\n    variant_key: Optional variant within the tool type.\n\nReturns:\n    Command index (>= 0) if queued, 0 on failure.",
+      "category": "Configuration",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "set_tcp_offset",
+      "params": [
+        {
+          "name": "x",
+          "annotation": "float",
+          "default": "0",
+          "kind": "positional"
+        },
+        {
+          "name": "y",
+          "annotation": "float",
+          "default": "0",
+          "kind": "positional"
+        },
+        {
+          "name": "z",
+          "annotation": "float",
+          "default": "0",
+          "kind": "positional"
+        }
+      ],
+      "returns": "int",
+      "doc": "Set TCP offset in mm, composed on top of the current tool transform.\n\nThe offset shifts the effective TCP point in the tool's local frame.\nSubsequent motion (especially TRF relative moves) will use the new TCP.\nReturns the queued index; await ``wait_command(index)`` to confirm\napplication. This translation-only setter clears user TCP rotation.\nCall with (0, 0, 0) to reset. Changing tools resets the offset.\n\nCategory: Configuration\n\nExample:\n    rbt.set_tcp_offset(0, 0, -190)  # pencil tip 190mm from gripper",
+      "category": "Configuration",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "set_tcp_transform",
+      "params": [
+        {
+          "name": "x",
+          "annotation": "float",
+          "default": "0",
+          "kind": "positional"
+        },
+        {
+          "name": "y",
+          "annotation": "float",
+          "default": "0",
+          "kind": "positional"
+        },
+        {
+          "name": "z",
+          "annotation": "float",
+          "default": "0",
+          "kind": "positional"
+        },
+        {
+          "name": "roll",
+          "annotation": "float",
+          "default": "0",
+          "kind": "positional"
+        },
+        {
+          "name": "pitch",
+          "annotation": "float",
+          "default": "0",
+          "kind": "positional"
+        },
+        {
+          "name": "yaw",
+          "annotation": "float",
+          "default": "0",
+          "kind": "positional"
+        }
+      ],
+      "returns": "int",
+      "doc": "",
+      "category": "Other",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "tcp_transform",
+      "params": [],
+      "returns": "list[float]",
+      "doc": "",
+      "category": "Other",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "set_shapes",
+      "params": [
+        {
+          "name": "shapes",
+          "annotation": "list",
+          "default": null,
+          "kind": "positional"
+        }
+      ],
+      "returns": "int",
+      "doc": "Replace the program-layer collision-world shapes (keep-out barriers).\n\nCollision-enabled shapes are added to the controller's checkers so motion\nis blocked against them; an empty list clears the program layer.\nInstallation-layer shapes (robot config) are unaffected.\n\nAcknowledged: returns 1 only after the controller confirms the world\nwas applied; 0 on timeout. Raises MotionError if the controller\nrejects the shapes.\n\nCategory: Configuration\n\nExample:\n    rbt.set_shapes([Box(name=\"table\", x=0.6, y=0.4, z=0.02,\n                        pose=(0.3, 0, -0.01, 0, 0, 0))])",
+      "category": "Configuration",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "shapes",
+      "params": [],
+      "returns": "",
+      "doc": "The collision world the controller is currently enforcing, by layer.\n\nReadback truth for displays; re-query when ``StatusBuffer.scene_epoch``\nchanges. Returns None if the controller is unreachable.\n\nCategory: Query\n\nExample:\n    world = rbt.shapes()",
+      "category": "Query",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "tcp_offset",
+      "params": [],
+      "returns": "list[float]",
+      "doc": "Query current TCP offset in mm [x, y, z].\n\nCategory: Configuration\n\nExample:\n    offset = rbt.tcp_offset()",
+      "category": "Configuration",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "select_profile",
+      "params": [
+        {
+          "name": "profile",
+          "annotation": "str",
+          "default": null,
+          "kind": "positional"
+        }
+      ],
+      "returns": "int",
+      "doc": "Set the motion profile (e.g. ``\"TOPPRA\"``).\n\nCategory: Configuration\n\nExample:\n    rbt.select_profile(\"TOPPRA\")\n\nArgs:\n    profile: Motion profile type ('TOPPRA', 'RUCKIG', 'QUINTIC', 'TRAPEZOID', 'LINEAR')\n        Note: RUCKIG is point-to-point only; Cartesian moves will use TOPPRA.\n\nReturns:\n    1 once the profile is selected, 0 when no reply arrives.\n\nRaises:\n    MotionError: when ``profile`` is not a profile name.",
+      "category": "Configuration",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "profile",
+      "params": [],
+      "returns": "str | None",
+      "doc": "Current motion profile name.\n\nCategory: Query\n\nExample:\n    profile = rbt.profile()",
+      "category": "Query",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "activity",
+      "params": [],
+      "returns": "ActivityResult | None",
+      "doc": "What the robot is currently doing.\n\nReturns state (idle/executing/error), current command name,\nparameters, and error description if applicable.\n\nCategory: Query\n\nExample:\n    act = rbt.activity()",
+      "category": "Query",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "queue",
+      "params": [],
+      "returns": "list[str] | None",
+      "doc": "Queued command list.\n\nCategory: Query\n\nExample:\n    queue = rbt.queue()",
+      "category": "Query",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "reachable",
+      "params": [],
+      "returns": "EnablementResultStruct | None",
+      "doc": "Remaining freedom of movement per joint/axis before hitting limits.\n\nCategory: Query\n\nExample:\n    en = rbt.reachable()",
+      "category": "Query",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "error",
+      "params": [],
+      "returns": "RobotError | None",
+      "doc": "Current error state, or None if no error.\n\nCategory: Query\n\nExample:\n    err = rbt.error()",
+      "category": "Query",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "tcp_speed",
+      "params": [],
+      "returns": "float | None",
+      "doc": "TCP linear velocity in mm/s.\n\nCategory: Query\n\nExample:\n    speed = rbt.tcp_speed()",
+      "category": "Query",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "is_estop_pressed",
+      "params": [],
+      "returns": "bool",
+      "doc": "Check if E-stop is pressed. Returns True if pressed.\n\nCategory: Query\n\nExample:\n    pressed = rbt.is_estop_pressed()",
+      "category": "Query",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "is_robot_stopped",
+      "params": [
+        {
+          "name": "threshold_speed",
+          "annotation": "float",
+          "default": "0.5",
+          "kind": "positional"
+        }
+      ],
+      "returns": "bool",
+      "doc": "Check if robot has stopped moving.\n\nCategory: Query\n\nPrefer ``wait_command()`` for waiting on specific commands.\nThis method polls raw joint speeds and is mainly useful for\ndiagnostics or manual stopping logic.\n\nExample:\n    stopped = rbt.is_robot_stopped()\n\nArgs:\n    threshold_speed: Speed threshold in deg/s\n\nReturns:\n    True if all joints below threshold",
+      "category": "Query",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "wait_motion",
+      "params": [
+        {
+          "name": "timeout",
+          "annotation": "float",
+          "default": "10.0",
+          "kind": "positional"
+        },
+        {
+          "name": "settle_window",
+          "annotation": "float",
+          "default": "0.25",
+          "kind": "positional"
+        },
+        {
+          "name": "speed_threshold",
+          "annotation": "float",
+          "default": "0.5",
+          "kind": "positional"
+        },
+        {
+          "name": "angle_threshold",
+          "annotation": "float",
+          "default": "0.5",
+          "kind": "positional"
+        }
+      ],
+      "returns": "bool",
+      "doc": "Wait until the queue has run out and the arm has come to rest.\n\nFirst waits for the latest command the controller has accepted —\nevery command this client queued, and each newer one the status\nstream reports accepted — to end, then for the arm to hold still\nfor ``settle_window``. A command that failed or was cancelled ends\nthe wait like one that completed; ``wait_command()`` tells which.\n\nCategory: Synchronization\n\nExample:\n    rbt.wait_motion()\n\nArgs:\n    timeout: Maximum time to wait in seconds\n    settle_window: How long robot must be stable to be considered stopped\n    speed_threshold: Max joint speed to be considered stopped (deg/s)\n    angle_threshold: Max angle change to be considered stopped (degrees)\n\nReturns:\n    True if robot stopped, False if timeout\n\nRaises:\n    ConnectionError: If the controller session changes while a\n        command is still being waited on.",
+      "category": "Synchronization",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "wait_ready",
+      "params": [
+        {
+          "name": "timeout",
+          "annotation": "float",
+          "default": "5.0",
+          "kind": "positional"
+        },
+        {
+          "name": "interval",
+          "annotation": "float",
+          "default": "0.05",
+          "kind": "positional"
+        }
+      ],
+      "returns": "bool",
+      "doc": "Poll ping() until server responds or timeout.\n\nArgs:\n    timeout: Maximum time to wait for server to respond\n    interval: Polling interval between ping attempts\n\nReturns:\n    True if server responded to PING, False on timeout",
+      "category": "Other",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "wait_status",
+      "params": [
+        {
+          "name": "predicate",
+          "annotation": "Callable[[StatusBuffer], bool]",
+          "default": null,
+          "kind": "positional"
+        },
+        {
+          "name": "timeout",
+          "annotation": "float",
+          "default": "5.0",
+          "kind": "positional"
+        }
+      ],
+      "returns": "bool",
+      "doc": "Wait until a multicast status satisfies predicate(status) within timeout.",
+      "category": "Other",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "wait_command",
+      "params": [
+        {
+          "name": "command_index",
+          "annotation": "int",
+          "default": null,
+          "kind": "positional"
+        },
+        {
+          "name": "timeout",
+          "annotation": "float",
+          "default": "10.0",
+          "kind": "positional"
+        }
+      ],
+      "returns": "bool",
+      "doc": "Wait until a specific command index has been completed.\n\nQueries exact success in the controller's last 1024 completions: a\nlater command that finishes first — a jog, a ``tool.stop()`` — does\nnot complete an unfinished one queued before it. Queued commands,\ntool actions among them, run in index order, so a wait on one covers\neverything queued ahead of it.\nUnknown or expired results are never inferred successful from the\nstatus high-water mark. A command that ended as a failure — cancelled\nby ``stop()``/``estop()`` (``MOTN_CANCELLED``) or failed by the\npipeline — raises MotionError.\n\nArgs:\n    command_index: The command index to wait for (returned by motion commands).\n    timeout: Maximum time to wait in seconds.\n\nReturns:\n    True if the command completed within timeout, False otherwise.\n\nRaises:\n    MotionError: If the pipeline errored at or before command_index.",
+      "category": "Other",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "move_j",
+      "params": [
+        {
+          "name": "angles",
+          "annotation": "list[float] | None",
+          "default": "None",
+          "kind": "positional"
+        },
+        {
+          "name": "*",
+          "annotation": "",
+          "default": null,
+          "kind": "separator"
+        },
+        {
+          "name": "pose",
+          "annotation": "list[float] | None",
+          "default": "None",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "duration",
+          "annotation": "float",
+          "default": "0.0",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "speed",
+          "annotation": "float",
+          "default": "0.5",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "accel",
+          "annotation": "float",
+          "default": "0.5",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "r",
+          "annotation": "float",
+          "default": "0.0",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "rel",
+          "annotation": "bool",
+          "default": "False",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "wait",
+          "annotation": "bool",
+          "default": "True",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "timeout",
+          "annotation": "float",
+          "default": "10.0",
+          "kind": "keyword-only"
+        }
+      ],
+      "returns": "int",
+      "doc": "Joint-space move. Positional arg = joint angles; pose= kwarg = Cartesian target with IK.\n\nReturns the command index (≥ 0) on success, -1 on failure.\n\nCategory: Motion\n\nExample:\n    rbt.move_j([90, -90, 180, 0, 0, 180], speed=0.5)\n\nArgs:\n    angles: 6 joint angles in degrees (ignored if pose= is set)\n    pose: If set, Cartesian target [x,y,z,rx,ry,rz] — dispatches to MOVEJ_POSE\n    duration: Motion duration in seconds; > 0 times the move and speed is unused\n    speed: Speed fraction in (0, 1], used when duration is 0\n    accel: Acceleration fraction in (0, 1]\n    r: Blend radius in mm (0 = stop at target)\n    rel: If True, angles are relative to current position\n    wait: If True, block until motion completes",
+      "category": "Motion",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "move_l",
+      "params": [
+        {
+          "name": "pose",
+          "annotation": "list[float]",
+          "default": null,
+          "kind": "positional"
+        },
+        {
+          "name": "*",
+          "annotation": "",
+          "default": null,
+          "kind": "separator"
+        },
+        {
+          "name": "frame",
+          "annotation": "Frame",
+          "default": "'WRF'",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "duration",
+          "annotation": "float",
+          "default": "0.0",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "speed",
+          "annotation": "float",
+          "default": "0.5",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "accel",
+          "annotation": "float",
+          "default": "0.5",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "r",
+          "annotation": "float",
+          "default": "0.0",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "rel",
+          "annotation": "bool",
+          "default": "False",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "wait",
+          "annotation": "bool",
+          "default": "True",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "timeout",
+          "annotation": "float",
+          "default": "10.0",
+          "kind": "keyword-only"
+        }
+      ],
+      "returns": "int",
+      "doc": "Linear Cartesian move to target pose.\n\nReturns the command index (≥ 0) on success, -1 on failure.\n\nCategory: Motion\n\nExample:\n    rbt.move_l([0, 263, 242, 90, 0, 90], speed=0.5)\n\nArgs:\n    pose: Target [x,y,z,rx,ry,rz] in mm and degrees\n    frame: Reference frame (\"WRF\" or \"TRF\")\n    duration: Motion duration in seconds; > 0 times the move and speed is unused\n    speed: Speed fraction in (0, 1], used when duration is 0\n    accel: Acceleration fraction in (0, 1]\n    r: Blend radius in mm\n    rel: If True, pose is relative delta\n    wait: If True, block until motion completes",
+      "category": "Motion",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "move_c",
+      "params": [
+        {
+          "name": "via",
+          "annotation": "list[float]",
+          "default": null,
+          "kind": "positional"
+        },
+        {
+          "name": "end",
+          "annotation": "list[float]",
+          "default": null,
+          "kind": "positional"
+        },
+        {
+          "name": "*",
+          "annotation": "",
+          "default": null,
+          "kind": "separator"
+        },
+        {
+          "name": "frame",
+          "annotation": "Frame",
+          "default": "'WRF'",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "duration",
+          "annotation": "float",
+          "default": "0.0",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "speed",
+          "annotation": "float",
+          "default": "0.5",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "accel",
+          "annotation": "float",
+          "default": "0.5",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "r",
+          "annotation": "float",
+          "default": "0.0",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "wait",
+          "annotation": "bool",
+          "default": "True",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "timeout",
+          "annotation": "float",
+          "default": "10.0",
+          "kind": "keyword-only"
+        }
+      ],
+      "returns": "int",
+      "doc": "Circular arc through current position -> via -> end.\n\nReturns the command index (≥ 0) on success, -1 on failure.\n\nCategory: Motion\n\nExample:\n    rbt.move_c(via=[0, 250, 250, 90, 0, 90], end=[0, 263, 242, 90, 0, 90], speed=0.5)\n\nArgs:\n    via: Via-point pose [x,y,z,rx,ry,rz]\n    end: End-point pose [x,y,z,rx,ry,rz]\n    frame: Reference frame\n    duration: Motion duration in seconds; > 0 times the move and speed is unused\n    speed: Speed fraction in (0, 1], used when duration is 0\n    accel: Acceleration fraction in (0, 1]\n    r: Blend radius in mm\n    wait: If True, block until motion completes",
+      "category": "Motion",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "move_s",
+      "params": [
+        {
+          "name": "waypoints",
+          "annotation": "list[list[float]]",
+          "default": null,
+          "kind": "positional"
+        },
+        {
+          "name": "*",
+          "annotation": "",
+          "default": null,
+          "kind": "separator"
+        },
+        {
+          "name": "frame",
+          "annotation": "Frame",
+          "default": "'WRF'",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "duration",
+          "annotation": "float",
+          "default": "0.0",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "speed",
+          "annotation": "float",
+          "default": "0.5",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "accel",
+          "annotation": "float",
+          "default": "0.5",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "wait",
+          "annotation": "bool",
+          "default": "True",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "timeout",
+          "annotation": "float",
+          "default": "10.0",
+          "kind": "keyword-only"
+        }
+      ],
+      "returns": "int",
+      "doc": "Cubic spline through waypoints.\n\nReturns the command index (≥ 0) on success, -1 on failure.\n\nCategory: Motion\n\nExample:\n    rbt.move_s([[0, 263, 242, 90, 0, 90], [50, 250, 200, 90, 0, 90]], speed=0.5)\n\nArgs:\n    waypoints: List of poses [[x,y,z,rx,ry,rz], ...]\n    frame: Reference frame\n    duration: Motion duration in seconds; > 0 times the move and speed is unused\n    speed: Speed fraction in (0, 1], used when duration is 0\n    accel: Acceleration fraction in (0, 1]\n    wait: If True, block until motion completes",
+      "category": "Motion",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "move_p",
+      "params": [
+        {
+          "name": "waypoints",
+          "annotation": "list[list[float]]",
+          "default": null,
+          "kind": "positional"
+        },
+        {
+          "name": "*",
+          "annotation": "",
+          "default": null,
+          "kind": "separator"
+        },
+        {
+          "name": "frame",
+          "annotation": "Frame",
+          "default": "'WRF'",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "duration",
+          "annotation": "float",
+          "default": "0.0",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "speed",
+          "annotation": "float",
+          "default": "0.5",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "accel",
+          "annotation": "float",
+          "default": "0.5",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "wait",
+          "annotation": "bool",
+          "default": "True",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "timeout",
+          "annotation": "float",
+          "default": "10.0",
+          "kind": "keyword-only"
+        }
+      ],
+      "returns": "int",
+      "doc": "Process move — constant TCP speed with auto-blending at corners.\n\nReturns the command index (≥ 0) on success, -1 on failure.\n\nCategory: Motion\n\nExample:\n    rbt.move_p([[0, 263, 242, 90, 0, 90], [50, 250, 200, 90, 0, 90]], speed=0.5)\n\nArgs:\n    waypoints: List of poses [[x,y,z,rx,ry,rz], ...]\n    frame: Reference frame\n    duration: Motion duration in seconds; > 0 times the move and speed is unused\n    speed: Speed fraction in (0, 1], used when duration is 0\n    accel: Acceleration fraction in (0, 1]\n    wait: If True, block until motion completes",
+      "category": "Motion",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "servo_j",
+      "params": [
+        {
+          "name": "angles",
+          "annotation": "list[float] | None",
+          "default": "None",
+          "kind": "positional"
+        },
+        {
+          "name": "*",
+          "annotation": "",
+          "default": null,
+          "kind": "separator"
+        },
+        {
+          "name": "pose",
+          "annotation": "list[float] | None",
+          "default": "None",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "speed",
+          "annotation": "float",
+          "default": "0.5",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "accel",
+          "annotation": "float",
+          "default": "0.5",
+          "kind": "keyword-only"
+        }
+      ],
+      "returns": "int",
+      "doc": "Streaming joint position target. Fire-and-forget.\n\nThe stream stops about 0.25 s after the last target arrives: the arm\nbrakes to rest and holds there.\n\nCategory: Streaming\n\nExample:\n    rbt.servo_j([90, -90, 180, 0, 0, 180])\n\nArgs:\n    angles: 6 joint angles in degrees (ignored if pose= is set)\n    pose: If set, Cartesian target — dispatches to SERVOJ_POSE\n    speed: Speed fraction 0-1\n    accel: Acceleration fraction 0-1",
+      "category": "Streaming",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "servo_l",
+      "params": [
+        {
+          "name": "pose",
+          "annotation": "list[float]",
+          "default": null,
+          "kind": "positional"
+        },
+        {
+          "name": "*",
+          "annotation": "",
+          "default": null,
+          "kind": "separator"
+        },
+        {
+          "name": "speed",
+          "annotation": "float",
+          "default": "0.5",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "accel",
+          "annotation": "float",
+          "default": "0.5",
+          "kind": "keyword-only"
+        }
+      ],
+      "returns": "int",
+      "doc": "Streaming linear Cartesian position target. Fire-and-forget.\n\nThe stream stops about 0.25 s after the last target arrives: the tool\nbrakes along its line to rest and holds there.\n\nCategory: Streaming\n\nExample:\n    rbt.servo_l([0, 263, 242, 90, 0, 90])\n\nArgs:\n    pose: Target [x,y,z,rx,ry,rz] in mm and degrees\n    speed: Speed fraction 0-1\n    accel: Acceleration fraction 0-1",
+      "category": "Streaming",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "jog_j",
+      "params": [
+        {
+          "name": "joint",
+          "annotation": "int | None",
+          "default": "None",
+          "kind": "positional"
+        },
+        {
+          "name": "speed",
+          "annotation": "float",
+          "default": "0.0",
+          "kind": "positional"
+        },
+        {
+          "name": "duration",
+          "annotation": "float",
+          "default": "0.1",
+          "kind": "positional"
+        },
+        {
+          "name": "*",
+          "annotation": "",
+          "default": null,
+          "kind": "separator"
+        },
+        {
+          "name": "joints",
+          "annotation": "list[int] | None",
+          "default": "None",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "speeds",
+          "annotation": "list[float] | None",
+          "default": "None",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "accel",
+          "annotation": "float",
+          "default": "0.5",
+          "kind": "keyword-only"
+        }
+      ],
+      "returns": "int",
+      "doc": "Joint velocity jog. Single-joint or multi-joint.\n\nSingle joint:   jog_j(0, 0.5, 1.0)\nMulti joint:    jog_j(joints=[0,1], speeds=[0.5, -0.3], duration=1.0)\n\nCategory: Jog\n\nExample:\n    rbt.jog_j(0, speed=0.5, duration=1.0)\n\nArgs:\n    joint: Joint index (0-5) for single-joint jog\n    speed: Signed speed fraction for single-joint jog\n    duration: Jog duration in seconds\n    joints: List of joint indices for multi-joint jog\n    speeds: List of signed speed fractions for multi-joint jog\n    accel: Acceleration fraction 0-1",
+      "category": "Jog",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "jog_l",
+      "params": [
+        {
+          "name": "frame",
+          "annotation": "Frame",
+          "default": null,
+          "kind": "positional"
+        },
+        {
+          "name": "axis",
+          "annotation": "Axis | None",
+          "default": "None",
+          "kind": "positional"
+        },
+        {
+          "name": "speed",
+          "annotation": "float",
+          "default": "0.0",
+          "kind": "positional"
+        },
+        {
+          "name": "duration",
+          "annotation": "float",
+          "default": "0.1",
+          "kind": "positional"
+        },
+        {
+          "name": "*",
+          "annotation": "",
+          "default": null,
+          "kind": "separator"
+        },
+        {
+          "name": "axes",
+          "annotation": "list[Axis] | None",
+          "default": "None",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "speeds_list",
+          "annotation": "list[float] | None",
+          "default": "None",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "accel",
+          "annotation": "float",
+          "default": "0.5",
+          "kind": "keyword-only"
+        }
+      ],
+      "returns": "int",
+      "doc": "Cartesian velocity jog. Single-axis or multi-axis.\n\nSingle axis:  jog_l(\"WRF\", \"X\", 0.5, 1.0)\nMulti axis:   jog_l(\"WRF\", axes=[\"X\",\"Y\"], speeds_list=[0.5, -0.3], duration=1.0)\n\nCategory: Jog\n\nExample:\n    rbt.jog_l(\"WRF\", \"X\", speed=0.5, duration=1.0)\n\nArgs:\n    frame: Reference frame (\"WRF\" or \"TRF\")\n    axis: Axis name for single-axis jog\n    speed: Signed speed fraction for single-axis jog\n    duration: Jog duration in seconds\n    axes: List of axis names for multi-axis jog\n    speeds_list: List of signed speed fractions for multi-axis jog\n    accel: Acceleration fraction 0-1",
+      "category": "Jog",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "checkpoint",
+      "params": [
+        {
+          "name": "label",
+          "annotation": "str",
+          "default": null,
+          "kind": "positional"
+        }
+      ],
+      "returns": "int",
+      "doc": "Insert a checkpoint marker in the motion queue.\n\nReturns the command index (≥ 0) on success, -1 on failure.\n\nCategory: Synchronization\n\nExample:\n    rbt.checkpoint(\"pick_done\")\n\nArgs:\n    label: Checkpoint label for progress tracking",
+      "category": "Synchronization",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "wait_checkpoint",
+      "params": [
+        {
+          "name": "label",
+          "annotation": "str",
+          "default": null,
+          "kind": "positional"
+        },
+        {
+          "name": "timeout",
+          "annotation": "float",
+          "default": "30.0",
+          "kind": "positional"
+        }
+      ],
+      "returns": "bool",
+      "doc": "Wait until a checkpoint with the given label has been reached.\n\nCategory: Synchronization\n\nExample:\n    rbt.wait_checkpoint(\"pick_done\")\n\nArgs:\n    label: Checkpoint label to wait for\n    timeout: Maximum wait time in seconds",
+      "category": "Synchronization",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "write_io",
+      "params": [
+        {
+          "name": "index",
+          "annotation": "int",
+          "default": null,
+          "kind": "positional"
+        },
+        {
+          "name": "value",
+          "annotation": "int",
+          "default": null,
+          "kind": "positional"
+        },
+        {
+          "name": "*",
+          "annotation": "",
+          "default": null,
+          "kind": "separator"
+        },
+        {
+          "name": "timeout",
+          "annotation": "float | None",
+          "default": "None",
+          "kind": "keyword-only"
+        }
+      ],
+      "returns": "int",
+      "doc": "Set digital output by logical index (0 = first output pin).\n\nThe firmware I/O byte layout is ``[in0, in1, out0, out1, estop, ...]``\nso logical output index 0 maps to bit position 2.\n\nReturns the command index (≥ 0) on success, -1 on failure.\n\n``timeout`` bounds command acceptance. TimeoutError leaves application\nunconfirmed; None uses the client defaults.\n\nCategory: I/O\n\nExample:\n    rbt.write_io(0, 1)   # Set first output HIGH",
+      "category": "I/O",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "delay",
+      "params": [
+        {
+          "name": "seconds",
+          "annotation": "float",
+          "default": null,
+          "kind": "positional"
+        }
+      ],
+      "returns": "int",
+      "doc": "Insert a non-blocking delay in the motion queue.\n\nReturns the command index (≥ 0) on success, -1 on failure.\n\nCategory: Synchronization\n\nExample:\n    rbt.delay(1.0)",
+      "category": "Synchronization",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "tool_action",
+      "params": [
+        {
+          "name": "tool_key",
+          "annotation": "str",
+          "default": null,
+          "kind": "positional"
+        },
+        {
+          "name": "action",
+          "annotation": "str",
+          "default": null,
+          "kind": "positional"
+        },
+        {
+          "name": "params",
+          "annotation": "list | None",
+          "default": "None",
+          "kind": "positional"
+        },
+        {
+          "name": "*",
+          "annotation": "",
+          "default": null,
+          "kind": "separator"
+        },
+        {
+          "name": "wait",
+          "annotation": "bool",
+          "default": "False",
+          "kind": "keyword-only"
+        },
+        {
+          "name": "timeout",
+          "annotation": "float",
+          "default": "10.0",
+          "kind": "keyword-only"
+        }
+      ],
+      "returns": "int",
+      "doc": "Send a generic tool action command.\n\nReturns the command index (>= 0) on success, -1 on failure. The\naction and its parameters are checked before anything is sent: a\nmalformed one raises ``ValueError``. A key naming a tool other than\nthe selected one is refused by the controller.\n\nA tool action is queued work: it runs in queue order with motion,\nthe arm holding still while it does, so a wait on it covers the\nmotion queued ahead of it, and one sent after a blended move ends\nthe blend there. A ``move`` before a completed ``calibrate`` is\nrefused when its turn comes, failing its own index; a tool action\nthat fails cancels what is queued behind it (``MOTN_CANCELLED``).\nA pause holds the tool actions still queued. ``stop()``,\n``estop()``, ``reset_state()``, a teleport, or a jog or servo stream\ntaking the arm discards them and halts the one running where the\njaws are, keeping the grip.\n\n``stop`` alone acts at once, on the tool fitted now: it halts the\naction running, failing it as cancelled by a tool stop, keeps what\nis queued behind it, and holds the next queued tool action until\nthe jaws are still.\n\nElectric grippers take ``move [position, speed, current]``\n(exactly three fractions in ``[0, 1]``; current spans the tool's\n``current_range``), ``calibrate``, ``stop`` (halt in place, keep\ngrip) and ``idle`` (release, the jaws left where they are);\n``set_position``/``open``/``close`` map onto ``move``. Pneumatic\ngrippers take ``open``, ``close``, and ``move``/``set_position\n[position]``.\n\nCategory: I/O\n\nExample:\n    rbt.tool_action(\"PNEUMATIC\", \"open\")\n\nArgs:\n    tool_key: Tool registry key (e.g. \"PNEUMATIC\", \"SSG-48\", \"MSG\")\n    action: Action name (e.g. \"open\", \"close\", \"move\", \"calibrate\")\n    params: Positional parameters (meaning defined by tool config)\n    wait: If True, block until action completes\n    timeout: Maximum time to wait in seconds (only used when wait=True)",
+      "category": "I/O",
+      "property": false,
+      "async_only": false
+    },
+    {
+      "name": "stream_status",
+      "params": [],
+      "returns": "AsyncIterator[StatusBuffer]",
+      "doc": "Async generator that yields status updates from multicast broadcasts.\n\nUsage:\n    async for status in client.stream_status():\n        print(f\"Angles: {status.angles}\")\n\nThis generator terminates automatically when :meth:`close` is\ncalled on the client, so callers do not need to manually cancel\ntheir consumer tasks.\n\nEach yielded StatusBuffer is a copy - safe to store or process async.\nFor zero-copy hot paths, use :meth:`stream_status_shared` instead.\n\nSlow consumers automatically skip to the latest state (desired for real-time).",
+      "category": "Other",
+      "property": false,
+      "async_only": true
+    },
+    {
+      "name": "stream_status_shared",
+      "params": [],
+      "returns": "AsyncIterator[StatusBuffer]",
+      "doc": "Zero-copy async generator that yields the shared status buffer.\n\nUsage:\n    async for status in client.stream_status_shared():\n        # Process immediately - don't store references\n        print(f\"Angles: {status.angles}\")\n\nWARNING: The same buffer instance is yielded on every iteration.\nDo not store references to the yielded object - data will be\noverwritten on the next iteration. For safe storage, use\n:meth:`stream_status` or call status.copy().\n\nThis generator terminates automatically when :meth:`close` is\ncalled on the client.\n\nSlow consumers automatically skip to the latest state (desired for real-time).",
+      "category": "Other",
+      "property": false,
+      "async_only": true
+    }
+  ],
+  "tools": {
+    "electric": [
+      {
+        "name": "set_position",
+        "params": [
+          {
+            "name": "position",
+            "annotation": "float",
+            "default": null,
+            "kind": "positional"
+          },
+          {
+            "name": "*",
+            "annotation": "",
+            "default": null,
+            "kind": "separator"
+          },
+          {
+            "name": "speed",
+            "annotation": "float",
+            "default": "0.5",
+            "kind": "keyword-only"
+          },
+          {
+            "name": "current",
+            "annotation": "float",
+            "default": "0.5",
+            "kind": "keyword-only"
+          },
+          {
+            "name": "**wait_kwargs",
+            "annotation": "Any",
+            "default": null,
+            "kind": "var-keyword"
+          }
+        ],
+        "returns": "int",
+        "doc": ""
+      },
+      {
+        "name": "calibrate",
+        "params": [
+          {
+            "name": "**kwargs",
+            "annotation": "object",
+            "default": null,
+            "kind": "var-keyword"
+          }
+        ],
+        "returns": "int",
+        "doc": ""
+      },
+      {
+        "name": "stop",
+        "params": [
+          {
+            "name": "**kwargs",
+            "annotation": "object",
+            "default": null,
+            "kind": "var-keyword"
+          }
+        ],
+        "returns": "int",
+        "doc": "Halt the jaws where they are, keeping the grip, ahead of anything\nstill queued: the action running fails as cancelled, and the queue\nbehind it is kept. On an uncalibrated gripper, which has no position\nto hold, this releases instead."
+      },
+      {
+        "name": "release",
+        "params": [
+          {
+            "name": "**kwargs",
+            "annotation": "object",
+            "default": null,
+            "kind": "var-keyword"
+          }
+        ],
+        "returns": "int",
+        "doc": "Drop the grip, freeing the jaws for manual handling, once the\ncommands queued ahead of it have run. The jaws stay where they\nare."
+      },
+      {
+        "name": "open",
+        "params": [
+          {
+            "name": "*",
+            "annotation": "",
+            "default": null,
+            "kind": "separator"
+          },
+          {
+            "name": "speed",
+            "annotation": "float",
+            "default": "0.5",
+            "kind": "keyword-only"
+          },
+          {
+            "name": "current",
+            "annotation": "float",
+            "default": "0.5",
+            "kind": "keyword-only"
+          },
+          {
+            "name": "**wait_kwargs",
+            "annotation": "Any",
+            "default": null,
+            "kind": "var-keyword"
+          }
+        ],
+        "returns": "int",
+        "doc": ""
+      },
+      {
+        "name": "close",
+        "params": [
+          {
+            "name": "*",
+            "annotation": "",
+            "default": null,
+            "kind": "separator"
+          },
+          {
+            "name": "speed",
+            "annotation": "float",
+            "default": "0.5",
+            "kind": "keyword-only"
+          },
+          {
+            "name": "current",
+            "annotation": "float",
+            "default": "0.5",
+            "kind": "keyword-only"
+          },
+          {
+            "name": "**wait_kwargs",
+            "annotation": "Any",
+            "default": null,
+            "kind": "var-keyword"
+          }
+        ],
+        "returns": "int",
+        "doc": ""
+      }
+    ],
+    "pneumatic": [
+      {
+        "name": "set_position",
+        "params": [
+          {
+            "name": "position",
+            "annotation": "float",
+            "default": null,
+            "kind": "positional"
+          },
+          {
+            "name": "**kwargs",
+            "annotation": "float | int",
+            "default": null,
+            "kind": "var-keyword"
+          }
+        ],
+        "returns": "int",
+        "doc": "Binary position: < 0.5 opens, >= 0.5 closes."
+      },
+      {
+        "name": "open",
+        "params": [
+          {
+            "name": "**kwargs",
+            "annotation": "float | int",
+            "default": null,
+            "kind": "var-keyword"
+          }
+        ],
+        "returns": "int",
+        "doc": ""
+      },
+      {
+        "name": "close",
+        "params": [
+          {
+            "name": "**kwargs",
+            "annotation": "float | int",
+            "default": null,
+            "kind": "var-keyword"
+          }
+        ],
+        "returns": "int",
+        "doc": ""
+      }
+    ]
+  },
+  "registered_tools": [
+    {
+      "key": "NONE",
+      "description": "Bare flange - no tool attached",
+      "variants": [],
+      "default_variant": ""
+    },
+    {
+      "key": "PNEUMATIC",
+      "description": "Pneumatic gripper assembly (vertical/horizontal mounting)",
+      "variants": [
+        "vertical",
+        "horizontal"
+      ],
+      "default_variant": "vertical"
+    },
+    {
+      "key": "SSG-48",
+      "description": "SSG-48 adaptive electric gripper (Spectral micro BLDC)",
+      "variants": [
+        "finger",
+        "pinch"
+      ],
+      "default_variant": "finger"
+    },
+    {
+      "key": "MSG",
+      "description": "MSG compliant AI stepper gripper (StepFOC)",
+      "variants": [
+        "100mm",
+        "150mm",
+        "200mm"
+      ],
+      "default_variant": "100mm"
+    },
+    {
+      "key": "VACUUM",
+      "description": "Vacuum gripper (pneumatic valve I/O)",
+      "variants": [],
+      "default_variant": ""
+    }
+  ],
+  "errors": [
+    {
+      "name": "IK_TARGET_UNREACHABLE",
+      "code": 10,
+      "title": "IK: target unreachable",
+      "cause": "Target pose has no valid IK solution. {detail}",
+      "effect": "Motion command rejected. Pipeline halted.",
+      "remedy": "Verify target is within workspace. Try different orientation."
+    },
+    {
+      "name": "IK_PARTIAL_PATH",
+      "code": 11,
+      "title": "IK: partial path failure",
+      "cause": "Only {valid}/{total} poses along the path are reachable.",
+      "effect": "Motion command rejected. Pipeline halted.",
+      "remedy": "Shorten the move, add intermediate waypoints, or adjust orientation."
+    },
+    {
+      "name": "TRAJ_EMPTY_RESULT",
+      "code": 20,
+      "title": "Trajectory: empty result",
+      "cause": "Trajectory generation returned no waypoints. {detail}",
+      "effect": "Motion command rejected.",
+      "remedy": "Check motion parameters. Start and end may be too close."
+    },
+    {
+      "name": "TRAJ_NO_STEPS",
+      "code": 21,
+      "title": "Trajectory: no steps",
+      "cause": "Trajectory calculation produced zero steps. {detail}",
+      "effect": "Motion command rejected.",
+      "remedy": "Increase duration or reduce speed fraction."
+    },
+    {
+      "name": "MOTN_HOME_TIMEOUT",
+      "code": 30,
+      "title": "Homing timeout",
+      "cause": "Robot did not start homing sequence within timeout.",
+      "effect": "Home command aborted.",
+      "remedy": "Check serial connection and robot power. Ensure E-stop is released."
+    },
+    {
+      "name": "MOTN_GRIPPER_TIMEOUT",
+      "code": 31,
+      "title": "Gripper timeout",
+      "cause": "Gripper command timed out in state {state}.",
+      "effect": "Gripper command aborted.",
+      "remedy": "Check gripper connection and calibration."
+    },
+    {
+      "name": "MOTN_GRIPPER_UNKNOWN",
+      "code": 32,
+      "title": "Gripper: unknown state",
+      "cause": "Gripper entered an unknown internal state.",
+      "effect": "Gripper command aborted.",
+      "remedy": "Reset the controller and recalibrate the gripper."
+    },
+    {
+      "name": "MOTN_SETUP_FAILED",
+      "code": 33,
+      "title": "Command setup failed",
+      "cause": "Command could not be initialized. {detail}",
+      "effect": "Command rejected. Pipeline halted.",
+      "remedy": "Check command parameters and robot state."
+    },
+    {
+      "name": "MOTN_TICK_FAILED",
+      "code": 34,
+      "title": "Command execution error",
+      "cause": "Unexpected error during execution. {detail}",
+      "effect": "Command aborted. Robot stopped.",
+      "remedy": "Check robot state. May need to re-home."
+    },
+    {
+      "name": "MOTN_NOT_HOMED",
+      "code": 35,
+      "title": "Robot not homed",
+      "cause": "",
+      "effect": "",
+      "remedy": ""
+    },
+    {
+      "name": "MOTN_CANCELLED",
+      "code": null,
+      "title": "Command cancelled",
+      "cause": "The command was cancelled by {scope} before it finished.",
+      "effect": "The motion did not run to completion.",
+      "remedy": "Re-issue the command if the motion is still wanted."
+    },
+    {
+      "name": "COMM_QUEUE_FULL",
+      "code": 40,
+      "title": "Command queue full",
+      "cause": "Motion queue at maximum capacity.",
+      "effect": "Command rejected.",
+      "remedy": "Wait for current motions to complete."
+    },
+    {
+      "name": "COMM_UNKNOWN_COMMAND",
+      "code": 41,
+      "title": "Unknown command",
+      "cause": "No handler for received command type.",
+      "effect": "Command ignored.",
+      "remedy": "Check client library version matches server."
+    },
+    {
+      "name": "COMM_DECODE_ERROR",
+      "code": 42,
+      "title": "Command decode error",
+      "cause": "Failed to decode command. {detail}",
+      "effect": "Command ignored.",
+      "remedy": "Check command encoding. Possible version mismatch."
+    },
+    {
+      "name": "COMM_VALIDATION_ERROR",
+      "code": 43,
+      "title": "Command validation error",
+      "cause": "Invalid parameters. {detail}",
+      "effect": "Command rejected.",
+      "remedy": "Check parameter ranges and types."
+    },
+    {
+      "name": "SYS_STATUS_RATE_INVALID",
+      "code": 55,
+      "title": "Status rate not achievable",
+      "cause": "Status is broadcast every Nth control tick, so {requested} Hz does not divide the {control} Hz control loop evenly.",
+      "effect": "Broadcast rate unchanged.",
+      "remedy": "Pick a rate that divides {control} Hz: {allowed}."
+    },
+    {
+      "name": "SYS_CONTROLLER_DISABLED",
+      "code": 50,
+      "title": "Controller disabled",
+      "cause": "Motion command sent while controller is disabled. {detail}",
+      "effect": "Command rejected.",
+      "remedy": "Call reset() to re-enable the controller."
+    },
+    {
+      "name": "SYS_ESTOP_ACTIVE",
+      "code": 51,
+      "title": "E-stop active",
+      "cause": "Emergency stop is currently engaged.",
+      "effect": "All motion stopped. Queue cleared.",
+      "remedy": "Release the E-stop button and call reset()."
+    },
+    {
+      "name": "SYS_PORT_SAVE_FAILED",
+      "code": 52,
+      "title": "Serial port save failed",
+      "cause": "Could not save serial port configuration.",
+      "effect": "Port may not persist across restarts.",
+      "remedy": "Check file permissions and disk space."
+    },
+    {
+      "name": "SYS_PROFILE_INVALID",
+      "code": 53,
+      "title": "Invalid motion profile",
+      "cause": "Unrecognized motion profile: {detail}",
+      "effect": "Profile not changed.",
+      "remedy": "Use one of: TOPPRA, RUCKIG, QUINTIC, TRAPEZOID, LINEAR."
+    },
+    {
+      "name": "SYS_NOT_SIMULATOR",
+      "code": 56,
+      "title": "Simulator-only command",
+      "cause": "{detail} is only available on the simulator.",
+      "effect": "Command rejected; the arm is unchanged.",
+      "remedy": "Switch to the simulator with simulator(True), or drive the arm with a planned move."
+    },
+    {
+      "name": "SYS_SELF_COLLISION",
+      "code": 54,
+      "title": "Self-collision predicted",
+      "cause": "Planned configuration would self-collide at sample {sample} of {total}: {pairs}",
+      "effect": "Motion command rejected before dispatch.",
+      "remedy": "Choose a different target, add intermediate waypoints, or disable via PAROL6_COLLISION_CHECK=0."
+    }
+  ],
+  "env": [
+    {
+      "name": "PAROL6_BLEND_HOLD_S",
+      "default": "0.1"
+    },
+    {
+      "name": "PAROL6_BUSY_THRESHOLD_MS",
+      "default": "1.0"
+    },
+    {
+      "name": "PAROL6_COLLISION_CHECK",
+      "default": "1"
+    },
+    {
+      "name": "PAROL6_COLLISION_CLEARANCE_M",
+      "default": "0.005"
+    },
+    {
+      "name": "PAROL6_COLLISION_JOG_LOOKAHEAD_S",
+      "default": "0.15"
+    },
+    {
+      "name": "PAROL6_COLLISION_PATH_SAMPLES",
+      "default": "16"
+    },
+    {
+      "name": "PAROL6_COLLISION_SRDF",
+      "default": "computed"
+    },
+    {
+      "name": "PAROL6_COM_FILE",
+      "default": "computed"
+    },
+    {
+      "name": "PAROL6_COM_PORT",
+      "default": ""
+    },
+    {
+      "name": "PAROL6_CONTROL_RATE_HZ",
+      "default": "100"
+    },
+    {
+      "name": "PAROL6_EXECUTION_OVERRIDE_TRANSITION_S",
+      "default": "1.0"
+    },
+    {
+      "name": "PAROL6_MAX_BACKLOG_COUNT",
+      "default": "500"
+    },
+    {
+      "name": "PAROL6_MAX_BLEND_LOOKAHEAD",
+      "default": "100"
+    },
+    {
+      "name": "PAROL6_MCAST_GROUP",
+      "default": "239.255.0.101"
+    },
+    {
+      "name": "PAROL6_MCAST_IF",
+      "default": "127.0.0.1"
+    },
+    {
+      "name": "PAROL6_MCAST_PORT",
+      "default": "50510"
+    },
+    {
+      "name": "PAROL6_MCAST_TTL",
+      "default": "1"
+    },
+    {
+      "name": "PAROL6_PATH_SAMPLES",
+      "default": "200"
+    },
+    {
+      "name": "PAROL6_SERIAL",
+      "default": ""
+    },
+    {
+      "name": "PAROL6_SETTLE_MAX_TICKS",
+      "default": "20"
+    },
+    {
+      "name": "PAROL6_STATUS_RATE_HZ",
+      "default": "50"
+    },
+    {
+      "name": "PAROL6_STATUS_STALE_S",
+      "default": "0.5"
+    },
+    {
+      "name": "PAROL6_STATUS_TRANSPORT",
+      "default": "MULTICAST"
+    },
+    {
+      "name": "PAROL6_STATUS_UNICAST_HOST",
+      "default": "127.0.0.1"
+    },
+    {
+      "name": "PAROL_TRACE",
+      "default": "0"
+    }
+  ],
+  "cli": [
+    {
+      "flags": [
+        "--host"
+      ],
+      "default": "0.0.0.0",
+      "help": "UDP host address",
+      "choices": [],
+      "action": ""
+    },
+    {
+      "flags": [
+        "--port"
+      ],
+      "default": "5001",
+      "help": "UDP port",
+      "choices": [],
+      "action": ""
+    },
+    {
+      "flags": [
+        "--serial"
+      ],
+      "default": "",
+      "help": "Serial port (e.g., /dev/ttyUSB0 or COM3)",
+      "choices": [],
+      "action": ""
+    },
+    {
+      "flags": [
+        "--baudrate"
+      ],
+      "default": "3000000",
+      "help": "Serial baudrate",
+      "choices": [],
+      "action": ""
+    },
+    {
+      "flags": [
+        "-v",
+        "--verbose"
+      ],
+      "default": "0",
+      "help": "Increase verbosity; -v=INFO, -vv=DEBUG, -vvv=TRACE",
+      "choices": [],
+      "action": "count"
+    },
+    {
+      "flags": [
+        "-q",
+        "--quiet"
+      ],
+      "default": "",
+      "help": "Enable quiet logging (WARNING level)",
+      "choices": [],
+      "action": "store_true"
+    },
+    {
+      "flags": [
+        "--log-level"
+      ],
+      "default": "",
+      "help": "Set specific log level",
+      "choices": [
+        "TRACE",
+        "DEBUG",
+        "INFO",
+        "WARNING",
+        "ERROR",
+        "CRITICAL"
+      ],
+      "action": ""
+    }
+  ],
+  "status_fields": [
+    {
+      "name": "session_id",
+      "type": "int",
+      "default": "0"
+    },
+    {
+      "name": "seq",
+      "type": "int",
+      "default": "0"
+    },
+    {
+      "name": "mono_time_ns",
+      "type": "int",
+      "default": "0"
+    },
+    {
+      "name": "pose",
+      "type": "np.ndarray",
+      "default": ""
+    },
+    {
+      "name": "angles",
+      "type": "np.ndarray",
+      "default": ""
+    },
+    {
+      "name": "speeds",
+      "type": "np.ndarray",
+      "default": ""
+    },
+    {
+      "name": "io",
+      "type": "np.ndarray",
+      "default": ""
+    },
+    {
+      "name": "tool_status",
+      "type": "ToolStatus",
+      "default": ""
+    },
+    {
+      "name": "joint_en",
+      "type": "np.ndarray",
+      "default": ""
+    },
+    {
+      "name": "cart_en_wrf",
+      "type": "np.ndarray",
+      "default": ""
+    },
+    {
+      "name": "cart_en_trf",
+      "type": "np.ndarray",
+      "default": ""
+    },
+    {
+      "name": "action_current",
+      "type": "str",
+      "default": "''"
+    },
+    {
+      "name": "action_params",
+      "type": "str",
+      "default": "''"
+    },
+    {
+      "name": "action_state",
+      "type": "ActionState",
+      "default": "ActionState.IDLE"
+    },
+    {
+      "name": "executing_index",
+      "type": "int",
+      "default": "-1"
+    },
+    {
+      "name": "completed_index",
+      "type": "int",
+      "default": "-1"
+    },
+    {
+      "name": "last_checkpoint",
+      "type": "str",
+      "default": "''"
+    },
+    {
+      "name": "error",
+      "type": "RobotError | None",
+      "default": "None"
+    },
+    {
+      "name": "queued_segments",
+      "type": "int",
+      "default": "0"
+    },
+    {
+      "name": "queued_duration",
+      "type": "float",
+      "default": "0.0"
+    },
+    {
+      "name": "tcp_speed",
+      "type": "float",
+      "default": "0.0"
+    },
+    {
+      "name": "simulator_active",
+      "type": "bool",
+      "default": "False"
+    },
+    {
+      "name": "collision_active",
+      "type": "bool",
+      "default": "False"
+    },
+    {
+      "name": "collision_pairs",
+      "type": "list[tuple[str, str]]",
+      "default": ""
+    },
+    {
+      "name": "scene_epoch",
+      "type": "int",
+      "default": "0"
+    },
+    {
+      "name": "accepted_index",
+      "type": "int",
+      "default": "-1"
+    },
+    {
+      "name": "homed",
+      "type": "bool",
+      "default": "True"
+    },
+    {
+      "name": "enabled",
+      "type": "bool",
+      "default": "True"
+    },
+    {
+      "name": "torques",
+      "type": "np.ndarray",
+      "default": ""
+    },
+    {
+      "name": "torques_ext",
+      "type": "np.ndarray",
+      "default": ""
+    },
+    {
+      "name": "warnings",
+      "type": "list[tuple]",
+      "default": ""
+    },
+    {
+      "name": "link_health",
+      "type": "dict",
+      "default": ""
+    },
+    {
+      "name": "drive_health",
+      "type": "dict",
+      "default": ""
+    },
+    {
+      "name": "loop_health",
+      "type": "dict",
+      "default": ""
+    },
+    {
+      "name": "homing",
+      "type": "dict",
+      "default": ""
+    },
+    {
+      "name": "cart_en",
+      "type": "dict[str, np.ndarray]",
+      "default": ""
+    }
+  ],
+  "cmd_types": [
+    "PING",
+    "STATUS",
+    "ANGLES",
+    "POSE",
+    "IO",
+    "JOINT_SPEEDS",
+    "TOOLS",
+    "QUEUE",
+    "ACTIVITY",
+    "LOOP_STATS",
+    "PROFILE",
+    "REACHABLE",
+    "ERROR",
+    "TCP_SPEED",
+    "TCP_OFFSET",
+    "RESET",
+    "ESTOP",
+    "STOP",
+    "WRITE_IO",
+    "CONNECT_HARDWARE",
+    "SIMULATOR",
+    "SELECT_PROFILE",
+    "RESET_STATE",
+    "RESET_LOOP_STATS",
+    "HOME",
+    "MOVEJ",
+    "MOVEJ_POSE",
+    "MOVEL",
+    "MOVEC",
+    "MOVES",
+    "MOVEP",
+    "SELECT_TOOL",
+    "SET_TCP_OFFSET",
+    "DELAY",
+    "CHECKPOINT",
+    "TELEPORT",
+    "SERVOJ",
+    "SERVOJ_POSE",
+    "SERVOL",
+    "JOGJ",
+    "JOGL",
+    "TOOL_ACTION",
+    "TOOL_STATUS",
+    "IS_SIMULATOR",
+    "SET_SHAPES",
+    "SHAPES",
+    "SET_STATUS_RATE",
+    "STATUS_RATE",
+    "SET_TCP_TRANSFORM",
+    "TCP_TRANSFORM",
+    "PAUSE",
+    "SET_EXECUTION_SPEED",
+    "EXECUTION_SPEED",
+    "COMMAND_COMPLETION"
+  ],
+  "query_types": [
+    "PING",
+    "STATUS",
+    "ANGLES",
+    "POSE",
+    "IO",
+    "SPEEDS",
+    "TOOL",
+    "QUEUE",
+    "CURRENT_ACTION",
+    "LOOP_STATS",
+    "PROFILE",
+    "TOOL_STATUS",
+    "ENABLEMENT",
+    "ERROR",
+    "TCP_SPEED",
+    "IS_SIMULATOR",
+    "TCP_OFFSET",
+    "SHAPES",
+    "STATUS_RATE",
+    "TCP_TRANSFORM",
+    "EXECUTION_SPEED",
+    "COMMAND_COMPLETION"
+  ],
+  "profiles": [
+    "TOPPRA",
+    "RUCKIG",
+    "QUINTIC",
+    "TRAPEZOID",
+    "LINEAR"
+  ]
+}

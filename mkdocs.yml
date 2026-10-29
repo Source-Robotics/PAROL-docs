@@ -1,60 +1,343 @@
-site_name: PAROL6 DOCS 
-site_url: https://docs.source-robotics.com/PAROL-docs/
+site_name: PAROL6
 site_description: Documentation for the PAROL6 desktop robotic arm by Source Robotics.
+# Where the site is published: the organisation's docs domain, this repository's path. Search engines take each
+# page's address from here, and the sitemap is built from it. mike adds the version under it (/PAROL-docs/1/).
+site_url: https://docs.source-robotics.com/PAROL-docs/
+# The docs repository: the "edit this page" target. The header card points at the product repositories instead
+# (extra.repos below, overrides/partials/source.html).
 repo_url: https://github.com/Source-Robotics/PAROL-docs
+repo_name: Source-Robotics/PAROL-docs
+edit_uri: edit/main/docs/
+copyright: |
+  &copy; 2026 <a href="https://source-robotics.com" target="_blank" rel="noopener">Source Robotics d.o.o.</a> ·
+  Text and images <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a> ·
+  Code examples <a href="https://github.com/Source-Robotics/PAROL-docs/blob/main/LICENSE-CODE" target="_blank" rel="noopener">MIT</a>
+
 theme:
   name: material
+  custom_dir: overrides
+  logo: assets/logo_new_2.png
+  favicon: assets/Icon2.png
+  language: en
+  font:
+    text: Roboto
+    code: Roboto Mono
+  icon:
+    repo: fontawesome/brands/github
+    edit: material/pencil
+    view: material/eye
   features:
-    - navigation.sections
-    - toc.integrate
+    - navigation.tabs          # one tab per document: Robot Manual, Control Board, Programming, API reference, Support
+    - navigation.tabs.sticky
+    - navigation.sections      # the bold sidebar groups
+    - navigation.indexes       # a chapter is a folder with its own page
+    - navigation.footer        # Previous / Next
     - navigation.top
+    - navigation.path
+    - toc.follow
     - search.suggest
     - search.highlight
+    - search.share
     - content.tabs.link
-    - content.code.annotation
     - content.code.copy
-  logo: assets/Icon2.png
-  language: en
-  palette:
-    - scheme: slate
+    - content.code.annotate
+    - content.action.view
+    - content.action.edit
+    - content.tooltips          # title="..." on links and abbreviations become tooltips
+    - content.footnote.tooltips
+  palette:                      # the same as the PAR6 docs
+    - scheme: slate            # dark by default
+      primary: black
+      accent: green
       toggle:
         icon: material/weather-night
         name: Switch to light mode
-      primary: blue
-      accent: blue
-    - scheme: default 
+    - scheme: default
+      primary: black
+      accent: green
       toggle:
         icon: material/weather-sunny
-        name: Switch to dark mode    
-      primary: blue
-      accent: blue
+        name: Switch to dark mode
 
 plugins:
-- search
-- social:
-    cards_layout: default
+  - search
+  - glightbox                 # click any image to zoom
+  - social:
+      cards_layout: default
+      enabled: !ENV [ENABLE_SOCIAL, false]   # social cards only in CI (ENABLE_SOCIAL=true; they need Cairo + Pillow)
+  # The addresses of the pages of the old site keep working.
+  - redirects:
+      redirect_maps:
+        page2_2.md: 03-technical-data/specifications.md
+        page3_1.md: board/index.md
+        page3_2.md: quick-start.md
+        page4.md: programming/index.md
+        page4_1.md: programming/04-commander/the-gui.md
+        page5.md: 07-peripherals/index.md
+        page6.md: 02-safety/index.md
+        page7.md: programming/02-concepts/index.md
+
+# The version facts of versions.yml written into the pages (the version box and the list of documents), and the
+# API reference built from the Python API's source at its release tag (docs/includes/generated/api_facts.json,
+# written by tools/sync_api.py).
+hooks:
+  - hooks/versions.py
+  - hooks/api_pages.py
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - def_list
+  - footnotes
+  - abbr
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.snippets:
+      base_path:
+        - docs/includes
+      check_paths: true
+      auto_append:
+        - abbreviations.md    # site-wide abbreviations -> tooltips on every page
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.smartsymbols
 
 extra:
+  # The version selector in the header (built by mike: one entry per published PAROL6 release + "latest").
+  version:
+    provider: mike
+    default: latest
+    alias: true
+  # The header's repository card per section (overrides/partials/source.html): page-URL prefix -> repository.
+  # A longer prefix listed later overrides a shorter one listed earlier.
+  repos:
+    - prefix: ""
+      name: Source-Robotics/PAROL6-Desktop-robot-arm
+      url: https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm
+    - prefix: programming/
+      name: PCrnjak/PAROL6-python-API
+      url: https://github.com/PCrnjak/PAROL6-python-API
+    - prefix: programming/04-commander/
+      name: Source-Robotics/PAROL-commander-software
+      url: https://github.com/Source-Robotics/PAROL-commander-software
+    - prefix: reference/
+      name: PCrnjak/PAROL6-python-API
+      url: https://github.com/PCrnjak/PAROL6-python-API
   social:
-    - icon: fontawesome/brands/github-alt
-      link: https://github.com/PCrnjak
+    - icon: fontawesome/brands/github
+      link: https://github.com/Source-Robotics
+    - icon: fontawesome/brands/youtube
+      link: https://www.youtube.com/@source-robotics
     - icon: fontawesome/brands/instagram
-      link: https://www.instagram.com/5arcrnjak/
-    - icon: fontawesome/brands/twitter
-      link: https://twitter.com/SourceRobotics     
+      link: https://www.instagram.com/source_robotics/
+    - icon: fontawesome/brands/x-twitter
+      link: https://twitter.com/SourceRobotics
     - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/in/petar-crnjak-009b43180/
+      link: https://www.linkedin.com/company/source-robotics
     - icon: fontawesome/brands/discord
       link: https://discord.gg/prjUvjmGpZ
     - icon: fontawesome/brands/patreon
       link: https://www.patreon.com/PCrnjak
+  # Page status markers (front matter `status: ...`) shown as an icon in the sidebar.
+  status:
+    new: Recently added
+    deprecated: Deprecated
+    draft: Not written yet
 
-markdown_extensions:
-  - admonition
-  - pymdownx.details
-  - pymdownx.superfences
-  - attr_list
-  - md_in_html
+extra_css:
+  - stylesheets/extra.css
 
-copyright: |
-  &copy; 2023 <a href="https://github.com/PCrnjak"  target="_blank" rel="noopener">Petar Crnjak</a>
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+  - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js   # sortable tables (click a header)
+  - javascripts/tablesort.js
+
+exclude_docs: |
+  includes/
+
+validation:
+  omitted_files: warn
+  absolute_links: warn
+  unrecognized_links: warn
+
+nav:
+  - PAROL6 Robot Manual:
+      - index.md
+      - Before you start:
+          - Quick start: quick-start.md
+          - About this manual: about.md
+      - Chapters:
+          - 1. Overview:
+              - 01-overview/index.md
+              - The robot system: 01-overview/robot-system.md
+              - What you get: 01-overview/what-you-get.md
+              - What you need: 01-overview/what-you-need.md
+          - 2. Safety:
+              - 02-safety/index.md
+              - Intended use: 02-safety/intended-use.md
+              - Hazards: 02-safety/hazards.md
+              - Emergency stop: 02-safety/emergency-stop.md
+              - Moving the robot by hand: 02-safety/moving-by-hand.md
+              - What the robot protects against, and what not: 02-safety/safety-functions.md
+              - Planning the cell: 02-safety/planning-the-cell.md
+          - 3. Technical data:
+              - 03-technical-data/index.md
+              - Specifications: 03-technical-data/specifications.md
+              - Joint limits and directions: 03-technical-data/joint-limits.md
+              - Dimensions and kinematics: 03-technical-data/kinematics.md
+              - Drives, ratios and resolution: 03-technical-data/drives-and-ratios.md
+              - Currents and temperatures: 03-technical-data/operating-temperatures.md
+          - 4. Installation:
+              - 04-installation/index.md
+              - Installation site: 04-installation/installation-site.md
+              - Mounting the robot: 04-installation/mounting.md
+              - Connecting: 04-installation/connecting.md
+              - First power-on: 04-installation/first-power-on.md
+          - 5. Operation:
+              - 05-operation/index.md
+              - Switching on and off: 05-operation/switching-on-off.md
+              - Homing: 05-operation/homing.md
+              - Jogging: 05-operation/jogging.md
+              - Running programs: 05-operation/running-programs.md
+              - Errors and recovery: 05-operation/errors-and-recovery.md
+              - Mastering: 05-operation/mastering.md
+          - 6. Tools and grippers:
+              - 06-tools/index.md
+              - The flange: 06-tools/flange.md
+              - Pneumatic gripper: 06-tools/pneumatic-gripper.md
+              - Vacuum gripper: 06-tools/vacuum-gripper.md
+              - SSG-48 and MSG electric grippers: 06-tools/electric-grippers.md
+              - Your own tool: 06-tools/custom-tools.md
+          - 7. Peripherals:
+              - 07-peripherals/index.md
+              - Inputs and outputs: 07-peripherals/io.md
+              - Pneumatics: 07-peripherals/pneumatics.md
+              - CAN bus: 07-peripherals/can-bus.md
+          - 8. Maintenance:
+              - 08-maintenance/index.md
+              - Inspection: 08-maintenance/inspection.md
+              - Belts: 08-maintenance/belts.md
+              - Couplers and threadlocker: 08-maintenance/couplers.md
+              - Checking the homing: 08-maintenance/homing-check.md
+          - 9. Troubleshooting:
+              - 09-troubleshooting/index.md
+              - By symptom: 09-troubleshooting/by-symptom.md
+              - Homing failures: 09-troubleshooting/homing-failures.md
+              - Communication: 09-troubleshooting/communication.md
+          - 10. Transport, storage and disposal: 10-transport.md
+      - Build guide:
+          - build/index.md
+          - Bill of materials: build/bill-of-materials.md
+          - Printing the parts: build/printing.md
+          - Mechanical assembly: build/mechanical-assembly.md
+          - Electronics and wiring: build/electronics-and-wiring.md
+          - Firmware and first run: build/firmware-and-first-run.md
+      - Appendix:
+          - Release notes: appendix/release-notes.md
+          - Versions and compatibility: appendix/compatibility.md
+          - Community projects: appendix/community.md
+      - Resources:
+          - Glossary: terminology.md
+          - CAD, files and downloads: cad-files.md
+
+  - Control Board:
+      - board/index.md
+      - 1. Overview: board/01-overview.md
+      - 2. Safety: board/02-safety.md
+      - 3. Technical data: board/03-technical-data.md
+      - 4. Connectors and pinout: board/04-connectors.md
+      - 5. Stepper drivers: board/05-stepper-drivers.md
+      - 6. Inputs, outputs and E-stop: board/06-io-and-estop.md
+      - 7. CAN bus: board/07-can.md
+      - 8. Firmware: board/08-firmware.md
+      - 9. The test firmware: board/09-test-firmware.md
+      - 10. The serial protocol: board/10-serial-protocol.md
+      - 11. Troubleshooting: board/11-troubleshooting.md
+
+  - Programming:
+      - programming/index.md
+      - 1. The interfaces at a glance: programming/01-interfaces.md
+      - 2. Concepts:
+          - programming/02-concepts/index.md
+          - Units: programming/02-concepts/units.md
+          - Joints, directions and the standby pose: programming/02-concepts/joints-and-poses.md
+          - Reference frames: programming/02-concepts/reference-frames.md
+          - Pose and orientation: programming/02-concepts/pose-and-orientation.md
+          - Forward and inverse kinematics: programming/02-concepts/kinematics.md
+          - Configurations and singularities: programming/02-concepts/configurations-and-singularities.md
+          - Workspace and reach: programming/02-concepts/workspace-and-reach.md
+          - Homing and mastering: programming/02-concepts/homing-and-mastering.md
+          - Motion profiles: programming/02-concepts/motion-profiles.md
+          - Blending: programming/02-concepts/blending.md
+          - Target, commanded and actual: programming/02-concepts/target-commanded-actual.md
+          - Control ownership: programming/02-concepts/control-ownership.md
+          - Steppers, open loop and backlash: programming/02-concepts/steppers-and-open-loop.md
+          - Further reading: programming/02-concepts/further-reading.md
+      - 3. The Python API:
+          - programming/03-python-api/index.md
+          - Installation: programming/03-python-api/installation.md
+          - The controller: programming/03-python-api/controller.md
+          - Clients: programming/03-python-api/clients.md
+          - Motion: programming/03-python-api/motion.md
+          - Jogging and servoing: programming/03-python-api/streaming.md
+          - Tools and the TCP: programming/03-python-api/tools-and-tcp.md
+          - I/O, delays and checkpoints: programming/03-python-api/io-and-delays.md
+          - Status and waiting: programming/03-python-api/status-and-waiting.md
+          - Errors: programming/03-python-api/errors.md
+          - Examples: programming/03-python-api/examples.md
+      - 4. The commander software:
+          - programming/04-commander/index.md
+          - Installation: programming/04-commander/installation.md
+          - The GUI: programming/04-commander/the-gui.md
+          - RBTscript: programming/04-commander/rbtscript.md
+          - Examples: programming/04-commander/examples.md
+      - 5. ROS 2 and MoveIt: programming/05-ros2.md
+      - 6. Other interfaces: programming/06-other-interfaces.md
+      - 7. Troubleshooting: programming/07-troubleshooting.md
+
+  - API reference:
+      - reference/index.md
+      - Python API:
+          - reference/python/index.md
+          - Motion: reference/python/motion.md
+          - Jogging and servoing: reference/python/streaming.md
+          - Control: reference/python/control.md
+          - Queries: reference/python/queries.md
+          - Synchronization: reference/python/synchronization.md
+          - Tools: reference/python/tools.md
+          - I/O: reference/python/io.md
+          - Configuration: reference/python/configuration.md
+          - Status fields: reference/python/status.md
+          - Errors: reference/python/errors.md
+          - The controller and its environment: reference/python/controller.md
+      - RBTscript commands: reference/rbtscript.md
+      - The serial protocol: reference/serial-protocol.md
+      - Firmware parameters: reference/firmware-parameters.md
+      - Test firmware commands: reference/test-firmware.md
+
+  - Support:
+      - Getting help: support/index.md
+      - Report a problem: support/report-a-problem.md
+      - Contributing: support/contributing.md

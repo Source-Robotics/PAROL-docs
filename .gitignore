@@ -1,15 +1,12 @@
 # MkDocs build output
 site/
 
-# Virtual environment
+# MkDocs Material cache (social cards)
+.cache/
+
+# Virtual environments
 venv/
 .venv/
 
-# MkDocs cache
-.cache/
-
-# Copilot instructions
-.github/copilot_instructions.md
-
-# MkDocs Material reference docs
-markdown_references/
+# Python bytecode (the build hook and the tools)
+__pycache__/

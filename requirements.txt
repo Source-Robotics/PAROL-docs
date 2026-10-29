@@ -1,2 +1,6 @@
-# Used by .github/workflows/ci.yaml and for local builds: pip install -r requirements.txt
+# Docs build environment. Install: python -m venv .venv && .venv/Scripts/pip install -r requirements.txt
+# Serve locally: mkdocs serve        Publish: .github/workflows/publish.yml (mike), never mkdocs gh-deploy
 mkdocs-material[imaging]==9.7.7
+mike==2.1.3                      # versioned docs: one deployed version per firmware release + "latest"
+mkdocs-glightbox==0.4.0          # click an image to zoom (the glightbox plugin in mkdocs.yml)
+mkdocs-redirects==1.2.2          # the old page addresses redirect to the new pages (the redirects plugin in mkdocs.yml)

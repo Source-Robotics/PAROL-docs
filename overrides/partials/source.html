@@ -1,0 +1,36 @@
+{#-
+  The repository card in the header, per document: extra.repos in mkdocs.yml maps a page-URL prefix to a
+  repository (the arm's repo inside the PAR6 manual, the runtime's inside the box / programming / dashboard
+  manuals, ...); anything unmapped shows the docs repository (repo_url). The theme fetches stars, forks and the
+  latest release tag for the card's href and caches them per browser session, so the cache is dropped whenever
+  the card points somewhere else than last time.
+-#}
+{%- set ns = namespace(url=config.repo_url, name=config.repo_name) -%}
+{%- if page and config.extra.repos -%}
+  {%- for r in config.extra.repos -%}
+    {%- if page.url.startswith(r.prefix) -%}
+      {%- set ns.url = r.url -%}
+      {%- set ns.name = r.name -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+<script>
+(function () {
+  var h = "{{ ns.url }}";
+  try {
+    if (sessionStorage.getItem("__source_href") !== h) {
+      sessionStorage.removeItem("__source");
+      sessionStorage.setItem("__source_href", h);
+    }
+  } catch (e) {}
+})();
+</script>
+<a href="{{ ns.url }}" title="{{ lang.t('source') }}" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    {% set icon = config.theme.icon.repo or "fontawesome/brands/git-alt" %}
+    {% include ".icons/" ~ icon ~ ".svg" %}
+  </div>
+  <div class="md-source__repository">
+    {{ ns.name }}
+  </div>
+</a>

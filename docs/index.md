@@ -1,87 +1,67 @@
-# Home
-
+---
+hide:
+  - toc
 ---
 
-<img src="assets/img3.png" alt="PAROL6 desktop robotic arm" width="5000"/>
+# PAROL6 Robot Manual
 
----
+![PAROL6 desktop robotic arm](assets/hero.png){ .hero }
 
-**PAROL6** is a high-performance 3D-printed desktop robotic arm. The design approach of PAROL6 was to be similar to industrial robots in terms of mechanical design, control software, and usability. Control software, GUI, and robots STL files are open-source. You can build your own PAROL6 robot by following the instructions located in the [GitHub repository](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm).
+<!-- doc-meta: parol6 -->
 
-!!! note
+[Quick start](quick-start.md){ .md-button .md-button--primary } [About this manual](about.md){ .md-button }
 
-    Visit our [official website](https://source-robotics.com/) and check out our other projects!
+Source Robotics d.o.o. publishes this document as part of the open-source PAROL6 project. It is revised as the
+product changes; the document number, release, revision and date above identify the version you are reading, and
+the document history on the About page says what changed. Take care that the release named under *Applies to*
+matches the robot in front of you, and that the Python API version matches what `pip` installed: the version
+selector in the header switches between releases. The text and the images are licensed CC BY-SA 4.0, the code
+examples MIT.
 
-!!! tip
+<div class="grid cards" markdown>
 
-    PAROL6 now also supports our new open source [MSG grippers](https://github.com/Source-Robotics/MSG-compliant-AI-stepper-gripper) go check them out!
+-   :material-rocket-launch:{ .lg .middle } **Quick start**
 
+    ---
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/bbrFn3aFLaA?si=nWeWMQWQrWvP3h2-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    [One page](quick-start.md) from an assembled robot to a homed one that moves: power, the commander software,
+    the first jog, homing, with a link into the manual at every step.
 
----
+-   :material-book-open-variant:{ .lg .middle } **The robot manual**
 
-## Project links
+    ---
 
-- [Source Robotics website](https://source-robotics.com/)
-- [Building instructions](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/tree/main/Building%20instructions)
-- [PAROL6 project files on GitHub](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm)
-- [PAROL Commander software on GitHub](https://github.com/Source-Robotics/PAROL-commander-software)
-- [PAROL6 Web GUI by Jepson](https://github.com/Jepson2k/PAROL-Web-Commander/tree/main)
-- [PAROL6 Python API — control PAROL6 via custom scripts, terminal, or LLMs](https://github.com/PCrnjak/PAROL6-python-API)
-- [PAROL6 Python API - Alvar version (Stable version that no longer changes)](https://github.com/PCrnjak/PAROL6-python-API-Alvar)
+    [Safety](02-safety/index.md), [Technical data](03-technical-data/index.md), [Installation](04-installation/index.md),
+    [Operation](05-operation/index.md), [Tools and grippers](06-tools/index.md), [Peripherals](07-peripherals/index.md),
+    [Maintenance](08-maintenance/index.md), [Troubleshooting](09-troubleshooting/index.md).
 
+-   :material-hammer-wrench:{ .lg .middle } **Build guide**
 
+    ---
 
-| YouTube | Instagram | Twitter | LinkedIn |
-|--------|-----------|---------|----------|
-| [![YouTube](https://img.shields.io/badge/YouTube-FF0000?logo=youtube&logoColor=white)](https://www.youtube.com/@source-robotics) | [![Instagram](https://img.shields.io/badge/Instagram-E4405F?logo=instagram&logoColor=white)](https://www.instagram.com/source_robotics/) | [![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?logo=twitter&logoColor=white)](https://twitter.com/SourceRobotics) | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](https://www.linkedin.com/company/source-robotics) |
+    [From the BOM to the first run](build/index.md): what to print and how, the parts to buy, the assembly manual
+    and videos, the wiring, the firmware upload, the first power-on.
 
+-   :material-chip:{ .lg .middle } **Control board**
 
-| Discord | Forum | Hackaday | Blog |
-|--------|-------|------| ------|
-| [![Discord](https://img.shields.io/badge/Discord-5865F2?logo=discord&logoColor=white)](https://discord.com/invite/prjUvjmGpZ) | [![Forum](https://img.shields.io/badge/Forum-0A0A0A)](https://discourse.source-robotics.com/) | [![Hackaday](https://img.shields.io/badge/Hackaday-000000?logo=hackaday&logoColor=white)](https://hackaday.io/project/191860-parol6-desktop-robotic-arm) | [![Blog](https://img.shields.io/badge/Blog-Source%20Robotics-blue)](https://source-robotics.com/blogs/blog) 
+    ---
 
+    [The board that drives the robot](board/index.md): specifications, connectors and pinout, the stepper drivers,
+    the I/O and E-stop wiring, CAN, firmware upload, the test firmware, the serial protocol.
 
+-   :material-code-braces:{ .lg .middle } **Programming**
 
----
+    ---
 
-## Documentation layout
+    [The programming guide](programming/index.md): the interfaces, the concepts behind them, the Python API, the
+    commander software and RBTscript, ROS 2; and the [API reference](reference/index.md), read from the API's source.
 
-    
-    docs/
-        Home                    # Homepage of the project.
-        About PAROL6            # Robot specifications, limits and.features
-        General concepts        # General robotics concepts and theory.
-        PAROL6 control board    # All about control board and how to use it.
-        Getting started         # How to start using PAROL6 robot.
-        Software                # All about PAROL6 software and API.
-        PAROL6 commander GUI    # All about commander GUI interface
-        Peripherals             # All about grippers, pneumatics, PLCs...
-        Safety and handling     # How to not break your robot.
+-   :material-robot-industrial:{ .lg .middle } **Grippers**
 
----
+    ---
 
-## Preface
+    The [SSG-48](https://docs.source-robotics.com/SSG48-gripper-docs/) and [MSG](https://docs.source-robotics.com/MSG-gripper-docs/)
+    electric grippers have their own manuals; [this manual](06-tools/electric-grippers.md) says how they attach to
+    PAROL6 and how the robot drives them.
 
-This manual offers guidance on operating the 6-axis robot PAROL6 and its accompanying PAROL6 software. PAROL6 is a versatile robot designed for a wide audience, including educational institutions, robotics enthusiasts, and small-scale automation applications. It serves as a practical tool for learning, exploration, and implementing robotics in various fields.
-
----
-
-## ⚠️ Safety, Liability & Disclaimer
-This project includes experimental software, hardware designs, and assembly documentation that are still under development and may contain bugs, errors, or incomplete features. By using, building, or modifying this project, you acknowledge that:
-
-* You use this project entirely at your own risk
-* You are solely responsible for safe assembly, testing, and operation
-* No guarantee is made regarding correctness, safety, or reliability
-* The authors are not responsible for any damage, injury, or loss resulting from the use or misuse of this project
-* Hardware performance and safety depend on user assembly, component quality, calibration, and handling, which cannot be guaranteed
-* This project is provided “as is.” If you choose to build a device yourself using these files, designs, or instructions, you do so without any warranties or guarantees, including regarding safety, reliability, or suitability for any particular purpose.
-
-THIS PROJECT INVOLVES LETHAL VOLTAGES AND OTHER SERIOUS HAZARDS THAT CAN CAUSE SEVERE INJURY. YOU MUST READ THE FULL [SAFETY WARNING AND DISCLAIMER DOCUMENT](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/blob/main/SAFETY_WARNING_AND_DISCLAIMER.md)  BEFORE USING ANY PROJECT FILES. BY PROCEEDING, YOU ACKNOWLEDGE AND ACCEPT ALL RISKS AND AGREE TO USE THIS PROJECT ENTIRELY AT YOUR OWN RESPONSIBILITY.
-
----
-
-## Licence
-
-All code, building instructions/BOM, and STL files are released under the GPLv3 licence.
+</div>

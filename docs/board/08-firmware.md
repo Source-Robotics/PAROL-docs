@@ -1,0 +1,50 @@
+# 8. Firmware
+
+Two firmware programs exist for the board, both in the robot repository as PlatformIO projects:
+
+| | Folder | For |
+|---|---|---|
+| **Main firmware** | `PAROL6 control board main software` | Running the robot with the commander software or the Python API |
+| **Test firmware** | `PAROL6 control board test code` | Checking the board and the wiring from a serial terminal ([The test firmware](09-test-firmware.md)) |
+
+A board from the shop carries the test firmware. Upload the main firmware before you use the robot.
+
+## Tools
+
+1. [VS Code](https://code.visualstudio.com/) with the **PlatformIO** extension from its marketplace.
+2. A clone of the [robot repository](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm).
+3. An **ST-Link** programmer and the [PAROL6 programming adapter](https://source-robotics.com/products/parol6-programming-adapter),
+   or an ST-Link whose cable carries exactly SWCLK, SWDIO, GND and 3V3 to the right pins of the 2×5 header.
+4. On Windows, the [ST-Link USB driver (STSW-LINK009)](https://www.st.com/en/development-tools/stsw-link009.html)
+   if PlatformIO cannot find the programmer.
+
+!!! danger
+    Use the programming adapter, or the four named pins only. An ST-Link wired to the header with jumper wires
+    without the adapter has destroyed boards: other pins of the header are not for it.
+
+## Uploading
+
+1. **Disconnect the 24 V supply** from the robot.
+2. Connect the adapter to the 2×5 header next to the USB port, and the ST-Link to the PC. The adapter supplies
+   3.3 V, which powers the microcontroller (not the motors) and turns the board on.
+3. In VS Code, **Open Folder** on the firmware's folder. PlatformIO downloads the toolchain the first time.
+4. Build and **Upload** (the arrow in PlatformIO's toolbar). The upload takes a few seconds.
+5. Disconnect the adapter. With it connected, the board cannot be switched off with the button and turns on by
+   itself when the supply is connected.
+6. Reconnect the 24 V supply and press the power button.
+
+## What to look at before uploading the main firmware
+
+| File | Setting | Meaning |
+|---|---|---|
+| `constants.h` | `MOTORx_MAX_CURRENT` | The motor currents, set for the BOM's motors |
+| `main.cpp` | `j5_homing_offset` | 8900 for the pneumatic gripper holder, 8035 for the SSG-48 |
+| `motor_init.cpp` | `direction_reversed` per joint | Flip for a joint that turns the wrong way |
+| `motor_init.cpp` | `homed_position` per joint | Steps from the switch to the standby pose; changed when mastering |
+
+All of them are on [Firmware parameters](../reference/firmware-parameters.md).
+
+## Version
+
+`#define VERSION 1` in `constants.h`. The firmware is released with the robot (tag V1) and has not changed since;
+the protocol it speaks is on [The serial protocol](10-serial-protocol.md).

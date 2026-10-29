@@ -1,0 +1,64 @@
+# Publishes the documentation on every push to main, in versions, with mike (the same system as Source-Robotics/par6).
+#
+# It publishes the version named by docs_version in versions.yml (the firmware release the pages describe) and points
+# "latest" at it, into the gh-pages branch. Older versions stay as they were. In the repository's Settings > Pages,
+# the source must be "Deploy from a branch", branch gh-pages, folder / (root).
+#
+# A strict build runs first: a broken link or a missing page publishes nothing. Social cards are built here only
+# (ENABLE_SOCIAL=true; they need the Cairo libraries, which the local builds skip).
+#
+# The root of gh-pages also carries 404.html (source: tools/root_404.html), which forwards the addresses from before
+# the versioning (/PAROL-docs/page4/) to the same page under latest/. The last step keeps it up to date.
+name: publish
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Libraries for the social cards (Cairo, as Material for MkDocs documents)
+        run: sudo apt-get update -q && sudo apt-get install -y -q libcairo2-dev libfreetype6-dev libffi-dev libjpeg-dev libpng-dev libz-dev
+      - run: pip install -r requirements.txt
+      - run: python tools/test_tools.py
+      - run: mkdocs build --strict
+        env:
+          ENABLE_SOCIAL: "true"
+      - name: Publish this version with mike
+        env:
+          ENABLE_SOCIAL: "true"
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin gh-pages --depth=1 || true
+          VERSION=$(python -c "import yaml; print(yaml.safe_load(open('versions.yml'))['docs_version'])")
+          mike deploy --push --update-aliases "$VERSION" latest
+          mike set-default --push latest
+      - name: Keep the root 404 redirect on gh-pages
+        run: |
+          git fetch origin gh-pages
+          git worktree add ../gh-pages origin/gh-pages
+          cp tools/root_404.html ../gh-pages/404.html
+          cd ../gh-pages
+          if ! git diff --quiet -- 404.html || [ -n "$(git ls-files --others --exclude-standard 404.html)" ]; then
+            git add 404.html
+            git commit -m "Root 404.html: forward unversioned addresses to latest/"
+            git push origin HEAD:gh-pages
+          fi

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>PAROL6 documentation</title>
+  <meta name="robots" content="noindex">
+  <!--
+    The 404 page at the ROOT of the gh-pages branch (GitHub Pages serves it for every path that does not exist).
+    The site is published in versions by mike: /PAROL-docs/<version>/... and /PAROL-docs/latest/.... Links
+    from before the versioning (/PAROL-docs/page4/, the repositories, forum posts, videos) have no version in
+    them, so this page forwards them to the same path under latest/. A path whose first part IS a version or an
+    alias is a real 404 and stays one. The publishing workflow puts this file on gh-pages; its source is
+    tools/root_404.html.
+  -->
+  <style>
+    body { font: 16px/1.5 -apple-system, "Segoe UI", Roboto, sans-serif; margin: 4rem auto; max-width: 36rem; padding: 0 1rem; color: #222; }
+    a { color: #1a73e8; }
+  </style>
+</head>
+<body>
+  <h1>Page not found</h1>
+  <p id="msg">Looking for this page in the current version of the documentation…</p>
+  <p><a id="home" href="/PAROL-docs/latest/">Go to the PAROL6 documentation</a></p>
+  <script>
+    (function () {
+      var base = "/PAROL-docs/";
+      var path = window.location.pathname;
+      if (path.indexOf(base) !== 0) { return; }
+      var rest = path.slice(base.length);
+      var first = rest.split("/")[0];
+      var target = base + "latest/" + rest + window.location.search + window.location.hash;
+      function stay() {
+        document.getElementById("msg").textContent = "There is no page at this address in the version you asked for.";
+      }
+      fetch(base + "versions.json").then(function (r) { return r.json(); }).then(function (versions) {
+        var known = {};
+        versions.forEach(function (v) { known[v.version] = true; (v.aliases || []).forEach(function (a) { known[a] = true; }); });
+        if (known[first]) { stay(); } else { window.location.replace(target); }
+      }).catch(function () { window.location.replace(target); });
+    })();
+  </script>
+  <noscript><p>The documentation is published in versions. Open <a href="/PAROL-docs/latest/">the latest version</a>.</p></noscript>
+</body>
+</html>

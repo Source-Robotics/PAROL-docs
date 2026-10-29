@@ -1,0 +1,69 @@
+# The version facts of this documentation, in ONE place (the same system as Source-Robotics/par6).
+#
+# Edit them here, never in a page. hooks/versions.py writes them into each document's version box
+# (<!-- doc-meta: KEY --> on its landing page) and into the list of documents (<!-- documents-table -->), and the
+# publishing workflow reads docs_version. README.md, "Versions and releases", says when to change what.
+
+# The documentation version: the PAROL6 release the pages describe (the arm's mechanical files, the control board
+# firmware and the BOM are released together, as V1). The publishing workflow publishes the site under this name
+# (the version selector in the header) and points "latest" at it.
+docs_version: "1"
+
+# The release the pages describe. Its tag must be V<docs_version>. The control board firmware lives in the same
+# repository (firmware.src); its #define VERSION is the same number.
+firmware:
+  name: PAROL6 release
+  repository: https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm
+  tag: V1
+  src: PAROL6 control board main software/src
+
+# The PC software the pages describe. The Python API is released on its own schedule: tools/sync_api.py reads its
+# source at python_api.tag and builds the API reference from it. The commander software has no releases; the
+# pages describe its main branch as of the date given.
+software:
+  python_api:
+    name: Python API (parol6)
+    repository: https://github.com/PCrnjak/PAROL6-python-API
+    tag: v0.9.1
+    released: 2026-10-03
+  commander:
+    name: PAROL6 commander software
+    repository: https://github.com/Source-Robotics/PAROL-commander-software
+    tag: main
+    released: 2025-09-23
+
+# One entry per document. revision: YEAR.LETTER, a new letter for every published revision of that document.
+# status: draft until the document is published; published: the date of the revision's publication, or null.
+# firmware: true for a document that describes one PAROL6 release (docs_version) and shows it in its version box.
+# software: the software components (keys above) whose versions the document's version box shows.
+manuals:
+  parol6:
+    number: SR-1002
+    title: PAROL6 Robot Manual
+    revision: 2026.A
+    status: draft
+    published: null
+    firmware: true
+    software: [python_api, commander]
+    applies_to: PAROL6 V1 with the PAROL6 control board v2.0
+    covers: "the robot: quick start, safety, technical data, installation, operation, tools and grippers, peripherals, maintenance, troubleshooting, transport; the build guide"
+  board:
+    number: SR-2002
+    title: PAROL6 Control Board Manual
+    revision: 2026.A
+    status: draft
+    published: null
+    firmware: true
+    software: []
+    applies_to: PAROL6 control board v2.0 and v1.2
+    covers: "the control board: features, technical data, connectors and pinout, stepper drivers, I/O and E-stop, CAN, firmware upload, the test firmware, the serial protocol"
+  programming:
+    number: SR-4004
+    title: PAROL6 Programming Guide
+    revision: 2026.A
+    status: draft
+    published: null
+    firmware: true
+    software: [python_api, commander]
+    applies_to: PAROL6 V1
+    covers: "the ways to program the robot, the concepts behind them, the Python API, the commander software and RBTscript, ROS 2; the API reference"

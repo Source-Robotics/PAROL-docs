@@ -1,0 +1,24 @@
+# Build check: every push and pull request must build the site with no warning (broken links, missing pages) and
+# pass the tool tests. It publishes nothing; publish.yml does that, with mike, on a push to main.
+name: build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: python tools/test_tools.py
+      - run: mkdocs build --strict
