@@ -3,7 +3,8 @@
 !!! note "This is a copy"
     The original is [BOM/BOM.md](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/blob/main/BOM/BOM.md) in the robot's repository; this page is that
     file as of 2026-10-02 (commit `45a7502`), with the reference images shown inline. If a link is broken or a part
-    is wrong, [open an issue](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/issues/new) there, and the fix lands here with the next sync.
+    is wrong, [open an issue](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/issues/new) there, and the fix lands here with the next sync. If you would
+    rather not source the parts yourself, the shop's [kits](index.md#kits) cover every part or the hard-to-find ones.
 
 Most items have links where you can buy the item, and some of them are affiliate links. Items like screws, belts and bearings can be bought locally or from many other vendors.
 
