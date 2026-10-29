@@ -18,10 +18,11 @@ Python API in [PCrnjak/PAROL6-python-API](https://github.com/PCrnjak/PAROL6-pyth
 | `docs/` | the pages: the robot manual at the top level (numbered chapters, `build/`, `appendix/`), `board/`, `end-effectors/`, `gui/`, `programming/` and `reference/` (one tab), `support/` |
 | `docs/includes/` | text shared by pages (glossary, symbols, abbreviations) and the data the reference pages are built from |
 | `docs/includes/generated/` | written by `tools/sync_api.py` from the Python API's release tag: `api_facts.json`, `api_release_notes.md`. Never edit |
+| `docs/build/bill-of-materials.md`, `docs/assets/bom/` | written by `tools/sync_bom.py` from the robot repository's `BOM/BOM.md` and its reference images. Never edit |
 | `versions.yml` | every version fact: the PAROL6 release the site describes, the software versions, the manuals' numbers and revisions |
 | `compatibility.yml` | which control board, firmware, Python API, commander and gripper versions work together |
 | `hooks/` | `versions.py` writes the version facts into the pages; `api_pages.py` builds the Python API reference |
-| `tools/` | `sync_api.py`, `test_tools.py`, `root_404.html` |
+| `tools/` | `sync_api.py`, `sync_bom.py`, `test_tools.py`, `root_404.html` |
 | `overrides/` | the theme changes: the older-version banner, the edit/report line, the header's repository card |
 
 The site is built with [MkDocs](https://www.mkdocs.org/) and the
@@ -64,6 +65,18 @@ python tools/sync_api.py --check    # exit 1 if they are out of date
 The tool needs a clone of the Python API repository with its tags, next to this repository or named by
 `--api PATH` / `API_DIR`, and the network for the release notes (`--no-network` keeps the file that is there).
 The CI build does not run it; the generated files are committed.
+
+## The bill of materials is copied from the robot repository
+
+`docs/build/bill-of-materials.md` is the robot repository's `BOM/BOM.md`, as it is, with its reference images
+shown inline: `tools/sync_bom.py` reads a clone of `PAROL6-Desktop-robot-arm` (`--repo PATH`, `$PAROL6_DIR`, or a
+sibling folder), converts the note blocks, copies and scales the images into `docs/assets/bom/`, and writes a
+header naming the commit it copied. A wrong part or a broken link is fixed in the repository's file, then:
+
+```bash
+python tools/sync_bom.py            # rewrite the page and the images from the clone
+python tools/sync_bom.py --check    # exit 1 if the page is out of date
+```
 
 ## Versions and releases
 
