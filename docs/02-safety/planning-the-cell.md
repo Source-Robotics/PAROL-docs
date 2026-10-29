@@ -32,7 +32,7 @@ E-stop is within that person's reach, and so is the power supply's switch.
 - The payload includes the tool. A gripper and a camera together can be most of the 0.5 kg the arm carries at
   full reach.
 - A pneumatic gripper needs 6 to 8 bar and a valve wired to an output; the valve's two tubes decide whether it is
-  normally open or closed ([Pneumatics](../07-peripherals/pneumatics.md)).
+  normally open or closed ([Pneumatics](../06-peripherals/pneumatics.md)).
 - Fingers that can hold the part also when the power goes: the electric grippers hold their grip when the robot
   is E-stopped, the vacuum gripper does not.
 

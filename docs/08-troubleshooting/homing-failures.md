@@ -26,7 +26,7 @@ sensor in the direction of rotation ([Homing](../05-operation/homing.md)), and c
 ## Joint 5 does not reach its switch
 
 The tool's homing feature is missing or in the wrong place, or the firmware's `j5_homing_offset` is for another
-tool ([Your own tool](../06-tools/custom-tools.md)).
+tool ([Your own tool](../end-effectors/custom-tools.md)).
 
 ## The homed pose does not match the witness marks
 

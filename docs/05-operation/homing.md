@@ -9,7 +9,7 @@ after a collision, a stall or any move by hand.
 
 - The arm can move freely to every limit: nothing on the table in the way, no cable caught.
 - The tool is mounted: joint 5 homes against the tool's feature on the SSG-48 and the pneumatic gripper, and
-  the homing offset in the firmware matches the tool ([Electric grippers](../06-tools/electric-grippers.md)).
+  the homing offset in the firmware matches the tool ([Electric grippers](../end-effectors/ssg-48.md)).
 - Joint 6 stands so that it finds its sensor within one turn in the negative direction, with the cables and
   tubes not already wound up. The figure shows the pose: the gripper as drawn, the sensor (blue) and the homing
   pin (red); joint 6 turns along the green arrow.
@@ -51,7 +51,7 @@ a minute. The result is the standby pose with joint 1 at +90°: the arm standing
 
 Press the E-stop when a joint grinds at its end without stopping: its switch does not trigger. Joints 1, 4 and 6
 use inductive sensors whose LED lights when they see metal; a sensor that does not light needs its trigger screw
-adjusted. If joint 6 keeps turning, its homing pin is not where the sensor looks. [Homing failures](../09-troubleshooting/homing-failures.md)
+adjusted. If joint 6 keeps turning, its homing pin is not where the sensor looks. [Homing failures](../08-troubleshooting/homing-failures.md)
 has the cases.
 
 ## Mastering

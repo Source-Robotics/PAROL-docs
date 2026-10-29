@@ -1,4 +1,4 @@
-# 9. Troubleshooting
+# 8. Troubleshooting
 
 - [By symptom](by-symptom.md): the robot does not turn on, does not connect, moves wrong, stops, makes noise
 - [Homing failures](homing-failures.md)

@@ -42,19 +42,19 @@ is where every method and command is listed, read from the API's source at the v
     [tools](03-python-api/tools-and-tcp.md), [status](03-python-api/status-and-waiting.md), [errors](03-python-api/errors.md),
     [examples](03-python-api/examples.md).
 
--   :material-monitor:{ .lg .middle } **The commander software**
+-   :material-script-text:{ .lg .middle } **RBTscript**
 
     ---
 
-    [Installation](04-commander/installation.md), [the GUI](04-commander/the-gui.md), [RBTscript](04-commander/rbtscript.md),
-    [examples](04-commander/examples.md).
+    [RBTscript](04-commander/rbtscript.md), the commander software's program language, and [examples](04-commander/examples.md);
+    the commander itself is in the [GUI Guide](../gui/index.md).
 
 -   :material-robot:{ .lg .middle } **ROS 2 and others**
 
     ---
 
-    [ROS 2 and MoveIt](05-ros2.md), [other interfaces](06-other-interfaces.md): the web commander, the legacy
-    API, the community's tools.
+    [ROS 2 and MoveIt](05-ros2.md), [other interfaces](06-other-interfaces.md): the serial protocol directly, the
+    legacy API, AI agents.
 
 -   :material-book-search:{ .lg .middle } **API reference**
 

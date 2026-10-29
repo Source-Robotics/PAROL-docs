@@ -1,4 +1,4 @@
-# 8. Maintenance
+# 7. Maintenance
 
 PAROL6 needs little: belts that stay tight, set screws that stay put, switches that trigger. Check them at the
 intervals below and after any collision.

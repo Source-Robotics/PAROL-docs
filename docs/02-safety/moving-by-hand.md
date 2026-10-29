@@ -28,4 +28,4 @@ or Cartesian move. The commander's position display and the simulator are wrong 
 ## Lifting
 
 Bring joints 2 and 3 toward their limit switches so that the arm folds over the base, then lift by the base, not
-by the arm. [Transport, storage and disposal](../10-transport.md) has the packing.
+by the arm. [Transport, storage and disposal](../09-transport.md) has the packing.

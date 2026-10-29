@@ -12,5 +12,5 @@
   [Contributing](contributing.md).
 - **Orders and hardware**: [source-robotics.com](https://source-robotics.com/).
 
-Before you ask, [Troubleshooting](../09-troubleshooting/index.md) goes through the common symptoms, and the
+Before you ask, [Troubleshooting](../08-troubleshooting/index.md) goes through the common symptoms, and the
 commander's terminal output or the API's `error()` tells most of what anyone will ask you for.

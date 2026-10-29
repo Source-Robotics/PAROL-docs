@@ -32,7 +32,7 @@ There are two first-party programs, and others:
 
 | | What it is | For |
 |---|---|---|
-| [Commander software](../programming/04-commander/index.md) | A desktop GUI with jogging, a 3D simulator, a program editor for RBTscript, I/O and gripper tabs | Using the robot by hand, teaching points, simple programs |
+| [Commander software](../gui/commander/index.md) | A desktop GUI with jogging, a 3D simulator, a program editor for RBTscript, I/O and gripper tabs | Using the robot by hand, teaching points, simple programs |
 | [Python API](../programming/03-python-api/index.md) | A controller process that talks to the board, and a Python client library with blocking and asynchronous calls, planned and streamed motion, tools, collision checking | Programs, integrations, research, teleoperation, AI agents |
 | [ROS 2 and MoveIt](../programming/05-ros2.md) | A MoveIt configuration and a `ros2_control` hardware interface that drive the Python API's controller | ROS users |
 | [Community interfaces](../programming/06-other-interfaces.md) | Web GUIs, alternative firmware, vision demos | |

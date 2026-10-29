@@ -23,13 +23,13 @@ diagram.
 ## The gripper
 
 An electric gripper (SSG-48, MSG) plugs into the M8 connector at the forearm, which carries 24 V and CAN:
-[Electric grippers](../06-tools/electric-grippers.md). Pneumatic tubes from the valve go to the two push-in
-fittings at the base: [Pneumatics](../07-peripherals/pneumatics.md).
+[Electric grippers](../end-effectors/index.md). Pneumatic tubes from the valve go to the two push-in
+fittings at the base: [Pneumatics](../06-peripherals/pneumatics.md).
 
 ## Inputs and outputs
 
 The two inputs, two outputs and their supply terminals are on the side of the control board, reachable through
-the base: [Inputs and outputs](../07-peripherals/io.md).
+the base: [Inputs and outputs](../06-peripherals/io.md).
 
 !!! warning "Nothing else on the programming port"
     The 2×5-pin programming header next to the USB port is for the ST-Link programming adapter only. An ST-Link

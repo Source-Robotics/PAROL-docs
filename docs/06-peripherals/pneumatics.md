@@ -24,4 +24,4 @@ Outside the base, give the tubes a loop so the arm cannot pull them.
 
 ## A vacuum gripper
 
-Needs one line only: block the valve's second port ([Vacuum gripper](../06-tools/vacuum-gripper.md)).
+Needs one line only: block the valve's second port ([Vacuum gripper](../end-effectors/vacuum-gripper.md)).

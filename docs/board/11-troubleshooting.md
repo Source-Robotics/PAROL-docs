@@ -15,5 +15,5 @@
 | No serial port on the PC | The board has no power; the cable; the driver (Windows) | The board enumerates only when powered; try another cable and port |
 | The main firmware does not upload | ST-Link driver; the adapter; the target not powered | Install STSW-LINK009; check the adapter's 3.3 V; disconnect the 24 V supply |
 
-For anything the firmware reports to the PC, the robot-side pages apply: [Troubleshooting](../09-troubleshooting/index.md)
+For anything the firmware reports to the PC, the robot-side pages apply: [Troubleshooting](../08-troubleshooting/index.md)
 in the Robot Manual.

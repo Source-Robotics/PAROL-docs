@@ -3,7 +3,7 @@
 Joint 6 ends in an 8 mm output shaft. Tools clamp onto it with a shaft coupler (8 mm bore, M4 set screws, three
 in the BOM) that bolts to the tool's holder; the SSG-48 and MSG grippers use a printed coupler connector made for
 this shaft. The coupler's set screws take blue threadlocker: joint 6 slipping on its shaft is the first thing to
-check when a tool's orientation drifts ([Couplers and threadlocker](../08-maintenance/couplers.md)).
+check when a tool's orientation drifts ([Couplers and threadlocker](../07-maintenance/couplers.md)).
 
 ## Connections at the forearm
 

@@ -10,7 +10,7 @@
 | A joint does not move at all | Driver not seated or faulty; motor connector; the joint is at its blocker | The test firmware's `#STEPx` and `#STATUS` ([The test firmware](../board/09-test-firmware.md)) |
 | A joint grinds at its end during homing | Its switch or sensor does not trigger | E-stop; [Homing failures](homing-failures.md) |
 | Joint 6 keeps spinning during homing | The homing pin is not where the sensor looks | E-stop; set the joint 6 pose as in [Homing](../05-operation/homing.md) |
-| The pose after homing is off by a few degrees on one joint | A loose coupler, a slipped belt, a moved switch | [Couplers](../08-maintenance/couplers.md), [Belts](../08-maintenance/belts.md), then [Mastering](../05-operation/mastering.md) |
+| The pose after homing is off by a few degrees on one joint | A loose coupler, a slipped belt, a moved switch | [Couplers](../07-maintenance/couplers.md), [Belts](../07-maintenance/belts.md), then [Mastering](../05-operation/mastering.md) |
 | The robot's position drifts during a program | Lost steps: too fast, too heavy, a collision, a reduced current | Lower the speed; check the payload; home again |
 | A joint hums or squeals and does not hold | A driver in error, a lost phase | `#STATUS` in the test firmware; check the motor cable |
 | Cartesian jogging stops by itself | A singularity | Jog a joint away ([Configurations and singularities](../programming/02-concepts/configurations-and-singularities.md)) |

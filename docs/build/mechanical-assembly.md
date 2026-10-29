@@ -17,8 +17,8 @@ coupler is fitted before the next link goes on. Wires and tubes are threaded thr
 - **Bearings seated square**: the tapered roller bearings carry the joint; a bearing that sits crooked makes the
   joint stiff in one direction and loose in the other.
 - **Belt tension** as in the [belt tension video](https://www.youtube.com/watch?v=v0PYfEoIr3k): maximum hand
-  force for joints 3 and 5, slightly less for 1 and 4, with the tension bearings ([Belts](../08-maintenance/belts.md)).
-- **Threadlocker** on every metal-to-metal screw, blue, and on all set screws ([Couplers and threadlocker](../08-maintenance/couplers.md)).
+  force for joints 3 and 5, slightly less for 1 and 4, with the tension bearings ([Belts](../07-maintenance/belts.md)).
+- **Threadlocker** on every metal-to-metal screw, blue, and on all set screws ([Couplers and threadlocker](../07-maintenance/couplers.md)).
   The couplers between motors, gearboxes and shafts are where a loose screw costs the most.
 - **The limit switches and sensors** positioned so that the moving part presses the lever, or passes the sensor
   within a millimetre or two, before the joint reaches its mechanical stop.

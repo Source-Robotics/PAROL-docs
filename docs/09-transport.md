@@ -1,4 +1,4 @@
-# 10. Transport, storage and disposal
+# 9. Transport, storage and disposal
 
 ## Moving the robot
 
@@ -17,7 +17,7 @@ with foam around the base; the gripper and the E-stop separately.
 
 Dry, at room temperature, folded. The stepper motors and the drivers have no shelf-life issues; the PETG parts
 should not be stored where it gets hot, in a car or near a radiator. Before the first use after storage, run the
-[Inspection](08-maintenance/inspection.md).
+[Inspection](07-maintenance/inspection.md).
 
 ## Disposal
 

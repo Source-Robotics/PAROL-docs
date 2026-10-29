@@ -32,8 +32,8 @@ examples MIT.
     ---
 
     [Safety](02-safety/index.md), [Technical data](03-technical-data/index.md), [Installation](04-installation/index.md),
-    [Operation](05-operation/index.md), [Tools and grippers](06-tools/index.md), [Peripherals](07-peripherals/index.md),
-    [Maintenance](08-maintenance/index.md), [Troubleshooting](09-troubleshooting/index.md).
+    [Operation](05-operation/index.md), [Peripherals](06-peripherals/index.md), [Maintenance](07-maintenance/index.md),
+    [Troubleshooting](08-troubleshooting/index.md).
 
 -   :material-hammer-wrench:{ .lg .middle } **Build guide**
 
@@ -49,19 +49,25 @@ examples MIT.
     [The board that drives the robot](board/index.md): specifications, connectors and pinout, the stepper drivers,
     the I/O and E-stop wiring, CAN, firmware upload, the test firmware, the serial protocol.
 
+-   :material-robot-industrial:{ .lg .middle } **End effectors**
+
+    ---
+
+    [What goes on the flange](end-effectors/index.md): the pneumatic and vacuum grippers, the [SSG-48](end-effectors/ssg-48.md)
+    and [MSG](end-effectors/msg.md) electric grippers, your own tool; mounting, connections, the homing offset, driving them.
+
+-   :material-monitor:{ .lg .middle } **GUI interfaces**
+
+    ---
+
+    [The graphical programs](gui/index.md): the commander software, Waldo Commander in the browser, Motor GUI
+    for the grippers.
+
 -   :material-code-braces:{ .lg .middle } **Programming**
 
     ---
 
-    [The programming guide](programming/index.md): the interfaces, the concepts behind them, the Python API, the
-    commander software and RBTscript, ROS 2; and the [API reference](reference/index.md), read from the API's source.
-
--   :material-robot-industrial:{ .lg .middle } **Grippers**
-
-    ---
-
-    The [SSG-48](https://docs.source-robotics.com/SSG48-gripper-docs/) and [MSG](https://docs.source-robotics.com/MSG-gripper-docs/)
-    electric grippers have their own manuals; [this manual](06-tools/electric-grippers.md) says how they attach to
-    PAROL6 and how the robot drives them.
+    [The programming guide](programming/index.md): the interfaces, the concepts behind them, the Python API,
+    RBTscript, ROS 2; and the [reference](reference/index.md), read from the API's source.
 
 </div>

@@ -28,7 +28,7 @@
 | `Gripper()` does nothing | Not calibrated; an error latched | Gripper tab: Calibrate, Clear error |
 | The program runs once and stops | No `Loop()` | Add it, or `End()` is where you want it |
 | Import errors at start | Wrong Python or package versions | Python 3.10 or 3.11 and the pinned versions |
-| `Time between 2 commands` far above 0.010 | The PC | [Communication](../09-troubleshooting/communication.md) |
+| `Time between 2 commands` far above 0.010 | The PC | [Communication](../08-troubleshooting/communication.md) |
 
 ## Both
 

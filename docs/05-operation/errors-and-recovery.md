@@ -17,7 +17,7 @@ entries:
 | An inverse kinematics error | The target pose has no solution, or lies past a singularity | Change the pose or the approach; move in joint space to get near it |
 | A joint limit error | The move would leave a joint's range | Choose a reachable target |
 | Jogging stops in Cartesian mode | A singularity | Jog a joint away from it |
-| The time between commands rises above 10 ms | The PC cannot keep the 100 Hz loop | Close other programs; a faster PC ([Communication](../09-troubleshooting/communication.md)) |
+| The time between commands rises above 10 ms | The PC cannot keep the 100 Hz loop | Close other programs; a faster PC ([Communication](../08-troubleshooting/communication.md)) |
 
 **Enable** clears the errors and enables the robot; **Clear error** does the same; **Disable** stops the firmware
 from accepting motion commands while the motors keep holding.

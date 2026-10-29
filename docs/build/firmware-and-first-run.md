@@ -45,7 +45,7 @@ base.
 ## 5. Home
 
 With every direction right, press **Home** and stay at the E-stop. The sequence is on [Homing](../05-operation/homing.md);
-if a joint grinds at a stop, press the E-stop and see [Homing failures](../09-troubleshooting/homing-failures.md).
+if a joint grinds at a stop, press the E-stop and see [Homing failures](../08-troubleshooting/homing-failures.md).
 After a successful homing the simulator matches the robot and the positions on screen are right.
 
 ## 6. Master, and reduce the currents
@@ -57,4 +57,4 @@ robot will run for hours, reduce the currents ([Currents and temperatures](../03
 
 While it runs, the commander prints the robot's data to its terminal: the positions, the homed and I/O bytes,
 the errors, the gripper data, and `Time between 2 commands in ms`, which should be near 0.010. Watch it for a few
-minutes while jogging: if it is often much higher, the PC is too slow ([Communication](../09-troubleshooting/communication.md)).
+minutes while jogging: if it is often much higher, the PC is too slow ([Communication](../08-troubleshooting/communication.md)).

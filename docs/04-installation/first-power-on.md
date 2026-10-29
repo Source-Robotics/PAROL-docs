@@ -8,7 +8,7 @@ The first time, and every time after that:
    clicks, and the arm holds its position.
 4. Let go. The robot is now enabled, not homed, and waiting for the PC.
 
-Nothing moves until the PC software commands it. Start the [commander software](../programming/04-commander/index.md)
+Nothing moves until the PC software commands it. Start the [commander software](../gui/commander/index.md)
 or the [Python API's controller](../programming/03-python-api/controller.md), connect, check the jog directions
 and home: the [Quick start](../quick-start.md) walks through it.
 
@@ -23,6 +23,6 @@ button useless: [Switching on and off](../05-operation/switching-on-off.md).
 
 - No clicks, no fan: no 24 V. Check the supply, the GX16 cable and its polarity.
 - Clicks, but the PC software does not connect: the serial port name, or the board runs the test firmware. See
-  [Communication](../09-troubleshooting/communication.md).
+  [Communication](../08-troubleshooting/communication.md).
 - The board turned on by itself when the supply was plugged in: something supplies 3.3 V to the programming
   header, or the arm was moved while unpowered ([Hazards](../02-safety/hazards.md#stepper-induced-voltage)).

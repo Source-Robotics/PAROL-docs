@@ -9,7 +9,7 @@
 
 In PAROL6, CAN 1 runs with 24 V and GND to the M8 socket at the forearm. The firmware addresses one gripper at the
 CAN ID the PC's packet names (0 as the grippers ship), sends it a move, a calibrate, a clear-error or an empty
-status frame every cycle, and relays its answer to the PC: [CAN bus](../07-peripherals/can-bus.md) in the Robot
+status frame every cycle, and relays its answer to the PC: [CAN bus](../06-peripherals/can-bus.md) in the Robot
 Manual, and the gripper manuals for the messages themselves.
 
 A longer bus, with the gripper far from the board or more nodes on it, wants a 120 Ω terminator at the board end

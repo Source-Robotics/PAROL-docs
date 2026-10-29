@@ -59,7 +59,7 @@ and dry-run previews alike; the collision meshes stay on their links regardless.
 ## Your own tool
 
 Add a `ToolConfig` and `register_tool("KEY", config)` in `parol6/tools.py`: the transform from the flange, the
-collision mesh, the variants, and the actions if it is driven through the robot ([Your own tool](../../06-tools/custom-tools.md)).
+collision mesh, the variants, and the actions if it is driven through the robot ([Your own tool](../../end-effectors/custom-tools.md)).
 The controller validates every tool action against the config before it is acknowledged.
 
 ## Held objects

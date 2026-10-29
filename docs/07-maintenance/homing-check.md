@@ -4,7 +4,7 @@ Homing is the robot's only position reference, so check it after any mechanical 
 whenever the robot's accuracy seems off.
 
 1. Home the robot and watch each joint: it must reach its switch, back off, re-approach slowly, and move on. A
-   joint that grinds at a stop, or re-approaches at full speed, has a switch problem ([Homing failures](../09-troubleshooting/homing-failures.md)).
+   joint that grinds at a stop, or re-approaches at full speed, has a switch problem ([Homing failures](../08-troubleshooting/homing-failures.md)).
 2. At the end, try the pin at the witness marks of each joint ([Mastering](../05-operation/mastering.md)). It
    should slide in, or nearly. A joint that is off by more than a degree was knocked, slipped, or its switch
    moved.

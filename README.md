@@ -15,7 +15,7 @@ Python API in [PCrnjak/PAROL6-python-API](https://github.com/PCrnjak/PAROL6-pyth
 
 | | |
 |---|---|
-| `docs/` | the pages: the robot manual at the top level (numbered chapters, `build/`, `appendix/`), `board/`, `programming/`, `reference/`, `support/` |
+| `docs/` | the pages: the robot manual at the top level (numbered chapters, `build/`, `appendix/`), `board/`, `end-effectors/`, `gui/`, `programming/` and `reference/` (one tab), `support/` |
 | `docs/includes/` | text shared by pages (glossary, symbols, abbreviations) and the data the reference pages are built from |
 | `docs/includes/generated/` | written by `tools/sync_api.py` from the Python API's release tag: `api_facts.json`, `api_release_notes.md`. Never edit |
 | `versions.yml` | every version fact: the PAROL6 release the site describes, the software versions, the manuals' numbers and revisions |

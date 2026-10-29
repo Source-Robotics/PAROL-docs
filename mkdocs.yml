@@ -72,8 +72,8 @@ plugins:
         page3_1.md: board/index.md
         page3_2.md: quick-start.md
         page4.md: programming/index.md
-        page4_1.md: programming/04-commander/the-gui.md
-        page5.md: 07-peripherals/index.md
+        page4_1.md: gui/commander/the-gui.md
+        page5.md: 06-peripherals/index.md
         page6.md: 02-safety/index.md
         page7.md: programming/02-concepts/index.md
 
@@ -138,7 +138,7 @@ extra:
     - prefix: programming/
       name: PCrnjak/PAROL6-python-API
       url: https://github.com/PCrnjak/PAROL6-python-API
-    - prefix: programming/04-commander/
+    - prefix: gui/commander/
       name: Source-Robotics/PAROL-commander-software
       url: https://github.com/Source-Robotics/PAROL-commander-software
     - prefix: reference/
@@ -223,30 +223,23 @@ nav:
               - Running programs: 05-operation/running-programs.md
               - Errors and recovery: 05-operation/errors-and-recovery.md
               - Mastering: 05-operation/mastering.md
-          - 6. Tools and grippers:
-              - 06-tools/index.md
-              - The flange: 06-tools/flange.md
-              - Pneumatic gripper: 06-tools/pneumatic-gripper.md
-              - Vacuum gripper: 06-tools/vacuum-gripper.md
-              - SSG-48 and MSG electric grippers: 06-tools/electric-grippers.md
-              - Your own tool: 06-tools/custom-tools.md
-          - 7. Peripherals:
-              - 07-peripherals/index.md
-              - Inputs and outputs: 07-peripherals/io.md
-              - Pneumatics: 07-peripherals/pneumatics.md
-              - CAN bus: 07-peripherals/can-bus.md
-          - 8. Maintenance:
-              - 08-maintenance/index.md
-              - Inspection: 08-maintenance/inspection.md
-              - Belts: 08-maintenance/belts.md
-              - Couplers and threadlocker: 08-maintenance/couplers.md
-              - Checking the homing: 08-maintenance/homing-check.md
-          - 9. Troubleshooting:
-              - 09-troubleshooting/index.md
-              - By symptom: 09-troubleshooting/by-symptom.md
-              - Homing failures: 09-troubleshooting/homing-failures.md
-              - Communication: 09-troubleshooting/communication.md
-          - 10. Transport, storage and disposal: 10-transport.md
+          - 6. Peripherals:
+              - 06-peripherals/index.md
+              - Inputs and outputs: 06-peripherals/io.md
+              - Pneumatics: 06-peripherals/pneumatics.md
+              - CAN bus: 06-peripherals/can-bus.md
+          - 7. Maintenance:
+              - 07-maintenance/index.md
+              - Inspection: 07-maintenance/inspection.md
+              - Belts: 07-maintenance/belts.md
+              - Couplers and threadlocker: 07-maintenance/couplers.md
+              - Checking the homing: 07-maintenance/homing-check.md
+          - 8. Troubleshooting:
+              - 08-troubleshooting/index.md
+              - By symptom: 08-troubleshooting/by-symptom.md
+              - Homing failures: 08-troubleshooting/homing-failures.md
+              - Communication: 08-troubleshooting/communication.md
+          - 9. Transport, storage and disposal: 09-transport.md
       - Build guide:
           - build/index.md
           - Bill of materials: build/bill-of-materials.md
@@ -276,66 +269,82 @@ nav:
       - 10. The serial protocol: board/10-serial-protocol.md
       - 11. Troubleshooting: board/11-troubleshooting.md
 
+  - End effectors:
+      - end-effectors/index.md
+      - The flange: end-effectors/flange.md
+      - Pneumatic gripper: end-effectors/pneumatic-gripper.md
+      - Vacuum gripper: end-effectors/vacuum-gripper.md
+      - SSG-48 electric gripper: end-effectors/ssg-48.md
+      - MSG electric gripper: end-effectors/msg.md
+      - Your own tool: end-effectors/custom-tools.md
+
+  - GUI interfaces:
+      - gui/index.md
+      - The commander software:
+          - gui/commander/index.md
+          - Installation: gui/commander/installation.md
+          - The GUI: gui/commander/the-gui.md
+      - Waldo Commander (web): gui/waldo-commander.md
+      - Motor GUI: gui/motor-gui.md
+
   - Programming:
       - programming/index.md
-      - 1. The interfaces at a glance: programming/01-interfaces.md
-      - 2. Concepts:
-          - programming/02-concepts/index.md
-          - Units: programming/02-concepts/units.md
-          - Joints, directions and the standby pose: programming/02-concepts/joints-and-poses.md
-          - Reference frames: programming/02-concepts/reference-frames.md
-          - Pose and orientation: programming/02-concepts/pose-and-orientation.md
-          - Forward and inverse kinematics: programming/02-concepts/kinematics.md
-          - Configurations and singularities: programming/02-concepts/configurations-and-singularities.md
-          - Workspace and reach: programming/02-concepts/workspace-and-reach.md
-          - Homing and mastering: programming/02-concepts/homing-and-mastering.md
-          - Motion profiles: programming/02-concepts/motion-profiles.md
-          - Blending: programming/02-concepts/blending.md
-          - Target, commanded and actual: programming/02-concepts/target-commanded-actual.md
-          - Control ownership: programming/02-concepts/control-ownership.md
-          - Steppers, open loop and backlash: programming/02-concepts/steppers-and-open-loop.md
-          - Further reading: programming/02-concepts/further-reading.md
-      - 3. The Python API:
-          - programming/03-python-api/index.md
-          - Installation: programming/03-python-api/installation.md
-          - The controller: programming/03-python-api/controller.md
-          - Clients: programming/03-python-api/clients.md
-          - Motion: programming/03-python-api/motion.md
-          - Jogging and servoing: programming/03-python-api/streaming.md
-          - Tools and the TCP: programming/03-python-api/tools-and-tcp.md
-          - I/O, delays and checkpoints: programming/03-python-api/io-and-delays.md
-          - Status and waiting: programming/03-python-api/status-and-waiting.md
-          - Errors: programming/03-python-api/errors.md
-          - Examples: programming/03-python-api/examples.md
-      - 4. The commander software:
-          - programming/04-commander/index.md
-          - Installation: programming/04-commander/installation.md
-          - The GUI: programming/04-commander/the-gui.md
-          - RBTscript: programming/04-commander/rbtscript.md
-          - Examples: programming/04-commander/examples.md
-      - 5. ROS 2 and MoveIt: programming/05-ros2.md
-      - 6. Other interfaces: programming/06-other-interfaces.md
-      - 7. Troubleshooting: programming/07-troubleshooting.md
-
-  - API reference:
-      - reference/index.md
-      - Python API:
-          - reference/python/index.md
-          - Motion: reference/python/motion.md
-          - Jogging and servoing: reference/python/streaming.md
-          - Control: reference/python/control.md
-          - Queries: reference/python/queries.md
-          - Synchronization: reference/python/synchronization.md
-          - Tools: reference/python/tools.md
-          - I/O: reference/python/io.md
-          - Configuration: reference/python/configuration.md
-          - Status fields: reference/python/status.md
-          - Errors: reference/python/errors.md
-          - The controller and its environment: reference/python/controller.md
-      - RBTscript commands: reference/rbtscript.md
-      - The serial protocol: reference/serial-protocol.md
-      - Firmware parameters: reference/firmware-parameters.md
-      - Test firmware commands: reference/test-firmware.md
+      - Guide:
+          - 1. The interfaces at a glance: programming/01-interfaces.md
+          - 2. Concepts:
+              - programming/02-concepts/index.md
+              - Units: programming/02-concepts/units.md
+              - Joints, directions and the standby pose: programming/02-concepts/joints-and-poses.md
+              - Reference frames: programming/02-concepts/reference-frames.md
+              - Pose and orientation: programming/02-concepts/pose-and-orientation.md
+              - Forward and inverse kinematics: programming/02-concepts/kinematics.md
+              - Configurations and singularities: programming/02-concepts/configurations-and-singularities.md
+              - Workspace and reach: programming/02-concepts/workspace-and-reach.md
+              - Homing and mastering: programming/02-concepts/homing-and-mastering.md
+              - Motion profiles: programming/02-concepts/motion-profiles.md
+              - Blending: programming/02-concepts/blending.md
+              - Target, commanded and actual: programming/02-concepts/target-commanded-actual.md
+              - Control ownership: programming/02-concepts/control-ownership.md
+              - Steppers, open loop and backlash: programming/02-concepts/steppers-and-open-loop.md
+              - Further reading: programming/02-concepts/further-reading.md
+          - 3. The Python API:
+              - programming/03-python-api/index.md
+              - Installation: programming/03-python-api/installation.md
+              - The controller: programming/03-python-api/controller.md
+              - Clients: programming/03-python-api/clients.md
+              - Motion: programming/03-python-api/motion.md
+              - Jogging and servoing: programming/03-python-api/streaming.md
+              - Tools and the TCP: programming/03-python-api/tools-and-tcp.md
+              - I/O, delays and checkpoints: programming/03-python-api/io-and-delays.md
+              - Status and waiting: programming/03-python-api/status-and-waiting.md
+              - Errors: programming/03-python-api/errors.md
+              - Examples: programming/03-python-api/examples.md
+          - 4. RBTscript:
+              - programming/04-commander/index.md
+              - The language and its commands: programming/04-commander/rbtscript.md
+              - Examples: programming/04-commander/examples.md
+          - 5. ROS 2 and MoveIt: programming/05-ros2.md
+          - 6. Other interfaces: programming/06-other-interfaces.md
+          - 7. Troubleshooting: programming/07-troubleshooting.md
+      - Reference:
+          - reference/index.md
+          - Python API:
+              - reference/python/index.md
+              - Motion: reference/python/motion.md
+              - Jogging and servoing: reference/python/streaming.md
+              - Control: reference/python/control.md
+              - Queries: reference/python/queries.md
+              - Synchronization: reference/python/synchronization.md
+              - Tools: reference/python/tools.md
+              - I/O: reference/python/io.md
+              - Configuration: reference/python/configuration.md
+              - Status fields: reference/python/status.md
+              - Errors: reference/python/errors.md
+              - The controller and its environment: reference/python/controller.md
+          - RBTscript commands: reference/rbtscript.md
+          - The serial protocol: reference/serial-protocol.md
+          - Firmware parameters: reference/firmware-parameters.md
+          - Test firmware commands: reference/test-firmware.md
 
   - Support:
       - Getting help: support/index.md

@@ -22,7 +22,7 @@ and normally closed**: choose the state the gripper should take without power.
 ![Pneumatic gripper tubing from the valve to the base and on to the gripper](../assets/pneumatic%20connection_edit.png){ width="700" }
 
 The valve's coil goes between **GND_SEL** and **OUTPUT1** on the control board, with the output supply set to the
-robot's 24 V or an isolated one ([Inputs and outputs](../07-peripherals/io.md)).
+robot's 24 V or an isolated one ([Inputs and outputs](../06-peripherals/io.md)).
 
 ## Driving it
 

@@ -1,4 +1,4 @@
-# 7. Peripherals
+# 6. Peripherals
 
 Everything the robot talks to besides the PC and the tool: switches and sensors on its inputs, valves and lamps on
 its outputs, the air for the pneumatic gripper, and the CAN bus for electric grippers and more axes.
