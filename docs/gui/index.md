@@ -5,7 +5,7 @@ hide:
 
 # PAROL6 GUI Guide
 
-![The commander window](../assets/GUI2.PNG){ .hero }
+![The commander window](../assets/GUI2.webp){ .hero }
 
 <!-- doc-meta: gui -->
 

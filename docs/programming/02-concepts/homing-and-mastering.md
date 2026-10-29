@@ -21,7 +21,7 @@ switches vary, so on another robot the homed pose is a fraction of a degree off 
 error with the witness marks, pins through holes in neighbouring links that line up at the zero, and corrects
 the number in the firmware ([Mastering](../../05-operation/mastering.md)).
 
-![Witness marks on PAROL6](../../assets/parolw.png){ width="650" }
+![Witness marks on PAROL6](../../assets/parolw.webp){ width="650" }
 
 Mastering affects the **absolute** accuracy, whether the pose the software reports is the true pose. It does not
 affect the **repeatability**, whether the robot returns to the same place every time, which comes from the

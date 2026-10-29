@@ -5,7 +5,7 @@ hide:
 
 # PAROL6 Robot Manual
 
-![PAROL6 desktop robotic arm](assets/hero.png){ .hero }
+![PAROL6 desktop robotic arm](assets/hero.webp){ .hero }
 
 <!-- doc-meta: parol6 -->
 

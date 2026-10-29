@@ -5,7 +5,7 @@ hide:
 
 # PAROL6 Control Board Manual
 
-![The PAROL6 control board v2.0](../assets/PAROL6V2.jpg){ .hero }
+![The PAROL6 control board v2.0](../assets/PAROL6V2.webp){ .hero }
 
 <!-- doc-meta: board -->
 

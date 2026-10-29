@@ -3,7 +3,7 @@
 Two windows: the **commander**, where everything is done, and the **simulator**, a 3D view of the robot that
 follows it once the robot is connected and homed.
 
-![The commander window, with the joint jog menu](../../assets/GUI2.PNG){ width="800" }
+![The commander window, with the joint jog menu](../../assets/GUI2.webp){ width="800" }
 
 ![The simulator window](../../assets/sim.PNG){ width="400" }
 
@@ -25,7 +25,7 @@ below sets the jog speed as a percentage. Works before homing.
 **Cartesian jog**: X, Y, Z and the rotations, in the **WRF** (the base) or the **TRF** (the tool), chosen with the
 switch. Needs a homed robot, and stops at a singularity ([Configurations and singularities](../../programming/02-concepts/configurations-and-singularities.md)).
 
-![The Cartesian jog menu](../../assets/GUI1.PNG){ width="800" }
+![The Cartesian jog menu](../../assets/GUI1.webp){ width="800" }
 
 ## The robot position
 

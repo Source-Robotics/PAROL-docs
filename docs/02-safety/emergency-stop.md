@@ -3,7 +3,7 @@
 The E-stop is the red button on the base, a normally closed contact wired to the control board's E-stop input.
 It must be connected for the robot to run.
 
-![E-stop wiring to the control board](../assets/ESTOP_CON.png){ width="800" }
+![E-stop wiring to the control board](../assets/ESTOP_CON.webp){ width="800" }
 
 ## What pressing it does
 

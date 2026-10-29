@@ -11,9 +11,9 @@ a supply that you choose.
 - **Not isolated**: link the robot's own 24 V and GND to HV_SEL and GND_SEL. Simpler, and the valve of the
   pneumatic gripper is usually wired this way. A 2 A fuse protects the outputs in this mode.
 
-![Isolated supply wiring](../assets/Ext_supply.png){ width="650" }
+![Isolated supply wiring](../assets/Ext_supply.webp){ width="650" }
 
-![Non-isolated wiring from the robot's 24 V](../assets/Internal_24V.png){ width="650" }
+![Non-isolated wiring from the robot's 24 V](../assets/Internal_24V.webp){ width="650" }
 
 The E-stop is not part of this: it is wired to the robot's own supply whichever option you choose.
 

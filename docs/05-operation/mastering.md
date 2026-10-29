@@ -10,7 +10,7 @@ homed robot stands exactly at its witness marks.
 Holes in neighbouring links that line up when the joint is at its zero: a pin pushed through them proves the
 pose. PAROL6 has them on every joint.
 
-![Witness marks of PAROL6](../assets/parolw.png){ width="800" }
+![Witness marks of PAROL6](../assets/parolw.webp){ width="800" }
 
 ## The procedure
 

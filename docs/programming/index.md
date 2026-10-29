@@ -5,7 +5,7 @@ hide:
 
 # PAROL6 Programming Guide
 
-![PAROL6 and its software](../assets/proces_full.png){ .hero }
+![PAROL6 and its software](../assets/proces_full.webp){ .hero }
 
 <!-- doc-meta: programming -->
 

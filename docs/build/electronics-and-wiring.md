@@ -14,7 +14,7 @@ page before you plug anything in.
 
 ## Wiring the arm to the board
 
-![Wiring diagram: motors, switches, sensors and connectors to the control board](../assets/parol6v2_connection.png){ width="750" }
+![Wiring diagram: motors, switches, sensors and connectors to the control board](../assets/parol6v2_connection.webp){ width="750" }
 
 - **Motors**: one four-wire cable per joint to its driver's terminal. The joint-to-terminal mapping is in
   [Connectors and pinout](../board/04-connectors.md): the drivers are not in joint order on the board.
@@ -29,9 +29,9 @@ page before you plug anything in.
 
 The finished base looks like this:
 
-![The wired control board in the base](../assets/WIRING%20V2.jpg){ width="700" }
+![The wired control board in the base](../assets/WIRING V2.webp){ width="700" }
 
-![The connectors on the base](../assets/CONNECT.jpg){ width="700" }
+![The connectors on the base](../assets/CONNECT.webp){ width="700" }
 
 ## Test before you close the base
 

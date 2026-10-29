@@ -12,19 +12,19 @@ on its back; if a belt is not tight enough, add another bearing as in the photos
 
 ### Joint 5 belt
 
-![Joint 5 belt and tensioner](../assets/belt1.jpg){ width="550" }
+![Joint 5 belt and tensioner](../assets/belt1.webp){ width="550" }
 
 ### Joint 4 belt
 
-![Joint 4 belt and tensioner](../assets/belt2.jpg){ width="450" }
+![Joint 4 belt and tensioner](../assets/belt2.webp){ width="450" }
 
 ### Joint 3 belt
 
-![Joint 3 belt and tensioner](../assets/belt3.jpg){ width="450" }
+![Joint 3 belt and tensioner](../assets/belt3.webp){ width="450" }
 
 ### Joint 1 belt
 
-![Joint 1 belt and tensioner](../assets/belt4.jpg){ width="550" }
+![Joint 1 belt and tensioner](../assets/belt4.webp){ width="550" }
 
 ## Grease
 

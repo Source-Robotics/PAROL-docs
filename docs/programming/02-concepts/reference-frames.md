@@ -24,7 +24,7 @@ tool" is `MoveCartRelTRF(0,0,100,0,0,0)` or `move_l([0,0,100,0,0,0], frame="TRF"
 different world direction every time, depending on the tool's orientation. Approaching a part along the
 gripper's axis, retreating after a grip, and rotating the tool about its own axis are TRF moves.
 
-![The tool frame at the end effector](../../assets/real_frame.jpg){ width="600" }
+![The tool frame at the end effector](../../assets/real_frame.webp){ width="600" }
 
 ## Jogging in a frame
 

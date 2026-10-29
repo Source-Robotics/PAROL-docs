@@ -15,7 +15,7 @@ after a collision, a stall or any move by hand.
   pin (red); joint 6 turns along the green arrow.
 - You are at the E-stop.
 
-![Joint 6 before homing: the sensor, the homing pin and the direction of rotation](../assets/J6_home.png){ width="700" }
+![Joint 6 before homing: the sensor, the homing pin and the direction of rotation](../assets/J6_home.webp){ width="700" }
 
 ## The sequence
 

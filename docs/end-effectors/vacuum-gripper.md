@@ -12,14 +12,14 @@ holder is `GRIPPER_ATTACHMENTS/vacuum_gripper_holder.STL`.
 Print the holder and bolt the gripper to it. The gripper spins freely in the holder by default; to fix its
 orientation, tie it with a zip tie to the screw shown in the figure.
 
-![The vacuum gripper on the forearm](../assets/vacuum_gripper.png){ width="700" }
+![The vacuum gripper on the forearm](../assets/vacuum_gripper.webp){ width="700" }
 
 ## Air
 
 A vacuum generator needs one supply line, so one of the valve's two ports is blocked: a short piece of tube with
 an M3 screw and threadlocker screwed into it does the job.
 
-![One valve port blocked with a tube and an M3 screw](../assets/vacuum_gripper2.png){ width="700" }
+![One valve port blocked with a tube and an M3 screw](../assets/vacuum_gripper2.webp){ width="700" }
 
 ## Driving it
 

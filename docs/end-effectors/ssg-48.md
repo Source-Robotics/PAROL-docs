@@ -24,7 +24,7 @@ the gripper; this page covers PAROL6.
 3. Connect the [PAROL6 gripper cable](https://source-robotics.com/products/gripper-cable) between the gripper
    and the M8 connector at the forearm.
 
-![The gripper connector at the forearm](../assets/GRIP_CON.png){ width="600" }
+![The gripper connector at the forearm](../assets/GRIP_CON.webp){ width="600" }
 
 !!! danger "Only the PAROL6 cable"
     PAROL6 and PAR6 put the four signals on different pins. The PAR6 cable, or a self-made cable with a wrong

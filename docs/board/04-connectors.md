@@ -1,6 +1,6 @@
 # 4. Connectors and pinout
 
-![The connections of the control board](../assets/img_parol3.png){ width="750" }
+![The connections of the control board](../assets/img_parol3.webp){ width="750" }
 
 ## Connectors
 
@@ -73,11 +73,11 @@ board:
 
 ## Wiring the robot
 
-![Wiring diagram of the robot to the control board](../assets/parol6v2_connection.png){ width="750" }
+![Wiring diagram of the robot to the control board](../assets/parol6v2_connection.webp){ width="750" }
 
 Limit switches to 24 V and their LIMIT terminal; inductive sensors to 24 V, GND and the LIMIT terminal (brown,
 blue, black). The gripper's M8 socket to 24 V, GND, CAN H and CAN L. The finished wiring in PAROL6's base:
 
-![The wired board](../assets/WIRING%20V2.jpg){ width="650" }
+![The wired board](../assets/WIRING V2.webp){ width="650" }
 
-![The connectors at the base](../assets/CONNECT.jpg){ width="650" }
+![The connectors at the base](../assets/CONNECT.webp){ width="650" }

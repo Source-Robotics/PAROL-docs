@@ -3,7 +3,7 @@
 A working PAROL6 is three things: the arm, the control board inside its base, and a PC running the high-level
 software. Each does a part of the job.
 
-![PAROL6 with the connections on its base](../assets/Connectors.png){ width="700" }
+![PAROL6 with the connections on its base](../assets/Connectors.webp){ width="700" }
 
 ## The arm
 

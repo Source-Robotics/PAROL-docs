@@ -9,7 +9,7 @@
 Six holes in the base, spaced for 30×30 mm aluminium profiles. Bolt the base to a plate or a profile frame with
 M5 screws and T-nuts.
 
-![The six holes in the base](../assets/base2.jpg){ width="600" }
+![The six holes in the base](../assets/base2.webp){ width="600" }
 
 ## Clamps
 
@@ -22,7 +22,7 @@ The repository's `UTILITY/connectors_4_alu_profiles.STL` prints a set of corner 
 profiles, as in the figure. You need M5 T-nuts, M5 × 12 mm screws for the connectors and M5 × 18 to 20 mm screws
 for the base.
 
-![PAROL6 on a 30×30 aluminium profile frame](../assets/alu_profile.png){ width="600" }
+![PAROL6 on a 30×30 aluminium profile frame](../assets/alu_profile.webp){ width="600" }
 
 ## Mounting plates
 

@@ -13,7 +13,7 @@ pip install -e ".[parol6]"
 waldo-commander
 ```
 
-![The web commander](../assets/Web_GUI.png){ width="800" }
+![The web commander](../assets/Web_GUI.webp){ width="800" }
 
 It is built on [waldoctl](https://github.com/Jepson2k/waldoctl), the abstraction layer the Python API implements,
 so what it offers tracks the API's features. Its documentation is at [jepson2k.github.io/Waldo-Commander](https://jepson2k.github.io/Waldo-Commander/).

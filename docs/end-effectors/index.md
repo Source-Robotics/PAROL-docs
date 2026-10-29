@@ -5,7 +5,7 @@ hide:
 
 # PAROL6 End Effectors Guide
 
-![The MSG gripper on PAROL6](../assets/MSG_and_camera.png){ .hero }
+![The MSG gripper on PAROL6](../assets/MSG_and_camera.webp){ .hero }
 
 <!-- doc-meta: end_effectors -->
 

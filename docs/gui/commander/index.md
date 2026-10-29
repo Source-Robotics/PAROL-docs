@@ -5,7 +5,7 @@ Cartesian jogging, a 3D simulator that mirrors the robot, a response log, a prog
 RBTscript, the I/O tab and the gripper tab. It is written in Python with customtkinter and the Robotics Toolbox,
 runs a 100 Hz loop to the control board, and is the program to start with.
 
-![The commander window](../../assets/GUI2.PNG){ width="800" }
+![The commander window](../../assets/GUI2.webp){ width="800" }
 
 ## In this guide
 

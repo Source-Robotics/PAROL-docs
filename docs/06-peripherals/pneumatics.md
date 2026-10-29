@@ -15,7 +15,7 @@ The coil goes between **GND_SEL** and **OUTPUT1** ([Inputs and outputs](io.md)).
 pressurised when the coil is off decides whether the gripper is normally open or normally closed: swap the two
 tubes to change it.
 
-![Valve, tubes and gripper](../assets/pneumatic%20connection_edit.png){ width="700" }
+![Valve, tubes and gripper](../assets/pneumatic connection_edit.webp){ width="700" }
 
 ## Routing
 

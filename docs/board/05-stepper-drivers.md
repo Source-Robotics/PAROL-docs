@@ -7,7 +7,7 @@ The board takes six TMC5160 driver modules in the StepStick format, configured o
     The orientation is given by the two DIAG pins: they must point at the red arrows in the figure. Check all six
     before every power-on after the drivers were touched.
 
-![Driver orientation: the DIAG pins at the red arrows](../assets/img_parol2.png){ width="800" }
+![Driver orientation: the DIAG pins at the red arrows](../assets/img_parol2.webp){ width="800" }
 
 ## Which drivers
 
@@ -19,7 +19,7 @@ drivers has them fitted. A module from elsewhere must have the pinout in the fig
 - **Cement the heatsink** to the driver with thermal cement (not paste, not tape); a driver without a bonded
   heatsink overheats and fails, and takes the board with it.
 
-![The TMC5160 module pinout](../assets/stick.png){ width="450" }
+![The TMC5160 module pinout](../assets/stick.webp){ width="450" }
 
 ## Current
 

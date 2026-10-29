@@ -9,7 +9,7 @@ Accelerate at a constant rate, cruise at the maximum speed, decelerate at the sa
 trapezoid; the acceleration jumps between +a, 0 and −a, which is felt as a jerk at the three corners. With the
 commander's `t=` argument, each third of the move is one phase.
 
-![A trapezoidal velocity profile](../../assets/trap.png){ width="700" }
+![A trapezoidal velocity profile](../../assets/trap.webp){ width="700" }
 
 ## Polynomial
 
@@ -17,7 +17,7 @@ A quintic (fifth-order) polynomial through the start and end positions with zero
 both ends: the speed rises and falls as a smooth bell, the acceleration is continuous, and the move starts and
 ends from rest without a jolt. Slower in the middle for the same total time, and the arm likes it better.
 
-![A quintic polynomial velocity profile](../../assets/poly.png){ width="700" }
+![A quintic polynomial velocity profile](../../assets/poly.webp){ width="700" }
 
 ## In the commander software
 

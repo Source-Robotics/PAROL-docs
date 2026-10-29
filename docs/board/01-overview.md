@@ -6,7 +6,7 @@ outputs, drives an electric gripper over CAN, and exchanges a data packet with t
 second. It plans nothing: the PC computes every trajectory and sends the board the joint speeds and positions
 to execute, cycle by cycle.
 
-![Features of the control board](../assets/img_parol.png){ width="750" }
+![Features of the control board](../assets/img_parol.webp){ width="750" }
 
 It works out of the box with PAROL6 and the commander software or the Python API, and it drives any six-axis
 stepper arm that is wired like PAROL6.
@@ -20,9 +20,9 @@ stepper arm that is wired like PAROL6.
 
 The two are functionally identical and run the same firmware.
 
-![Control board v2.0](../assets/PAROL6V2.jpg){ width="600" }
+![Control board v2.0](../assets/PAROL6V2.webp){ width="600" }
 
-![Control board v1.2 (discontinued)](../assets/PCB1.jpg){ width="600" }
+![Control board v1.2 (discontinued)](../assets/PCB1.webp){ width="600" }
 
 ## Testing
 

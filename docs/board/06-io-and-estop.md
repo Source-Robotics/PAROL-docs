@@ -9,13 +9,13 @@ blocks. You decide what feeds those rails:
     An external supply's negative to GND_SEL, positive to HV_SEL. The I/O then runs at that voltage, 5, 12 or
     24 V, and a short or a surge on a sensor cannot reach the robot's electronics.
 
-    ![Isolated supply wiring](../assets/Ext_supply.png){ width="650" }
+    ![Isolated supply wiring](../assets/Ext_supply.webp){ width="650" }
 
 === "The robot's 24 V"
     Link the board's 24 V and GND terminals to HV_SEL and GND_SEL. The I/O shares the robot's supply, with a 2 A
     fuse protecting the outputs. Simpler, and enough for a pneumatic valve.
 
-    ![Non-isolated wiring](../assets/Internal_24V.png){ width="650" }
+    ![Non-isolated wiring](../assets/Internal_24V.webp){ width="650" }
 
 The E-stop is on the robot's own supply in both cases.
 
@@ -34,7 +34,7 @@ a flyback diode across any coil. The firmware sets them from the I/O byte of the
 Two connectors on the same input, for a normally closed contact. The firmware reads the input every cycle and
 reports it in the I/O byte; the PC software stops the robot when it sees the contact open ([Emergency stop](../02-safety/emergency-stop.md)).
 
-![E-stop wiring](../assets/ESTOP_CON.png){ width="800" }
+![E-stop wiring](../assets/ESTOP_CON.webp){ width="800" }
 
 - The contact must be **normally closed**: an open circuit means stop, so an unplugged button or a cut wire stops
   the robot too. A normally open button does not work.

@@ -2,7 +2,7 @@
 
 The robot needs three connections to run. They are on the back of the base.
 
-![The power (green), USB (blue) and E-stop (yellow and pink) connections, and the power button (red)](../assets/Connectors.png){ width="700" }
+![The power (green), USB (blue) and E-stop (yellow and pink) connections, and the power button (red)](../assets/Connectors.webp){ width="700" }
 
 | Connection | Connector | Notes |
 |---|---|---|
