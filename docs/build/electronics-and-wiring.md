@@ -1,5 +1,7 @@
 # Electronics and wiring
 
+![Four ways to destroy the control board](../assets/board_warning.svg){ width="1000" }
+
 The control board goes into the base with its fan and its six driver modules; the motors, switches, sensors,
 the gripper connector, the E-stop and the power connector are wired to it.
 

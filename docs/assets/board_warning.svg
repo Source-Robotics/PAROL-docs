@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="440" viewBox="0 0 1600 440" role="img"
+     aria-label="Four ways to destroy the control board: a driver inserted the wrong way round, a driver without its heatsink, an ST-Link on jumper wires, reversed supply polarity">
+  <rect width="1600" height="440" rx="24" fill="#b3261e"/>
+  <g transform="translate(165,220)">
+    <polygon points="0,-130 150,130 -150,130" fill="#ffd600" stroke="#1a1a1a" stroke-width="14" stroke-linejoin="round"/>
+    <rect x="-17" y="-62" width="34" height="112" rx="10" fill="#1a1a1a"/>
+    <circle cx="0" cy="86" r="21" fill="#1a1a1a"/>
+  </g>
+  <text x="370" y="100" font-family="Roboto, Arial, Helvetica, sans-serif" font-size="52" font-weight="700" fill="#ffffff">Four ways to destroy the control board</text>
+  <text x="370" y="172" font-family="Roboto, Arial, Helvetica, sans-serif" font-size="32" fill="#ffffff">1.  A stepper driver module inserted the wrong way round</text>
+  <text x="370" y="222" font-family="Roboto, Arial, Helvetica, sans-serif" font-size="32" fill="#ffffff">2.  A driver running without its heatsink cemented on</text>
+  <text x="370" y="272" font-family="Roboto, Arial, Helvetica, sans-serif" font-size="32" fill="#ffffff">3.  An ST-Link on jumper wires, without the programming adapter</text>
+  <text x="370" y="322" font-family="Roboto, Arial, Helvetica, sans-serif" font-size="32" fill="#ffffff">4.  Reversed supply polarity on the XT30: it has no protection</text>
+  <text x="370" y="398" font-family="Roboto, Arial, Helvetica, sans-serif" font-size="28" font-weight="700" fill="#ffd600">Check all four before the first power-on. None of them is repairable.</text>
+</svg>

@@ -1,5 +1,7 @@
 # 2. Safety
 
+![Four ways to destroy the control board](../assets/board_warning.svg){ width="1000" }
+
 !!! danger "Four ways to destroy the board"
     1. **A stepper driver module inserted the wrong way round.** Check the orientation against the DIAG pins
        before the first power-on ([Stepper drivers](05-stepper-drivers.md)).
