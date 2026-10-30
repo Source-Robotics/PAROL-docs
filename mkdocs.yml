@@ -124,6 +124,36 @@ markdown_extensions:
   - pymdownx.smartsymbols
 
 extra:
+  # Google Analytics 4 (one property for every docs site, the shared domain) and "Was this page helpful?" at the
+  # end of every page: Material's integration records the page views and sends the votes as events named
+  # "feedback". Both load only after the reader accepts the cookie banner (consent below).
+  analytics:
+    provider: google
+    property: G-1DFG9VZDEB
+    feedback:
+      title: Was this page helpful?
+      ratings:
+        - icon: material/thumb-up-outline
+          name: This page was helpful
+          data: 1
+          note: Thanks for your feedback!
+        - icon: material/thumb-down-outline
+          name: This page could be improved
+          data: 0
+          note: >-
+            Thanks for your feedback! Tell us what is missing in
+            <a href="https://github.com/Source-Robotics/PAROL-docs/issues/new" target="_blank" rel="noopener">an issue</a>,
+            or on Discord.
+  # The cookie banner the EU requires for Google Analytics; the analytics load only after "Accept".
+  consent:
+    title: Cookie consent
+    description: >-
+      We use cookies to see which pages are read and whether readers find what they look for.
+      With your consent, you help us make this documentation better.
+    actions:
+      - accept
+      - reject
+      - manage
   # The version selector in the header (built by mike: one entry per published PAROL6 release + "latest").
   version:
     provider: mike
