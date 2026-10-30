@@ -62,6 +62,11 @@ theme:
 plugins:
   - search
   - glightbox                 # click any image to zoom
+  - git-revision-date-localized:   # "Last update" under every page, from its last commit
+      type: date
+      fallback_to_build_date: true   # a shallow checkout or a file git does not know yet
+      exclude:
+        - includes/*
   - social:
       cards_layout: default
       enabled: !ENV [ENABLE_SOCIAL, false]   # social cards only in CI (ENABLE_SOCIAL=true; they need Cairo + Pillow)
@@ -83,6 +88,7 @@ plugins:
 hooks:
   - hooks/versions.py
   - hooks/api_pages.py
+  - hooks/llms.py          # last: the Markdown twins, llms.txt and llms-full.txt from the other hooks' output
 
 markdown_extensions:
   - admonition
@@ -164,6 +170,8 @@ extra:
     repo_id: "R_kgDOVTvtKQ"
     category: Documentation
     category_id: "DIC_kwDOVTvtKc4DKAXd"
+  # The published version the Markdown twins and llms.txt link to (mike publishes each build under its version).
+  llms_base: latest/
   # The version selector in the header (built by mike: one entry per published PAROL6 release + "latest").
   version:
     provider: mike
@@ -210,6 +218,7 @@ extra_css:
 
 extra_javascript:
   - javascripts/mathjax.js
+  - javascripts/copy-markdown.js                       # the "Copy this page as Markdown" button
   - javascripts/mathjax-loader.js                       # loads MathJax only on pages with a formula
   - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js   # sortable tables (click a header)
   - javascripts/tablesort.js

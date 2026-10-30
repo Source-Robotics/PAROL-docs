@@ -247,3 +247,6 @@
   color: var(--md-default-fg-color--light);
   margin-top: -0.6rem;
 }
+
+/* The "Copy this page as Markdown" button sits with the edit and view buttons */
+.md-copy-md svg { fill: currentcolor; }

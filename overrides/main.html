@@ -18,6 +18,8 @@
     <a href="{{ page.edit_url }}" target="_blank" rel="noopener">Edit it on GitHub</a> ·
     <a href="{{ config.repo_url }}/issues/new?title={{ ('Docs: ' ~ page.title) | urlencode }}&body={{ ('Page: ' ~ config.site_url ~ page.url ~ '%0A%0AWhat is wrong:%0A') | urlencode }}" target="_blank" rel="noopener">Report it</a>
     · <a href="{{ 'support/' | url }}">Get help</a>
+    · <a href="index.md">This page as Markdown</a>
+    · <a href="{{ 'llms.txt' | url }}">llms.txt</a>
   </p>
   {% endif %}
 {% endblock %}

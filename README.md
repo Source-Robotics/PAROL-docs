@@ -22,7 +22,7 @@ Python API in [PCrnjak/PAROL6-python-API](https://github.com/PCrnjak/PAROL6-pyth
 | `docs/includes/generated/print_table.md` | written by `tools/sync_print_table.py` from the robot repository's `Print table/PR_EXCEL.xlsx`. Never edit |
 | `versions.yml` | every version fact: the PAROL6 release the site describes, the software versions, the manuals' numbers and revisions |
 | `compatibility.yml` | which control board, firmware, Python API, commander and gripper versions work together |
-| `hooks/` | `versions.py` writes the version facts into the pages; `api_pages.py` builds the Python API reference |
+| `hooks/` | `versions.py` writes the version facts into the pages; `api_pages.py` builds the Python API reference; `llms.py` writes the Markdown twin of every page, `llms.txt` and `llms-full.txt` |
 | `tools/` | `sync_api.py`, `sync_bom.py`, `sync_print_table.py`, `test_tools.py`, `root_404.html` |
 | `overrides/` | the theme changes: the older-version banner, the edit/report line, the header's repository card |
 
@@ -82,6 +82,15 @@ python tools/sync_bom.py --check    # exit 1 if the page is out of date
 The print table on `docs/build/printing.md` is the spreadsheet `Print table/PR_EXCEL.xlsx` of the same repository,
 sheet "3D printed parts stats", written to `docs/includes/generated/print_table.md` by `tools/sync_print_table.py`
 (needs `openpyxl`); the same `--repo` and `--check` options.
+
+## Markdown twins and the "Last update" dates
+
+`hooks/llms.py` writes, at every build, a Markdown twin of every page next to its HTML (`…/index.md`), `llms.txt`
+(an index of the twins by tab) and `llms-full.txt` (every page in one file), with the links absolute to the
+published version (`extra.llms_base`). The "Copy this page as Markdown" button in the page header reads the twin.
+
+The "Last update" date under every page comes from the `git-revision-date-localized` plugin (the page's last
+commit; the CI checks out the whole history for it).
 
 ## Analytics and comments
 
