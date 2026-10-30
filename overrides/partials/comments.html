@@ -5,7 +5,7 @@
   follows the site's light or dark scheme.
 -#}
 {% set c = config.extra.comments %}
-{% if c and c.repo_id and c.category_id and page.meta.comments is not sameas false %}
+{% if c and c.repo_id and c.category_id and page.meta.comments is not sameas false and 'print_page' not in page.url %}
   <h2 id="__comments">{{ lang.t("meta.comments") }}</h2>
   <script src="https://giscus.app/client.js"
           data-repo="{{ c.repo }}"

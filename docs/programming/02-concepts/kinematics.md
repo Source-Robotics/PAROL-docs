@@ -11,7 +11,7 @@ length, a link offset, a joint angle and a link twist, and PAROL6's table is in 
 built from this table; the Python API loads the robot's URDF, which carries the same geometry, and computes the
 kinematics numerically with Pinocchio.
 
-![Kinematic diagram of PAROL6](../../assets/Kinematic_diagram.png){ width="500" }
+![Kinematic diagram of PAROL6](../../assets/Kinematic_diagram.webp){ width="500" }
 
 ## Forward kinematics
 

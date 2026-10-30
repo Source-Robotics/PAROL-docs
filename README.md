@@ -112,6 +112,13 @@ Comments under every page come from Giscus, wired in `overrides/partials/comment
 `Source-Robotics/source-robotics.github.io`, with one thread per site and page. A page opts out with
 `comments: false` in its front matter (the landing page does).
 
+## The PDF of the manual
+
+The `print-site` plugin (the last plugin in `mkdocs.yml`) builds one page with every chapter in order, a cover and
+a table of contents, at `print_page/`. `hooks/pdf.py` prints that page to `site/assets/PAROL6-manual.pdf` with headless
+Chrome when the environment variable `DOCS_PDF` is set, which the publish workflow does; a local build sets it on
+demand (`DOCS_PDF=1 mkdocs build`). While the hook is on, the page-help line of every page links the PDF.
+
 ## Versions and releases
 
 Each PAROL6 release has its own version of this site, named after the release: `1`, ... The version selector in

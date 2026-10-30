@@ -24,7 +24,7 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "docs" / "assets" / "models" / "parol6"
 URDF = Path("PAROL6_URDF") / "parol6" / "urdf" / "parol6.urdf"
 MESHES = Path("PAROL6_URDF") / "parol6" / "meshes"
-MAX_FACES = 20000          # the URDF meshes have up to 60 000 faces each: too many for a landing page
+MAX_FACES = 12000          # the URDF meshes have up to 60 000 faces each: too many for a landing page
 COLOURS = {"body": {"Grey": "#c9c9c6", "Black": "#1a1a1a", "White": "#f2f2f0", "Orange": "#f08a24"}}
 
 

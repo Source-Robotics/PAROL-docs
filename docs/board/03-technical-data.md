@@ -37,7 +37,7 @@ The PAROL6 firmware runs the motors well below the drivers' ratings: 0.8 to 1.7 
 
 ## Dimensions
 
-![PCB dimensions in millimetres](../assets/PCB_dimensions.png){ width="700" }
+![PCB dimensions in millimetres](../assets/PCB_dimensions.webp){ width="700" }
 
 ## Mounting and cooling
 

@@ -5,3 +5,4 @@ mike==2.1.3                      # versioned docs: one deployed version per firm
 mkdocs-glightbox==0.4.0          # click an image to zoom (the glightbox plugin in mkdocs.yml)
 mkdocs-redirects==1.2.2          # the old page addresses redirect to the new pages (the redirects plugin in mkdocs.yml)
 mkdocs-git-revision-date-localized-plugin==1.6.2   # "Last update" under every page, from the page's last commit
+mkdocs-print-site-plugin==2.9    # one page with the whole manual, printed to PDF by hooks/pdf.py when DOCS_PDF is set

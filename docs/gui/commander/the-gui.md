@@ -5,7 +5,7 @@ follows it once the robot is connected and homed.
 
 ![The commander window, with the joint jog menu](../../assets/GUI2.webp){ width="800" }
 
-![The simulator window](../../assets/sim.PNG){ width="400" }
+![The simulator window](../../assets/sim.webp){ width="400" }
 
 ## Connecting
 

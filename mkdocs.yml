@@ -19,14 +19,16 @@ theme:
   logo: assets/logo_new_2.png
   favicon: assets/Icon2.png
   language: en
-  font:
-    text: Roboto
-    code: Roboto Mono
+  font: false                  # Roboto is served from the site: docs/stylesheets/fonts.css
   icon:
     repo: fontawesome/brands/github
     edit: material/pencil
     view: material/eye
   features:
+    - navigation.instant       # pages load without a full reload: faster, the scroll of the sidebar is kept
+    - navigation.instant.prefetch   # a page is fetched while the pointer hovers its link
+    - navigation.instant.progress   # a progress bar when a page takes long
+    - navigation.prune         # the sidebar carries only the visible part of the navigation: smaller pages
     - navigation.tabs          # one tab per document: Robot Manual, Control Board, Programming, API reference, Support
     - navigation.tabs.sticky
     - navigation.sections      # the bold sidebar groups
@@ -81,6 +83,17 @@ plugins:
         page5.md: 06-peripherals/index.md
         page6.md: 02-safety/index.md
         page7.md: programming/02-concepts/index.md
+  # One page with the whole manual (print_page/), for the PDF: hooks/pdf.py prints it with Chrome when DOCS_PDF is
+  # set. Must stay the last plugin.
+  - print-site:
+      add_to_navigation: false
+      print_page_title: "PAROL6, the whole documentation"
+      add_table_of_contents: true
+      toc_depth: 2
+      enumerate_headings: false
+      enumerate_figures: false
+      add_cover_page: true
+      add_print_site_banner: false
 
 # The version facts of versions.yml written into the pages (the version box and the list of documents), and the
 # API reference built from the Python API's source at its release tag (docs/includes/generated/api_facts.json,
@@ -89,6 +102,7 @@ hooks:
   - hooks/versions.py
   - hooks/api_pages.py
   - hooks/llms.py          # last: the Markdown twins, llms.txt and llms-full.txt from the other hooks' output
+  - hooks/pdf.py           # the PDF of the manual, from the print-site page, when DOCS_PDF is set
 
 markdown_extensions:
   - admonition
@@ -172,6 +186,9 @@ extra:
     category_id: "DIC_kwDOVTvtKc4DKAXd"
   # The published version the Markdown twins and llms.txt link to (mike publishes each build under its version).
   llms_base: latest/
+  # The PDF of the manual (hooks/pdf.py): the file under site/, written when DOCS_PDF is set.
+  pdf:
+    file: assets/PAROL6-manual.pdf
   # The version selector in the header (built by mike: one entry per published PAROL6 release + "latest").
   version:
     provider: mike
@@ -214,6 +231,7 @@ extra:
     draft: Not written yet
 
 extra_css:
+  - stylesheets/fonts.css                                # the self-hosted fonts
   - stylesheets/extra.css
 
 extra_javascript:
@@ -222,7 +240,7 @@ extra_javascript:
   - javascripts/joint-calculator.js                    # the joint units calculator on Drives, ratios and resolution
   - javascripts/arm-viewer-loader.js                   # the 3D arm viewer, only on pages that have one
   - javascripts/mathjax-loader.js                       # loads MathJax only on pages with a formula
-  - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js   # sortable tables (click a header)
+  - javascripts/vendor/tablesort.min.js                # sortable tables (click a header); tablesort 5.3.0, served from the site
   - javascripts/tablesort.js
 
 exclude_docs: |

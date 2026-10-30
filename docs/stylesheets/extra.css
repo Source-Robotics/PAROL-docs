@@ -289,3 +289,11 @@
 .arm-viewer__swatches button { width: 1.1rem; height: 1.1rem; border-radius: 50%; border: 1px solid var(--md-default-fg-color--lighter); cursor: pointer; padding: 0; }
 .arm-viewer__controls .md-button { font-size: 0.65rem; padding: 0.3em 0.9em; margin: 0; }
 .arm-viewer__hint { font-size: 0.7rem; color: var(--md-default-fg-color--light); margin-top: 0.5rem; }
+
+/* The print page (print-site plugin) and the PDF printed from it: no interactive blocks, no page chrome */
+#print-site-page .gripper-viewer, #print-site-page .arm-viewer, #print-site-page .calc, #print-site-page .gripper-calc,
+#print-site-page .md-feedback, #print-site-page .page-help, #print-site-page .md-source-file, #print-site-page .md-copy-md { display: none !important; }
+@media print {
+  .md-consent, .md-banner, .md-top, .md-copy-md, .page-help, .md-feedback { display: none !important; }
+  .md-typeset img { max-height: 24cm; }
+}

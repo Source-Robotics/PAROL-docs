@@ -5,7 +5,7 @@
 Joints are numbered from the base up. A joint's angle increases in the direction of the arrow in the figure; the
 commander software's left arrows jog in that direction.
 
-![Joint numbering and the positive direction of each joint](../assets/rotations1.png){ width="560" }
+![Joint numbering and the positive direction of each joint](../assets/rotations1.webp){ width="560" }
 
 ## The standby pose
 
@@ -17,7 +17,7 @@ stands square to the base, and the software reports the standby pose as follows.
 |---|---|---|---|---|---|
 | 90° (0° in the DH table) | −90° | 180° | 0° | 0° | 180° |
 
-![The standby pose](../assets/Joints.png){ width="500" }
+![The standby pose](../assets/Joints.webp){ width="500" }
 
 ## Limits
 
@@ -46,4 +46,4 @@ blockers; joint 5 by the length of its belt path; joint 6 only by the cables and
     be spun more than one turn. The cables and pneumatic tubes that pass through them wrap and tear.
     [Moving the robot by hand](../02-safety/moving-by-hand.md) has the figure.
 
-![The range of joint 5](../assets/Limits_j5.png){ width="700" }
+![The range of joint 5](../assets/Limits_j5.webp){ width="700" }

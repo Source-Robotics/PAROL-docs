@@ -6,7 +6,7 @@ Every joint is a pinch point, and the elbow and wrist fold against the upper arm
 geared: a finger between two links when a joint closes is crushed, not pushed away. Keep hands, cables and tubes
 out of the arm's path while it is enabled, and never reach into the workspace of a running program.
 
-![Pinch points on PAROL6](../assets/pinch_points.png){ width="450" }
+![Pinch points on PAROL6](../assets/pinch_points.webp){ width="450" }
 
 ## The arm falls when the power goes
 

@@ -6,7 +6,7 @@ framed with start bytes, a length byte, two end bytes and a CRC byte, and togeth
 takes about 0.3 ms at 3 Mbaud. The byte-exact layout is on [The serial protocol](../reference/serial-protocol.md)
 in the API reference; this page explains how it works.
 
-![Packet structure](../assets/bytes.png){ width="700" }
+![Packet structure](../assets/bytes.webp){ width="700" }
 
 ## The cycle
 

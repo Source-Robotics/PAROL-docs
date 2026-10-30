@@ -8,7 +8,7 @@ the arm has no brakes to release. This is how you pose it for packing and how yo
     full turn. Cables and pneumatic tubes run through them: a second turn wraps and tears them. Joint 1 has
     printed blockers that stop it; if your build has none, the rule is yours to keep.
 
-![The range of joint 5](../assets/Limits_j5.png){ width="700" }
+![The range of joint 5](../assets/Limits_j5.webp){ width="700" }
 
 !!! danger "Not while the supply is connected"
     A stepper turned by hand generates voltage, and a quick move can switch the board on with the arm in your

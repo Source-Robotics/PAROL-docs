@@ -44,6 +44,7 @@ jobs:
       - name: Publish this version with mike
         env:
           ENABLE_SOCIAL: "true"
+          DOCS_PDF: "1"          # hooks/pdf.py prints the manual with the runner's Chrome into the published version
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

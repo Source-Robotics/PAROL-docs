@@ -6,7 +6,7 @@ Joints are numbered 1 to 6 from the base up: J1 turns the whole arm about the ve
 J3 the elbow, J4 rotates the forearm, J5 pitches the wrist, J6 rotates the tool. The Python API indexes joints
 from 0 in its jog calls (`jog_j(0, ...)` is J1) and lists angles in order J1 to J6 everywhere.
 
-![Joint numbering](../../assets/Joints.png){ width="500" }
+![Joint numbering](../../assets/Joints.webp){ width="500" }
 
 ## Positive direction
 

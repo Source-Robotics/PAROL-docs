@@ -13,7 +13,7 @@ repository's <a href="https://github.com/Source-Robotics/PAROL6-Desktop-robot-ar
 
 ## Dimensions
 
-![Dimensions of PAROL6 with the standard pneumatic gripper](../assets/Dimensions.png){ width="700" }
+![Dimensions of PAROL6 with the standard pneumatic gripper](../assets/Dimensions.webp){ width="700" }
 
 | Dimension | Value |
 |---|---|
@@ -31,7 +31,7 @@ or the DH table, or the reported poses will be wrong.
 
 ## Kinematic diagram
 
-![Kinematic diagram of PAROL6 with the standard gripper](../assets/Kinematic_diagram.png){ width="600" }
+![Kinematic diagram of PAROL6 with the standard gripper](../assets/Kinematic_diagram.webp){ width="600" }
 
 The first three joints place the wrist centre; the axes of joints 4, 5 and 6 intersect in one point, a
 spherical wrist, which is what makes the inverse kinematics tractable. The
