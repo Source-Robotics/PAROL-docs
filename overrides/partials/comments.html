@@ -1,0 +1,43 @@
+{#-
+  Comments under the page through Giscus, when extra.comments has the IDs (mkdocs.yml says how to get them) and
+  the page does not say `comments: false`. All the docs sites share one Discussions home, the hub repository; a
+  thread is named after the site and the page, so the same page name on two sites gets two threads. The widget
+  follows the site's light or dark scheme.
+-#}
+{% set c = config.extra.comments %}
+{% if c and c.repo_id and c.category_id and page.meta.comments is not sameas false %}
+  <h2 id="__comments">{{ lang.t("meta.comments") }}</h2>
+  <script src="https://giscus.app/client.js"
+          data-repo="{{ c.repo }}"
+          data-repo-id="{{ c.repo_id }}"
+          data-category="{{ c.category }}"
+          data-category-id="{{ c.category_id }}"
+          data-mapping="specific"
+          data-term="{{ config.site_name }} · {{ page.url or 'home' }}"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="preferred_color_scheme"
+          data-lang="en"
+          data-loading="lazy"
+          crossorigin="anonymous"
+          async>
+  </script>
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      giscus.setAttribute("data-theme", palette.color.scheme === "slate" ? "dark" : "light")
+    }
+    var ref = document.querySelector("[data-md-component=palette]")
+    ref.addEventListener("change", function() {
+      var palette = __md_get("__palette")
+      if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate" ? "dark" : "light"
+        var frame = document.querySelector(".giscus-frame")
+        if (frame) frame.contentWindow.postMessage({ giscus: { setConfig: { theme: theme } } }, "https://giscus.app")
+      }
+    })
+  </script>
+{% endif %}

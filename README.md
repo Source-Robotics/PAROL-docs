@@ -83,6 +83,18 @@ The print table on `docs/build/printing.md` is the spreadsheet `Print table/PR_E
 sheet "3D printed parts stats", written to `docs/includes/generated/print_table.md` by `tools/sync_print_table.py`
 (needs `openpyxl`); the same `--repo` and `--check` options.
 
+## Analytics and comments
+
+The "Was this page helpful?" widget at the end of every page is configured under `extra.analytics.feedback`.
+With `provider: google` (the Google Analytics property all the docs sites share, loaded only after the reader
+accepts the cookie banner of `extra.consent`), Material's own integration records the page views and sends each
+vote as an event named `feedback`.
+
+Comments under every page come from Giscus, wired in `overrides/partials/comments.html` and configured under
+`extra.comments`: all the docs sites share one Discussions home, the hub repository
+`Source-Robotics/source-robotics.github.io`, with one thread per site and page. A page opts out with
+`comments: false` in its front matter (the landing page does).
+
 ## Versions and releases
 
 Each PAROL6 release has its own version of this site, named after the release: `1`, ... The version selector in

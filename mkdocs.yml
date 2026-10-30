@@ -154,6 +154,16 @@ extra:
       - accept
       - reject
       - manage
+  # Comments under every page, through Giscus. All the docs sites share one Discussions home, the hub repository
+  # Source-Robotics/source-robotics.github.io (the docs domain), category "Documentation": one thread per site and
+  # page, created when the first reader comments. The IDs are the hub repository's and the category's; giscus.app
+  # shows them for the repository and the category. Empty IDs: no comments are rendered. A page opts out with
+  # `comments: false` in its front matter.
+  comments:
+    repo: Source-Robotics/source-robotics.github.io
+    repo_id: "R_kgDOVTvtKQ"
+    category: Documentation
+    category_id: "DIC_kwDOVTvtKc4DKAXd"
   # The version selector in the header (built by mike: one entry per published PAROL6 release + "latest").
   version:
     provider: mike
