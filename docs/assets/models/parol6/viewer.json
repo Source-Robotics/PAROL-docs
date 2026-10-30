@@ -1,0 +1,198 @@
+{
+ "links": [
+  {
+   "name": "base_link",
+   "file": "base_link.glb"
+  },
+  {
+   "name": "L1",
+   "file": "L1.glb"
+  },
+  {
+   "name": "L2",
+   "file": "L2.glb"
+  },
+  {
+   "name": "L3",
+   "file": "L3.glb"
+  },
+  {
+   "name": "L4",
+   "file": "L4.glb"
+  },
+  {
+   "name": "L5",
+   "file": "L5.glb"
+  },
+  {
+   "name": "L6",
+   "file": "L6.glb"
+  }
+ ],
+ "joints": [
+  {
+   "name": "L1",
+   "type": "revolute",
+   "parent": "base_link",
+   "child": "L1",
+   "xyz": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rpy": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "axis": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "lower_deg": -97.4,
+   "upper_deg": 97.4
+  },
+  {
+   "name": "L2",
+   "type": "revolute",
+   "parent": "L1",
+   "child": "L2",
+   "xyz": [
+    0.0234207210610375,
+    0.0,
+    0.1105
+   ],
+   "rpy": [
+    -1.5707963267949,
+    0.0,
+    0.0
+   ],
+   "axis": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "lower_deg": -56.1,
+   "upper_deg": 57.3
+  },
+  {
+   "name": "L3",
+   "type": "revolute",
+   "parent": "L2",
+   "child": "L3",
+   "xyz": [
+    0.0,
+    -0.18,
+    0.0
+   ],
+   "rpy": [
+    3.1416,
+    0.0,
+    -1.5708
+   ],
+   "axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "lower_deg": -114.6,
+   "upper_deg": 74.5
+  },
+  {
+   "name": "L4",
+   "type": "revolute",
+   "parent": "L3",
+   "child": "L4",
+   "xyz": [
+    0.0435,
+    0.0,
+    0.0
+   ],
+   "rpy": [
+    1.5707963267949,
+    0.0,
+    3.14159265358979
+   ],
+   "axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "lower_deg": -114.6,
+   "upper_deg": 114.6
+  },
+  {
+   "name": "L5",
+   "type": "revolute",
+   "parent": "L4",
+   "child": "L5",
+   "xyz": [
+    0.0,
+    0.0,
+    -0.17635
+   ],
+   "rpy": [
+    -1.5708,
+    0.0,
+    0.0
+   ],
+   "axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "lower_deg": -120.3,
+   "upper_deg": 120.3
+  },
+  {
+   "name": "L6",
+   "type": "continuous",
+   "parent": "L5",
+   "child": "L6",
+   "xyz": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rpy": [
+    1.5708,
+    0.0,
+    0.0
+   ],
+   "axis": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "lower_deg": -177.6,
+   "upper_deg": 177.6
+  }
+ ],
+ "root": "base_link",
+ "up": "z",
+ "colors": {
+  "body": {
+   "Grey": "#c9c9c6",
+   "Black": "#1a1a1a",
+   "White": "#f2f2f0",
+   "Orange": "#f08a24"
+  }
+ },
+ "default": {
+  "body": "#c9c9c6",
+  "q_deg": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "camera": {
+  "azimuth_deg": -40,
+  "polar_deg": 65,
+  "fill": 1.15
+ }
+}

@@ -19,6 +19,17 @@ matches the robot in front of you, and that the Python API version matches what 
 selector in the header switches between releases. The text and the images are licensed CC BY-SA 4.0, the code
 examples MIT.
 
+<div class="arm-viewer" data-base="assets/models/parol6/" markdown="0">
+  <canvas class="arm-viewer__canvas" aria-label="PAROL6 in 3D: drag to turn, scroll to zoom"></canvas>
+  <div class="arm-viewer__controls">
+    <div class="arm-viewer__joints"></div>
+    <label class="arm-viewer__field">Printed parts <span class="arm-viewer__swatches" data-target="body"></span><input type="color" name="body" value="#c9c9c6" title="Any colour"></label>
+    <button type="button" name="reset" class="md-button">Reset</button>
+  </div>
+  <p class="arm-viewer__hint">Drag to turn the robot, scroll to zoom, move each joint with its slider, try a colour for the printed parts. The model is the
+repository's <a href="https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/tree/main/PAROL6_URDF">URDF</a>; the sliders run over its joint limits.</p>
+</div>
+
 <div class="grid cards" markdown>
 
 -   :material-rocket-launch:{ .lg .middle } **Quick start**

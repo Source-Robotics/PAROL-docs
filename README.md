@@ -83,7 +83,14 @@ The print table on `docs/build/printing.md` is the spreadsheet `Print table/PR_E
 sheet "3D printed parts stats", written to `docs/includes/generated/print_table.md` by `tools/sync_print_table.py`
 (needs `openpyxl`); the same `--repo` and `--check` options.
 
-## Markdown twins and the "Last update" dates
+## The 3D model, the Markdown twins and the "Last update" dates
+
+`tools/build_model.py` builds `docs/assets/models/parol6/` from the robot repository's URDF (the same `--repo`
+as the BOM tool; needs `trimesh` with `fast-simplification`): one file per link, decimated for the web, and
+`viewer.json` with the kinematic chain. The landing and kinematics pages show them in the arm viewer
+`docs/javascripts/arm-viewer.js` (three.js from a CDN, through the import map in `overrides/main.html`, loaded
+only on those pages): turn and zoom, a slider per joint within its limits, the colour of the printed parts.
+Run the tool again when the URDF changes.
 
 `hooks/llms.py` writes, at every build, a Markdown twin of every page next to its HTML (`…/index.md`), `llms.txt`
 (an index of the twins by tab) and `llms-full.txt` (every page in one file), with the links absolute to the

@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 
+{#- Where the arm viewer (docs/javascripts/arm-viewer.js) gets three.js from. Nothing is fetched until a page with
+    an .arm-viewer element loads the module. -#}
+{% block extrahead %}
+  <script type="importmap">{"imports": {"three": "https://unpkg.com/three@0.170.0/build/three.module.js", "three/addons/": "https://unpkg.com/three@0.170.0/examples/jsm/"}}</script>
+{% endblock %}
+
 {#- Banner shown on a version that is not the default alias ("latest"); needs extra.version (mike). -#}
 {% block outdated %}
   You are reading the documentation for an older firmware release.
