@@ -51,6 +51,19 @@ the main firmware works with any of them.
 5. The board answers with the actual position and speed of each joint, the switch and input states, the errors and
    the gripper's status, which the PC software shows and uses for the next cycle.
 
+```mermaid
+sequenceDiagram
+    participant PC as PC software
+    participant B as Control board
+    participant M as Motors
+    Note over PC: a jog button, a program line, move_j: the trajectory is planned
+    loop every 10 ms
+        PC->>B: targets: joint positions and speeds, outputs, gripper
+        B->>M: step pulses at the commanded speeds
+        B-->>PC: actual positions and speeds, switches, inputs, errors
+    end
+```
+
 ## Where everything is published
 
 | | |

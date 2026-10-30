@@ -219,6 +219,7 @@ extra_css:
 extra_javascript:
   - javascripts/mathjax.js
   - javascripts/copy-markdown.js                       # the "Copy this page as Markdown" button
+  - javascripts/joint-calculator.js                    # the joint units calculator on Drives, ratios and resolution
   - javascripts/mathjax-loader.js                       # loads MathJax only on pages with a formula
   - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js   # sortable tables (click a header)
   - javascripts/tablesort.js

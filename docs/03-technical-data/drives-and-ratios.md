@@ -35,6 +35,30 @@ this. A microstep is not a guaranteed position: the motor's holding torque at a 
 so the real resolution under load is coarser than the table, which is why the repeatability is specified at
 0.1 mm rather than at the step size.
 
+## Try it
+
+<div class="calc" data-steps-per-motor-turn="6400" markdown="0">
+  <div class="calc__row calc__row--inline">
+    <label for="jc-joint">Joint</label>
+    <select id="jc-joint" name="joint">
+      <option value="6.4">Joint 1, ratio 6.4</option>
+      <option value="20" selected>Joint 2, ratio 20</option>
+      <option value="18.095">Joint 3, ratio 18.095</option>
+      <option value="4">Joint 4, ratio 4</option>
+      <option value="4">Joint 5, ratio 4</option>
+      <option value="10">Joint 6, ratio 10</option>
+    </select>
+    <label for="jc-deg">Joint angle, degrees</label>
+    <input id="jc-deg" type="number" name="degrees" step="0.1" value="45">
+    <label for="jc-speed">Joint speed, degrees per second</label>
+    <input id="jc-speed" type="number" name="degps" step="1" value="30">
+  </div>
+  <p class="calc__result"><strong data-out="steps">16 000</strong> steps from the standby pose · one step is <strong data-out="stepdeg">0.00281°</strong> at the joint</p>
+  <p class="calc__result"><strong data-out="stepsps">10 667</strong> steps per second · the motor turns at <strong data-out="rpm">100</strong> rpm</p>
+</div>
+
+The conversions of this page, with your numbers: 6400 microsteps per motor turn, through the joint's ratio.
+
 ## Why open loop works here
 
 The motors are not fitted with encoders: the position is the count of steps commanded since homing. This works

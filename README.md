@@ -90,7 +90,8 @@ sheet "3D printed parts stats", written to `docs/includes/generated/print_table.
 published version (`extra.llms_base`). The "Copy this page as Markdown" button in the page header reads the twin.
 
 The "Last update" date under every page comes from the `git-revision-date-localized` plugin (the page's last
-commit; the CI checks out the whole history for it).
+commit; the CI checks out the whole history for it). The calculator on Drives, ratios and resolution is
+`docs/javascripts/joint-calculator.js`; the diagrams on the pages are Mermaid blocks in the Markdown.
 
 ## Analytics and comments
 

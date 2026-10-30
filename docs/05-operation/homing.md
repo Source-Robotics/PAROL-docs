@@ -21,6 +21,18 @@ after a collision, a stall or any move by hand.
 
 The firmware runs the sequence; the PC only starts it and watches.
 
+```mermaid
+flowchart TD
+    S([Home]) --> A[Joints 1, 2 and 3 drive together to their sensor and switches]
+    A --> B[Each backs off a few hundred steps and approaches again slowly:<br>the second trigger is the reference]
+    B --> C[Joints 1, 2 and 3 move to their standby positions]
+    C --> D[Joint 4: the same against its inductive sensor, then standby]
+    D --> E[Joint 6 turns in the negative direction until its sensor sees the pin,<br>backs off, re-approaches, moves on so that joint 5 can home]
+    E --> F[Joint 5 homes against its switch]
+    F --> G[Joints 5 and 6 move to standby together]
+    G --> H([Every counter set to its standby value: six joints homed])
+```
+
 1. **Joints 1, 2 and 3 move together** toward their switches: joint 1 to its inductive sensor, joints 2 and 3 to
    their limit switches. Each stops when it triggers.
 2. Each backs off a few hundred steps and approaches again slowly, and the position where it triggers the second

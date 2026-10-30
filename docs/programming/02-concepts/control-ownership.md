@@ -3,6 +3,25 @@
 Only one program can own the control board, and inside the Python API only one source can drive the arm at a
 time. Knowing who is in charge saves confusion and collisions.
 
+```mermaid
+flowchart LR
+    subgraph Clients
+        G[GUI]
+        P[Your script]
+    end
+    subgraph Controller["Controller: one owner of the arm"]
+        Q["Planned queue: move_*, home, tools, in order"]
+        S["Streamed motion: jog_*, servo_*, at once"]
+    end
+    B[Control board]
+    G --> Q
+    P --> Q
+    P --> S
+    S -. cancels .-> Q
+    Q --> B
+    S --> B
+```
+
 ## One host on the serial port
 
 The control board executes whatever packets arrive on its USB port. The commander software and the Python API's

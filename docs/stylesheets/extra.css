@@ -250,3 +250,24 @@
 
 /* The "Copy this page as Markdown" button sits with the edit and view buttons */
 .md-copy-md svg { fill: currentcolor; }
+
+/* The small calculators on the technical pages (docs/javascripts/*-calculator.js) */
+.calc {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.2rem;
+  padding: 0.8rem 1rem 0.2rem 1rem;
+  margin: 1rem 0;
+  background: var(--md-code-bg-color);
+}
+.calc__row { margin: 0.3rem 0 0.6rem 0; }
+.calc__row label { display: block; font-size: 0.7rem; color: var(--md-default-fg-color--light); }
+.calc__row--inline label { display: inline-block; margin-right: 0.4rem; }
+.calc__row input[type=range] { width: 100%; accent-color: var(--md-accent-fg-color); }
+.calc__row input[type=number], .calc__row select {
+  width: 6rem; margin-right: 1.2rem; padding: 0.15rem 0.3rem; font: inherit; font-size: 0.75rem;
+  color: var(--md-default-fg-color); background: var(--md-default-bg-color);
+  border: 1px solid var(--md-default-fg-color--lighter); border-radius: 0.15rem;
+}
+.calc__row select { width: auto; }
+.calc__result { font-size: 0.8rem; margin: 0.4rem 0 0.8rem 0; }
+.calc__result strong { color: var(--md-accent-fg-color); }
