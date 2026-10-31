@@ -6,6 +6,14 @@ and shown in the [video playlist](https://www.youtube.com/playlist?list=PLSueoDr
 Read the whole manual once before you start: some steps cannot be undone without taking the joint apart again.
 This page lists what to get right.
 
+## The building instructions
+
+<object data="../../assets/pdf/PAROL6_building_instructions.pdf#view=FitH&amp;navpanes=0" type="application/pdf" width="100%" height="820">
+  <p>Your browser does not show PDFs inline: <a href="../../assets/pdf/PAROL6_building_instructions.pdf">download the building instructions (PDF, 8 MB)</a>.</p>
+</object>
+
+[Download the building instructions (PDF, 8 MB)](../assets/pdf/PAROL6_building_instructions.pdf){ .md-button }
+
 ## Order
 
 Base and joint 1, shoulder and joint 2, upper arm and joint 3, elbow and joint 4, forearm and joint 5, wrist and
