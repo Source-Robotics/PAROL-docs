@@ -7,7 +7,7 @@ before the first power-on, and have everyone who works at the robot read it.
 !!! danger
     The project's [Safety Warning and Disclaimer](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/blob/main/SAFETY_WARNING_AND_DISCLAIMER.md)
     applies to everything on this site: the hardware, the firmware, the software and this documentation are
-    provided as they are, without warranty, and you build, modify and operate the robot at your own risk.
+    under development, and you build, modify and operate the robot at your own risk.
 
 ## In this chapter
 

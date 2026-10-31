@@ -13,6 +13,8 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import shutil
+import subprocess
 import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -24,7 +26,7 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "docs" / "assets" / "models" / "parol6"
 URDF = Path("PAROL6_URDF") / "parol6" / "urdf" / "parol6.urdf"
 MESHES = Path("PAROL6_URDF") / "parol6" / "meshes"
-MAX_FACES = 12000          # the URDF meshes have up to 60 000 faces each: too many for a landing page
+MAX_FACES = 20000          # the URDF meshes have up to 60 000 faces each: too many for a landing page
 COLOURS = {"body": {"Grey": "#c9c9c6", "Black": "#1a1a1a", "White": "#f2f2f0", "Orange": "#f08a24"}}
 
 
@@ -54,6 +56,22 @@ def material(hex_colour: str):
     rgb = [int(hex_colour[i:i + 2], 16) for i in (1, 3, 5)]
     return trimesh.visual.TextureVisuals(material=trimesh.visual.material.PBRMaterial(
         baseColorFactor=rgb + [255], metallicFactor=0.0, roughnessFactor=0.65, doubleSided=True))
+
+
+def compress(path: Path) -> str:
+    """Meshopt compression with gltfpack (Node.js): the file shrinks to a fraction, the browser decodes it with
+    three.js's MeshoptDecoder. Named nodes are kept (-kn). Without Node.js the file stays as trimesh wrote it,
+    which the viewer reads as well."""
+    exe = os.environ.get("GLTFPACK") or shutil.which("gltfpack")
+    npx = shutil.which("npx")
+    cmd = [exe] if exe else ([npx, "--yes", "gltfpack@1.3.0"] if npx else None)
+    if not cmd:
+        print(f"note: no gltfpack (Node.js); {path.name} left uncompressed")
+        return "uncompressed"
+    packed = path.with_name(path.stem + ".packed.glb")
+    subprocess.run(cmd + ["-i", str(path), "-o", str(packed), "-cc", "-kn"], check=True, capture_output=True)
+    packed.replace(path)
+    return "meshopt"
 
 
 def main(argv=None) -> int:
@@ -107,9 +125,12 @@ def main(argv=None) -> int:
         "colors": COLOURS, "default": {"body": COLOURS["body"]["Grey"], "q_deg": [0.0] * len(joints)},
         "camera": {"azimuth_deg": -40, "polar_deg": 65, "fill": 1.15},
     }
+    packed = {f.name: compress(f) for f in sorted(OUT.glob("*.glb"))}
+    sizes_after = {f.name: f.stat().st_size // 1024 for f in sorted(OUT.glob("*.glb"))}
     (OUT / "viewer.json").write_text(json.dumps(config, indent=1) + "\n", encoding="utf-8")
     print(f"wrote {OUT.relative_to(ROOT)}: " + ", ".join(f"{k} {a}->{b} faces {kb} KB" for k, (a, b, kb) in sizes.items())
           + f"; {len(joints)} joints from {config['root']}")
+    print("after compression: " + ", ".join(f"{k} {v} KB ({packed[k]})" for k, v in sizes_after.items()))
     return 0
 
 

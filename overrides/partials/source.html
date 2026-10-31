@@ -1,9 +1,11 @@
 {#-
-  The repository card in the header, per document: extra.repos in mkdocs.yml maps a page-URL prefix to a
-  repository (the arm's repo inside the PAR6 manual, the runtime's inside the box / programming / dashboard
-  manuals, ...); anything unmapped shows the docs repository (repo_url). The theme fetches stars, forks and the
-  latest release tag for the card's href and caches them per browser session, so the cache is dropped whenever
-  the card points somewhere else than last time.
+  The repositories in the header (and at the top of the navigation drawer on a phone), two of them:
+
+  - on top, the repository of what the page documents: extra.repos in mkdocs.yml maps a page-URL prefix to a
+    repository (the product's for the manual, the Python library's for the guides, ...). The theme fetches its
+    stars, forks and latest release and caches them per browser session, so the cache is dropped whenever the
+    card points somewhere else than last time.
+  - under it, the repository of this documentation (repo_url): where a page is edited and a mistake reported.
 -#}
 {%- set ns = namespace(url=config.repo_url, name=config.repo_name) -%}
 {%- if page and config.extra.repos -%}
@@ -25,12 +27,22 @@
   } catch (e) {}
 })();
 </script>
-<a href="{{ ns.url }}" title="{{ lang.t('source') }}" class="md-source" data-md-component="source">
+<a href="{{ ns.url }}" title="The repository of what this page documents: {{ ns.name }}" class="md-source sr-repo sr-repo--product" data-md-component="source">
   <div class="md-source__icon md-icon">
     {% set icon = config.theme.icon.repo or "fontawesome/brands/git-alt" %}
     {% include ".icons/" ~ icon ~ ".svg" %}
   </div>
   <div class="md-source__repository">
-    {{ ns.name }}
+    {{ ns.name.split("/")[-1] }}
   </div>
 </a>
+{%- if ns.url != config.repo_url %}
+<a href="{{ config.repo_url }}" title="The repository of this documentation: {{ config.repo_name }}. Edit a page or report a mistake there." class="md-source sr-repo sr-repo--docs">
+  <div class="md-source__icon md-icon">
+    {% include ".icons/material/book-open-page-variant-outline.svg" %}
+  </div>
+  <div class="md-source__repository">
+    {{ config.repo_name.split("/")[-1] }}
+  </div>
+</a>
+{%- endif %}
