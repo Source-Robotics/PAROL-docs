@@ -93,8 +93,7 @@ only on those pages): turn and zoom, a slider per joint within its limits, the c
 Run the tool again when the URDF changes.
 
 `hooks/llms.py` writes, at every build, a Markdown twin of every page next to its HTML (`…/index.md`), `llms.txt`
-(an index of the twins by tab) and `llms-full.txt` (every page in one file), with the links absolute to the
-published version (`extra.llms_base`). The "Copy this page as Markdown" button in the page header reads the twin.
+(an index of the twins by tab) and `llms-full.txt` (every page in one file), with links pinned to the documented release (including when publishing with mike). The "Copy this page as Markdown" button in the page header reads the twin.
 
 The "Last update" date under every page comes from the `git-revision-date-localized` plugin (the page's last
 commit; the CI checks out the whole history for it). The calculator on Drives, ratios and resolution is
@@ -183,3 +182,8 @@ By contributing you agree that your contribution is published under these licens
 A small fix can be made from the browser: every page ends with a link to edit it on GitHub. For anything larger,
 open an issue first, then a pull request. The *Contributing* page on the site has the house rules. Questions about
 the robot itself go to the product repository's issue tracker.
+
+## Checking the page features
+
+`python tools/test_site_features.py` checks release-pinned Markdown asset links, the prefilled issue body,
+and the syntax of Python examples without running them or connecting to hardware. The CI build runs it.

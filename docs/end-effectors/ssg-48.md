@@ -54,7 +54,7 @@ not move before that.
 
 === "Python API"
     ```python
-    rbt.select_tool("SSG-48"                              # or variant_key="pinch")
+    rbt.select_tool("SSG-48")                             # or add variant_key="pinch"
     rbt.tool.calibrate()                                   # queued; lasts a few seconds
     rbt.tool.set_position(0.8, speed=0.5, current=0.4)     # fractions of the ranges
     rbt.tool.close(current=0.6)

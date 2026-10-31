@@ -46,6 +46,9 @@ firmware: upload the main firmware first ([Firmware](board/08-firmware.md)).
 
 Read in more detail: [First power-on](04-installation/first-power-on.md) · [Switching on and off](05-operation/switching-on-off.md).
 
+**Check:** six drivers initialise and the arm supports itself before you let go. If it does not, use
+[First power-on: if nothing happens](04-installation/first-power-on.md#if-nothing-happens).
+
 ## 5. Start the software
 
 === "Commander software"
@@ -65,6 +68,9 @@ Read in more detail: [First power-on](04-installation/first-power-on.md) · [Swi
     ```
 
 Read in more detail: [The commander software](gui/commander/index.md) · [The Python API](programming/03-python-api/index.md).
+
+**Check:** Commander shows incoming robot data, or `ping()` reports `hardware_connected=1`. If it does not,
+use [Communication troubleshooting](08-troubleshooting/communication.md).
 
 ## 6. Jog each joint
 
@@ -87,6 +93,9 @@ then 4, then 6, then 5, and the arm ends in the standby pose with joint 1 turned
 that grinds at its end stop has a switch that does not trigger.
 
 Read in more detail: [Homing](05-operation/homing.md) · [Homing failures](08-troubleshooting/homing-failures.md).
+
+**Check:** homing finishes, the physical arm matches the simulator, and the witness marks agree. If a joint
+keeps travelling or the pose is wrong, stop and use [Homing failures](08-troubleshooting/homing-failures.md).
 
 ## 8. Move it
 

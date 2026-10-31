@@ -37,7 +37,9 @@ jobs:
       - name: Libraries for the social cards (Cairo, as Material for MkDocs documents)
         run: sudo apt-get update -q && sudo apt-get install -y -q libcairo2-dev libfreetype6-dev libffi-dev libjpeg-dev libpng-dev libz-dev
       - run: pip install -r requirements.txt
-      - run: python tools/test_tools.py
+      - run: |
+          python tools/test_tools.py
+          python tools/test_site_features.py
       - run: mkdocs build --strict
         env:
           ENABLE_SOCIAL: "true"

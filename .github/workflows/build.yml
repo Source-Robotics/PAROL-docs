@@ -20,5 +20,7 @@ jobs:
           python-version: "3.11"
           cache: pip
       - run: pip install -r requirements.txt
-      - run: python tools/test_tools.py
+      - run: |
+          python tools/test_tools.py
+          python tools/test_site_features.py
       - run: mkdocs build --strict

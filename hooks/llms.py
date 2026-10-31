@@ -6,19 +6,20 @@ links made absolute. /llms.txt indexes the twins by tab, with each page's first 
 every page in one file, in the order of the navigation. The "Copy this page as Markdown" button in the page header
 (docs/javascripts/copy-markdown.js) reads the twin.
 
-The absolute links point at the published version named by extra.llms_base ("latest/" unless set), since mike
-publishes each build under its version. Registered last in mkdocs.yml under `hooks:`, after the hooks that write
+The absolute links stay pinned to the release in versions.yml (or MIKE_DOCS_VERSION during publishing).
+The mike plugin may already have appended that release to site_url; never append it twice. Registered last in mkdocs.yml under `hooks:`, after the hooks that write
 the version box and the reference pages, so that it sees their output.
 """
 from __future__ import annotations
 
+import os
 import posixpath
 import re
 from pathlib import Path
 
 SNIPPET_RE = re.compile(r'^--8<--\s+"([^"]+)"\s*$', re.M)
 PAGE_LINK_RE = re.compile(r"\]\((?!https?://|mailto:|#|/)([^)\s]+?\.md)(#[^)]*)?\)")
-FILE_LINK_RE = re.compile(r"\]\((?!https?://|mailto:|#|/)([^)\s]+?\.(?:png|jpe?g|svg|gif|pdf|glb|json|yml|csv))(?:#[^)]*)?\)", re.I)
+FILE_LINK_RE = re.compile(r"\]\((?!https?://|mailto:|#|/)([^)\s]+?\.(?:png|jpe?g|webp|avif|svg|gif|pdf|glb|json|ya?ml|csv|dbc))(?:#[^)]*)?\)", re.I)
 ATTR_RE = re.compile(r"\{\s*[.#:][^}]*\}")
 COMMENT_RE = re.compile(r"<!--.*?-->", re.S)
 
@@ -27,8 +28,17 @@ _pages: dict[str, dict] = {}     # src_uri -> {title, url, markdown}
 
 def base_url(config) -> str:
     site = str(config.site_url).rstrip("/") + "/"
-    sub = str((config.extra or {}).get("llms_base", "latest/")).strip("/")
-    return site + (sub + "/" if sub else "")
+    sub = str(os.environ.get("MIKE_DOCS_VERSION") or (config.extra or {}).get("docs_version") or "").strip("/")
+    # mike already appends the version to site_url; plain mkdocs builds do not.
+    if sub and not site.rstrip("/").endswith("/" + sub):
+        site += sub + "/"
+    return site
+
+
+def on_config(config):
+    _pages.clear()
+    config.extra["docs_base_url"] = base_url(config)
+    return config
 
 
 def page_url(src: str) -> str:
