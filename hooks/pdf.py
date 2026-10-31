@@ -11,15 +11,19 @@ published version next to the pages), a local build sets it on demand:
 
 The file is site/<extra.pdf.file>; the page-help line of every page links it while the hook is on. Chrome is
 found through CHROME_BIN or the usual places (google-chrome on the runners). The print page is rendered in the
-light scheme for paper, and the cookie banner is removed before printing.
+light scheme for paper, and the cookie banner is removed before printing. Chrome loads it from a local web server
+on a free port for the length of the print: opened as a file, the page never draws its diagrams.
 """
 from __future__ import annotations
 
+import functools
+import http.server
 import io
 import os
 import shutil
 import subprocess
 import sys
+import threading
 from pathlib import Path
 
 CANDIDATES = ["google-chrome", "google-chrome-stable", "chromium-browser", "chromium", "chrome",
@@ -111,12 +115,20 @@ def on_post_build(config):
     paper.write_text(html, encoding="utf-8")
     out = site / pdf["file"]
     out.parent.mkdir(parents=True, exist_ok=True)
+    class Quiet(http.server.SimpleHTTPRequestHandler):
+        def log_message(self, *args):
+            pass
+    server = http.server.ThreadingHTTPServer(("127.0.0.1", 0), functools.partial(Quiet, directory=str(site)))
+    threading.Thread(target=server.serve_forever, daemon=True).start()
+    url = f"http://127.0.0.1:{server.server_address[1]}/print_page/paper.html"
     cmd = [exe, "--headless=new", "--disable-gpu", "--no-sandbox", "--no-pdf-header-footer", "--hide-scrollbars",
-           "--run-all-compositor-stages-before-draw", "--virtual-time-budget=60000",
-           f"--print-to-pdf={out}", paper.resolve().as_uri()]
+           "--run-all-compositor-stages-before-draw", "--virtual-time-budget=60000", "--generate-pdf-document-outline",
+           f"--print-to-pdf={out}", url]
     try:
         subprocess.run(cmd, check=True, timeout=600, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     finally:
+        server.shutdown()
+        server.server_close()
         paper.unlink(missing_ok=True)
     printed = out.stat().st_size // 1024
     note = shrink(out)
