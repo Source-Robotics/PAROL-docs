@@ -1,5 +1,8 @@
 """The PDF of the manual: prints the print-site plugin's page (every chapter in order, a cover and a table of
-contents) with headless Chrome, so that the PDF looks like the site, diagrams and tables included.
+contents) with headless Chrome, so that the PDF looks like the site, diagrams and tables included. Chrome keeps
+every picture uncompressed at full size, so the file is then shrunk with PyMuPDF: the pictures recompressed as
+JPEG at print size (transparent ones on white, as on paper), the objects packed. That takes a manual from tens
+of MB to a few.
 
 Runs only when the environment variable DOCS_PDF is set: the CI sets it for the publish (the PDF lands in the
 published version next to the pages), a local build sets it on demand:
@@ -12,6 +15,7 @@ light scheme for paper, and the cookie banner is removed before printing.
 """
 from __future__ import annotations
 
+import io
 import os
 import shutil
 import subprocess
@@ -22,6 +26,8 @@ CANDIDATES = ["google-chrome", "google-chrome-stable", "chromium-browser", "chro
               r"C:\Program Files\Google\Chrome\Application\chrome.exe",
               r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
               "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"]
+PICTURE_PX = 1600      # the long side of a picture in the PDF: about 240 dpi across a page's text width
+JPEG_QUALITY = 80
 
 
 def enabled() -> bool:
@@ -38,6 +44,44 @@ def chrome() -> str | None:
         if found:
             return found
     return None
+
+
+def shrink(path: Path) -> str:
+    """Recompress the pictures of the PDF at path as JPEG of at most PICTURE_PX and pack its objects, in place."""
+    try:
+        import fitz                     # PyMuPDF
+        from PIL import Image
+    except ImportError:
+        return "not shrunk: PyMuPDF is not installed"
+    doc = fitz.open(path)
+    done = set()
+    for page in doc:
+        for xref, smask, width, height, *_, codec in (i[:9] for i in page.get_images(full=True)):
+            if xref in done:
+                continue
+            done.add(xref)
+            small = max(width, height) <= PICTURE_PX
+            if not smask and small and (codec == "DCTDecode" or len(doc.xref_stream_raw(xref)) < 40_000):
+                continue                # already a JPEG of print size, or a small icon
+            pix = fitz.Pixmap(doc, xref)
+            if smask:
+                pix = fitz.Pixmap(pix, fitz.Pixmap(doc, smask))
+            if pix.colorspace and pix.colorspace.n not in (1, 3):
+                pix = fitz.Pixmap(fitz.csRGB, pix)
+            mode = {1: "L", 2: "LA", 3: "RGB", 4: "RGBA"}[pix.n]
+            picture = Image.frombytes(mode, (pix.width, pix.height), pix.samples).convert("RGBA")
+            paper = Image.new("RGBA", picture.size, "white")
+            paper.alpha_composite(picture)
+            picture = paper.convert("RGB")
+            picture.thumbnail((PICTURE_PX, PICTURE_PX))
+            jpeg = io.BytesIO()
+            picture.save(jpeg, "JPEG", quality=JPEG_QUALITY, optimize=True)
+            page.replace_image(xref, stream=jpeg.getvalue())
+    packed = path.with_name(path.stem + ".packed.pdf")
+    doc.save(packed, garbage=4, deflate=True, use_objstms=1)
+    doc.close()
+    packed.replace(path)
+    return f"{len(done)} pictures checked"
 
 
 def on_config(config):
@@ -74,4 +118,6 @@ def on_post_build(config):
         subprocess.run(cmd, check=True, timeout=600, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     finally:
         paper.unlink(missing_ok=True)
-    print(f"pdf: {out.relative_to(site)} ({out.stat().st_size // 1024} KB)")
+    printed = out.stat().st_size // 1024
+    note = shrink(out)
+    print(f"pdf: {out.relative_to(site)} ({printed} KB printed, {out.stat().st_size // 1024} KB shrunk; {note})")
