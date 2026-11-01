@@ -3,7 +3,7 @@
 | Parameter | Value |
 |---|---|
 | Degrees of freedom | 6 revolute joints |
-| Reach | 400 mm with the standard pneumatic gripper |
+| Reach | 408 mm to the flange, 434 mm to the standard pneumatic gripper's TCP, from the axis of joint 1 |
 | Payload | 1 kg near the base, 0.5 kg across the full workspace |
 | Repeatability | 0.1 mm |
 | Weight | 5.5 kg |

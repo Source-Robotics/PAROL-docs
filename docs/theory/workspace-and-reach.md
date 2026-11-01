@@ -2,8 +2,9 @@
 
 ## Reach
 
-The furthest the tool centre point gets from the axis of joint 1: 400 mm with the standard pneumatic gripper,
-about 338 mm to the flange. A longer tool reaches further and weighs on joints 4 and 5.
+The furthest the flange centre gets from the axis of joint 1, within the [joint limits](../03-technical-data/joint-limits.md):
+408 mm. The standard pneumatic gripper's tool centre point gets to 434 mm. A longer tool reaches further and
+weighs on joints 4 and 5.
 
 ## Workspace
 

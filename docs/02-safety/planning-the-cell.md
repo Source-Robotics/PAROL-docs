@@ -10,8 +10,8 @@ E-stop is within that person's reach, and so is the power supply's switch.
 
 ## The space
 
-- The arm's reach, 400 mm from the axis of joint 1 plus the tool, and a margin for the elbow, which swings
-  behind the base when the arm folds: a sphere of about half a metre.
+- The arm's reach, 408 mm from the axis of joint 1 to the flange, plus the tool, and a margin for the elbow, which
+  swings behind the base when the arm folds: a sphere of about half a metre.
 - Nothing fragile inside it, and nothing that the arm could knock onto the floor.
 - The cables and tubes outside the sweep, or fixed so the arm cannot catch them.
 - For a robot that runs unattended or near others, an enclosure: acrylic panels on the profile frame are enough

@@ -1,6 +1,6 @@
 # 1. Overview
 
-PAROL6 is a 3D-printed six-axis desktop robotic arm with a 400 mm reach and a 1 kg payload, built to work like an
+PAROL6 is a 3D-printed six-axis desktop robotic arm with a 408 mm reach and a 1 kg payload, built to work like an
 industrial arm in its mechanics, its control software and the way you use it. Everything about it is open source:
 the printable parts, the bill of materials, the control board's firmware, the commander software and the Python
 API. You can buy it assembled or as a kit, or print and build one from the published files.
