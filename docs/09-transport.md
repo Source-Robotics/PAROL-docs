@@ -7,6 +7,9 @@
 2. Switch off with the forearm held; unplug the supply, the USB and the E-stop.
 3. Carry it by the base, not by the arm.
 
+![The parked pose: the arm folded in over the base](assets/figures/parol6_parked.webp#only-light){ width="420" }
+![The parked pose: the arm folded in over the base](assets/figures/parol6_parked_dark.webp#only-dark){ width="420" }
+
 ## Packing
 
 Fold the arm as above, put foam under the joint 3 limit switch so that the forearm rests on it and not on the

@@ -8,6 +8,14 @@ weighs on joints 4 and 5.
 
 ## Workspace
 
+![Where the flange centre can go in the arm's plane, within the joint limits, in mm](../assets/figures/parol6_workspace.webp#only-light){ width="760" }
+![Where the flange centre can go in the arm's plane, within the joint limits, in mm](../assets/figures/parol6_workspace_dark.webp#only-dark){ width="760" }
+
+The shaded region is everywhere the centre of the flange can go in the plane of the arm, within the joint limits
+of the robot's model; the dotted line is the same for the wrist centre. It reaches 408 mm in front of the joint 1
+axis and 359 mm behind it, 523 mm above the mounting surface and 25 mm below it. A tool adds its own length. The
+region is computed from the limits only: the arm's own parts, the tool and the table can block some of it.
+
 The volume the tool can reach. The **reachable workspace** is every point it can touch with some orientation: a
 near-sphere of the reach, minus the base, minus the volume behind the elbow that the limits of joints 2 and 3
 exclude. The **dexterous workspace** is the part of it where the tool can take any orientation, much smaller,

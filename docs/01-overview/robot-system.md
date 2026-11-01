@@ -13,6 +13,22 @@ ends in a flange with the robot's tool connections next to it: an M8 connector f
 pneumatic lines. Each joint has a limit switch or an inductive sensor that gives it a reference when the robot
 homes.
 
+![PAROL6 with the pneumatic gripper, its parts numbered](../assets/figures/parol6_parts.webp#only-light){ width="760" }
+![PAROL6 with the pneumatic gripper, its parts numbered](../assets/figures/parol6_parts_dark.webp#only-dark){ width="760" }
+
+1. Base, with the control board inside
+2. Joint 1 motor
+3. Shoulder, turned by joint 1
+4. Joint 2 motor
+5. Upper arm
+6. Joint 3 motor
+7. Elbow
+8. Forearm, also called the lower arm, turned by joint 4
+9. Wrist, turned by joint 5
+10. Flange, turned by joint 6
+11. Air fittings for a pneumatic tool
+12. Gripper, here the standard pneumatic gripper
+
 The arm has no brakes and no joint encoders. The motors hold the arm while they are powered; the position is
 counted in steps from the homing reference. Both facts shape how the robot is used, and the
 [Safety](../02-safety/index.md) chapter returns to them.

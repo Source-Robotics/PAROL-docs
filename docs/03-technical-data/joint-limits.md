@@ -20,7 +20,8 @@ stands square to the base, and the software reports the standby pose as follows.
 |---|---|---|---|---|---|
 | 90° (0° in the DH table) | −90° | 180° | 0° | 0° | 180° |
 
-![The standby pose](../assets/Joints.webp){ width="500" }
+![The standby pose, from the front and from the side, with the joints marked](../assets/figures/parol6_standby.webp#only-light){ width="900" }
+![The standby pose, from the front and from the side, with the joints marked](../assets/figures/parol6_standby_dark.webp#only-dark){ width="900" }
 
 ## Limits
 
