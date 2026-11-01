@@ -1,7 +1,9 @@
-/* The arm viewer: a three.js view of the robot that tools/build_model.py writes from the URDF (one GLB per link,
-   viewer.json with the kinematic chain). The reader turns and zooms the robot, moves every joint with a slider
-   within its limits, and picks the colour of the printed parts. Loaded as a module by arm-viewer-loader.js only
-   on a page that has an .arm-viewer element; three.js comes from the import map in overrides/main.html. */
+/* The arm viewer: a three.js view of the robot that tools/build_model.py writes from the URDFs (one GLB per arm
+   link, one per tool, viewer.json with the kinematic chain and the list of tools). The reader turns and zooms the
+   robot, moves every joint with a slider within its limits, chooses the tool on the flange (loaded the first time
+   it is chosen) and picks the colour of the printed parts: the meshes under a node named <part>__body. Motors,
+   jaws and the rest keep the model's colours. Loaded as a module by arm-viewer-loader.js only on a page that has
+   an .arm-viewer element; three.js comes from the import map in overrides/main.html. */
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
@@ -13,6 +15,7 @@ async function mount(el) {
   el.dataset.ready = "1";
   const base = new URL(el.dataset.base, window.location.href).href;
   const cfg = await (await fetch(base + "viewer.json")).json();
+  const q = (n) => el.querySelector("[name=" + n + "]");
   const canvas = el.querySelector("canvas");
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
@@ -45,22 +48,75 @@ async function mount(el) {
     frames[j.child] = link;
     return { cfg: j, node: link, axis: new THREE.Vector3().fromArray(j.axis).normalize(), deg: 0 };
   });
-  const state = { color: cfg.default.body, meshes: [] };
+  const tools = cfg.tools || [];
+  const defaultTool = tools.length ? (cfg.default.tool || tools[0].id) : null;
+  const toolFrame = frames[cfg.tool_link] || frames[cfg.joints[cfg.joints.length - 1].child];
+  const suffix = cfg.body_suffix || "__body";
+  const state = { color: cfg.default.body, bodies: [], tool: null, wanted: null };
 
-  function paint(hex) {
-    state.color = hex;
-    for (const obj of state.meshes) obj.traverse((o) => {
-      if (o.isMesh) {
-        if (!o.userData.own) { o.material = o.material.clone(); o.userData.own = true; }
-        o.material.color.set(hex);
+  // a printed part is a mesh under a node named <part>__body; it gets a material of its own, so that the new
+  // colour reaches the printed parts only (the arm's and every tool's loaded so far)
+  function adopt(obj) {
+    obj.traverse((o) => {
+      if (!o.isMesh) return;
+      let body = false;
+      for (let n = o; n && !body; n = n.parent) body = n.name.endsWith(suffix);
+      if (body) {
+        o.material = o.material.clone();
+        o.material.color.set(state.color);
+        state.bodies.push(o);
       }
     });
+    return obj;
+  }
+  function paint(hex) {
+    state.color = hex;
+    for (const o of state.bodies) o.material.color.set(hex);
   }
   function setJoint(i, deg) {
     const j = joints[i];
     j.deg = deg;
     j.node.quaternion.setFromAxisAngle(j.axis, (deg * Math.PI) / 180);
   }
+
+  // the tools: each file is fetched the first time it is chosen and kept
+  const select = q("tool");
+  const toolCache = new Map();
+  function loadTool(id) {
+    if (!toolCache.has(id)) {
+      const t = tools.find((x) => x.id === id);
+      const p = t ? load(t.file).then(adopt) : Promise.reject(new Error("no tool " + id));
+      p.catch(() => toolCache.delete(id));     // a failed load is tried again on the next choice
+      toolCache.set(id, p);
+    }
+    return toolCache.get(id);
+  }
+  async function setTool(id) {
+    state.wanted = id;
+    if (select) select.value = id;
+    let obj = null;
+    try { obj = await loadTool(id); } catch (e) { console.error("arm viewer: tool " + id, e); }
+    if (state.wanted !== id) return;           // the reader chose another tool while this one loaded
+    if (!obj) {                                // keep the tool on the flange, and say so in the list
+      state.wanted = state.tool ? state.tool.id : null;
+      if (select && state.tool) select.value = state.tool.id;
+      return;
+    }
+    if (state.tool) toolFrame.remove(state.tool.obj);
+    toolFrame.add(obj);
+    state.tool = { id, obj };
+  }
+  if (select) {
+    for (const t of tools) {
+      const option = document.createElement("option");
+      option.value = t.id;
+      option.textContent = t.label;
+      select.appendChild(option);
+    }
+    if (!tools.length) select.closest("label").hidden = true;
+    select.addEventListener("change", () => setTool(select.value));
+  }
+
   function frame() {
     const box = new THREE.Box3().setFromObject(root);
     const size = box.getSize(new THREE.Vector3()).length();
@@ -72,17 +128,14 @@ async function mount(el) {
     controls.update();
   }
 
-  await Promise.all(cfg.links.map(async (l) => {
-    const obj = await load(l.file);
-    frames[l.name].add(obj);
-    state.meshes.push(obj);
-  }));
-  paint(cfg.default.body);
+  await Promise.all([
+    ...cfg.links.map(async (l) => { frames[l.name].add(adopt(await load(l.file))); }),
+    defaultTool ? setTool(defaultTool) : null,
+  ]);
   joints.forEach((j, i) => setJoint(i, cfg.default.q_deg[i] || 0));
   frame();
 
-  // the controls
-  const q = (n) => el.querySelector("[name=" + n + "]");
+  // the joint sliders, the colours, Reset
   const box = el.querySelector(".arm-viewer__joints");
   const sliders = [];
   if (box) {
@@ -94,7 +147,8 @@ async function mount(el) {
       const value = document.createElement("output");
       value.textContent = j.deg.toFixed(0) + "°";
       const input = document.createElement("input");
-      input.type = "range"; input.min = j.cfg.lower_deg; input.max = j.cfg.upper_deg; input.step = 1; input.value = j.deg;
+      // whole degrees inside the limits, so that every step and 0 fall on the slider's grid
+      input.type = "range"; input.min = Math.ceil(j.cfg.lower_deg); input.max = Math.floor(j.cfg.upper_deg); input.step = 1; input.value = j.deg;
       input.setAttribute("aria-label", "Joint " + (i + 1));
       input.addEventListener("input", () => { setJoint(i, parseFloat(input.value)); value.textContent = input.value + "°"; });
       label.append(text, value, input);
@@ -116,9 +170,10 @@ async function mount(el) {
   }
   if (input) { input.value = state.color; input.addEventListener("input", () => apply(input.value)); }
   const reset = q("reset");
-  if (reset) reset.addEventListener("click", () => {
+  if (reset) reset.addEventListener("click", async () => {
     joints.forEach((j, i) => { setJoint(i, cfg.default.q_deg[i] || 0); if (sliders[i]) { sliders[i].input.value = j.deg; sliders[i].value.textContent = j.deg.toFixed(0) + "°"; } });
     apply(cfg.default.body);
+    if (defaultTool) await setTool(defaultTool);
     frame();
     controls.autoRotate = true;
   });

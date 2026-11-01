@@ -1,5 +1,6 @@
 {
  "source": "robot_descriptions/urdf/parol6_description/parol6_flange.urdf",
+ "version": "2.13.0",
  "links": [
   {
    "name": "base_link",
@@ -24,10 +25,6 @@
   {
    "name": "wrist_2_link",
    "file": "wrist_2_link.glb"
-  },
-  {
-   "name": "wrist_3_link",
-   "file": "wrist_3_link.glb"
   }
  ],
  "joints": [
@@ -172,6 +169,47 @@
  ],
  "root": "base_link",
  "up": "z",
+ "tool_link": "wrist_3_link",
+ "tools": [
+  {
+   "id": "flange",
+   "label": "Flange only",
+   "file": "tool_flange.glb",
+   "source": "parol6_flange.urdf"
+  },
+  {
+   "id": "pneumatic",
+   "label": "Pneumatic gripper",
+   "file": "tool_pneumatic.glb",
+   "source": "parol6_pneumatic.urdf"
+  },
+  {
+   "id": "ssg48",
+   "label": "SSG-48",
+   "file": "tool_ssg48.glb",
+   "source": "parol6_ssg48.urdf"
+  },
+  {
+   "id": "ssg48_stock",
+   "label": "SSG-48 fin-ray",
+   "file": "tool_ssg48_stock.glb",
+   "source": "parol6_ssg48_stock.urdf"
+  },
+  {
+   "id": "msg",
+   "label": "MSG",
+   "file": "tool_msg.glb",
+   "source": "parol6_msg.urdf"
+  },
+  {
+   "id": "msg_tpu_glue",
+   "label": "MSG soft jaws",
+   "file": "tool_msg_tpu_glue.glb",
+   "source": "parol6_msg_tpu_glue.urdf"
+  }
+ ],
+ "finger_m": 0.0,
+ "body_suffix": "__body",
  "colors": {
   "body": {
    "Grey": "#c9c9c6",
@@ -182,6 +220,7 @@
  },
  "default": {
   "body": "#c9c9c6",
+  "tool": "pneumatic",
   "q_deg": [
    0.0,
    0.0,

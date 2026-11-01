@@ -4,11 +4,13 @@
   <canvas class="arm-viewer__canvas" aria-label="PAROL6 in 3D: drag to turn, scroll to zoom"></canvas>
   <div class="arm-viewer__controls">
     <div class="arm-viewer__joints"></div>
+    <label class="arm-viewer__field">Gripper <select name="tool"></select></label>
     <label class="arm-viewer__field">Printed parts <span class="arm-viewer__swatches" data-target="body"></span><input type="color" name="body" value="#c9c9c6" title="Any colour"></label>
     <button type="button" name="reset" class="md-button">Reset</button>
   </div>
-  <p class="arm-viewer__hint">Drag to turn the robot, scroll to zoom, move each joint with its slider, try a colour for the printed parts. The model is the
-robot's <a href="https://github.com/Source-Robotics/robot_descriptions/blob/main/guides/parol6.md">URDF</a>; the sliders run over its joint limits.</p>
+  <p class="arm-viewer__hint">Drag to turn the robot, scroll to zoom, move each joint with its slider, choose the gripper on the flange, try a
+colour for the printed parts (the motors stay black). The model is the robot's
+<a href="https://github.com/Source-Robotics/robot_descriptions/blob/main/guides/parol6.md">URDF</a>; the sliders run over its joint limits.</p>
 </div>
 
 ## Dimensions

@@ -86,14 +86,20 @@ changing the spreadsheet.
 
 ## The 3D model, the Markdown twins and the "Last update" dates
 
-`tools/build_model.py` builds `docs/assets/models/parol6/` from `urdf/parol6_description/parol6_flange.urdf` in a
+`tools/build_model.py` builds `docs/assets/models/parol6/` from the PAROL6 URDFs in `urdf/parol6_description/` of a
 clone of [robot_descriptions](https://github.com/Source-Robotics/robot_descriptions) (`--descriptions PATH`, else
-`../../projects/robot_descriptions`; needs `trimesh` with `fast-simplification`), the model the kinematics sheets
-come from: one file per moving link with its visual meshes merged, decimated for the web, and
-`viewer.json` with the kinematic chain. The landing and kinematics pages show them in the arm viewer
+`../../projects/robot_descriptions`; the system Python with `trimesh`, `fast-simplification` and `numpy`, and
+`gltfpack` through `npx` to compress the files when Node.js is installed), the models the kinematics sheets come
+from. The arm comes from `parol6_flange.urdf`, one GLB per moving link (the script first checks that all six variants
+carry the same arm). Each variant gives one tool, `tool_<id>.glb`: everything `wrist_3_link` carries, in that
+link's frame, with the fingers open. The tools are Flange only, Pneumatic gripper (the default), SSG-48, SSG-48
+fin-ray, MSG and MSG soft jaws. In every file the meshes are merged per material and decimated for the web: the
+printed parts (the URDF's structure colour) are the nodes named `<part>__body`, the only ones the reader recolours;
+motors, jaws and the aluminium pneumatic gripper keep the model's colours. `viewer.json` holds the kinematic chain,
+the tools and the defaults. The landing and kinematics pages show them in the arm viewer
 `docs/javascripts/arm-viewer.js` (three.js from a CDN, through the import map in `overrides/main.html`, loaded
-only on those pages): turn and zoom, a slider per joint within its limits, the colour of the printed parts.
-Run the tool again when the URDF changes.
+only on those pages): turn and zoom, a slider per joint within its limits, the gripper (each tool is fetched the
+first time it is chosen) and the colour of the printed parts. Run the script again when the URDFs change.
 
 `hooks/llms.py` writes, at every build, a Markdown twin of every page next to its HTML (`…/index.md`), `llms.txt`
 (an index of the twins by tab) and `llms-full.txt` (every page in one file), with links pinned to the documented release (including when publishing with mike). The "Copy this page as Markdown" button in the page header reads the twin.
