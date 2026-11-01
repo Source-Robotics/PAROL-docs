@@ -30,6 +30,16 @@ rbt.select_tool("VACUUM")
 rbt.select_tool("NONE")                            # the bare flange
 ```
 
+## Tool centre point
+
+The tool centre point (TCP) is a6 = 50.5 mm from the joint 6 centre along the tool axis and a7 = 0 mm to the side.
+With nothing on the flange, the TCP is the flange's reference point. The sheet is the robot's model from
+[robot_descriptions](https://github.com/Source-Robotics/robot_descriptions) (version 2.13.0) with every joint at 0.
+Tell the software about the tool ([Tools and the TCP](../programming/02-python-api/tools-and-tcp.md)); every tool
+is compared on [Dimensions and kinematics](../03-technical-data/kinematics.md).
+
+![PAROL6 with the flange only: dimensions to the TCP and the DH table](../assets/kinematics/parol6_flange.webp){ width="600" }
+
 ## Homing and the tool
 
 Joint 5 homes against a feature of the tool holder. The pneumatic gripper holder and the SSG-48's coupler

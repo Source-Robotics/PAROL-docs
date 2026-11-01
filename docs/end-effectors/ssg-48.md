@@ -34,6 +34,22 @@ the gripper; this page covers PAROL6.
 Leave the gripper's CAN node ID at 0 and its termination switch on: it is the last node on the robot's bus
 ([CAN bus](../06-peripherals/can-bus.md)).
 
+## Tool centre point
+
+The tool centre point (TCP) is a6 = 134.3 mm from the joint 6 centre along the tool axis and a7 = 0 mm to the side.
+The TCP lies on the joint 6 axis, with no sideways offset, for both jaw variants. The sheet is the robot's model
+from [robot_descriptions](https://github.com/Source-Robotics/robot_descriptions) (version 2.13.0) with every joint
+at 0. Tell the software about the tool ([Tools and the TCP](../programming/02-python-api/tools-and-tcp.md)); every
+tool is compared on [Dimensions and kinematics](../03-technical-data/kinematics.md).
+
+=== "Solid jaws"
+
+    ![PAROL6 with the SSG-48, solid jaws: dimensions to the TCP and the DH table](../assets/kinematics/parol6_ssg48.webp){ width="600" }
+
+=== "Fin-ray jaws"
+
+    ![PAROL6 with the SSG-48, fin-ray jaws: dimensions to the TCP and the DH table](../assets/kinematics/parol6_ssg48_stock.webp){ width="600" }
+
 ## The joint 5 homing offset
 
 Joint 5 homes against the tool, and the SSG-48's coupler sits differently from the pneumatic gripper holder. Set

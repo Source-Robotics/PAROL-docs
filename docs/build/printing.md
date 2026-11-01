@@ -18,13 +18,13 @@ rule.
 
 ## Print table
 
-The repository's [print table](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/blob/main/Print%20table/PR_EXCEL.xlsx) (`Print table/PR_EXCEL.xlsx`,
-also as a [PDF](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/blob/main/Print%20table/Print_table.pdf)), copied as it is: a row per part with the
-supports, infill, mass, print time, cooling, layer height, top and bottom layers and perimeters used on the
-reference robots. 0.2 mm layers, 3 perimeters, 6 top and 4 bottom layers, honeycomb infill and 15 % cooling
-throughout; PETG.
+The print table from the robot's repository, as it is. Every printed part with the settings it was printed with
+on the reference robots: supports, mass, infill, print time, cooling, layer height, top and bottom layers,
+perimeters. Click the table to enlarge it. The same table is in the repository as a
+[PDF](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/blob/main/Print%20table/Print_table.pdf) and as an
+[Excel file](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/blob/main/Print%20table/PR_EXCEL.xlsx).
 
---8<-- "generated/print_table.md"
+![The PAROL6 print table: part, position in the arm, supports, mass, infill type and percentage, print time, cooling, layer height, top and bottom layers, perimeters](../assets/print_table.webp){ width="1000" }
 
 Print the pulleys with high infill and slow outer walls: their teeth carry the load. Check the first printed
 pulley against a belt before printing the rest.

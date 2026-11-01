@@ -19,7 +19,7 @@ Python API in [PCrnjak/PAROL6-python-API](https://github.com/PCrnjak/PAROL6-pyth
 | `docs/includes/` | text shared by pages (glossary, symbols, abbreviations) and the data the reference pages are built from |
 | `docs/includes/generated/` | written by `tools/sync_api.py` from the Python API's release tag: `api_facts.json`, `api_release_notes.md`. Never edit |
 | `docs/build/bill-of-materials.md`, `docs/assets/bom/` | written by `tools/sync_bom.py` from the robot repository's `BOM/BOM.md` and its reference images. Never edit |
-| `docs/includes/generated/print_table.md` | written by `tools/sync_print_table.py` from the robot repository's `Print table/PR_EXCEL.xlsx`. Never edit |
+| `docs/assets/print_table.webp` | rendered by `tools/sync_print_table.py` from the robot repository's `Print table/Print_table.pdf`. Never edit |
 | `versions.yml` | every version fact: the PAROL6 release the site describes, the software versions, the manuals' numbers and revisions |
 | `compatibility.yml` | which control board, firmware, Python API, commander and gripper versions work together |
 | `hooks/` | `versions.py` writes the version facts into the pages; `api_pages.py` builds the Python API reference; `llms.py` writes the Markdown twin of every page, `llms.txt` and `llms-full.txt` |
@@ -79,9 +79,10 @@ python tools/sync_bom.py            # rewrite the page and the images from the c
 python tools/sync_bom.py --check    # exit 1 if the page is out of date
 ```
 
-The print table on `docs/build/printing.md` is the spreadsheet `Print table/PR_EXCEL.xlsx` of the same repository,
-sheet "3D printed parts stats", written to `docs/includes/generated/print_table.md` by `tools/sync_print_table.py`
-(needs `openpyxl`); the same `--repo` and `--check` options.
+The print table on `docs/build/printing.md` is the owner's sheet as an image: `tools/sync_print_table.py` renders
+`Print table/Print_table.pdf` of the same repository (exported from `PR_EXCEL.xlsx`) into `docs/assets/print_table.webp`,
+cropped to the table (needs PyMuPDF and Pillow); the same `--repo` and `--check` options. Export the PDF again after
+changing the spreadsheet.
 
 ## The 3D model, the Markdown twins and the "Last update" dates
 

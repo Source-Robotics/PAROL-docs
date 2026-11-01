@@ -32,6 +32,22 @@ covers the gripper; this page covers PAROL6.
 Leave the gripper's CAN node ID at 0 and its termination switch, reachable through the stepper cover, on: it is
 the last node on the robot's bus ([CAN bus](../06-peripherals/can-bus.md)).
 
+## Tool centre point
+
+The tool centre point (TCP) is a6 = 134.3 mm from the joint 6 centre along the tool axis and a7 = 28.35 mm to the
+side. Both jaw variants share one TCP: an operating point, not a measured grasp centre. The sheet is the robot's
+model from [robot_descriptions](https://github.com/Source-Robotics/robot_descriptions) (version 2.13.0) with every
+joint at 0. Tell the software about the tool ([Tools and the TCP](../programming/02-python-api/tools-and-tcp.md));
+every tool is compared on [Dimensions and kinematics](../03-technical-data/kinematics.md).
+
+=== "Solid jaws"
+
+    ![PAROL6 with the MSG, solid jaws: dimensions to the TCP and the DH table](../assets/kinematics/parol6_msg.webp){ width="600" }
+
+=== "Soft TPU jaws"
+
+    ![PAROL6 with the MSG, soft TPU jaws: dimensions to the TCP and the DH table](../assets/kinematics/parol6_msg_tpu_glue.webp){ width="600" }
+
 ## The joint 5 homing offset
 
 Joint 5 homes against the tool, and the MSG's ring cover is not the pneumatic gripper holder that the firmware's
