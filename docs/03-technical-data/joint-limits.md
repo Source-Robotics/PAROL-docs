@@ -21,17 +21,22 @@ stands square to the base, and the software reports the standby pose as follows.
 
 ## Limits
 
-The limits the software enforces, in degrees, as the robot reaches them after homing. Both the commander and the
-Python API refuse a target outside them.
+The joint limits of PAROL6's model in [robot_descriptions](https://github.com/Source-Robotics/robot_descriptions)
+(version 2.13.0), in degrees, in the angles the software shows (the standby pose above).
 
-| Joint | Negative limit | Standby | Positive limit | In motor steps (from standby) |
+| Joint | Negative limit | Standby | Positive limit | Range |
 |---|---|---|---|---|
-| J1 | −123.05° | 0° (DH) | +123.05° | −14000 to +14000 |
-| J2 | −145.01° | −90° | −3.38° | −51587 to −1200 |
-| J3 | 107.87° | 180° | 287.87° | 34700 to 92605 |
-| J4 | −105.47° | 0° | +105.47° | −7500 to +7500 |
-| J5 | −90° | 0° | +90° | −6400 to +6400 |
-| J6 | 0° | 180° | 360° | one turn |
+| J1 | −97.40° | 0° (DH) | +97.40° | 194.8° |
+| J2 | −146.15° | −90° | −32.70° | 113.4° |
+| J3 | 105.52° | 180° | 294.59° | 189.1° |
+| J4 | −114.59° | 0° | +114.59° | 229.2° |
+| J5 | −120.32° | 0° | +120.32° | 240.6° |
+| J6 | | 180° | | one turn: the model has no limit, the cables do |
+
+!!! note "The firmware and the commander still use the earlier limits"
+    Firmware 1 and the commander software enforce the limits of the earlier model until they are updated: J1
+    ±123.05°, J2 −145.01° to −3.38°, J3 107.87° to 287.87°, J4 ±105.47°, J5 ±90°, J6 0° to 360°. A target
+    between the two is accepted by them; keep to the table above.
 
 Joints 2 and 3 are limited in both directions by their geometry and their switches; joints 1 and 4 by printed
 blockers; joint 5 by the length of its belt path; joint 6 only by the cables and tubes that run through the wrist.

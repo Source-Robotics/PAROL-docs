@@ -26,14 +26,15 @@
 
 | Joint | Range |
 |---|---|
-| Joint 1 | 246° (±123°) |
-| Joint 2 | 142° |
-| Joint 3 | 180° |
-| Joint 4 | 211° (±105°) |
-| Joint 5 | 180° (±90°) |
+| Joint 1 | 194.8° (±97.4°) |
+| Joint 2 | 113.4° |
+| Joint 3 | 189.1° |
+| Joint 4 | 229.2° (±114.6°) |
+| Joint 5 | 240.6° (±120.3°) |
 | Joint 6 | 360° in software; mechanically unlimited, but see [Moving the robot by hand](../02-safety/moving-by-hand.md) |
 
-The exact limits, in degrees and in motor steps, are on [Joint limits and directions](joint-limits.md).
+The ranges are those of the robot's model (robot_descriptions 2.13.0); the exact limits are on
+[Joint limits and directions](joint-limits.md).
 
 ## Speeds
 

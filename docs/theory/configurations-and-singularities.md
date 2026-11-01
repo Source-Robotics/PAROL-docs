@@ -19,14 +19,12 @@ green, wrist red, flange orange.
 - **Wrist flipped or not**: joint 5 positive or negative; joints 4 and 6 turn by 180° to keep the tool where it
   is.
 
-![The eight configurations of PAROL6 for one tool pose: elbow up or down, shoulder right or left, wrist flipped or not; captions in red name the joints that would be outside their limits](../assets/theory/configurations_parol6.webp){ width="700" }
+![The eight configurations of PAROL6 for one tool pose: elbow up or down, shoulder right or left, wrist flipped or not](../assets/theory/configurations_parol6.webp){ width="700" }
 
 Mathematically all eight reach the pose. On the real robot, the joint limits rule most of them out: for this pose
-only (a) is within every limit the software enforces ([Joint limits and directions](../03-technical-data/joint-limits.md)),
-and a red caption names the joints that would have to go beyond theirs. Several of the others would also hit the
-robot itself. The poses were solved and drawn from PAROL6's model in
-[robot_descriptions](https://github.com/Source-Robotics/robot_descriptions) and checked against the limits on that
-page.
+only (a) is within every joint limit ([Joint limits and directions](../03-technical-data/joint-limits.md)), and
+several of the others would also hit the robot itself. The poses were solved and drawn from PAROL6's model in
+[robot_descriptions](https://github.com/Source-Robotics/robot_descriptions), the same model the limits come from.
 
 The practical rule: teach the poses of a program in the configuration you want, and make the move between two
 configurations a joint move (`MoveJoint`, `move_j`), never a Cartesian one.

@@ -63,10 +63,10 @@ configuration. Click a sheet to enlarge it.
 A riser under the base changes a1, and a tool of your own changes a6 and a7: tell the software about the tool
 ([Tools and the TCP](../programming/02-python-api/tools-and-tcp.md)), or the poses it reports will be wrong.
 
-!!! note "The software computes with the earlier model"
-    The Python API (its built-in URDF) and the commander software use a5 = 176.35 mm, the value of the earlier
-    model, and the commander uses a6 = 62.8 mm for the pneumatic gripper. The models above use 177 mm and 62.3 mm.
-    A pose the software reports can therefore differ from these sheets by up to about 0.65 mm.
+!!! note "The software still computes with the earlier model"
+    These pages give the model's dimensions. Until the software is updated, the Python API (its built-in URDF) and
+    the commander software compute with a5 = 176.35 mm, and the commander with a6 = 62.8 mm for the pneumatic
+    gripper, so a pose they report can differ from these sheets by up to about 0.65 mm.
 
 ## Kinematic structure
 
