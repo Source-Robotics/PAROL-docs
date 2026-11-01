@@ -2,14 +2,16 @@
 
 ## 1. The test firmware
 
-A control board from the shop ships with the test firmware. Use it, with the base open and the arm connected,
-to check every driver, every switch and sensor, and the I/O from a serial terminal: `#STATUS` for the drivers,
-`#STEP1` to `#STEP6` to turn each motor slowly, `#LIMIT` for the switches, `#IO` for the inputs, outputs and
-E-stop. [The test firmware](../board/09-test-firmware.md) has the commands and what good output looks like.
+A control board from the shop ships with the test firmware. Use it, with the base open and the arm connected, to
+check every driver, every switch and sensor, and the I/O from a serial terminal. At power-on it prints a report on
+each driver (`joint N Connection is: GOOD` or `BAD`) and turns every motor slowly; `#LIMIT` then shows the
+switches and `#IO` the E-stop, the inputs and the supply voltage. [The test firmware](../board/09-test-firmware.md)
+has the commands and what good output looks like.
 
 !!! danger
-    The test firmware spins all motors at once on `#start`. Use it with the arm unmounted or free to move, never
-    on a robot standing on the table with its arm folded against a stop.
+    The test firmware turns all six motors slowly from the moment it boots until the power is switched off; no
+    command stops them. Use it with the arm unmounted or free to move, never on a robot standing on the table with
+    its arm folded against a stop.
 
 ## 2. Upload the main firmware
 

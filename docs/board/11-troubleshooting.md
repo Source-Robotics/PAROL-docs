@@ -5,7 +5,7 @@
 | No life at all with 24 V connected | The button; the supply; a reversed XT30 | Check the supply's output, the JST button cable, the XT30 polarity. A reversed supply has usually destroyed the board |
 | The board is on but cannot be switched off | 3.3 V on the programming header | Unplug the ST-Link or adapter |
 | The board turns on when the supply is connected | The same, or a motor was turned by hand | Unplug the programmer; move an unpowered robot slowly |
-| A driver reports no answer in `#STATUS` | Not seated; dead; wrong orientation | Power off, check the orientation against the DIAG pins, reseat. A driver that was powered the wrong way round is dead, and the board may be too |
+| The test firmware's report at power-on says `Connection is: BAD` for a joint | Not seated; dead; wrong orientation | Power off, check the orientation against the DIAG pins, reseat. A driver that was powered the wrong way round is dead, and the board may be too |
 | A motor hums but does not turn | A phase open; a motor wire loose in the terminal | Check the four wires of that joint's cable |
 | A motor turns the wrong way | Normal for a new build | Flip `direction_reversed` in the main firmware |
 | A switch does not show in `#LIMIT` | Wiring; the switch; the wrong terminal | Check 24 V to the switch and the signal wire; try the other terminals to find which input changes |

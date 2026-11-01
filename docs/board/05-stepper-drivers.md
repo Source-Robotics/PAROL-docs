@@ -36,6 +36,7 @@ The fan over the heatsinks must run whenever the motors are energised. The drive
 
 ## Checking a driver
 
-The test firmware's `#STATUS` reads every driver over SPI and reports whether it answers and its flags; `#STEPx`
-turns its motor slowly ([The test firmware](09-test-firmware.md)). A driver that does not answer is not seated,
-dead, or in the wrong slot.
+The test firmware reads every driver over SPI about three seconds after power-on and prints whether it answers
+(`joint N Connection is: GOOD` or `BAD`) with its currents and fault flags, then turns every motor slowly
+([The test firmware](09-test-firmware.md)). A driver that does not answer is not seated, dead, or in the wrong
+slot.

@@ -1,25 +1,22 @@
 # Test firmware commands
 
-The commands the test firmware (`PAROL6 control board test code`) accepts on its serial port, as its parser
-(`SerialPacketParser.cpp`) matches them: `#` followed by the name, case as written, Enter. None takes an
-argument. [The test firmware](../board/09-test-firmware.md) in the Control Board Manual shows the output.
+The commands the test firmware (`PAROL6 control board test code`) acts on: `#` followed by the name, case as
+written, and a line feed (a terminal that sends only a carriage return gets no answer). None takes an argument.
+[The test firmware](../board/09-test-firmware.md) in the Control Board Manual shows the output.
+
+!!! danger "The motors turn from power-on"
+    The test firmware turns all six motors slowly from the moment it boots until the power is switched off; no
+    command stops them.
 
 | Command | What it does |
 |---|---|
-| `#start` | Toggles the two LEDs and starts the motor spin test |
-| `#STOP` | Stops the running test |
-| `#STATUS` | Reads every driver over SPI: answering or not, and its flags |
-| `#STEP1` to `#STEP6` | Turns the motor of driver position 1 to 6 slowly |
-| `#LIMIT` | Prints the LIMIT inputs, live |
-| `#IO` | Prints inputs, outputs, E-stop and the supply voltage in mV, repeatedly |
-| `#INPUT` | Prints the two inputs |
-| `#ESTOP` | Prints the E-stop input |
-| `#OUT1TOGGLE`, `#OUT2TOGGLE` | Toggles output 1 or 2 |
-| `#LED1TOGGLE`, `#LED2TOGGLE` | Toggles LED 1 or 2 |
-| `#SUPPLYV` | Prints the supply voltage |
-| `#ONOFF` | Toggles the 24 V power stage |
-| `#CAN` | Sends a CAN test frame |
-| `#FLASH` | Tests the SPI flash |
+| `#IO` | Prints, once a second, the E-stop input, input 1, input 2 and the supply voltage in mV |
+| `#LIMIT` | Prints, once a second, `Joint N is pressed` for every triggered limit switch |
+| `#STOP` | Ends the `#IO` or `#LIMIT` printout; the motors keep turning |
+| `#start` | Toggles the two LEDs |
 
-Driver positions are the board's slots, not joint numbers: position 2 is joint 5, 3 is joint 6, 5 is joint 3 and
-6 is joint 2 ([Connectors and pinout](../board/04-connectors.md)).
+The parser (`SerialPacketParser.cpp`) also recognises `STATUS`, `STEP1` to `STEP6`, `INPUT`, `ESTOP`, `OUT1TOGGLE`,
+`OUT2TOGGLE`, `LED1TOGGLE`, `LED2TOGGLE`, `SUPPLYV`, `ONOFF`, `CAN` and `FLASH`, but `main.cpp` has no action for
+them (the `FLASH` test is commented out): each is answered with `Unknown command`. The driver report (`joint N
+Connection is: GOOD` or `BAD`, the currents and fault flags) is printed once, about three seconds after power-on,
+not on a command.
