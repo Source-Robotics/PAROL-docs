@@ -2,7 +2,7 @@
 
 !!! note "This is a copy"
     The original is [BOM/BOM.md](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/blob/main/BOM/BOM.md) in the robot's repository; this page is that
-    file as of 2026-11-01 (commit `c481195`), with the reference images shown inline. If a link is broken or a part
+    file as of 2026-11-01 (commit `9954df6`), with the reference images shown inline. If a link is broken or a part
     is wrong, [open an issue](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/issues/new) there, and the fix lands here with the next sync. If you would
     rather not source the parts yourself, the shop's [kits](index.md#kits) cover every part or the hard-to-find ones.
 
@@ -124,7 +124,7 @@ Most items have links where you can buy the item, and some of them are affiliate
 | Name | Type | Quantity | Description | Link | ALT link | Reference Image |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | Suction cup gripper | | 1 | | [Link](https://s.click.aliexpress.com/e/_c3bSPdVZ) | | ![Suction cup gripper](../assets/bom/Suction_cup_gripper.jpg){ width="120" } |
-| Vacuum generator | | 1 | | [Link](https://s.click.aliexpress.com/e/_c44Degkz) | | ![Vacuum generator](../assets/bom/Vacuum_generator.jpg){ width="120" } |
+| Vacuum generator | | 1 | | [Link](https://s.click.aliexpress.com/e/_c2zw8dHh) | | ![Vacuum generator](../assets/bom/Vacuum_generator.jpg){ width="120" } |
 | 4mm to 6mm coupler | | 1 | | [Link](https://s.click.aliexpress.com/e/_c3wvdY99) | | ![Pneumatic coupler 4 to 6 mm](../assets/bom/Pneumatic_coupler_4_to_6_mm.jpg){ width="120" } |
 
 
