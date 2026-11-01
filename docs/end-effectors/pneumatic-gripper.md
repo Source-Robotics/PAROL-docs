@@ -33,7 +33,8 @@ is the robot's model from [robot_descriptions](https://github.com/Source-Robotic
 TCP](../programming/02-python-api/tools-and-tcp.md)); every tool is compared on [Dimensions and
 kinematics](../03-technical-data/kinematics.md).
 
-![PAROL6 with the pneumatic gripper: dimensions to the TCP and the DH table](../assets/kinematics/parol6_pneumatic.webp){ width="600" }
+![PAROL6 with the pneumatic gripper: dimensions to the TCP and the DH table](../assets/kinematics/parol6_pneumatic.webp#only-light){ width="600" }
+![PAROL6 with the pneumatic gripper: dimensions to the TCP and the DH table](../assets/kinematics/parol6_pneumatic_dark.webp#only-dark){ width="600" }
 
 ## Driving it
 

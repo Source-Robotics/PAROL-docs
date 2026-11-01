@@ -38,7 +38,8 @@ With nothing on the flange, the TCP is the flange's reference point. The sheet i
 Tell the software about the tool ([Tools and the TCP](../programming/02-python-api/tools-and-tcp.md)); every tool
 is compared on [Dimensions and kinematics](../03-technical-data/kinematics.md).
 
-![PAROL6 with the flange only: dimensions to the TCP and the DH table](../assets/kinematics/parol6_flange.webp){ width="600" }
+![PAROL6 with the flange only: dimensions to the TCP and the DH table](../assets/kinematics/parol6_flange.webp#only-light){ width="600" }
+![PAROL6 with the flange only: dimensions to the TCP and the DH table](../assets/kinematics/parol6_flange_dark.webp#only-dark){ width="600" }
 
 ## Homing and the tool
 

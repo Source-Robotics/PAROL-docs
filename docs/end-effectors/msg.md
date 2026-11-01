@@ -42,11 +42,13 @@ every tool is compared on [Dimensions and kinematics](../03-technical-data/kinem
 
 === "Solid jaws"
 
-    ![PAROL6 with the MSG, solid jaws: dimensions to the TCP and the DH table](../assets/kinematics/parol6_msg.webp){ width="600" }
+    ![PAROL6 with the MSG, solid jaws: dimensions to the TCP and the DH table](../assets/kinematics/parol6_msg.webp#only-light){ width="600" }
+    ![PAROL6 with the MSG, solid jaws: dimensions to the TCP and the DH table](../assets/kinematics/parol6_msg_dark.webp#only-dark){ width="600" }
 
 === "Soft TPU jaws"
 
-    ![PAROL6 with the MSG, soft TPU jaws: dimensions to the TCP and the DH table](../assets/kinematics/parol6_msg_tpu_glue.webp){ width="600" }
+    ![PAROL6 with the MSG, soft TPU jaws: dimensions to the TCP and the DH table](../assets/kinematics/parol6_msg_tpu_glue.webp#only-light){ width="600" }
+    ![PAROL6 with the MSG, soft TPU jaws: dimensions to the TCP and the DH table](../assets/kinematics/parol6_msg_tpu_glue_dark.webp#only-dark){ width="600" }
 
 ## The joint 5 homing offset
 

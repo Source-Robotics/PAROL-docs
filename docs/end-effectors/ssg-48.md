@@ -44,11 +44,13 @@ tool is compared on [Dimensions and kinematics](../03-technical-data/kinematics.
 
 === "Solid jaws"
 
-    ![PAROL6 with the SSG-48, solid jaws: dimensions to the TCP and the DH table](../assets/kinematics/parol6_ssg48.webp){ width="600" }
+    ![PAROL6 with the SSG-48, solid jaws: dimensions to the TCP and the DH table](../assets/kinematics/parol6_ssg48.webp#only-light){ width="600" }
+    ![PAROL6 with the SSG-48, solid jaws: dimensions to the TCP and the DH table](../assets/kinematics/parol6_ssg48_dark.webp#only-dark){ width="600" }
 
 === "Fin-ray jaws"
 
-    ![PAROL6 with the SSG-48, fin-ray jaws: dimensions to the TCP and the DH table](../assets/kinematics/parol6_ssg48_stock.webp){ width="600" }
+    ![PAROL6 with the SSG-48, fin-ray jaws: dimensions to the TCP and the DH table](../assets/kinematics/parol6_ssg48_stock.webp#only-light){ width="600" }
+    ![PAROL6 with the SSG-48, fin-ray jaws: dimensions to the TCP and the DH table](../assets/kinematics/parol6_ssg48_stock_dark.webp#only-dark){ width="600" }
 
 ## The joint 5 homing offset
 

@@ -15,7 +15,8 @@ The sheet below shows both at once for PAROL6 with nothing on the flange: the ro
 joint at 0, the joint centres J1 to J6, the dimensions a1 to a7 between them, and under it the DH table those
 dimensions make. The Robot Manual has the same sheet for every gripper.
 
-![PAROL6, flange only: the dimensions a1 to a7 between the joint centres, and the DH table they make](../assets/kinematics/parol6_flange.webp){ width="600" }
+![PAROL6, flange only: the dimensions a1 to a7 between the joint centres, and the DH table they make](../assets/kinematics/parol6_flange.webp#only-light){ width="600" }
+![PAROL6, flange only: the dimensions a1 to a7 between the joint centres, and the DH table they make](../assets/kinematics/parol6_flange_dark.webp#only-dark){ width="600" }
 
 ## Forward kinematics
 

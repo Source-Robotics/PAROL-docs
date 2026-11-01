@@ -23,27 +23,33 @@ configuration. Click a sheet to enlarge it.
 
 === "Flange only"
 
-    ![PAROL6 with nothing on the flange: dimensions and the DH table to the TCP](../assets/kinematics/parol6_flange.webp){ width="700" }
+    ![PAROL6 with nothing on the flange: dimensions and the DH table to the TCP](../assets/kinematics/parol6_flange.webp#only-light){ width="700" }
+    ![PAROL6 with nothing on the flange: dimensions and the DH table to the TCP](../assets/kinematics/parol6_flange_dark.webp#only-dark){ width="700" }
 
 === "Pneumatic gripper"
 
-    ![PAROL6 with the standard pneumatic gripper: dimensions and the DH table to the TCP](../assets/kinematics/parol6_pneumatic.webp){ width="700" }
+    ![PAROL6 with the standard pneumatic gripper: dimensions and the DH table to the TCP](../assets/kinematics/parol6_pneumatic.webp#only-light){ width="700" }
+    ![PAROL6 with the standard pneumatic gripper: dimensions and the DH table to the TCP](../assets/kinematics/parol6_pneumatic_dark.webp#only-dark){ width="700" }
 
 === "SSG-48"
 
-    ![PAROL6 with the SSG-48 gripper, solid jaws: dimensions and the DH table to the TCP](../assets/kinematics/parol6_ssg48.webp){ width="700" }
+    ![PAROL6 with the SSG-48 gripper, solid jaws: dimensions and the DH table to the TCP](../assets/kinematics/parol6_ssg48.webp#only-light){ width="700" }
+    ![PAROL6 with the SSG-48 gripper, solid jaws: dimensions and the DH table to the TCP](../assets/kinematics/parol6_ssg48_dark.webp#only-dark){ width="700" }
 
 === "SSG-48 fin-ray"
 
-    ![PAROL6 with the SSG-48 gripper, fin-ray jaws: dimensions and the DH table to the TCP](../assets/kinematics/parol6_ssg48_stock.webp){ width="700" }
+    ![PAROL6 with the SSG-48 gripper, fin-ray jaws: dimensions and the DH table to the TCP](../assets/kinematics/parol6_ssg48_stock.webp#only-light){ width="700" }
+    ![PAROL6 with the SSG-48 gripper, fin-ray jaws: dimensions and the DH table to the TCP](../assets/kinematics/parol6_ssg48_stock_dark.webp#only-dark){ width="700" }
 
 === "MSG"
 
-    ![PAROL6 with the MSG gripper, solid jaws: dimensions and the DH table to the TCP](../assets/kinematics/parol6_msg.webp){ width="700" }
+    ![PAROL6 with the MSG gripper, solid jaws: dimensions and the DH table to the TCP](../assets/kinematics/parol6_msg.webp#only-light){ width="700" }
+    ![PAROL6 with the MSG gripper, solid jaws: dimensions and the DH table to the TCP](../assets/kinematics/parol6_msg_dark.webp#only-dark){ width="700" }
 
 === "MSG soft jaws"
 
-    ![PAROL6 with the MSG gripper, soft TPU jaws: dimensions and the DH table to the TCP](../assets/kinematics/parol6_msg_tpu_glue.webp){ width="700" }
+    ![PAROL6 with the MSG gripper, soft TPU jaws: dimensions and the DH table to the TCP](../assets/kinematics/parol6_msg_tpu_glue.webp#only-light){ width="700" }
+    ![PAROL6 with the MSG gripper, soft TPU jaws: dimensions and the DH table to the TCP](../assets/kinematics/parol6_msg_tpu_glue_dark.webp#only-dark){ width="700" }
 
 | Dimension | What it is | Value |
 |---|---|---|
