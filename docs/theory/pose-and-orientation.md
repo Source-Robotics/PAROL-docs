@@ -21,7 +21,7 @@ The same position can be reached with many orientations, and the orientation is 
 wrong first: a gripper pointing down at a part on the table has Rx, Ry, Rz near `[90, 0, 90]` from the standby
 pose in the examples on this site, and a few degrees off puts a finger into the table.
 
-![The same position with two orientations](../../assets/orientations.webp){ width="650" }
+![The same position with two orientations](../assets/orientations.webp){ width="650" }
 
 ## Reading a pose from the robot
 

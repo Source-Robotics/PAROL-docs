@@ -29,9 +29,9 @@ want.
 
 - The [serial protocol](../board/10-serial-protocol.md) to the control board, at 100 Hz.
 - The robot model: the joint limits, the gear ratios, the standby pose, the kinematics
-  ([Concepts](02-concepts/index.md)).
+  ([Theory corner](../theory/index.md)).
 - The rule that **one program owns the board**: the commander and the API's controller cannot be connected at
-  the same time ([Control ownership](02-concepts/control-ownership.md)).
+  the same time ([Control ownership](../theory/control-ownership.md)).
 - Homing after every power-up, and the E-stop handled by the PC software ([Emergency stop](../02-safety/emergency-stop.md)).
 
 ## What they do not share

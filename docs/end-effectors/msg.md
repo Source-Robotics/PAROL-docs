@@ -48,7 +48,7 @@ not move before that.
     The **Gripper** tab: after homing the robot press **Calibrate Gripper**, then **Clear Gripper Error**, set
     position, speed and current with the sliders and press **Move GoTo**. The feedback section shows the current,
     the position and the status ([The GUI](../gui/commander/the-gui.md)). In RBTscript: `Gripper_cal()` then
-    `Gripper(position, speed, current)` ([RBTscript](../programming/04-commander/rbtscript.md#gripper)).
+    `Gripper(position, speed, current)` ([RBTscript](../programming/03-commander/rbtscript.md#gripper)).
 
 === "Python API"
     ```python
@@ -61,7 +61,7 @@ not move before that.
     rbt.tool.stop()                                        # immediate: halt where the jaws are
     ```
     Tool actions are queued with the motion, so a move after `close()` waits for the grip; a `move` on a gripper
-    that was never calibrated is refused when its turn comes ([Tools and the TCP](../programming/03-python-api/tools-and-tcp.md),
+    that was never calibrated is refused when its turn comes ([Tools and the TCP](../programming/02-python-api/tools-and-tcp.md),
     [Tools](../reference/python/tools.md)).
 
 ## Current and force

@@ -1,7 +1,7 @@
 # Tools
 
 Selecting a tool, the generic tool action, and the methods of the bound tool object `rbt.tool`. Tool actions are
-queued with the motion; `tool.stop()` is immediate. [Tools and the TCP](../../programming/03-python-api/tools-and-tcp.md)
+queued with the motion; `tool.stop()` is immediate. [Tools and the TCP](../../programming/02-python-api/tools-and-tcp.md)
 in the guide.
 
 ## Registered tools

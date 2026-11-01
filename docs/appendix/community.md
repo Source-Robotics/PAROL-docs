@@ -35,4 +35,4 @@ where a pull request adds yours.
 
 [PAROL6-python-API-Alvar](https://github.com/PCrnjak/PAROL6-python-API-Alvar) is the first Python API, a
 headless commander with a text-over-UDP client, kept as it is for the projects built on it. New work should use
-the [current Python API](../programming/03-python-api/index.md).
+the [current Python API](../programming/02-python-api/index.md).

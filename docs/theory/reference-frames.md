@@ -24,7 +24,7 @@ tool" is `MoveCartRelTRF(0,0,100,0,0,0)` or `move_l([0,0,100,0,0,0], frame="TRF"
 different world direction every time, depending on the tool's orientation. Approaching a part along the
 gripper's axis, retreating after a grip, and rotating the tool about its own axis are TRF moves.
 
-![The tool frame at the end effector](../../assets/real_frame.webp){ width="600" }
+![The tool frame at the end effector](../assets/real_frame.webp){ width="600" }
 
 ## Jogging in a frame
 
@@ -36,5 +36,5 @@ axes, TRF jogs along the tool's own. Switch to TRF to go straight in or out of a
 The kinematic model keeps a frame at every joint, each defined relative to the previous one by the
 Denavit-Hartenberg parameters, and a frame at the flange. The tool frame is the flange frame moved by the
 tool's transform; the Python API's tool definitions and `set_tcp_transform()` set that transform
-([Tools and the TCP](../03-python-api/tools-and-tcp.md)). The commander's model has the pneumatic gripper's
+([Tools and the TCP](../programming/02-python-api/tools-and-tcp.md)). The commander's model has the pneumatic gripper's
 transform built in.

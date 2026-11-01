@@ -23,7 +23,7 @@ The left part of the window is the jog menu, with two variants:
 below sets the jog speed as a percentage. Works before homing.
 
 **Cartesian jog**: X, Y, Z and the rotations, in the **WRF** (the base) or the **TRF** (the tool), chosen with the
-switch. Needs a homed robot, and stops at a singularity ([Configurations and singularities](../../programming/02-concepts/configurations-and-singularities.md)).
+switch. Needs a homed robot, and stops at a singularity ([Configurations and singularities](../../theory/configurations-and-singularities.md)).
 
 ![The Cartesian jog menu](../../assets/GUI1.webp){ width="800" }
 
@@ -38,7 +38,7 @@ errors and enables the robot; **Disable** disables it, the motors still holding.
 
 ![The program editor](../../assets/program_window.PNG){ width="800" }
 
-An RBTscript program, one command per line ([RBTscript](../../programming/04-commander/rbtscript.md)). **Start** runs it from `Begin()`,
+An RBTscript program, one command per line ([RBTscript](../../programming/03-commander/rbtscript.md)). **Start** runs it from `Begin()`,
 **Stop** halts it.
 
 ![Start and stop](../../assets/start_stop.PNG){ width="350" }

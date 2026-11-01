@@ -82,7 +82,7 @@ plugins:
         page4_1.md: gui/commander/the-gui.md
         page5.md: 06-peripherals/index.md
         page6.md: 02-safety/index.md
-        page7.md: programming/02-concepts/index.md
+        page7.md: theory/index.md
   # One page with the whole manual (print_page/), for the PDF: hooks/pdf.py prints it with Chrome when DOCS_PDF is
   # set. Must stay the last plugin.
   - print-site:
@@ -360,41 +360,25 @@ nav:
       - programming/index.md
       - Guide:
           - 1. The interfaces at a glance: programming/01-interfaces.md
-          - 2. Concepts:
-              - programming/02-concepts/index.md
-              - Units: programming/02-concepts/units.md
-              - Joints, directions and the standby pose: programming/02-concepts/joints-and-poses.md
-              - Reference frames: programming/02-concepts/reference-frames.md
-              - Pose and orientation: programming/02-concepts/pose-and-orientation.md
-              - Forward and inverse kinematics: programming/02-concepts/kinematics.md
-              - Configurations and singularities: programming/02-concepts/configurations-and-singularities.md
-              - Workspace and reach: programming/02-concepts/workspace-and-reach.md
-              - Homing and mastering: programming/02-concepts/homing-and-mastering.md
-              - Motion profiles: programming/02-concepts/motion-profiles.md
-              - Blending: programming/02-concepts/blending.md
-              - Target, commanded and actual: programming/02-concepts/target-commanded-actual.md
-              - Control ownership: programming/02-concepts/control-ownership.md
-              - Steppers, open loop and backlash: programming/02-concepts/steppers-and-open-loop.md
-              - Further reading: programming/02-concepts/further-reading.md
-          - 3. The Python API:
-              - programming/03-python-api/index.md
-              - Installation: programming/03-python-api/installation.md
-              - The controller: programming/03-python-api/controller.md
-              - Clients: programming/03-python-api/clients.md
-              - Motion: programming/03-python-api/motion.md
-              - Jogging and servoing: programming/03-python-api/streaming.md
-              - Tools and the TCP: programming/03-python-api/tools-and-tcp.md
-              - I/O, delays and checkpoints: programming/03-python-api/io-and-delays.md
-              - Status and waiting: programming/03-python-api/status-and-waiting.md
-              - Errors: programming/03-python-api/errors.md
-              - Examples: programming/03-python-api/examples.md
-          - 4. RBTscript:
-              - programming/04-commander/index.md
-              - The language and its commands: programming/04-commander/rbtscript.md
-              - Examples: programming/04-commander/examples.md
-          - 5. ROS 2 and MoveIt: programming/05-ros2.md
-          - 6. Other interfaces: programming/06-other-interfaces.md
-          - 7. Troubleshooting: programming/07-troubleshooting.md
+          - 2. The Python API:
+              - programming/02-python-api/index.md
+              - Installation: programming/02-python-api/installation.md
+              - The controller: programming/02-python-api/controller.md
+              - Clients: programming/02-python-api/clients.md
+              - Motion: programming/02-python-api/motion.md
+              - Jogging and servoing: programming/02-python-api/streaming.md
+              - Tools and the TCP: programming/02-python-api/tools-and-tcp.md
+              - I/O, delays and checkpoints: programming/02-python-api/io-and-delays.md
+              - Status and waiting: programming/02-python-api/status-and-waiting.md
+              - Errors: programming/02-python-api/errors.md
+              - Examples: programming/02-python-api/examples.md
+          - 3. RBTscript:
+              - programming/03-commander/index.md
+              - The language and its commands: programming/03-commander/rbtscript.md
+              - Examples: programming/03-commander/examples.md
+          - 4. ROS 2 and MoveIt: programming/04-ros2.md
+          - 5. Other interfaces: programming/05-other-interfaces.md
+          - 6. Troubleshooting: programming/06-troubleshooting.md
       - Reference:
           - reference/index.md
           - Python API:
@@ -414,6 +398,23 @@ nav:
           - The serial protocol: reference/serial-protocol.md
           - Firmware parameters: reference/firmware-parameters.md
           - Test firmware commands: reference/test-firmware.md
+
+  - Theory corner:
+      - theory/index.md
+      - Units: theory/units.md
+      - Joints, directions and the standby pose: theory/joints-and-poses.md
+      - Reference frames: theory/reference-frames.md
+      - Pose and orientation: theory/pose-and-orientation.md
+      - Forward and inverse kinematics: theory/kinematics.md
+      - Configurations and singularities: theory/configurations-and-singularities.md
+      - Workspace and reach: theory/workspace-and-reach.md
+      - Homing and mastering: theory/homing-and-mastering.md
+      - Motion profiles: theory/motion-profiles.md
+      - Blending: theory/blending.md
+      - Target, commanded and actual: theory/target-commanded-actual.md
+      - Control ownership: theory/control-ownership.md
+      - Steppers, open loop and backlash: theory/steppers-and-open-loop.md
+      - Further reading: theory/further-reading.md
 
   - Support:
       - Getting help: support/index.md

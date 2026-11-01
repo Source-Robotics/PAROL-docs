@@ -17,7 +17,7 @@ building the robot, start with the [Build guide](build/index.md); this page begi
 | **A 24 V power supply**, 5 A | in the kit, or any 24 V 5 A supply (the [BOM](build/bill-of-materials.md) names one) |
 | **An E-stop**, a normally closed button on the base | in the kit; any NC switch works |
 | **A USB cable**, type B, to the PC | |
-| **A PC** with Python 3.10 or 3.11 and the [commander software](gui/commander/installation.md), or Python 3.11 and the [Python API](programming/03-python-api/installation.md) | see the [minimum PC](01-overview/what-you-need.md#the-pc) |
+| **A PC** with Python 3.10 or 3.11 and the [commander software](gui/commander/installation.md), or Python 3.11 and the [Python API](programming/02-python-api/installation.md) | see the [minimum PC](01-overview/what-you-need.md#the-pc) |
 
 Read in more detail: [What you need](01-overview/what-you-need.md).
 
@@ -67,7 +67,7 @@ Read in more detail: [First power-on](04-installation/first-power-on.md) · [Swi
     print(rbt.ping())               # hardware_connected=1
     ```
 
-Read in more detail: [The commander software](gui/commander/index.md) · [The Python API](programming/03-python-api/index.md).
+Read in more detail: [The commander software](gui/commander/index.md) · [The Python API](programming/02-python-api/index.md).
 
 **Check:** Commander shows incoming robot data, or `ping()` reports `hardware_connected=1`. If it does not,
 use [Communication troubleshooting](08-troubleshooting/communication.md).
@@ -116,7 +116,7 @@ Hold the forearm, then press the power button. The arm goes limp the moment the 
 | You want to | Read |
 |---|---|
 | attach a gripper | [End effectors](end-effectors/index.md) |
-| write programs | [Programming](programming/index.md), [RBTscript](programming/04-commander/rbtscript.md), [The Python API](programming/03-python-api/index.md) |
+| write programs | [Programming](programming/index.md), [RBTscript](programming/03-commander/rbtscript.md), [The Python API](programming/02-python-api/index.md) |
 | use inputs, outputs, pneumatics | [Peripherals](06-peripherals/index.md) |
 | understand what the robot does and does not protect against | [Safety functions](02-safety/safety-functions.md) |
 | fix something | [Troubleshooting](08-troubleshooting/index.md) |

@@ -9,7 +9,7 @@ The first time, and every time after that:
 4. Let go. The robot is now enabled, not homed, and waiting for the PC.
 
 Nothing moves until the PC software commands it. Start the [commander software](../gui/commander/index.md)
-or the [Python API's controller](../programming/03-python-api/controller.md), connect, check the jog directions
+or the [Python API's controller](../programming/02-python-api/controller.md), connect, check the jog directions
 and home: the [Quick start](../quick-start.md) walks through it.
 
 ## What the button does

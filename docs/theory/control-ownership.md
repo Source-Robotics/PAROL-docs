@@ -53,7 +53,7 @@ your indices, and expect `MotionError` if someone else stopped you.
 ## The firmware
 
 The firmware's enable and disable commands (101, 102) decide whether it accepts motion at all; the E-stop makes
-the PC software send disable or latch a stop ([Emergency stop](../../02-safety/emergency-stop.md)). Between
+the PC software send disable or latch a stop ([Emergency stop](../02-safety/emergency-stop.md)). Between
 packets the firmware keeps the last speeds it was given, which is why a host must never stop sending while a
 joint is in motion.
 
@@ -62,4 +62,4 @@ joint is in motion.
 The controller runs against the hardware or in **simulator mode**, where the same planner drives a virtual arm
 and the status stream reports it. `simulator(True)` switches; `is_simulator()` tells; `teleport()` sets the
 virtual arm's pose. The **dry-run client** goes further: it runs the planner in the client's own process, with no
-controller at all, for tests and previews ([Clients](../03-python-api/clients.md)).
+controller at all, for tests and previews ([Clients](../programming/02-python-api/clients.md)).

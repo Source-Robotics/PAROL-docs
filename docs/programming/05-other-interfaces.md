@@ -1,4 +1,4 @@
-# 6. Other interfaces
+# 5. Other interfaces
 
 ## Waldo Commander (web)
 

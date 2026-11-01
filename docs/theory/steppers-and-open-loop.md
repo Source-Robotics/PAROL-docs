@@ -28,7 +28,7 @@ the position, and a lost step is an error nobody sees. The safeguards are the ma
 that resets the count, and the user's eyes.
 
 The electric grippers are different: their drivers run a brushless motor in closed loop with an encoder, which
-is what makes a force-controlled gripper possible ([Electric grippers](../../end-effectors/index.md)).
+is what makes a force-controlled gripper possible ([Electric grippers](../end-effectors/index.md)).
 
 ## Position, velocity and torque control
 
@@ -43,7 +43,7 @@ The play between gear teeth, in a belt's mesh and in a coupler: when a joint rev
 before the output follows. PAROL6's planetary gearboxes have 15 to 20 arc-minutes of it, the belts less. It
 shows as a small position error that depends on the direction of the last move, and as a slight looseness at the
 tool. The cure is preload (tight belts), approaching a pose always from the same direction, and keeping the
-couplers tight ([Couplers and threadlocker](../../07-maintenance/couplers.md)).
+couplers tight ([Couplers and threadlocker](../07-maintenance/couplers.md)).
 
 ## Encoders
 

@@ -19,7 +19,7 @@ Output(1,LOW)
 End()
 ```
 
-[RBTscript](../programming/04-commander/rbtscript.md) has the language and [Examples](../programming/04-commander/examples.md)
+[RBTscript](../programming/03-commander/rbtscript.md) has the language and [Examples](../programming/03-commander/examples.md)
 has programs to start from. Programs are plain text files you can keep and share.
 
 ## Python with the Python API
@@ -43,7 +43,7 @@ with RobotClient() as rbt:
 
 The Python API also runs programs written for other tools, and from other machines: the controller accepts
 commands over the network from any client, so a program can run on a laptop while the controller runs on the PC
-at the robot. [The Python API](../programming/03-python-api/index.md) is the guide.
+at the robot. [The Python API](../programming/02-python-api/index.md) is the guide.
 
 ## Simulate first
 

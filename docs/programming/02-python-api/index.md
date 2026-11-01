@@ -1,4 +1,4 @@
-# 3. The Python API
+# 2. The Python API
 
 The Python API, package `parol6`, is two things: a **controller** process that owns the robot, talks to the
 control board over serial at 100 Hz, plans the motion and checks collisions; and a **client library** that sends

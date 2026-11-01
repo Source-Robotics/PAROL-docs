@@ -74,5 +74,5 @@ if no tool is selected.
 ## Several clients
 
 The controller serves any number of clients at once; the queue and the streamed motion are shared
-([Control ownership](../02-concepts/control-ownership.md)). A client that must know its command finished waits
+([Control ownership](../../theory/control-ownership.md)). A client that must know its command finished waits
 on its own index, never on "the robot stopped".

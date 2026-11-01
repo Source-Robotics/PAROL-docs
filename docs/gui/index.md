@@ -27,4 +27,4 @@ what is on its screen. Programming the robot, in RBTscript or Python, is in the
 - [Motor GUI](motor-gui.md)
 
 One program owns the control board at a time: the commander and the Python API's controller cannot be connected
-together ([Control ownership](../programming/02-concepts/control-ownership.md)).
+together ([Control ownership](../theory/control-ownership.md)).

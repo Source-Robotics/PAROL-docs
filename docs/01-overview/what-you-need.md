@@ -37,5 +37,5 @@ threadlocker and the thermal cement.
 ## Knowledge
 
 You should be able to install Python packages and run a script, and to use a hex key. The
-[Concepts](../programming/02-concepts/index.md) chapter explains the robotics vocabulary the software uses, from
+[Theory corner](../theory/index.md) explains the robotics vocabulary the software uses, from
 joint numbering to singularities, in the order you meet it.

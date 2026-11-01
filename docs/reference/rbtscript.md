@@ -2,7 +2,7 @@
 
 The commands of the commander software's program language, as its interpreter accepts them. One command per
 line; arguments in the order given; angles in degrees, positions in millimetres, speed and acceleration in
-percent, time in seconds. [RBTscript](../programming/04-commander/rbtscript.md) in the guide has the rules and
+percent, time in seconds. [RBTscript](../programming/03-commander/rbtscript.md) in the guide has the rules and
 examples.
 
 | Command | Arguments | What it does |

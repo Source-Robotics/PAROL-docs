@@ -62,5 +62,5 @@ detection as the gripper reported them.
 
 Anything that frames the packets as on the reference page and keeps the 100 Hz cadence can drive the board: the
 commander software and the Python API are two such hosts, in Python. Start from the Python API's serial
-transport rather than from scratch; the [Control ownership](../programming/02-concepts/control-ownership.md) page
+transport rather than from scratch; the [Control ownership](../theory/control-ownership.md) page
 says why two hosts must not talk to the board at once.

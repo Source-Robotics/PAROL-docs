@@ -1,7 +1,7 @@
 # Configuration
 
 The hardware connection, the motion profile, the TCP corrections, the collision world and the status rate.
-[Tools and the TCP](../../programming/03-python-api/tools-and-tcp.md) and [The controller](../../programming/03-python-api/controller.md)
+[Tools and the TCP](../../programming/02-python-api/tools-and-tcp.md) and [The controller](../../programming/02-python-api/controller.md)
 in the guide.
 
 <!-- api: connect_hardware -->
@@ -9,7 +9,7 @@ in the guide.
 <!-- api: select_profile -->
 
 !!! note
-    The profiles of this version: <!-- api-profiles -->. [Motion profiles](../../programming/02-concepts/motion-profiles.md)
+    The profiles of this version: <!-- api-profiles -->. [Motion profiles](../../theory/motion-profiles.md)
     says what each does.
 
 <!-- api: set_tcp_offset -->

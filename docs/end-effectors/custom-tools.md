@@ -33,7 +33,7 @@ rbt.wait_command(index)
 ```
 
 A permanent tool goes into the API's tool registry as a `ToolConfig` with its collision mesh, so that the
-collision checker knows its shape ([Tools and the TCP](../programming/03-python-api/tools-and-tcp.md)). The
+collision checker knows its shape ([Tools and the TCP](../programming/02-python-api/tools-and-tcp.md)). The
 commander software has no tool setting: its poses are for the standard pneumatic gripper, and a different tool
 means editing its robot model.
 

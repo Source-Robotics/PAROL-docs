@@ -1,7 +1,7 @@
 # Queries
 
 Requests with a reply, immediate, returning `None` when no reply arrives in the client's timeout (the TCP queries
-raise instead, see [Configuration](configuration.md)). [Status and waiting](../../programming/03-python-api/status-and-waiting.md)
+raise instead, see [Configuration](configuration.md)). [Status and waiting](../../programming/02-python-api/status-and-waiting.md)
 in the guide.
 
 <!-- api: ping -->

@@ -1,4 +1,4 @@
-# 7. Troubleshooting
+# 6. Troubleshooting
 
 ## The Python API
 
@@ -23,7 +23,7 @@
 |---|---|---|
 | Connect does nothing | Wrong port; the port in use; Linux permissions | Try again; `COMx`/`ttyACMx`; `chmod 666` |
 | The simulator shows a different pose | Not homed | Home |
-| A command in the program does nothing | A typo in the name or the argument order; `End()` before it | The response log; the exact syntax on [RBTscript](04-commander/rbtscript.md) |
+| A command in the program does nothing | A typo in the name or the argument order; `End()` before it | The response log; the exact syntax on [RBTscript](03-commander/rbtscript.md) |
 | `MoveCart` stops half way | A singularity | A joint move, or another orientation |
 | `Gripper()` does nothing | Not calibrated; an error latched | Gripper tab: Calibrate, Clear error |
 | The program runs once and stops | No `Loop()` | Add it, or `End()` is where you want it |
@@ -33,4 +33,4 @@
 ## Both
 
 The control board answers in text when you expected packets: it runs the test firmware; upload the main one
-([Firmware](../board/08-firmware.md)). Two programs cannot share the port ([Control ownership](02-concepts/control-ownership.md)).
+([Firmware](../board/08-firmware.md)). Two programs cannot share the port ([Control ownership](../theory/control-ownership.md)).

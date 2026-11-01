@@ -2,7 +2,7 @@
 
 Planned moves: queued, run in order, each returning its command index. `wait=True` (the default) blocks until the
 command completes and raises `MotionError` if it failed or was cancelled; `wait=False` returns at once for a later
-`wait_command()`. Either `duration` or `speed` times a move, not both. [Motion](../../programming/03-python-api/motion.md)
+`wait_command()`. Either `duration` or `speed` times a move, not both. [Motion](../../programming/02-python-api/motion.md)
 in the guide explains the choices.
 
 <!-- api: home -->

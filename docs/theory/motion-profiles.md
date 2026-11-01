@@ -9,7 +9,7 @@ Accelerate at a constant rate, cruise at the maximum speed, decelerate at the sa
 trapezoid; the acceleration jumps between +a, 0 and −a, which is felt as a jerk at the three corners. With the
 commander's `t=` argument, each third of the move is one phase.
 
-![A trapezoidal velocity profile](../../assets/trap.webp){ width="700" }
+![A trapezoidal velocity profile](../assets/trap.webp){ width="700" }
 
 ## Polynomial
 
@@ -17,13 +17,13 @@ A quintic (fifth-order) polynomial through the start and end positions with zero
 both ends: the speed rises and falls as a smooth bell, the acceleration is continuous, and the move starts and
 ends from rest without a jolt. Slower in the middle for the same total time, and the arm likes it better.
 
-![A quintic polynomial velocity profile](../../assets/poly.webp){ width="700" }
+![A quintic polynomial velocity profile](../assets/poly.webp){ width="700" }
 
 ## In the commander software
 
 `MoveJoint`, `MovePose`, `MoveCart` and `MoveCartRelTRF` take `func="trap"` or `func="poly"`; a move with `t=`
 defaults to polynomial, a move with `v=` and `a=` is trapezoidal, and a move with neither runs a conservative
-trapezoid ([RBTscript](../04-commander/rbtscript.md)).
+trapezoid ([RBTscript](../programming/03-commander/rbtscript.md)).
 
 ## In the Python API
 

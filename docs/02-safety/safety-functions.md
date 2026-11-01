@@ -29,4 +29,4 @@ Know what the hardware and the software catch, and what they do not, before you 
 | **A wrong joint direction on a new build** | The firmware trusts its configuration | Jog each joint briefly before homing |
 
 The commander's safety functions are described in [Errors and recovery](../05-operation/errors-and-recovery.md);
-the Python API's in [Errors](../programming/03-python-api/errors.md).
+the Python API's in [Errors](../programming/02-python-api/errors.md).

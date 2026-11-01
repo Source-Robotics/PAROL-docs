@@ -2,7 +2,7 @@
 
 Commands that change what the controller is doing: stops, the protective stop and its reset, pause and execution
 speed, simulator mode, teleport, and the state reset. They are system commands: immediate, not queued, accepted
-also while the controller is disabled. [Control ownership](../../programming/02-concepts/control-ownership.md).
+also while the controller is disabled. [Control ownership](../../theory/control-ownership.md).
 
 <!-- api: stop -->
 

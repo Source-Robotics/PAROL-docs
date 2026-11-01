@@ -1,11 +1,12 @@
-# 2. Concepts
+# Theory corner
 
-The vocabulary of the robot's software, explained in the order you meet it: what a joint angle and a pose are,
+The theory behind a six-axis robot arm and its software, explained in the order you meet it: what a joint angle and a pose are,
 which frames the numbers are in, how the software goes from one to the other, why some poses cannot be reached
 and some moves cannot be made, what shape a move has in time, and who is in charge of the robot at any moment.
-Each page says how the concept shows up in PAROL6's software. None of it needs maths beyond what is on the page.
+Each page says how the idea shows up in PAROL6's software. None of it needs maths beyond what is on the page,
+and none of it is needed to run the robot: read it when you want to know why the robot does what it does.
 
-## In this chapter
+## The pages
 
 - [Units](units.md)
 - [Joints, directions and the standby pose](joints-and-poses.md)
@@ -26,7 +27,7 @@ Each page says how the concept shows up in PAROL6's software. None of it needs m
 
 Industrial robots are sorted by their joints and how they are arranged: vertically articulated arms, Cartesian
 gantries, cylindrical and polar arms, SCARA arms, delta robots. PAROL6 is a **vertically articulated** arm with
-six revolute joints, the most common industrial type, and the concepts in this chapter are the ones every such
+six revolute joints, the most common industrial type, and the ideas on these pages are the ones every such
 arm uses. The last three joints meet in a point, a **spherical wrist**, which the pages on kinematics return to.
 
-![A robot with a spherical wrist (left) and one without (right)](../../assets/spherical.png){ width="650" }
+![A robot with a spherical wrist (left) and one without (right)](../assets/spherical.png){ width="650" }

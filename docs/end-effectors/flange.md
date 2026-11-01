@@ -19,7 +19,7 @@ one rotation.
 
 The software must know the tool to compute the pose of its tip. The commander's kinematic model is built for the
 standard pneumatic gripper; the Python API has tool definitions with variants and a settable TCP offset
-([Tools and the TCP](../programming/03-python-api/tools-and-tcp.md)):
+([Tools and the TCP](../programming/02-python-api/tools-and-tcp.md)):
 
 ```python
 rbt.select_tool("PNEUMATIC")                       # default variant: vertical

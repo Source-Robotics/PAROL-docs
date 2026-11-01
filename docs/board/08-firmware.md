@@ -33,17 +33,6 @@ A board from the shop carries the test firmware. Upload the main firmware before
    itself when the supply is connected.
 6. Reconnect the 24 V supply and press the power button.
 
-## What to look at before uploading the main firmware
-
-| File | Setting | Meaning |
-|---|---|---|
-| `constants.h` | `MOTORx_MAX_CURRENT` | The motor currents, set for the BOM's motors |
-| `main.cpp` | `j5_homing_offset` | 8900 for the pneumatic gripper holder, 8035 for the SSG-48 |
-| `motor_init.cpp` | `direction_reversed` per joint | Flip for a joint that turns the wrong way |
-| `motor_init.cpp` | `homed_position` per joint | Steps from the switch to the standby pose; changed when mastering |
-
-All of them are on [Firmware parameters](../reference/firmware-parameters.md).
-
 ## Version
 
 `#define VERSION 1` in `constants.h`. The firmware is released with the robot (tag V1) and has not changed since;

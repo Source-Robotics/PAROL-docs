@@ -65,5 +65,5 @@ The motors are not fitted with encoders: the position is the count of steps comm
 because the planner never asks a motor for more than its torque at the commanded speed and acceleration, with
 margin; a stepper that is not overloaded does not lose steps. If one is overloaded (a collision, a payload over
 the limit, too high a speed with a reduced current) it loses steps silently, the arm is then not where the
-software thinks it is, and the only cure is to home again. [Steppers, open loop and backlash](../programming/02-concepts/steppers-and-open-loop.md)
+software thinks it is, and the only cure is to home again. [Steppers, open loop and backlash](../theory/steppers-and-open-loop.md)
 goes deeper.

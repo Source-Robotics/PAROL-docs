@@ -1,5 +1,7 @@
 # 5. Stepper drivers
 
+![Four ways to destroy the control board](../assets/board_warning.svg){ width="1000" }
+
 The board takes six TMC5160 driver modules in the StepStick format, configured over SPI by the firmware.
 
 !!! danger "Orientation"

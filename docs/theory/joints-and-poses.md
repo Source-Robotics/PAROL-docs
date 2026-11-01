@@ -6,12 +6,12 @@ Joints are numbered 1 to 6 from the base up: J1 turns the whole arm about the ve
 J3 the elbow, J4 rotates the forearm, J5 pitches the wrist, J6 rotates the tool. The Python API indexes joints
 from 0 in its jog calls (`jog_j(0, ...)` is J1) and lists angles in order J1 to J6 everywhere.
 
-![Joint numbering](../../assets/Joints.webp){ width="500" }
+![Joint numbering](../assets/Joints.webp){ width="500" }
 
 ## Positive direction
 
 Each joint has a positive direction, the one in which its angle increases, drawn as the arrows in the figure on
-[Joint limits and directions](../../03-technical-data/joint-limits.md). The commander's left arrows jog
+[Joint limits and directions](../03-technical-data/joint-limits.md). The commander's left arrows jog
 positive, the right arrows negative. The firmware has a per-joint flag that inverts the motor so that the
 hardware agrees with this convention; a new build sets it per joint on the first run.
 
@@ -34,6 +34,6 @@ thing about the same pose.
 ## Limits
 
 Each joint has a software limit in both directions, enforced by the planner and by the jog, and a mechanical
-stop a little past it ([Joint limits and directions](../../03-technical-data/joint-limits.md)). The limits are
+stop a little past it ([Joint limits and directions](../03-technical-data/joint-limits.md)). The limits are
 in the robot model (`PAROL6_ROBOT.py` in both programs); a tool or a base that changes the real clearance does
 not change them.

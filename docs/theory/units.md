@@ -19,7 +19,7 @@ metres.
 ## Steps
 
 The firmware knows nothing but steps: 200 full steps per motor turn, 32 microsteps each, 6400 per turn, times the
-joint's gear ratio for a turn of the joint ([Drives, ratios and resolution](../../03-technical-data/drives-and-ratios.md)).
+joint's gear ratio for a turn of the joint ([Drives, ratios and resolution](../03-technical-data/drives-and-ratios.md)).
 The PC software converts with the two constants it keeps in its robot model:
 
 ```

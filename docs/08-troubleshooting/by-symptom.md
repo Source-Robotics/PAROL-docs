@@ -13,7 +13,7 @@
 | The pose after homing is off by a few degrees on one joint | A loose coupler, a slipped belt, a moved switch | [Couplers](../07-maintenance/couplers.md), [Belts](../07-maintenance/belts.md), then [Mastering](../05-operation/mastering.md) |
 | The robot's position drifts during a program | Lost steps: too fast, too heavy, a collision, a reduced current | Lower the speed; check the payload; home again |
 | A joint hums or squeals and does not hold | A driver in error, a lost phase | `#STATUS` in the test firmware; check the motor cable |
-| Cartesian jogging stops by itself | A singularity | Jog a joint away ([Configurations and singularities](../programming/02-concepts/configurations-and-singularities.md)) |
+| Cartesian jogging stops by itself | A singularity | Jog a joint away ([Configurations and singularities](../theory/configurations-and-singularities.md)) |
 | A pose from the GUI cannot be reached by MoveCart | The inverse kinematics finds no solution along the straight line | Move in joint space; choose another orientation |
 | The robot stutters while moving | The PC misses the 10 ms cycle | [Communication](communication.md) |
 | The forearm is hot | Hours of motion at the default currents | [Currents and temperatures](../03-technical-data/operating-temperatures.md) |

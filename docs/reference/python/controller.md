@@ -15,7 +15,7 @@ Read at the controller's start:
 
 <!-- api-env-table -->
 
-A default marked *computed* is a path or an expression; see `parol6/config.py`. [The controller](../../programming/03-python-api/controller.md)
+A default marked *computed* is a path or an expression; see `parol6/config.py`. [The controller](../../programming/02-python-api/controller.md)
 in the guide says which ones matter.
 
 ## The wire protocol

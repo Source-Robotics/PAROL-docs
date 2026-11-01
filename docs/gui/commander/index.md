@@ -12,14 +12,14 @@ runs a 100 Hz loop to the control board, and is the program to start with.
 - [Installation](installation.md)
 - [The GUI](the-gui.md): the windows, the menus, connecting, jogging, the tabs
 
-Its program language, RBTscript, is in the Programming Guide: [RBTscript](../../programming/04-commander/rbtscript.md),
-[Examples](../../programming/04-commander/examples.md).
+Its program language, RBTscript, is in the Programming Guide: [RBTscript](../../programming/03-commander/rbtscript.md),
+[Examples](../../programming/03-commander/examples.md).
 
 ## What it is and is not
 
 It is the tool for the first day, for teaching poses, for demos and for simple sequences. It has no blending, no
 collision checking, no network interface and no tool selection: its kinematic model is the one with the pneumatic
-gripper. For programs that need those, the [Python API](../../programming/03-python-api/index.md). The two cannot be connected
+gripper. For programs that need those, the [Python API](../../programming/02-python-api/index.md). The two cannot be connected
 to the robot at the same time.
 
 !!! warning "The experimental kinematics branch"

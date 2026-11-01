@@ -43,12 +43,12 @@ rbt.move_l(target, duration=2.0)               # two seconds, whatever that take
 ## Blending
 
 `r`, in millimetres, on `move_j`, `move_l` and `move_c`: the move does not stop at its target but blends into the
-next queued move within that radius ([Blending](../02-concepts/blending.md)). `move_p` blends on its own.
+next queued move within that radius ([Blending](../../theory/blending.md)). `move_p` blends on its own.
 
 ## Profiles
 
 `select_profile("TOPPRA")` and the others set how the speed curve is shaped for all planned moves
-([Motion profiles](../02-concepts/motion-profiles.md)); `profile()` reads it. The profiles of this version:
+([Motion profiles](../../theory/motion-profiles.md)); `profile()` reads it. The profiles of this version:
 <!-- api-profiles -->.
 
 ## Waiting

@@ -32,7 +32,7 @@ approach a part.
 
 A Cartesian jog needs a homed robot, and it can run into a singularity, where the planner cannot find joint
 speeds for the tool's motion: the commander stops the jog, and the Python API refuses it. Jog a joint away from
-the singular pose and continue ([Configurations and singularities](../programming/02-concepts/configurations-and-singularities.md)).
+the singular pose and continue ([Configurations and singularities](../theory/configurations-and-singularities.md)).
 
 ## Jogging a robot that is not homed
 

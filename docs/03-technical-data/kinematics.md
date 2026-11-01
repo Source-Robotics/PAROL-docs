@@ -26,7 +26,7 @@ repository's <a href="https://github.com/Source-Robotics/PAROL6-Desktop-robot-ar
 | a7 | 45.25 mm |
 
 The dimensions are for the standard pneumatic gripper. A different tool changes a6 and a7, and a riser under the
-base changes a1; update the tool in the software ([Tools and the TCP](../programming/03-python-api/tools-and-tcp.md))
+base changes a1; update the tool in the software ([Tools and the TCP](../programming/02-python-api/tools-and-tcp.md))
 or the DH table, or the reported poses will be wrong.
 
 ## Kinematic diagram
@@ -35,7 +35,7 @@ or the DH table, or the reported poses will be wrong.
 
 The first three joints place the wrist centre; the axes of joints 4, 5 and 6 intersect in one point, a
 spherical wrist, which is what makes the inverse kinematics tractable. The
-[Concepts](../programming/02-concepts/kinematics.md) chapter explains what the diagram means.
+[Concepts](../theory/kinematics.md) chapter explains what the diagram means.
 
 ## Denavit-Hartenberg parameters
 

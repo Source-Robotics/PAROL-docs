@@ -15,7 +15,7 @@ Loop()
 ## Units
 
 Angles in degrees, positions in millimetres, speed and acceleration in percent of the robot's maximum, time in
-seconds, gripper position and speed 0 to 255, gripper current in milliamps ([Units](../02-concepts/units.md)).
+seconds, gripper position and speed 0 to 255, gripper current in milliamps ([Units](../../theory/units.md)).
 
 ## Motion
 
@@ -45,7 +45,7 @@ The arguments must be in this order. The rules:
   finish together.
 - With neither, a conservative trapezoid.
 - With `speed` last, only the speed curve is tracked: smoother and quieter, and the robot may stop a few steps
-  short of the target ([Target, commanded and actual](../02-concepts/target-commanded-actual.md)).
+  short of the target ([Target, commanded and actual](../../theory/target-commanded-actual.md)).
 
 ```
 MoveJoint(0,-90,180,0,0,180,t=4)
