@@ -86,6 +86,16 @@ except PluginError as exc:
     check("A5 an unknown manual key stops the build", "nope" in str(exc))
 table = hook.documents_table(data)
 check("A6 the documents table lists every manual", "SR-1002" in table and "SR-1101" in table and "PAROL6 release 1" in table)
+vdata, err = load_text(GOOD + "models:\n  robot_descriptions: {name: robot_descriptions, repository: z, tag: v2.15.1}\n")
+check("A8 a model version in running text: the tag without its v",
+      vdata is not None and hook.version_text("models", "robot_descriptions", vdata) == "2.15.1", err)
+try:
+    hook.version_text("models", "nothing", vdata)
+    check("A9 an unknown version placeholder stops the build", False, "no error")
+except PluginError:
+    check("A9 an unknown version placeholder stops the build", True)
+_, err = load_text(GOOD + "models:\n  robot_descriptions: {name: robot_descriptions, repository: z}\n")
+check("A10 a model without a tag stops the build", err is not None and "lacks tag" in err, err)
 real, err = load_text((ROOT / "versions.yml").read_text(encoding="utf-8"))
 check("A7 the repository's versions.yml loads", real is not None, err)
 

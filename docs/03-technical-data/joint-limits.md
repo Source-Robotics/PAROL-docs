@@ -25,7 +25,7 @@ stands square to the base, and the software reports the standby pose as follows.
 ## Limits
 
 The joint limits of PAROL6's model in [robot_descriptions](https://github.com/Source-Robotics/robot_descriptions)
-(version 2.13.0), in degrees, in the angles the software shows (the standby pose above).
+(version <!-- version: models.robot_descriptions -->), in degrees, in the angles the software shows (the standby pose above).
 
 | Joint | Negative limit | Standby | Positive limit | Range |
 |---|---|---|---|---|

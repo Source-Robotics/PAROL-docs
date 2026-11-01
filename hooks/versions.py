@@ -1,12 +1,14 @@
 """Write the version facts of versions.yml into the pages (the same hook as Source-Robotics/par6 and the driver and
 gripper sites, with the software components the PAROL6 site adds).
 
-Two placeholders, each replaced when the site is built:
+Three placeholders, each replaced when the site is built:
 
     <!-- doc-meta: KEY -->      a manual's version box, on its landing page: document number, the PAROL6 release
                                 (for a document that describes one release), the software versions the document
                                 lists, revision, publication date, what it applies to
     <!-- documents-table -->    the list of every document, on the About page
+    <!-- version: GROUP.KEY --> a component's version in running text, e.g. models.robot_descriptions: its tag
+                                without the leading v (v2.15.1 is written 2.15.1)
 
 The facts live in versions.yml only. A malformed or missing fact, or an unknown manual, stops the build: a version
 on a page is never guessed. Registered in mkdocs.yml under `hooks:`.
@@ -22,6 +24,7 @@ from mkdocs.exceptions import PluginError
 
 META_RE = re.compile(r"<!--\s*doc-meta:\s*([A-Za-z0-9_-]+)\s*-->")
 TABLE_RE = re.compile(r"<!--\s*documents-table\s*-->")
+VERSION_RE = re.compile(r"<!--\s*version:\s*([A-Za-z0-9_-]+)\.([A-Za-z0-9_-]+)\s*-->")
 REQUIRED = ("number", "title", "revision", "status", "covers")
 
 _facts: dict = {}
@@ -51,6 +54,13 @@ def load(path) -> dict:
         missing = [f for f in ("name", "repository", "tag") if not (comp or {}).get(f)]
         if missing:
             raise PluginError(f"versions.yml: software {key!r} lacks {', '.join(missing)}")
+    models = data.get("models") or {}
+    if not isinstance(models, dict):
+        raise PluginError("versions.yml: models is not a mapping")
+    for key, comp in models.items():
+        missing = [f for f in ("name", "repository", "tag") if not (comp or {}).get(f)]
+        if missing:
+            raise PluginError(f"versions.yml: models {key!r} lacks {', '.join(missing)}")
     manuals = data.get("manuals")
     if not isinstance(manuals, dict) or not manuals:
         raise PluginError("versions.yml: no manuals")
@@ -112,6 +122,15 @@ def documents_table(data: dict) -> str:
             "Python API, commander and gripper versions work together.")
 
 
+def version_text(group: str, key: str, data: dict) -> str:
+    """<!-- version: group.key -->: the component's tag without a leading v. Unknown keys stop the build."""
+    comp = (data.get(group) or {}).get(key) if group in ("software", "models") else None
+    if not comp:
+        raise PluginError(f"versions.yml: no {group}.{key} for <!-- version: {group}.{key} -->")
+    tag = str(comp["tag"])
+    return tag[1:] if re.fullmatch(r"v\d.*", tag) else tag
+
+
 def on_config(config):
     global _facts
     _facts = load(Path(config.config_file_path).parent / "versions.yml")
@@ -121,4 +140,5 @@ def on_config(config):
 
 def on_page_markdown(markdown, page, config, files):
     markdown = META_RE.sub(lambda m: meta_block(m.group(1), _facts), markdown)
+    markdown = VERSION_RE.sub(lambda m: version_text(m.group(1), m.group(2), _facts), markdown)
     return TABLE_RE.sub(lambda m: documents_table(_facts), markdown)

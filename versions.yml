@@ -32,6 +32,15 @@ software:
     tag: main
     released: 2025-09-23
 
+# The robot model the pages' model pictures, the 3D viewer, the kinematics sheets and the joint limits come from.
+# tools/build_model.py and the figure tools read a clone at this tag; a page writes it as
+# <!-- version: models.robot_descriptions -->. Licensed CC BY 4.0 since 2.15.0: the footer credits it.
+models:
+  robot_descriptions:
+    name: robot_descriptions
+    repository: https://github.com/Source-Robotics/robot_descriptions
+    tag: v2.15.1
+
 # One entry per document. revision: YEAR.LETTER, a new letter for every published revision of that document.
 # status: draft until the document is published; published: the date of the revision's publication, or null.
 # firmware: true for a document that describes one PAROL6 release (docs_version) and shows it in its version box.

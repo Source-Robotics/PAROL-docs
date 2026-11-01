@@ -33,7 +33,7 @@
 | Joint 5 | 240.6° (±120.3°) |
 | Joint 6 | 360° in software; mechanically unlimited, but see [Moving the robot by hand](../02-safety/moving-by-hand.md) |
 
-The ranges are those of the robot's model (robot_descriptions 2.13.0); the exact limits are on
+The ranges are those of the robot's model (robot_descriptions <!-- version: models.robot_descriptions -->); the exact limits are on
 [Joint limits and directions](joint-limits.md).
 
 ## Speeds

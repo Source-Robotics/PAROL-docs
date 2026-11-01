@@ -29,7 +29,7 @@ robot's 24 V or an isolated one ([Inputs and outputs](../06-peripherals/io.md)).
 The tool centre point (TCP) is a6 = 62.3 mm from the joint 6 centre along the tool axis and a7 = 45.25 mm to the
 side. The TCP is the reference point of the original MHZ2-10D gripper, not a newly measured grasp centre. The sheet
 is the robot's model from [robot_descriptions](https://github.com/Source-Robotics/robot_descriptions) (version
-2.13.0) with every joint at 0. Tell the software about the tool ([Tools and the
+<!-- version: models.robot_descriptions -->) with every joint at 0. Tell the software about the tool ([Tools and the
 TCP](../programming/02-python-api/tools-and-tcp.md)); every tool is compared on [Dimensions and
 kinematics](../03-technical-data/kinematics.md).
 

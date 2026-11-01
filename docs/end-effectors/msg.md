@@ -36,7 +36,7 @@ the last node on the robot's bus ([CAN bus](../06-peripherals/can-bus.md)).
 
 The tool centre point (TCP) is a6 = 134.3 mm from the joint 6 centre along the tool axis and a7 = 28.35 mm to the
 side. Both jaw variants share one TCP: an operating point, not a measured grasp centre. The sheet is the robot's
-model from [robot_descriptions](https://github.com/Source-Robotics/robot_descriptions) (version 2.13.0) with every
+model from [robot_descriptions](https://github.com/Source-Robotics/robot_descriptions) (version <!-- version: models.robot_descriptions -->) with every
 joint at 0. Tell the software about the tool ([Tools and the TCP](../programming/02-python-api/tools-and-tcp.md));
 every tool is compared on [Dimensions and kinematics](../03-technical-data/kinematics.md).
 

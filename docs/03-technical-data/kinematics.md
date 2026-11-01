@@ -16,7 +16,7 @@ colour for the printed parts (the motors stay black). The model is the robot's
 ## Dimensions
 
 The sheets below come from PAROL6's models in
-[robot_descriptions](https://github.com/Source-Robotics/robot_descriptions) (version 2.13.0). Each shows the robot's
+[robot_descriptions](https://github.com/Source-Robotics/robot_descriptions) (version <!-- version: models.robot_descriptions -->). Each shows the robot's
 own meshes with every joint at 0, in one orthographic side view at one scale, with the dimensions taken from the
 URDF, not measured from the picture, and the standard DH table to the tool centre point (TCP) of that
 configuration. Click a sheet to enlarge it.
