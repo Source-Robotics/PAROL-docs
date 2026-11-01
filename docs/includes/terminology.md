@@ -28,6 +28,9 @@
 :   The program on the control board. The *main* firmware runs the robot with the PC software; the *test* firmware
     checks the board and the wiring from a serial terminal.
 
+**Forearm** (lower arm)
+:   The link from the elbow (joint 3) to the wrist. It carries joint 4. Forearm and lower arm mean the same link.
+
 **Homing** (referencing)
 :   Finding each joint's position after power-up by driving it to its limit switch or sensor, then moving a known
     number of steps to the standby pose. Needed after every power-up; the robot does not know where it is before.
@@ -35,6 +38,10 @@
 **Jogging**
 :   Moving a joint, or the tool along an axis, at a chosen speed for as long as a button is held or a command
     repeats.
+
+**Joint names**
+:   Joints 1 to 6 by number, from the base up. Other names for the same joints: base, shoulder and elbow for 1 to
+    3, and wrist 1, wrist 2 and wrist 3 for 4 to 6, as in the robot model and ROS.
 
 **Limit switch, inductive sensor**
 :   The references for homing: mechanical switches on joints 2, 3 and 5, inductive sensors on joints 1, 4 and 6.
@@ -71,6 +78,12 @@
 :   The tool reference frame, fixed to the tool, and the world reference frame, fixed to the base. Cartesian jogs
     and relative moves can be made in either.
 
+**Upper arm**
+:   The link from the shoulder (joint 2) to the elbow (joint 3).
+
 **Witness marks**
 :   Holes in the printed parts of neighbouring links that line up, so that a pin passes through, when the joint
     stands exactly at its zero.
+
+**Wrist 1, wrist 2, wrist 3**
+:   Other names for joints 4, 5 and 6. See *Joint names*.

@@ -2,10 +2,12 @@
 
 ## Joint numbering and positive directions
 
-Joints are numbered from the base up. A joint's angle increases in the direction of the arrow in the figure; the
-commander software's left arrows jog in that direction.
+Joints are numbered from the base up. Joints 1, 2 and 3 are also called the base, shoulder and elbow joints, and
+joints 4, 5 and 6 wrist 1, wrist 2 and wrist 3, the names the robot model and ROS use. Each picture shows one joint
+turned 30° in its positive direction, in colour, over the pose in grey. The arrow at the joint points the same
+way, and the commander software's left arrows jog in that direction.
 
-![Joint numbering and the positive direction of each joint](../assets/rotations1.webp){ width="560" }
+![Each joint turned 30 degrees in its positive direction, in colour, over the pose in grey](../assets/kinematics/parol6_joint_directions.webp){ width="900" }
 
 ## The standby pose
 
