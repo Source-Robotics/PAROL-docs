@@ -21,8 +21,8 @@ E-stop is within that person's reach, and so is the power supply's switch.
 
 - Run every new program in the simulator first, at full speed, and watch for the arm folding into the base or
   the table.
-- Start on the real robot at low speed. The commander's speed slider and the Python API's `speed` fraction scale
-  every move.
+- Start on the real robot at low speed: in the commander, low `v=` or long `t=` in the moves (the speed slider
+  only scales jogging); in the Python API, the `speed` fraction of each move.
 - Put the first move of a program at a known pose from the standby pose, so that a restart from standby is
   always safe.
 - Use `Delay()` and the inputs to wait for the world, rather than assuming it.

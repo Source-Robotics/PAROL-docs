@@ -53,7 +53,7 @@ kinematics and collision checks. Run a new program in the simulator at full spee
 
 ## Speed
 
-The commander's speed slider scales every move and jog. The Python API takes a `speed` fraction per move and
+The commander's speed slider scales jogging only; a program's speed is in its moves, `v=` and `a=` or `t=`. The Python API takes a `speed` fraction per move and
 `set_execution_speed()` scales the queue while it runs; `pause()` and `resume()` hold and continue it.
 
 ## Stopping a program

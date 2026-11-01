@@ -10,7 +10,7 @@
 | Assembly and setup videos | [YouTube playlist](https://www.youtube.com/playlist?list=PLSueoDrBt5MMTL9O8qAWZiJrNIf8-29Qz) |
 | Control board main firmware (PlatformIO) | [PAROL6 control board main software](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/tree/main/PAROL6%20control%20board%20main%20software) |
 | Control board test firmware | [PAROL6 control board test code](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/tree/main/PAROL6%20control%20board%20test%20code) |
-| URDF model (ROS package with meshes) | [PAROL6_URDF](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/tree/main/PAROL6_URDF) |
+| URDF and MuJoCo models (with meshes, every tool) | [robot_descriptions: PAROL6](https://github.com/Source-Robotics/robot_descriptions/blob/main/guides/parol6.md) |
 | Safety warning and disclaimer | [SAFETY_WARNING_AND_DISCLAIMER.md](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/blob/main/SAFETY_WARNING_AND_DISCLAIMER.md) |
 | Commander software, install guides, tested PCs | [PAROL-commander-software](https://github.com/Source-Robotics/PAROL-commander-software) |
 | Python API, examples | [PAROL6-python-API](https://github.com/PCrnjak/PAROL6-python-API) |

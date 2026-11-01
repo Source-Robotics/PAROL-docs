@@ -3,7 +3,7 @@
 The PC and the board exchange one packet each per control cycle over USB, a virtual serial port at 3 Mbaud. The
 PC sends a command packet at 100 Hz; the board answers each valid packet with a telemetry packet. Both are binary,
 framed with start bytes, a length byte, two end bytes and a CRC byte, and together under 120 bytes: a round trip
-takes about 0.3 ms at 3 Mbaud. The byte-exact layout is on [The serial protocol](../reference/serial-protocol.md)
+takes about 0.4 ms at 3 Mbaud. The byte-exact layout is on [The serial protocol](../reference/serial-protocol.md)
 in the API reference; this page explains how it works.
 
 ![Packet structure](../assets/bytes.webp){ width="700" }
@@ -33,7 +33,7 @@ packet:
 
 | Command | Name | What the board does |
 |---|---|---|
-| 255 | Idle (dummy) | Sets each joint's speed to the commanded speed; with zero speeds, holds. The default between moves |
+| 255 | Idle (dummy) | The joints stand still: it sets their speeds but steps none; it only continues a homing in progress. The default between moves |
 | 123 | Jog | Runs each joint at its commanded speed (`runSpeed`) |
 | 156 | Go to position with speed | Runs each joint at the average of its commanded speed and the speed that would close the position error in one cycle: the tracking the planners use |
 | 100 | Home | Starts the homing sequence; idle packets continue it until done |
@@ -54,9 +54,10 @@ mode 1, a clear-error for mode 2, and an empty status poll when nothing changed.
 ## Telemetry
 
 The board returns the six positions and speeds in motor steps, which joints are homed, the inputs, outputs and
-E-stop, two bytes of driver flags (temperature and position, reserved: the firmware reports them cleared), the
-timing, the last command byte it received, and the gripper's ID, position, speed, current, status and object
-detection as the gripper reported them.
+E-stop, two bytes of driver flags (temperature and position, reserved: the joint bits are cleared and the two
+spare bits set), the timing, the last command byte it received, and the gripper's data. Of that, the gripper
+reports only its position, current and status byte; the ID, speed and object-detection bytes are fixed values,
+and the object detection is read from two bits of the status byte ([The serial protocol](../reference/serial-protocol.md)).
 
 ## Writing your own host
 

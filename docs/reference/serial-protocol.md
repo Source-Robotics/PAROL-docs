@@ -31,7 +31,7 @@ the Control Board Manual explains the cycle.
 
 | Value | Name | Effect |
 |---|---|---|
-| 255 | Idle (dummy) | Sets each joint's speed to the commanded speed; with zeros, holds. Continues a homing in progress |
+| 255 | Idle (dummy) | The joints stand still (speeds are set, no joint is stepped). Continues a homing in progress |
 | 123 | Jog | Runs each joint at its commanded speed |
 | 156 | Go to position with speed | Runs each joint at the average of the commanded speed and the speed that closes the position error in one cycle |
 | 100 | Home | Starts the homing sequence |
@@ -53,17 +53,17 @@ mode 1, a clear error for mode 2, an empty status poll otherwise.
 | 18 | 18 | Speed[6] | Actual speed of each joint |
 | 36 | 1 | Homed | Bits from the MSB: joint 1 to joint 6 homed; bits 6 and 7 set |
 | 37 | 1 | IO | Bits from the MSB: input 1, input 2, output 1, output 2, E-stop (1 = closed, not pressed); bits 5 to 7 set |
-| 38 | 1 | Temperature error | Bit per joint; reserved, reported cleared by firmware 1 |
-| 39 | 1 | Position error | Bit per joint; reserved |
+| 38 | 1 | Temperature error | Bits from the MSB: joint 1 to joint 6, reserved, reported cleared by firmware 1; bits 6 and 7 set |
+| 39 | 1 | Position error | Bits from the MSB: joint 1 to joint 6, reserved; bits 6 and 7 set |
 | 40 | 2 | Timing data | Ticks of 1.422 µs between the last two valid packets (90 MHz / 128); 7031 = 10 ms |
 | 42 | 1 | Timeout error | Reserved |
 | 43 | 1 | XTR2 | The last command byte received |
-| 44 | 1 | Gripper ID | As the gripper reported |
+| 44 | 1 | Gripper ID | Always 0 in firmware 1 (not reported by the gripper) |
 | 45 | 2 | Gripper position | 0 to 255 |
-| 47 | 2 | Gripper speed | |
+| 47 | 2 | Gripper speed | Always 1 in firmware 1 (not reported by the gripper) |
 | 49 | 2 | Gripper current | mA |
-| 51 | 1 | Gripper status | The gripper's status byte |
-| 52 | 1 | Object detection | 0 moving, 1 object while closing, 2 object while opening, 3 at position |
+| 51 | 1 | Gripper status | The gripper's status byte, bits from the MSB: activated, moving to a position, object detection (two bits: 0 moving, 1 object while closing, 2 object while opening, 3 at position), temperature error, timeout error, E-stop error, calibrated |
+| 52 | 1 | Object detection | Always 1 in firmware 1; the real value is in the status byte's object-detection bits |
 | 53 | 1 | CRC | Reserved |
 | 54 | 2 | End bytes | `0x01 0x02` |
 

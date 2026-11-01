@@ -1,7 +1,8 @@
 # Examples
 
 Programs from the repository's `GUI/files/Programs` folder and the documentation. Paste one into the program
-window, read it against the simulator, lower the speed slider, and press Start.
+window, read it against the simulator, and press Start. The speed slider does not slow a program: for a first
+run, lower `v=` or raise `t=` in the moves.
 
 ## A joint-space loop
 

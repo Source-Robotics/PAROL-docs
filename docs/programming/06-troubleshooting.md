@@ -25,7 +25,7 @@
 | The simulator shows a different pose | Not homed | Home |
 | A command in the program does nothing | A typo in the name or the argument order; `End()` before it | The response log; the exact syntax on [RBTscript](03-commander/rbtscript.md) |
 | `MoveCart` stops half way | A singularity | A joint move, or another orientation |
-| `Gripper()` does nothing | Not calibrated; an error latched | Gripper tab: Calibrate, Clear error |
+| `Gripper()` does nothing | Not calibrated; an error latched; a value out of range | Gripper tab: **Calibrate gripper**, **Clear gripper error**; whole numbers, current 100 to 1000 mA |
 | The program runs once and stops | No `Loop()` | Add it, or `End()` is where you want it |
 | Import errors at start | Wrong Python or package versions | Python 3.10 or 3.11 and the pinned versions |
 | `Time between 2 commands` far above 0.010 | The PC | [Communication](../08-troubleshooting/communication.md) |

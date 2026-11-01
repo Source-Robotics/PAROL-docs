@@ -3,7 +3,8 @@
 ## Requirements
 
 - Python 3.10 or 3.11 (tested on 3.10.12 and 3.11.0; newer versions break some pinned dependencies).
-- Windows, Linux or macOS (macOS follows the Linux guide).
+- Windows or Linux. The current version does not run on macOS: it opens the serial port only on Windows
+  (`COMn`) and Linux (`/dev/ttyACMn`), whatever the repository's README says.
 - A PC that keeps the 100 Hz loop: [What you need](../../01-overview/what-you-need.md#the-pc).
 
 ## Install

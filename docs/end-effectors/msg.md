@@ -61,7 +61,7 @@ The gripper calibrates after every power-up: it opens fully and closes fully to 
 not move before that.
 
 === "Commander software"
-    The **Gripper** tab: after homing the robot press **Calibrate Gripper**, then **Clear Gripper Error**, set
+    The **Gripper** tab: after homing the robot press **Calibrate gripper**, then **Clear gripper error**, set
     position, speed and current with the sliders and press **Move GoTo**. The feedback section shows the current,
     the position and the status ([The GUI](../gui/commander/the-gui.md)). In RBTscript: `Gripper_cal()` then
     `Gripper(position, speed, current)` ([RBTscript](../programming/03-commander/rbtscript.md#gripper)).

@@ -19,8 +19,8 @@ entries:
 | Jogging stops in Cartesian mode | A singularity | Jog a joint away from it |
 | The time between commands rises above 10 ms | The PC cannot keep the 100 Hz loop | Close other programs; a faster PC ([Communication](../08-troubleshooting/communication.md)) |
 
-**Enable** clears the errors and enables the robot; **Clear error** does the same; **Disable** stops the firmware
-from accepting motion commands while the motors keep holding.
+**Enable** clears the errors and enables the robot; **Clear error** resets the homing state but does not re-enable
+a disabled robot; **Disable** stops the firmware from accepting motion commands while the motors keep holding.
 
 ## The Python API
 
@@ -49,5 +49,5 @@ until every joint jogs in the right direction.
 ## The gripper reports an error
 
 The electric grippers report their own errors through the robot: not calibrated, E-stop, timeout. The commander's
-**Gripper** tab has **Clear Gripper Error** and **Calibrate Gripper**; the Python API's `tool.calibrate()`
+**Gripper** tab has **Clear gripper error** and **Calibrate gripper**; the Python API's `tool.calibrate()`
 calibrates. The gripper manuals explain each error.

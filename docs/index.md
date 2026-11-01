@@ -27,7 +27,7 @@ examples MIT.
     <button type="button" name="reset" class="md-button">Reset</button>
   </div>
   <p class="arm-viewer__hint">Drag to turn the robot, scroll to zoom, move each joint with its slider, try a colour for the printed parts. The model is the
-repository's <a href="https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/tree/main/PAROL6_URDF">URDF</a>; the sliders run over its joint limits.</p>
+robot's <a href="https://github.com/Source-Robotics/robot_descriptions/blob/main/guides/parol6.md">URDF</a>; the sliders run over its joint limits.</p>
 </div>
 
 <div class="grid cards" markdown>
