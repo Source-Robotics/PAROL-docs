@@ -9,7 +9,8 @@ from 0 in its jog calls (`jog_j(0, ...)` is J1) and lists angles in order J1 to 
 Joints 4, 5 and 6 are also called wrist 1, wrist 2 and wrist 3, as in the robot model, ROS and the Universal Robots
 manuals. The forearm is also called the lower arm: both names mean the link from the elbow to the wrist.
 
-![Each joint turned 30 degrees in its positive direction, in colour, over the pose in grey](../assets/kinematics/parol6_joint_directions.webp){ width="900" }
+![Each joint turned 30 degrees in its positive direction, in colour, over the pose in grey](../assets/kinematics/parol6_joint_directions.webp#only-light){ width="900" }
+![Each joint turned 30 degrees in its positive direction, in colour, over the pose in grey](../assets/kinematics/parol6_joint_directions_dark.webp#only-dark){ width="900" }
 
 ## Positive direction
 
