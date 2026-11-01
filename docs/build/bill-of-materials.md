@@ -2,7 +2,7 @@
 
 !!! note "This is a copy"
     The original is [BOM/BOM.md](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/blob/main/BOM/BOM.md) in the robot's repository; this page is that
-    file as of 2026-11-01 (commit `507f666`), with the reference images shown inline. If a link is broken or a part
+    file as of 2026-11-01 (commit `c481195`), with the reference images shown inline. If a link is broken or a part
     is wrong, [open an issue](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/issues/new) there, and the fix lands here with the next sync. If you would
     rather not source the parts yourself, the shop's [kits](index.md#kits) cover every part or the hard-to-find ones.
 
@@ -20,7 +20,7 @@ Most items have links where you can buy the item, and some of them are affiliate
 | M3 | 8 mm | 10 | 2 mm head height |
 | M3 | 8 mm | 50 | DIN 912 / ISO 4762 (hexagon socket head cap) |
 | M3 | 14 mm | 30 | DIN 912 / ISO 4762 (hexagon socket head cap) |
-| M3 nut | — | 10 | DIN 912 / ISO 4762 (hexagon socket head cap) |
+| M3 nut | — | 10 | DIN 934 / ISO 4032 (hexagon nut) |
 | M3 | 25 mm | 10 | DIN 912 / ISO 4762 (hexagon socket head cap) |
 | M2 | 10 mm | 10 | DIN 912 / ISO 4762 (hexagon socket head cap) |
 | M3 | 16 mm | 10 | DIN 912 / ISO 4762 (hexagon socket head cap) |
@@ -123,9 +123,9 @@ Most items have links where you can buy the item, and some of them are affiliate
 
 | Name | Type | Quantity | Description | Link | ALT link | Reference Image |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| Suction cup gripper | | 1 | | [Link](https://www.aliexpress.com/item/4000538850003.html) | | |
+| Suction cup gripper | | 1 | | [Link](https://s.click.aliexpress.com/e/_c3bSPdVZ) | | ![Suction cup gripper](../assets/bom/Suction_cup_gripper.jpg){ width="120" } |
 | Vacuum generator | | 1 | | [Link](https://s.click.aliexpress.com/e/_c44Degkz) | | ![Vacuum generator](../assets/bom/Vacuum_generator.jpg){ width="120" } |
-| 4mm to 6mm coupler | | 1 | | [Link](https://s.click.aliexpress.com/e/_DeEEqHR) | | |
+| 4mm to 6mm coupler | | 1 | | [Link](https://s.click.aliexpress.com/e/_c3wvdY99) | | ![Pneumatic coupler 4 to 6 mm](../assets/bom/Pneumatic_coupler_4_to_6_mm.jpg){ width="120" } |
 
 
 ## Small print bed modification
@@ -135,6 +135,6 @@ Most items have links where you can buy the item, and some of them are affiliate
 
 | Name | Type | Quantity | Description | Link | ALT link | Reference Image |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| J1 turret dowel pin | Dowel pin 4 x 18 mm | 3 | Solid cylindrical, stainless or hardened steel | [Link](https://www.aliexpress.com/item/1005009401701158.html) | | |
-| Upper arm dowel pin | Dowel pin 6 x 22 mm | 4 | Solid cylindrical, stainless or hardened steel | [Link](https://www.aliexpress.com/item/1005009401701158.html) | | |
+| J1 turret dowel pin | Dowel pin 4 x 18 mm | 3 | Solid cylindrical, stainless or hardened steel | [Link](https://www.aliexpress.com/item/1005009401701158.html) | | ![Dowel pin](../assets/bom/Dowel_pin.jpg){ width="120" } |
+| Upper arm dowel pin | Dowel pin 6 x 22 mm | 4 | Solid cylindrical, stainless or hardened steel | [Link](https://www.aliexpress.com/item/1005009401701158.html) | | ![Dowel pin](../assets/bom/Dowel_pin.jpg){ width="120" } |
 | Two part epoxy | Epoxy adhesive | 1 | 1:1 mix, slow setting | [Link](https://www.aliexpress.com/item/1005012397836514.html) | | |
