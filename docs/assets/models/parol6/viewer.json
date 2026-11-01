@@ -1,40 +1,41 @@
 {
+ "source": "robot_descriptions/urdf/parol6_description/parol6_flange.urdf",
  "links": [
   {
    "name": "base_link",
    "file": "base_link.glb"
   },
   {
-   "name": "L1",
-   "file": "L1.glb"
+   "name": "shoulder_link",
+   "file": "shoulder_link.glb"
   },
   {
-   "name": "L2",
-   "file": "L2.glb"
+   "name": "upper_arm_link",
+   "file": "upper_arm_link.glb"
   },
   {
-   "name": "L3",
-   "file": "L3.glb"
+   "name": "forearm_link",
+   "file": "forearm_link.glb"
   },
   {
-   "name": "L4",
-   "file": "L4.glb"
+   "name": "wrist_1_link",
+   "file": "wrist_1_link.glb"
   },
   {
-   "name": "L5",
-   "file": "L5.glb"
+   "name": "wrist_2_link",
+   "file": "wrist_2_link.glb"
   },
   {
-   "name": "L6",
-   "file": "L6.glb"
+   "name": "wrist_3_link",
+   "file": "wrist_3_link.glb"
   }
  ],
  "joints": [
   {
-   "name": "L1",
+   "name": "base_joint",
    "type": "revolute",
    "parent": "base_link",
-   "child": "L1",
+   "child": "shoulder_link",
    "xyz": [
     0.0,
     0.0,
@@ -54,12 +55,12 @@
    "upper_deg": 97.4
   },
   {
-   "name": "L2",
+   "name": "shoulder_joint",
    "type": "revolute",
-   "parent": "L1",
-   "child": "L2",
+   "parent": "shoulder_link",
+   "child": "upper_arm_link",
    "xyz": [
-    0.0234207210610375,
+    0.0234207210610365,
     0.0,
     0.1105
    ],
@@ -77,88 +78,88 @@
    "upper_deg": 57.3
   },
   {
-   "name": "L3",
+   "name": "elbow_joint",
    "type": "revolute",
-   "parent": "L2",
-   "child": "L3",
+   "parent": "upper_arm_link",
+   "child": "forearm_link",
    "xyz": [
     0.0,
     -0.18,
     0.0
    ],
    "rpy": [
-    3.1416,
+    3.14159265358979,
     0.0,
-    -1.5708
+    -1.5707963267949
    ],
    "axis": [
     0.0,
     0.0,
-    -1.0
+    1.0
    ],
-   "lower_deg": -114.6,
-   "upper_deg": 74.5
+   "lower_deg": -74.5,
+   "upper_deg": 114.6
   },
   {
-   "name": "L4",
+   "name": "wrist_1_joint",
    "type": "revolute",
-   "parent": "L3",
-   "child": "L4",
+   "parent": "forearm_link",
+   "child": "wrist_1_link",
    "xyz": [
-    0.0435,
+    0.0434999999999984,
     0.0,
     0.0
    ],
    "rpy": [
     1.5707963267949,
     0.0,
-    3.14159265358979
+    -3.14159265358979
    ],
    "axis": [
     0.0,
     0.0,
-    -1.0
+    1.0
    ],
    "lower_deg": -114.6,
    "upper_deg": 114.6
   },
   {
-   "name": "L5",
+   "name": "wrist_2_joint",
    "type": "revolute",
-   "parent": "L4",
-   "child": "L5",
+   "parent": "wrist_1_link",
+   "child": "wrist_2_link",
    "xyz": [
     0.0,
     0.0,
-    -0.17635
+    -0.177
    ],
    "rpy": [
-    -1.5708,
+    -1.57079632679489,
     0.0,
     0.0
    ],
    "axis": [
     0.0,
     0.0,
-    -1.0
+    1.0
    ],
    "lower_deg": -120.3,
    "upper_deg": 120.3
   },
   {
-   "name": "L6",
+   "name": "wrist_3_joint",
    "type": "continuous",
-   "parent": "L5",
-   "child": "L6",
+   "parent": "wrist_2_link",
+   "child": "wrist_3_link",
    "xyz": [
     0.0,
     0.0,
     0.0
    ],
    "rpy": [
-    1.5708,
+    1.5707963267949,
     0.0,
-    0.0
+    3.141592653589793
    ],
    "axis": [
     0.0,

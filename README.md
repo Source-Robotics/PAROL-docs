@@ -86,8 +86,10 @@ changing the spreadsheet.
 
 ## The 3D model, the Markdown twins and the "Last update" dates
 
-`tools/build_model.py` builds `docs/assets/models/parol6/` from the robot repository's URDF (the same `--repo`
-as the BOM tool; needs `trimesh` with `fast-simplification`): one file per link, decimated for the web, and
+`tools/build_model.py` builds `docs/assets/models/parol6/` from `urdf/parol6_description/parol6_flange.urdf` in a
+clone of [robot_descriptions](https://github.com/Source-Robotics/robot_descriptions) (`--descriptions PATH`, else
+`../../projects/robot_descriptions`; needs `trimesh` with `fast-simplification`), the model the kinematics sheets
+come from: one file per moving link with its visual meshes merged, decimated for the web, and
 `viewer.json` with the kinematic chain. The landing and kinematics pages show them in the arm viewer
 `docs/javascripts/arm-viewer.js` (three.js from a CDN, through the import map in `overrides/main.html`, loaded
 only on those pages): turn and zoom, a slider per joint within its limits, the colour of the printed parts.

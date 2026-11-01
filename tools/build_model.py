@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
-"""Build the 3D model the landing page's arm viewer shows, from the robot repository's URDF.
+"""Build the 3D model the landing page's arm viewer shows, from PAROL6's URDF in robot_descriptions.
 
-    python tools/build_model.py [--repo PATH]
+    python tools/build_model.py [--descriptions PATH]
 
-Writes docs/assets/models/parol6/: one GLB per link (base_link, L1 to L6) in the link's own frame, decimated for
-the web, and viewer.json: the kinematic chain (each joint's parent and child link, origin, axis and limits), the
-colour swatches, the default joint angles and the camera. docs/javascripts/arm-viewer.js reads them and moves
-the joints. Needs trimesh (with fast-simplification) and numpy.
+Reads urdf/parol6_description/parol6_flange.urdf from a clone of Source-Robotics/robot_descriptions (--descriptions,
+else $ROBOT_DESCRIPTIONS_DIR, else ../../projects/robot_descriptions), the same model the kinematics sheets come
+from. Writes docs/assets/models/parol6/: one GLB per moving link in the link's own frame (all its visual meshes
+merged, links on fixed joints such as the flange folded into their moving parent), decimated for the web, and
+viewer.json: the kinematic chain of the movable joints (each joint's parent and child link, origin, axis and
+limits), the colour swatches, the default joint angles and the camera. docs/javascripts/arm-viewer.js reads them
+and moves the joints. Needs trimesh (with fast-simplification) and numpy.
 """
 from __future__ import annotations
 
@@ -24,19 +27,19 @@ import trimesh
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "docs" / "assets" / "models" / "parol6"
-URDF = Path("PAROL6_URDF") / "parol6" / "urdf" / "parol6.urdf"
-MESHES = Path("PAROL6_URDF") / "parol6" / "meshes"
-MAX_FACES = 20000          # the URDF meshes have up to 60 000 faces each: too many for a landing page
+URDF = Path("urdf") / "parol6_description" / "parol6_flange.urdf"
+MAX_FACES = 20000          # per link: the model's meshes are far finer than a landing page needs
 COLOURS = {"body": {"Grey": "#c9c9c6", "Black": "#1a1a1a", "White": "#f2f2f0", "Orange": "#f08a24"}}
+MOVABLE = ("revolute", "continuous", "prismatic")
 
 
-def find_repo(arg: str | None) -> Path:
-    candidates = [arg, os.environ.get("PAROL6_DIR"), ROOT.parent / "PAROL6-Desktop-robot-arm",
-                  ROOT.parent.parent / "projects" / "PAROL6-Desktop-robot-arm"]
+def find_descriptions(arg: str | None) -> Path:
+    candidates = [arg, os.environ.get("ROBOT_DESCRIPTIONS_DIR"), ROOT.parent / "robot_descriptions",
+                  ROOT.parent.parent / "projects" / "robot_descriptions"]
     for c in candidates:
         if c and (Path(c) / URDF).exists():
             return Path(c)
-    sys.exit(f"build_model: no clone of PAROL6-Desktop-robot-arm with {URDF} found; pass --repo PATH")
+    sys.exit(f"build_model: no clone of robot_descriptions with {URDF} found; pass --descriptions PATH")
 
 
 def floats(s: str | None, default="0 0 0") -> list[float]:
@@ -76,27 +79,44 @@ def compress(path: Path) -> str:
 
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--repo", help="the clone of the robot repository")
+    ap.add_argument("--descriptions", help="the clone of Source-Robotics/robot_descriptions")
     args = ap.parse_args(argv)
-    repo = find_repo(args.repo)
-    robot = ET.parse(repo / URDF).getroot()
+    urdf = find_descriptions(args.descriptions) / URDF
+    robot = ET.parse(urdf).getroot()
+    by_child = {j.find("child").get("link"): j for j in robot.findall("joint")}
+
+    def carrier(link: str) -> tuple[str, np.ndarray]:
+        """The moving link a link rides on, and the link's transform in that link's frame."""
+        t = np.eye(4)
+        while link in by_child and by_child[link].get("type") == "fixed" and by_child[link].find("parent").get("link") != "world":
+            j = by_child[link]
+            t = origin_matrix(j.find("origin")) @ t
+            link = j.find("parent").get("link")
+        return link, t
+
+    parts: dict[str, list] = {}
+    for link in robot.findall("link"):
+        target, t_link = carrier(link.get("name"))
+        for vis in link.findall("visual"):
+            mesh_el = vis.find("geometry/mesh")
+            if mesh_el is None:
+                continue
+            mesh = trimesh.load(urdf.parent / mesh_el.get("filename"), force="mesh")
+            if mesh_el.get("scale"):
+                mesh.apply_scale(floats(mesh_el.get("scale")))
+            mesh.apply_transform(t_link @ origin_matrix(vis.find("origin")))
+            parts.setdefault(target, []).append(mesh)
 
     links, sizes = [], {}
     if OUT.exists():
         for old in OUT.iterdir():
             old.unlink()
     OUT.mkdir(parents=True, exist_ok=True)
-    for link in robot.findall("link"):
-        mesh_el = link.find("visual/geometry/mesh")
-        if mesh_el is None:
-            continue
-        name = link.get("name")
-        path = repo / MESHES / Path(mesh_el.get("filename")).name
-        mesh = trimesh.load(path, force="mesh")
+    for name, meshes in parts.items():
+        mesh = trimesh.util.concatenate(meshes)
         faces = len(mesh.faces)
         if faces > MAX_FACES:
             mesh = mesh.simplify_quadric_decimation(face_count=MAX_FACES)
-        mesh.apply_transform(origin_matrix(link.find("visual/origin")))
         mesh.visual = material(COLOURS["body"]["Grey"])
         scene = trimesh.Scene()
         scene.add_geometry(mesh, node_name=name, geom_name=name)
@@ -110,6 +130,8 @@ def main(argv=None) -> int:
         if j.get("type") == "fixed" and parent == "world":
             root = child
             continue
+        if j.get("type") not in MOVABLE:
+            continue
         origin = j.find("origin")
         lim = j.find("limit")
         joints.append({
@@ -121,6 +143,7 @@ def main(argv=None) -> int:
             "upper_deg": round(float(lim.get("upper", 3.1416)) * 180 / np.pi, 1) if lim is not None else 180.0,
         })
     config = {
+        "source": "robot_descriptions/" + URDF.as_posix(),
         "links": links, "joints": joints, "root": root or links[0]["name"], "up": "z",
         "colors": COLOURS, "default": {"body": COLOURS["body"]["Grey"], "q_deg": [0.0] * len(joints)},
         "camera": {"azimuth_deg": -40, "polar_deg": 65, "fill": 1.15},
