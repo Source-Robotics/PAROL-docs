@@ -73,6 +73,6 @@ sequenceDiagram
 | Python API | [PAROL6-python-API](https://github.com/PCrnjak/PAROL6-python-API) |
 | ROS 2 MoveIt configuration | [PAROL6-ROS2-MOVEIT](https://github.com/Source-Robotics/PAROL6-ROS2-MOVEIT) |
 | This documentation | [PAROL-docs](https://github.com/Source-Robotics/PAROL-docs) |
-| Shop, videos, community | [source-robotics.com](https://source-robotics.com/), [YouTube](https://www.youtube.com/@source-robotics), [Discord](https://discord.gg/prjUvjmGpZ), [forum](https://discourse.source-robotics.com/) |
+| Shop, videos, community | [source-robotics.com](https://source-robotics.com/), [YouTube](https://www.youtube.com/@source-robotics), [Discord](https://discord.gg/prjUvjmGpZ) |
 
 The full list is on [CAD, files and downloads](../cad-files.md).

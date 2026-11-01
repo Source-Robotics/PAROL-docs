@@ -1,7 +1,6 @@
 # Getting help
 
-- **Questions and discussion**: the [Source Robotics Discord](https://discord.gg/prjUvjmGpZ) and the
-  [forum](https://discourse.source-robotics.com/).
+- **Questions and discussion**: the [Source Robotics Discord](https://discord.gg/prjUvjmGpZ).
 - **A problem with the robot's hardware, its files or the control board firmware**: an issue in the
   [robot repository](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/issues); see
   [Report a problem](report-a-problem.md) for what to include.

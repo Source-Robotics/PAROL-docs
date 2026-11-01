@@ -19,4 +19,4 @@
 | Gripper documentation | [SSG-48](https://docs.source-robotics.com/SSG48-gripper-docs/), [MSG](https://docs.source-robotics.com/MSG-gripper-docs/) |
 | This documentation | [PAROL-docs](https://github.com/Source-Robotics/PAROL-docs) |
 | Shop | [source-robotics.com](https://source-robotics.com/) |
-| Community | [Discord](https://discord.gg/prjUvjmGpZ), [forum](https://discourse.source-robotics.com/), [Hackaday](https://hackaday.io/project/191860-parol6-desktop-robotic-arm), [blog](https://source-robotics.com/blogs/blog) |
+| Community | [Discord](https://discord.gg/prjUvjmGpZ), [Hackaday](https://hackaday.io/project/191860-parol6-desktop-robotic-arm), [blog](https://source-robotics.com/blogs/blog) |
