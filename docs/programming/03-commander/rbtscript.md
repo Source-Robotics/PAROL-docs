@@ -22,7 +22,7 @@ seconds, gripper position and speed 0 to 255, gripper current in milliamps ([Uni
 ### MoveJoint
 
 ```
-MoveJoint(j1, j2, j3, j4, j5, j6, v=0, a=0, t=0, func, speed)
+MoveJoint(j1, j2, j3, j4, j5, j6, v=0, a=0, t=0, trap|poly, speed)
 ```
 
 Moves all joints to the given angles; the path is a straight line in joint space, all joints stopping together.
@@ -34,13 +34,13 @@ The tool's path curves.
 | `v` | Speed of the leading joint, the one with the longest way | % (0 to 100) |
 | `a` | Acceleration and deceleration of the leading joint | % |
 | `t` | Duration of the move; overrides `v` and `a` | seconds |
-| `func` | The profile: `"poly"` (quintic polynomial) or `"trap"` (trapezoidal) | |
+| `trap`, `poly` | The profile, as a bare word: `poly` (quintic polynomial) or `trap` (trapezoidal). `"trap"` in quotes or `func=trap` is ignored without a message and gives the default | |
 | `speed` | The word `speed` as the last argument: track the speed curve only | |
 
 The arguments must be in this order. The rules:
 
-- With `t`, the move takes that long; the profile is polynomial unless `func="trap"`, and a trapezoid with `t`
-  spends a third of the time in each phase.
+- With `t`, the move takes that long; the profile is polynomial unless the word `trap` follows, and a trapezoid
+  with `t` spends a third of the time in each phase.
 - With `v` and `a`, the profile is trapezoidal, for the leading joint; the other joints get what makes them
   finish together.
 - With neither, a conservative trapezoid.
@@ -49,6 +49,7 @@ The arguments must be in this order. The rules:
 
 ```
 MoveJoint(0,-90,180,0,0,180,t=4)
+MoveJoint(0,-90,180,0,0,180,t=4,trap)
 MoveJoint(0,-90,180,0,0,180,v=50,a=50)
 MoveJoint(0,-90,180,0,0,180)
 MoveJoint(0,-90,180,0,0,180,speed)
@@ -57,7 +58,7 @@ MoveJoint(0,-90,180,0,0,180,speed)
 ### MovePose
 
 ```
-MovePose(x, y, z, Rx, Ry, Rz, v=0, a=0, t=0, func, speed)
+MovePose(x, y, z, Rx, Ry, Rz, v=0, a=0, t=0, trap|poly, speed)
 ```
 
 Like `MoveJoint`, but the target is a pose in the WRF: the inverse kinematics is solved once at the target and the
@@ -67,44 +68,54 @@ arguments and rules as `MoveJoint`.
 ### MoveCart
 
 ```
-MoveCart(x, y, z, Rx, Ry, Rz, t=0, func, speed)
+MoveCart(x, y, z, Rx, Ry, Rz, v=0, a=0, t=0, trap|poly, speed)
 ```
 
 Moves the tool in a straight line to the pose, in the WRF. The joints' motion is whatever the straight line
 requires, and the move stops if it meets a singularity; the robot does not deviate from the line to avoid one.
-`t`, `func` and `speed` as above.
+The timing rules differ from `MoveJoint`:
+
+- With `t`, the move takes that long and the profile is **trapezoidal** unless the word `poly` follows, the
+  opposite of `MoveJoint`.
+- Without `t`, **every move takes 3.6 s**, however long it is, so a long move without `t` is fast. `v` and `a`
+  are accepted but only checked for range. Give `t` for every Cartesian move.
 
 ### MoveCartRelTRF
 
 ```
-MoveCartRelTRF(x, y, z, Rx, Ry, Rz, t=0, func, speed)
+MoveCartRelTRF(x, y, z, Rx, Ry, Rz, v=0, a=0, t=0, trap|poly, speed)
 ```
 
 A straight-line move relative to the current tool frame: `MoveCartRelTRF(-80,0,0,0,0,0)` moves 80 mm along the
-tool's −X. For rotations about more than one axis, use two commands, one axis each.
+tool's −X. For rotations about more than one axis, use two commands, one axis each. The timing rules are
+those of `MoveCart`.
 
 ### SpeedJoint, SpeedCart
 
-Listed in the command menu as joint and Cartesian speed moves; not implemented in the current version.
+Listed in the command menu, but neither works. `SpeedJoint()` passes the program check and has no action: the
+program stops on that line until you press **Stop**. `SpeedCart()` fails the check, and a program that contains
+it is refused; so are the menu's `Get_data` and `Timeouts`.
 
 ## Timing and flow
 
 | Command | Meaning |
 |---|---|
-| `Begin()` | Where execution starts |
-| `End()` | Where it stops |
-| `Loop()` | Restart from the beginning |
-| `Delay(t)` | Wait `t` seconds; the shortest delay is one control cycle, 10 ms |
+| `Begin()` | Must be the first line; a program that does not start with it is refused |
+| `End()` | Stops the program; the last line must be `End()` or `Loop()`, or the program is refused |
+| `Loop()` | Restarts at the line after `Begin()` |
+| `Delay(t)` | Waits `t` seconds; `t` must be more than 0.01, and `Delay(0.01)` is refused and stops the program |
 
 ## I/O
 
 ```
 Output(1,HIGH)
-Output(2,LOW)
+Output(1,LOW)
 ```
 
-Sets output 1 or 2. `Input()` appears in the menu for reading an input; conditions on it are not available in
-this version.
+Sets output 1, with no space after the comma. In the current version `Output(2,HIGH)` and `Output(2,LOW)` are
+refused by a bug in the check (`Invalid Output() command`) and stop the program, so only output 1 can be switched
+from a program. `Input()` appears in the menu but has no action: a program stops on it until you press **Stop**;
+`Home()` behaves the same.
 
 ## Gripper
 
@@ -115,9 +126,11 @@ Gripper(position, speed, current)
 Delay(2)
 ```
 
-`Gripper_cal()` calibrates and activates the SSG-48 or MSG gripper; add a delay for it to finish. `Gripper()`
-moves it: position 0 (open) to 255 (closed), speed 0 to 255, current 0 to 1300 mA, the current being the grip
-force; below about 150 mA the gripper does not move. The program continues at once, so add a `Delay()` for the
+`Gripper_cal()` calibrates the SSG-48 or MSG gripper; add a delay for it to finish. Activating it is the Gripper
+tab's **Activate** option, which is on by default. `Gripper()` moves it, with whole numbers only: position 0
+(open) to 255 (closed), speed 0 to 255, current 100 to 1000 mA, the current being the grip force; below about
+150 mA the gripper does not move. A value outside these ranges is logged as `Gripper() invalid input value`, the
+line is skipped and the program goes on. The program continues at once, so add a `Delay()` for the
 gripper to arrive.
 
 !!! danger

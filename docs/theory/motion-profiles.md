@@ -21,9 +21,11 @@ ends from rest without a jolt. Slower in the middle for the same total time, and
 
 ## In the commander software
 
-`MoveJoint`, `MovePose`, `MoveCart` and `MoveCartRelTRF` take `func="trap"` or `func="poly"`; a move with `t=`
-defaults to polynomial, a move with `v=` and `a=` is trapezoidal, and a move with neither runs a conservative
-trapezoid ([RBTscript](../programming/03-commander/rbtscript.md)).
+`MoveJoint`, `MovePose`, `MoveCart` and `MoveCartRelTRF` take the bare word `trap` or `poly` after the other
+arguments (`func="trap"` is ignored). A `MoveJoint` or `MovePose` with `t=` defaults to polynomial, with `v=` and
+`a=` it is trapezoidal, and with neither it runs a conservative trapezoid. A `MoveCart` or `MoveCartRelTRF` with
+`t=` defaults to trapezoidal, and without `t=` it always takes 3.6 s
+([RBTscript](../programming/03-commander/rbtscript.md)).
 
 ## In the Python API
 

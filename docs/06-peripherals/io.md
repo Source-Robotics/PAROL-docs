@@ -35,8 +35,11 @@ coil, gets a flyback diode across it.
 === "RBTscript"
     ```
     Output(1,HIGH)
-    Output(2,LOW)
+    Output(1,LOW)
     ```
+
+    Only output 1: in the current commander version `Output(2,...)` is refused by a bug in its check and stops
+    the program ([RBTscript](../programming/03-commander/rbtscript.md)).
 
 === "Python API"
     ```python
