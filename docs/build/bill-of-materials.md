@@ -2,7 +2,7 @@
 
 !!! note "This is a copy"
     The original is [BOM/BOM.md](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/blob/main/BOM/BOM.md) in the robot's repository; this page is that
-    file as of 2026-11-01 (commit `f2b28b3`), with the reference images shown inline. If a link is broken or a part
+    file as of 2026-11-01 (commit `507f666`), with the reference images shown inline. If a link is broken or a part
     is wrong, [open an issue](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/issues/new) there, and the fix lands here with the next sync. If you would
     rather not source the parts yourself, the shop's [kits](index.md#kits) cover every part or the hard-to-find ones.
 
@@ -98,10 +98,10 @@ Most items have links where you can buy the item, and some of them are affiliate
 | Thermal paste / cement | | 2 | Needed only if your control board has no drivers! | [Link](https://s.click.aliexpress.com/e/_c2u86OEn) | | ![Thermal cement](../assets/bom/Thermal_cement.jpg){ width="120" } |
 | On/Off button | | 1 | 12mm 3-6V | [Link](https://s.click.aliexpress.com/e/_DBpZV3h) | | ![button](../assets/bom/button.png){ width="120" } |
 | JST PH 2.0mm 200mm 4PIN | | 1 | For power button | [Link](https://s.click.aliexpress.com/e/_DeObQ1D) | | ![JST_PH](../assets/bom/JST_PH.png){ width="120" } |
-| Noctua NF-A4x20 5V 40mm | | 1 | or any 40mm 5V fan| | | |
+| Noctua NF-A4x20 5V 40mm | | 1 | or any 40mm 5V fan| | | ![Noctua NF-A4x20 fan](../assets/bom/Noctua_NF_A4x20_fan.jpg){ width="120" } |
 | Power connector - male + female | | 1 | GX16 2PIN | [Link](https://s.click.aliexpress.com/e/_DcHjMfN) | | ![GX16](../assets/bom/GX16.jpg){ width="120" } |
 | Gripper connector (electric) | | 1 | M8 sensor Female 4 pin | [Link](https://s.click.aliexpress.com/e/_DDQz9iP) | | ![M8 connector female 4pin](../assets/bom/M8_connector_female_4pin.png){ width="120" } |
-| Power supply | | 1 | Any 24V 5A supply | [Link](https://www.omc-stepperonline.com/edr-120-24-mean-well-120w-24vdc-5a-115-230vac-din-rail-power-supply-edr-120-24?tracking=6543849d6ff69) | [Alt Link](https://s.click.aliexpress.com/e/_olFOM5Z) | |
+| Power supply | | 1 | Any 24V 5A supply | [Link](https://www.omc-stepperonline.com/edr-120-24-mean-well-120w-24vdc-5a-115-230vac-din-rail-power-supply-edr-120-24?tracking=6543849d6ff69) | [Alt Link](https://s.click.aliexpress.com/e/_olFOM5Z) | ![Power supply EDR-120-24](../assets/bom/Power_supply_EDR_120_24.jpg){ width="120" } |
 | Limit switches | | 3 | Type ZW12-3 | [Link](https://s.click.aliexpress.com/e/_DBq6eeF) | | ![LIMIT_SWITCH](../assets/bom/LIMIT_SWITCH.png){ width="120" } |
 | Inductive sensor 1 | | 1 | 4mm NPN NO | [Link](https://s.click.aliexpress.com/e/_c40MRkk5) | [Alt Link](https://s.click.aliexpress.com/e/_c3CMbO1h) | ![INDUCTIVE_4MM](../assets/bom/INDUCTIVE_4MM.png){ width="120" } |
 | Inductive sensor 2 | | 1 | GX-F8A | [Link](https://s.click.aliexpress.com/e/_c4VxLtW3) | | ![GX-F8A](../assets/bom/GX_F8A.png){ width="120" } |
@@ -114,8 +114,8 @@ Most items have links where you can buy the item, and some of them are affiliate
 | Pneumatic gripper connector | | 2 | PC4 - M5 | [Link](https://s.click.aliexpress.com/e/_DkCJqUL) | | ![PC4-M5](../assets/bom/PC4_M5.png){ width="120" } |
 | Pneumatic tube | | 5 meters | 1 meter, 4x2.5mm | [Link](https://s.click.aliexpress.com/e/_DEhvFyJ) | | ![Pneumatic_tube](../assets/bom/Pneumatic_tube.png){ width="120" } |
 | xt30 connector female | | 1 | Used to deliver power to PAROL6 PCB | [Link](https://s.click.aliexpress.com/e/_DllR7eL) | | ![XT30 female connector](../assets/bom/XT30_female_connector.jpg){ width="120" } |
-| Stlink / programming adapter | | 1 | Use our [Official programming adapter](https://source-robotics.com/products/parol6-programming-adapter) for ease of use! Pin order needs to be: SWCLK, SWDIO, GND, 3V3, 5V | [Link](https://s.click.aliexpress.com/e/_c38Ao641) | | ![ST-Link V2 programmer](../assets/bom/ST_Link_V2_programmer.jpg){ width="120" } |
-| USB B cable | | 1 | Comms to the PC | | | |
+| Stlink / programming adapter | | 1 | Use our [Official programming adapter](https://source-robotics.com/products/parol6-programming-adapter) for ease of use! Pin order needs to be: SWCLK, SWDIO, GND, 3V3, 5V | [Link](https://s.click.aliexpress.com/e/_c38Ao641) | | ![PAROL6 programming adapter](../assets/bom/PAROL6_programming_adapter.jpg){ width="120" } |
+| USB B cable | | 1 | Comms to the PC | | | ![USB B cable](../assets/bom/USB_B_cable.jpg){ width="120" } |
 | 5/2 solenoid air valve | | 1 | 4mm tube connectors, 5/2, 24V | [Link](https://s.click.aliexpress.com/e/_DDrw0Ux) | | ![solenoid_valve](../assets/bom/solenoid_valve.png){ width="120" } |
 
 
@@ -124,7 +124,7 @@ Most items have links where you can buy the item, and some of them are affiliate
 | Name | Type | Quantity | Description | Link | ALT link | Reference Image |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | Suction cup gripper | | 1 | | [Link](https://www.aliexpress.com/item/4000538850003.html) | | |
-| Vacuum generator | | 1 | | [Link](https://s.click.aliexpress.com/e/_c44Degkz) | | |
+| Vacuum generator | | 1 | | [Link](https://s.click.aliexpress.com/e/_c44Degkz) | | ![Vacuum generator](../assets/bom/Vacuum_generator.jpg){ width="120" } |
 | 4mm to 6mm coupler | | 1 | | [Link](https://s.click.aliexpress.com/e/_DeEEqHR) | | |
 
 
