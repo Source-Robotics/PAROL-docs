@@ -2,7 +2,7 @@
 
 !!! note "This is a copy"
     The original is [BOM/BOM.md](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/blob/main/BOM/BOM.md) in the robot's repository; this page is that
-    file as of 2026-10-02 (commit `45a7502`), with the reference images shown inline. If a link is broken or a part
+    file as of 2026-11-01 (commit `f2b28b3`), with the reference images shown inline. If a link is broken or a part
     is wrong, [open an issue](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/issues/new) there, and the fix lands here with the next sync. If you would
     rather not source the parts yourself, the shop's [kits](index.md#kits) cover every part or the hard-to-find ones.
 
@@ -93,8 +93,8 @@ Most items have links where you can buy the item, and some of them are affiliate
 
 | Name | Type | Quantity | Description | Link | ALT link | Reference Image |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| PAROL control board | | 1 | [source-robotics.com](http://source-robotics.com/) | [Link](https://source-robotics.com/products/parol6-control-board) | | |
-| TMC5160 | | 6 | Drivers from the links are tested. Use any other at own risk | [Link](https://s.click.aliexpress.com/e/_c3Jc52V9) | [Alt Link](https://s.click.aliexpress.com/e/_Dd8Cjkb) | |
+| PAROL control board | | 1 | [source-robotics.com](http://source-robotics.com/) | [Link](https://source-robotics.com/products/parol6-control-board) | | ![PAROL6 control board](../assets/bom/PAROL6_control_board.jpg){ width="120" } |
+| TMC5160 | | 6 | Drivers from the links are tested. Use any other at own risk | [Link](https://s.click.aliexpress.com/e/_c3Jc52V9) | [Alt Link](https://s.click.aliexpress.com/e/_Dd8Cjkb) | ![TMC5160 driver](../assets/bom/TMC5160_driver.jpg){ width="120" } |
 | Thermal paste / cement | | 2 | Needed only if your control board has no drivers! | [Link](https://s.click.aliexpress.com/e/_c2u86OEn) | | ![Thermal cement](../assets/bom/Thermal_cement.jpg){ width="120" } |
 | On/Off button | | 1 | 12mm 3-6V | [Link](https://s.click.aliexpress.com/e/_DBpZV3h) | | ![button](../assets/bom/button.png){ width="120" } |
 | JST PH 2.0mm 200mm 4PIN | | 1 | For power button | [Link](https://s.click.aliexpress.com/e/_DeObQ1D) | | ![JST_PH](../assets/bom/JST_PH.png){ width="120" } |
@@ -113,8 +113,8 @@ Most items have links where you can buy the item, and some of them are affiliate
 | Pneumatic Gripper | | 1 | MHZ2-16D | [Link](https://s.click.aliexpress.com/e/_c4EJl0Qr) | | ![MHZ](../assets/bom/MHZ.png){ width="120" } |
 | Pneumatic gripper connector | | 2 | PC4 - M5 | [Link](https://s.click.aliexpress.com/e/_DkCJqUL) | | ![PC4-M5](../assets/bom/PC4_M5.png){ width="120" } |
 | Pneumatic tube | | 5 meters | 1 meter, 4x2.5mm | [Link](https://s.click.aliexpress.com/e/_DEhvFyJ) | | ![Pneumatic_tube](../assets/bom/Pneumatic_tube.png){ width="120" } |
-| xt30 connector female | | 1 | Used to deliver power to PAROL6 PCB | [Link](https://s.click.aliexpress.com/e/_DllR7eL) | | |
-| Stlink / programming adapter | | 1 | Use our [Official programming adapter](https://source-robotics.com/products/parol6-programming-adapter) for ease of use! Pin order needs to be: SWCLK, SWDIO, GND, 3V3, 5V | [Link](https://s.click.aliexpress.com/e/_c38Ao641) | | |
+| xt30 connector female | | 1 | Used to deliver power to PAROL6 PCB | [Link](https://s.click.aliexpress.com/e/_DllR7eL) | | ![XT30 female connector](../assets/bom/XT30_female_connector.jpg){ width="120" } |
+| Stlink / programming adapter | | 1 | Use our [Official programming adapter](https://source-robotics.com/products/parol6-programming-adapter) for ease of use! Pin order needs to be: SWCLK, SWDIO, GND, 3V3, 5V | [Link](https://s.click.aliexpress.com/e/_c38Ao641) | | ![ST-Link V2 programmer](../assets/bom/ST_Link_V2_programmer.jpg){ width="120" } |
 | USB B cable | | 1 | Comms to the PC | | | |
 | 5/2 solenoid air valve | | 1 | 4mm tube connectors, 5/2, 24V | [Link](https://s.click.aliexpress.com/e/_DDrw0Ux) | | ![solenoid_valve](../assets/bom/solenoid_valve.png){ width="120" } |
 

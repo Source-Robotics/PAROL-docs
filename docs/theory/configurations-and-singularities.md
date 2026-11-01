@@ -7,6 +7,27 @@ target or turned 180° with the arm reaching backwards. Each combination is a **
 keeps the configuration it is in unless the target is in another; a Cartesian move cannot change configuration
 at all, because that would mean passing through a pose where two configurations meet, which is a singularity.
 
+Three choices with two answers each make eight configurations. The figure shows all eight for one tool pose:
+PAROL6 with nothing on the flange, the tool centre point 250 mm in front of the base and 230 mm up, the tool
+tilted 30° from vertical. The flange is in exactly the same place and orientation in every picture; only the
+joints differ. The colours mark the links: base turquoise, joint 1 green, upper arm yellow, elbow red, forearm
+green, wrist red, flange orange.
+
+- **Shoulder right or left**: the wrist centre in front of the joint 1 axis, or behind it with joint 1 turned
+  about 180° and the arm reaching back over itself.
+- **Elbow up or down**: the elbow above or below the line from the shoulder to the wrist centre.
+- **Wrist flipped or not**: joint 5 positive or negative; joints 4 and 6 turn by 180° to keep the tool where it
+  is.
+
+![The eight configurations of PAROL6 for one tool pose: elbow up or down, shoulder right or left, wrist flipped or not; captions in red name the joints that would be outside their limits](../assets/theory/configurations_parol6.webp){ width="700" }
+
+Mathematically all eight reach the pose. On the real robot, the joint limits rule most of them out: for this pose
+only (a) is within every limit the software enforces ([Joint limits and directions](../03-technical-data/joint-limits.md)),
+and a red caption names the joints that would have to go beyond theirs. Several of the others would also hit the
+robot itself. The poses were solved and drawn from PAROL6's model in
+[robot_descriptions](https://github.com/Source-Robotics/robot_descriptions) and checked against the limits on that
+page.
+
 The practical rule: teach the poses of a program in the configuration you want, and make the move between two
 configurations a joint move (`MoveJoint`, `move_j`), never a Cartesian one.
 
