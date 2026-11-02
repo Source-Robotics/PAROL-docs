@@ -4,9 +4,11 @@
 
 Every joint is a pinch point, and the elbow and wrist fold against the upper arm and forearm. The motors are
 geared: a finger between two links when a joint closes is crushed, not pushed away. Keep hands, cables and tubes
-out of the arm's path while it is enabled, and never reach into the workspace of a running program.
+out of the arm's path while it is enabled, and never reach into the workspace of a running program. Under the
+elbow, the belt that drives joint 3 runs onto its pulley: a finger or a loose cable there is drawn in.
 
-![Pinch points on PAROL6](../assets/pinch_points.webp){ width="450" }
+![The pinch points of PAROL6, after homing: the wrist, the elbow, the belt and pulley under the elbow, the shoulder and the base](../assets/figures/parol6_pinch_points.webp#only-light){ width="550" }
+![The pinch points of PAROL6, after homing: the wrist, the elbow, the belt and pulley under the elbow, the shoulder and the base](../assets/figures/parol6_pinch_points_dark.webp#only-dark){ width="550" }
 
 ## Clothing, hair and eyes
 
