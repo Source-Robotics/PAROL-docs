@@ -58,11 +58,11 @@ The three singularities of a six-axis arm with a spherical wrist:
 ![The wrist singularity: joint 5 at 0°, so the axes of joints 4 and 6 lie in one line](../assets/theory/singularity_wrist_parol6.webp#only-light){ width="571" }
 ![The wrist singularity: joint 5 at 0°, so the axes of joints 4 and 6 lie in one line](../assets/theory/singularity_wrist_parol6_dark.webp#only-dark){ width="571" }
 
-![The shoulder singularity: the wrist centre on the joint 1 axis, here with joint 2 at −133.1° and joint 3 at 180°](../assets/theory/singularity_shoulder_parol6.webp#only-light){ width="291" }
-![The shoulder singularity: the wrist centre on the joint 1 axis, here with joint 2 at −133.1° and joint 3 at 180°](../assets/theory/singularity_shoulder_parol6_dark.webp#only-dark){ width="291" }
+![The shoulder singularity: the wrist centre on the joint 1 axis, here with joint 2 at −133.1° and joint 3 at 180°](../assets/theory/singularity_shoulder_parol6.webp#only-light){ width="347" }
+![The shoulder singularity: the wrist centre on the joint 1 axis, here with joint 2 at −133.1° and joint 3 at 180°](../assets/theory/singularity_shoulder_parol6_dark.webp#only-dark){ width="347" }
 
-![The elbow singularity: joint 3 at 256.2°, so joints 2 and 3 and the wrist centre lie in one line, the arm fully stretched](../assets/theory/singularity_elbow_parol6.webp#only-light){ width="438" }
-![The elbow singularity: joint 3 at 256.2°, so joints 2 and 3 and the wrist centre lie in one line, the arm fully stretched](../assets/theory/singularity_elbow_parol6_dark.webp#only-dark){ width="438" }
+![The elbow singularity: joint 3 at 256.2°, so joints 2 and 3 and the wrist centre lie in one line, the arm fully stretched](../assets/theory/singularity_elbow_parol6.webp#only-light){ width="517" }
+![The elbow singularity: joint 3 at 256.2°, so joints 2 and 3 and the wrist centre lie in one line, the arm fully stretched](../assets/theory/singularity_elbow_parol6_dark.webp#only-dark){ width="517" }
 
 The angles are the ones the software shows, from PAROL6's model. The wrist centre is where the axes of joints 4,
 5 and 6 meet. The elbow singularity is the outer edge of the workspace
