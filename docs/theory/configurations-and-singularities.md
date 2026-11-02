@@ -10,8 +10,8 @@ at all, because that would mean passing through a pose where two configurations 
 Three choices with two answers each make eight configurations. The figure shows all eight for one tool pose:
 PAROL6 with nothing on the flange, the tool centre point 250 mm in front of the base and 230 mm up, the tool
 tilted 30° from vertical. The flange is in exactly the same place and orientation in every picture; only the
-joints differ. The colours mark the links: base turquoise, joint 1 green, upper arm yellow, elbow red, forearm
-green, wrist red, flange orange.
+joints differ. The teal dot marks the centre of the flange and the arrow its axis, the same in every
+picture.
 
 - **Shoulder right or left**: the wrist centre in front of the joint 1 axis, or behind it with joint 1 turned
   about 180° and the arm reaching back over itself.
@@ -19,7 +19,8 @@ green, wrist red, flange orange.
 - **Wrist flipped or not**: joint 5 positive or negative; joints 4 and 6 turn by 180° to keep the tool where it
   is.
 
-![The eight configurations of PAROL6 for one tool pose: elbow up or down, shoulder right or left, wrist flipped or not](../assets/theory/configurations_parol6.webp){ width="700" }
+![The eight configurations of PAROL6 for one tool pose: elbow up or down, shoulder right or left, wrist flipped or not; of these, only (a) is within the joint limits](../assets/theory/configurations_parol6.webp#only-light){ width="700" }
+![The eight configurations of PAROL6 for one tool pose: elbow up or down, shoulder right or left, wrist flipped or not; of these, only (a) is within the joint limits](../assets/theory/configurations_parol6_dark.webp#only-dark){ width="700" }
 
 Mathematically all eight reach the pose. On the real robot, the joint limits rule most of them out: for this pose
 only (a) is within every joint limit ([Joint limits and directions](../03-technical-data/joint-limits.md)), and
@@ -28,6 +29,15 @@ several of the others would also hit the robot itself. The poses were solved and
 
 The practical rule: teach the poses of a program in the configuration you want, and make the move between two
 configurations a joint move (`MoveJoint`, `move_j`), never a Cartesian one.
+
+How the software chooses, when a target is given as a pose:
+
+- **The Python API** solves every pose starting from the joints where the robot is, so it keeps the current
+  configuration, in Cartesian moves and in joint moves to a pose alike.
+- **The commander software** solves `MovePose` starting from the standby pose, so it takes the configuration
+  nearest to standby, whichever the robot is in; its Cartesian moves keep the current one.
+
+To be sure of the configuration, give the target as joint angles.
 
 ## Singularities
 
@@ -39,11 +49,15 @@ move is impossible.
 
 The three singularities of a six-axis arm with a spherical wrist:
 
-| | When | Looks like |
-|---|---|---|
-| Wrist | Joint 5 at 0°, so joints 4 and 6 line up | The wrist straight; the standby pose is a wrist singularity |
-| Shoulder | The wrist centre directly above the joint 1 axis | The arm reaching straight up |
-| Elbow | The arm fully stretched | The elbow straight at full reach |
+| | When | Looks like | You meet it |
+|---|---|---|---|
+| Wrist | Joint 5 at 0°: the axes of joints 4 and 6 in one line | The wrist straight; the standby pose is a wrist singularity | whenever the tool points the way the forearm does |
+| Shoulder | The wrist centre on the joint 1 axis. The shoulder axis is 23.4 mm in front of it, so the arm leans back to get there: with joint 3 at 180°, at joint 2 = −133.1° | The wrist straight above the middle of the base | working close to the joint 1 axis, above the base |
+| Elbow | Joint 3 at 256.2°: the upper arm and the line from the elbow to the wrist centre in one line, the wrist centre 362.3 mm from the shoulder axis | The arm fully stretched | at full reach |
+
+The angles are the ones the software shows, from PAROL6's model. The wrist centre is where the axes of joints 4,
+5 and 6 meet. The elbow singularity is the outer edge of the workspace
+([Workspace and reach](workspace-and-reach.md)): singularities are part of its boundary, with the joint limits.
 
 ## What PAROL6 does
 
