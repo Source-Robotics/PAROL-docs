@@ -103,6 +103,7 @@ plugins:
 hooks:
   - hooks/versions.py
   - hooks/api_pages.py
+  - hooks/known_issues.py   # the known issues table from known_issues.yml
   - hooks/llms.py          # the Markdown twins, llms.txt and llms-full.txt from the content hooks' output
   - hooks/figures.py       # captions: standalone pictures become numbered figures (after llms.py: twins keep plain pictures)
   - hooks/pdf.py           # the PDF of the manual, from the print-site page, when DOCS_PDF is set
@@ -311,6 +312,7 @@ nav:
               - By symptom: 08-troubleshooting/by-symptom.md
               - Homing failures: 08-troubleshooting/homing-failures.md
               - Communication: 08-troubleshooting/communication.md
+              - Known issues: 08-troubleshooting/known-issues.md
           - 9. Transport, storage and disposal: 09-transport.md
       - Build guide:
           - build/index.md

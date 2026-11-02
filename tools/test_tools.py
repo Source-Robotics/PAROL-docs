@@ -216,6 +216,41 @@ check("E3 numbered chapters count across pages, other pages on their own",
       and fig.chapter("board/05-stepper-drivers.md") == ("board/05-stepper-drivers.md", "5.")
       and fig.chapter("theory/kinematics.md") == ("theory/kinematics.md", ""))
 
+# ---------------------------------------------------------------- F. the known issues hook
+ki = load_module("known_issues_hook", ROOT / "hooks" / "known_issues.py")
+try:
+    shipped, err = ki.load(ROOT / "known_issues.yml", DOCS), None
+except PluginError as exc:
+    shipped, err = None, str(exc)
+check("F1 known_issues.yml loads, and every issue's page exists", shipped is not None, err)
+check("F2 an issue's link is relative to the page it lands on",
+      ki.link({"page": "board/09-test-firmware.md#commands", "title": "T"}, "08-troubleshooting/known-issues.md")
+      == "[T](../board/09-test-firmware.md#commands)")
+ISSUE = {"id": "KI-1", "component": "c", "summary": "s", "workaround": "w", "page": "index.md", "title": "t",
+         "status": "open", "since": "2026-11-02"}
+
+
+def load_issues(issues):
+    text = yaml.safe_dump({"components": {"c": {"name": "C", "version": "1"}}, "issues": issues})
+    with tempfile.NamedTemporaryFile("w", suffix=".yml", delete=False) as f:
+        f.write(text.replace("'2026-11-02'", "2026-11-02"))
+    try:
+        return ki.load(f.name, DOCS), None
+    except PluginError as exc:
+        return None, str(exc)
+    finally:
+        Path(f.name).unlink()
+
+
+_, err = load_issues([dict(ISSUE, component="x")])
+check("F3 an unknown component stops the build", err is not None and "not under components" in err, err)
+_, err = load_issues([ISSUE, dict(ISSUE)])
+check("F4 a repeated id stops the build", err is not None and "twice" in err, err)
+data, err = load_issues([ISSUE, dict(ISSUE, id="KI-2", status="fixed", fixed_in="1.1")])
+out = ki.all_issues(data, "08-troubleshooting/known-issues.md") if data else ""
+check("F5 open issues are listed by component, fixed ones under Fixed with their version",
+      "### C" in out and "### Fixed" in out and "| KI-2 | s | 1.1 |" in out and "| KI-1 | s | w |" in out, err or out)
+
 print()
 if fails:
     print(f"{len(fails)} failed: " + ", ".join(fails))

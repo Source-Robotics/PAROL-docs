@@ -1,0 +1,129 @@
+# The known issues of PAROL6's firmware and software, in ONE place. hooks/known_issues.py writes them into the Known
+# issues page (<!-- known-issues -->, all of them) and wherever <!-- known-issues: COMPONENT --> stands (one
+# component). tools/test_tools.py checks the file.
+#
+# An issue stays here when it is fixed: set status: fixed and fixed_in to the version that fixes it, and the page
+# moves it to "Fixed". Never renumber: the id is how people refer to an issue.
+#
+#   id          KI-<number>, never reused
+#   component   a key under components:
+#   summary     what happens, in one or two sentences
+#   workaround  what to do until it is fixed
+#   page        the docs page that describes it (path under docs/, an #anchor allowed), and title, its link text
+#   status      open or fixed; fixed_in: the version that fixes it (when fixed)
+#   since       the date the issue was recorded
+
+components:
+  firmware: {name: Control board firmware, version: "release 1"}
+  test_firmware: {name: Control board test firmware, version: "release 1"}
+  commander: {name: Commander software, version: "main branch, 2025-09-23"}
+  python_api: {name: Python API (parol6), version: "0.9.1"}
+
+issues:
+  - id: KI-1
+    component: firmware
+    summary: Enforces the joint limits of the earlier robot model, which differ from those in these pages; a target
+      between the two is accepted.
+    workaround: Keep to the limits in the Joint limits table.
+    page: 03-technical-data/joint-limits.md#limits
+    title: Joint limits
+    status: open
+    since: 2026-11-01
+
+  - id: KI-2
+    component: commander
+    summary: Enforces the joint limits of the earlier robot model, and computes with its dimensions (a5 = 176.35 mm,
+      the pneumatic gripper's a6 = 62.8 mm), so its Cartesian positions are off by up to about 0.65 mm.
+    workaround: Keep to the limits in the Joint limits table; teach the poses that need accuracy on the robot.
+    page: 03-technical-data/kinematics.md
+    title: Kinematics
+    status: open
+    since: 2026-11-01
+
+  - id: KI-3
+    component: commander
+    summary: "`Output(2,HIGH)` and `Output(2,LOW)` are refused by a bug in the program check (`Invalid Output()
+      command`), and the program stops."
+    workaround: Use output 1 in commander programs, or switch output 2 from the Python API.
+    page: programming/03-commander/rbtscript.md#io
+    title: RBTscript, I/O
+    status: open
+    since: 2026-11-01
+
+  - id: KI-4
+    component: commander
+    summary: "`SpeedJoint()`, `Input()` and `Home()` pass the program check but have no action: the program stops on
+      that line until you press **Stop**."
+    workaround: Leave them out of programs; home with the **Home** button before you start a program.
+    page: programming/03-commander/rbtscript.md#speedjoint-speedcart
+    title: RBTscript, SpeedJoint and SpeedCart
+    status: open
+    since: 2026-11-01
+
+  - id: KI-5
+    component: commander
+    summary: "`SpeedCart()`, `Get_data` and `Timeouts` are in the command menu but fail the program check: a program
+      that contains one is refused."
+    workaround: Leave them out of programs.
+    page: programming/03-commander/rbtscript.md#speedjoint-speedcart
+    title: RBTscript, SpeedJoint and SpeedCart
+    status: open
+    since: 2026-11-01
+
+  - id: KI-6
+    component: commander
+    summary: A move's profile written in quotes (`"trap"`) or as `func=trap` is ignored without a message, and the
+      move gets the default profile.
+    workaround: Write the bare word, `trap` or `poly`, as the last argument.
+    page: programming/03-commander/rbtscript.md
+    title: RBTscript
+    status: open
+    since: 2026-10-22
+
+  - id: KI-7
+    component: commander
+    summary: The Cartesian rotation jog buttons do nothing in the world frame (WRF).
+    workaround: Rotate in the tool frame (TRF), the default.
+    page: gui/commander/the-gui.md
+    title: The GUI
+    status: open
+    since: 2026-11-01
+
+  - id: KI-8
+    component: commander
+    summary: "Does not run on macOS: it opens the serial port only on Windows (`COMn`) and Linux (`/dev/ttyACMn`)."
+    workaround: Use Windows or Linux, or the Python API, which runs on macOS (ARM64).
+    page: gui/commander/installation.md
+    title: Commander installation
+    status: open
+    since: 2026-11-01
+
+  - id: KI-9
+    component: test_firmware
+    summary: Enables all six drivers when it boots and turns every motor slowly, without a command, with no limits and
+      no homing, until the power is switched off; no command stops them.
+    workaround: Run it with the arm free to move or the motors unmounted, never on a robot folded against its stops.
+    page: board/09-test-firmware.md
+    title: The test firmware
+    status: open
+    since: 2026-11-01
+
+  - id: KI-10
+    component: test_firmware
+    summary: "Most command names the parser knows (`#STATUS`, `#STEP1` to `#STEP6`, `#FLASH`, `#CAN`) are answered
+      with `Unknown command`: only `#IO`, `#LIMIT`, `#STOP` and `#start` do something."
+    workaround: Use the four commands that work; CAN has its own test program.
+    page: board/09-test-firmware.md#commands
+    title: Test firmware commands
+    status: open
+    since: 2026-11-01
+
+  - id: KI-11
+    component: python_api
+    summary: Computes with the earlier robot model's dimensions (a5 = 176.35 mm), so its Cartesian positions are off
+      by up to about 0.65 mm from the model these pages use.
+    workaround: Teach the poses that need accuracy on the robot.
+    page: 03-technical-data/kinematics.md
+    title: Kinematics
+    status: open
+    since: 2026-11-01
