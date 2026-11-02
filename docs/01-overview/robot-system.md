@@ -91,4 +91,4 @@ sequenceDiagram
 | This documentation | [PAROL-docs](https://github.com/Source-Robotics/PAROL-docs) |
 | Shop, videos, community | [source-robotics.com](https://source-robotics.com/), [YouTube](https://www.youtube.com/@source-robotics), [Discord](https://discord.gg/prjUvjmGpZ) |
 
-The full list is on [CAD, files and downloads](../cad-files.md).
+The full list is on [Downloads and files](../cad-files.md).

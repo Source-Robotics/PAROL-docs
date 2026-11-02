@@ -96,6 +96,19 @@ except PluginError:
     check("A9 an unknown version placeholder stops the build", True)
 _, err = load_text(GOOD + "models:\n  robot_descriptions: {name: robot_descriptions, repository: z}\n")
 check("A10 a model without a tag stops the build", err is not None and "lacks tag" in err, err)
+page = hook.URL_RE.sub(
+    lambda m: hook.version_url(m.group(1), m.group(2), m.group(3), vdata),
+    "[f](<!-- version-url: firmware -->/src) <!-- version-link: models.robot_descriptions -->")
+check("A11 version-url is the files at the tag, version-link a link to them with the version as text",
+      page == "[f](x/tree/V1/src) [2.15.1](z/tree/v2.15.1)", page)
+sdata, _ = load_text(GOOD.replace("tag: v0.9.1}", "tag: v0.9.1, released: 2026-10-03}"))
+check("A12 version-link adds the release date when there is one",
+      sdata is not None and hook.version_url("link", "software", "python_api", sdata) == "[0.9.1](y/tree/v0.9.1) (2026-10-03)")
+try:
+    hook.version_url("url", "software", None, vdata)
+    check("A13 a version-url without a component key stops the build", False, "no error")
+except PluginError:
+    check("A13 a version-url without a component key stops the build", True)
 real, err = load_text((ROOT / "versions.yml").read_text(encoding="utf-8"))
 check("A7 the repository's versions.yml loads", real is not None, err)
 

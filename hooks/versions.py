@@ -1,7 +1,7 @@
 """Write the version facts of versions.yml into the pages (the same hook as Source-Robotics/par6 and the driver and
 gripper sites, with the software components the PAROL6 site adds).
 
-Three placeholders, each replaced when the site is built:
+Five placeholders, each replaced when the site is built:
 
     <!-- doc-meta: KEY -->      a manual's version box, on its landing page: document number, the PAROL6 release
                                 (for a document that describes one release), the software versions the document
@@ -9,6 +9,10 @@ Three placeholders, each replaced when the site is built:
     <!-- documents-table -->    the list of every document, on the About page
     <!-- version: GROUP.KEY --> a component's version in running text, e.g. models.robot_descriptions: its tag
                                 without the leading v (v2.15.1 is written 2.15.1)
+    <!-- version-url: COMPONENT -->  the address of the component's files at its tag, {repository}/tree/{tag}, to
+                                build a link to a folder: COMPONENT is firmware, software.KEY or models.KEY
+    <!-- version-link: COMPONENT --> a link to that address with the version as its text, and the release date
+                                when versions.yml has one
 
 The facts live in versions.yml only. A malformed or missing fact, or an unknown manual, stops the build: a version
 on a page is never guessed. Registered in mkdocs.yml under `hooks:`.
@@ -25,6 +29,7 @@ from mkdocs.exceptions import PluginError
 META_RE = re.compile(r"<!--\s*doc-meta:\s*([A-Za-z0-9_-]+)\s*-->")
 TABLE_RE = re.compile(r"<!--\s*documents-table\s*-->")
 VERSION_RE = re.compile(r"<!--\s*version:\s*([A-Za-z0-9_-]+)\.([A-Za-z0-9_-]+)\s*-->")
+URL_RE = re.compile(r"<!--\s*version-(url|link):\s*([A-Za-z0-9_-]+)(?:\.([A-Za-z0-9_-]+))?\s*-->")
 REQUIRED = ("number", "title", "revision", "status", "covers")
 
 _facts: dict = {}
@@ -131,6 +136,33 @@ def version_text(group: str, key: str, data: dict) -> str:
     return tag[1:] if re.fullmatch(r"v\d.*", tag) else tag
 
 
+def component(group: str, key, data: dict) -> dict:
+    """firmware, or software.KEY / models.KEY. Unknown names stop the build."""
+    if group == "firmware" and key is None:
+        comp = data.get("firmware")
+    elif group in ("software", "models") and key:
+        comp = (data.get(group) or {}).get(key)
+    else:
+        comp = None
+    if not comp or not comp.get("repository") or not comp.get("tag"):
+        name = group + (f".{key}" if key else "")
+        raise PluginError(f"versions.yml: no {name} with a repository and a tag for <!-- version-url/link: {name} -->")
+    return comp
+
+
+def version_url(kind: str, group: str, key, data: dict) -> str:
+    """<!-- version-url: ... --> and <!-- version-link: ... -->."""
+    comp = component(group, key, data)
+    url = f"{str(comp['repository']).rstrip('/')}/tree/{comp['tag']}"
+    if kind == "url":
+        return url
+    tag = str(comp["tag"])
+    text = tag[1:] if re.fullmatch(r"v\d.*", tag) else tag
+    released = comp.get("released")
+    date = f" ({released.isoformat()})" if isinstance(released, datetime.date) else ""
+    return f"[{text}]({url}){date}"
+
+
 def on_config(config):
     global _facts
     _facts = load(Path(config.config_file_path).parent / "versions.yml")
@@ -141,4 +173,5 @@ def on_config(config):
 def on_page_markdown(markdown, page, config, files):
     markdown = META_RE.sub(lambda m: meta_block(m.group(1), _facts), markdown)
     markdown = VERSION_RE.sub(lambda m: version_text(m.group(1), m.group(2), _facts), markdown)
+    markdown = URL_RE.sub(lambda m: version_url(m.group(1), m.group(2), m.group(3), _facts), markdown)
     return TABLE_RE.sub(lambda m: documents_table(_facts), markdown)

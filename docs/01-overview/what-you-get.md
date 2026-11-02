@@ -23,5 +23,5 @@ commander software or the Python API: [Firmware](../board/08-firmware.md).
 ## The files
 
 Everything else you get is on GitHub: the STL and STEP files, the BOM with purchase links, the building
-instructions PDF and the video playlist, the firmware sources, the software. [CAD, files and downloads](../cad-files.md)
+instructions PDF and the video playlist, the firmware sources, the software. [Downloads and files](../cad-files.md)
 lists them.

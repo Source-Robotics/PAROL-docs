@@ -327,7 +327,7 @@ nav:
           - Community projects: appendix/community.md
       - Resources:
           - Glossary: terminology.md
-          - CAD, files and downloads: cad-files.md
+          - Downloads and files: cad-files.md
 
   - Control Board:
       - board/index.md
