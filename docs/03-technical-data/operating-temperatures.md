@@ -34,6 +34,12 @@ motor case temperatures measured on a robot at the default currents, at room tem
 | Joint 5 | 60 °C | 72 °C |
 | Joint 6 | 61 °C | 65 °C |
 
+Through a thermal camera, a powered PAROL6 shows where the heat is: the motors of joints 2 and 3 beside the
+shoulder, the elbow (the hottest point in this picture, 50 °C) and the wrist motors in the forearm, and the control
+board at the back of the base. The scale runs from 29.6 to 50.0 °C.
+
+![A powered PAROL6 through a thermal camera: warm motors at the shoulder, the elbow and in the forearm, and the control board in the base](../assets/thermal_image.webp){ width="420" }
+
 !!! danger "Long runs"
     Joints 4 and 5 come within 10 °C of the plastic's limit after two hours of continuous motion. For a robot that
     runs for hours, reduce the currents in the firmware (`MOTORx_MAX_CURRENT` in `constants.h`, or the
