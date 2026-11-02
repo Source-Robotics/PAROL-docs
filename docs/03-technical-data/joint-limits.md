@@ -59,8 +59,10 @@ The joint limits of PAROL6's model in [robot_descriptions](https://github.com/So
     ±123.05°, J2 −145.01° to −3.38°, J3 107.87° to 287.87°, J4 ±105.47°, J5 ±90°, J6 0° to 360°. A target
     between the two is accepted by them; keep to the table above.
 
-Joints 2 and 3 are limited in both directions by their geometry and their switches; joints 1 and 4 by printed
-blockers; joint 5 by the length of its belt path; joint 6 by nothing with the bare flange, and with a tool by the tool's cables and tubes.
+Joints 1 to 5 are stopped at both ends by printed blocker parts, the mechanical stops a little past the limits
+above. The limit switch or sensor that homes a joint sits near its blocker, so that it triggers just before the
+joint reaches it. Joint 6 has no blocker: with the bare flange nothing stops it, and with a tool only the tool's
+cables and tubes do.
 
 !!! warning "Grippers and bases change the limits"
     A gripper changes where joint 5 can go without colliding with the forearm, and a riser under the base changes
