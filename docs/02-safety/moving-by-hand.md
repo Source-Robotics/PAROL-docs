@@ -9,8 +9,8 @@ the arm has no brakes to release. This is how you pose it for packing and how yo
     further during assembly, and after assembly only where nothing runs through it. Joint 1 has printed blockers
     that stop it; if your build has none, the rule is yours to keep.
 
-![Joint 5 at its lower and upper limit, -120 and +120 degrees, over the zero pose in grey. A gripper can reach the forearm before that: check the clearance with a slow jog](../assets/figures/parol6_j5_range.webp#only-light){ width="860" }
-![Joint 5 at its lower and upper limit, -120 and +120 degrees, over the zero pose in grey. A gripper can reach the forearm before that: check the clearance with a slow jog](../assets/figures/parol6_j5_range_dark.webp#only-dark){ width="860" }
+![Joint 5 at its lower and upper limit, -120 and +120 degrees, over the standby pose in grey. A gripper can reach the forearm before that: check the clearance with a slow jog](../assets/figures/parol6_j5_range.webp#only-light){ width="860" }
+![Joint 5 at its lower and upper limit, -120 and +120 degrees, over the standby pose in grey. A gripper can reach the forearm before that: check the clearance with a slow jog](../assets/figures/parol6_j5_range_dark.webp#only-dark){ width="860" }
 
 !!! danger "Not while the supply is connected"
     A stepper turned by hand generates voltage, and a quick move can switch the board on with the arm in your
