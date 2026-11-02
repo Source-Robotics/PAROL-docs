@@ -201,6 +201,21 @@ check("D1 no source-robotics.github.io addresses, no PCrnjak paths of repositori
 odrive = [str(p.relative_to(DOCS)) for p in DOCS.rglob("*.md") if re.search(r"odrive|tinymovr", p.read_text(encoding="utf-8"), re.I)]
 check("D2 no references to other vendors' documentation", not odrive, "; ".join(odrive))
 
+# ---------------------------------------------------------------- E. the figures hook
+fig = load_module("figures_hook", ROOT / "hooks" / "figures.py")
+pair = "\n".join(["Text.", "", '![A robot](a.webp#only-light){ width="9" }',
+                  '![A robot](a_dark.webp#only-dark){ width="9" }', "", "More."])
+out, n = fig.transform(pair, 1, "3.")
+check("E1 a light and a dark picture are one figure, numbered on from the chapter's count, alt text as caption",
+      n == 1 and out.count("<figure") == 1 and "<figcaption>Figure 3.2: A robot.</figcaption>" in out, out)
+inline = "\n".join(["A line of text", "![A robot](a.webp)", "", "![Hero](h.webp){ .hero }", ""])
+out, n = fig.transform(inline, 0, "")
+check("E2 a picture inside a paragraph and a hero picture are left alone", n == 0 and "<figure" not in out, out)
+check("E3 numbered chapters count across pages, other pages on their own",
+      fig.chapter("03-technical-data/joint-limits.md") == ("03-technical-data", "3.")
+      and fig.chapter("board/05-stepper-drivers.md") == ("board/05-stepper-drivers.md", "5.")
+      and fig.chapter("theory/kinematics.md") == ("theory/kinematics.md", ""))
+
 print()
 if fails:
     print(f"{len(fails)} failed: " + ", ".join(fails))

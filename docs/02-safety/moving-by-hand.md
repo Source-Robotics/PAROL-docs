@@ -4,11 +4,13 @@ An unpowered PAROL6 can be moved by hand: the joints turn against the friction o
 the arm has no brakes to release. This is how you pose it for packing and how you lift it. Two rules:
 
 !!! danger "Never more than one turn"
-    **Joint 5** must never be turned more than one rotation, and **joint 6** and **joint 1** must never be spun a
-    full turn. Cables and pneumatic tubes run through them: a second turn wraps and tears them. Joint 1 has
-    printed blockers that stop it; if your build has none, the rule is yours to keep.
+    **No joint may ever be turned more than one full turn**, by hand or by software. Cables and pneumatic tubes
+    run through the joints, and a second turn wraps and tears them. The one exception is **joint 6**: it may turn
+    further during assembly, and after assembly only where nothing runs through it. Joint 1 has printed blockers
+    that stop it; if your build has none, the rule is yours to keep.
 
-![The range of joint 5](../assets/Limits_j5.webp){ width="700" }
+![Joint 5 at its lower and upper limit, -120 and +120 degrees, over the zero pose in grey. A gripper can reach the forearm before that: check the clearance with a slow jog](../assets/figures/parol6_j5_range.webp#only-light){ width="860" }
+![Joint 5 at its lower and upper limit, -120 and +120 degrees, over the zero pose in grey. A gripper can reach the forearm before that: check the clearance with a slow jog](../assets/figures/parol6_j5_range_dark.webp#only-dark){ width="860" }
 
 !!! danger "Not while the supply is connected"
     A stepper turned by hand generates voltage, and a quick move can switch the board on with the arm in your

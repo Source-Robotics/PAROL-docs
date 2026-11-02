@@ -103,7 +103,8 @@ plugins:
 hooks:
   - hooks/versions.py
   - hooks/api_pages.py
-  - hooks/llms.py          # last: the Markdown twins, llms.txt and llms-full.txt from the other hooks' output
+  - hooks/llms.py          # the Markdown twins, llms.txt and llms-full.txt from the content hooks' output
+  - hooks/figures.py       # captions: standalone pictures become numbered figures (after llms.py: twins keep plain pictures)
   - hooks/pdf.py           # the PDF of the manual, from the print-site page, when DOCS_PDF is set
 
 markdown_extensions:

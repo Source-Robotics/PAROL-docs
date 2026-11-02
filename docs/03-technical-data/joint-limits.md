@@ -50,9 +50,11 @@ blockers; joint 5 by the length of its belt path; joint 6 only by the cables and
     what joint 2 can reach. The software limits do not know about either: check the real clearances with a slow
     jog before you run a program near a limit.
 
-!!! danger "Joint 5 and joint 6"
-    Joint 5 must never be turned more than one rotation, by hand or by software; joint 6 and joint 1 must never
-    be spun more than one turn. The cables and pneumatic tubes that pass through them wrap and tear.
-    [Moving the robot by hand](../02-safety/moving-by-hand.md) has the figure.
+!!! danger "Never more than one turn"
+    **No joint may ever be turned more than one full turn**, by hand or by software: the cables and pneumatic
+    tubes that pass through the joints wrap and tear. The one exception is **joint 6**: it may turn further during
+    assembly, and after assembly only where nothing runs through it
+    ([Moving the robot by hand](../02-safety/moving-by-hand.md)).
 
-![The range of joint 5](../assets/Limits_j5.webp){ width="700" }
+![Joint 5 at its lower and upper limit, -120 and +120 degrees, over the zero pose in grey. A gripper can reach the forearm before that: check the clearance with a slow jog](../assets/figures/parol6_j5_range.webp#only-light){ width="860" }
+![Joint 5 at its lower and upper limit, -120 and +120 degrees, over the zero pose in grey. A gripper can reach the forearm before that: check the clearance with a slow jog](../assets/figures/parol6_j5_range_dark.webp#only-dark){ width="860" }
