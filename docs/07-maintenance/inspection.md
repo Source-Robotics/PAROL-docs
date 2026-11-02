@@ -17,3 +17,10 @@ With the robot switched off and the supply unplugged:
 
 Then switch on, home, and watch the homing: each joint should back off and re-approach its switch cleanly, and
 the pose at the end should match the witness marks ([Checking the homing](homing-check.md)).
+
+## Cleaning
+
+Clean the robot switched off and unplugged. Wipe the printed parts with a dry or slightly damp cloth; use no
+solvents on them, and never spray anything into the base, where the control board and the fan are open to it.
+Clear dust from the fan intake with a soft brush or a vacuum cleaner, not with compressed air, which drives the
+dust into the board.

@@ -18,3 +18,5 @@
 - With 3.3 V on the programming header the board turns on when the supply is connected and cannot be switched
   off with the button. Disconnect the 24 V supply before you connect the programmer.
 - The drivers are hot after use; the fan must run whenever the motors are energised.
+- Static electricity damages the microcontroller and the drivers. Unplug the supply and touch earthed metal
+  before you handle the board or a driver module, and hold them by the edges.

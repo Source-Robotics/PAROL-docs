@@ -8,6 +8,13 @@ out of the arm's path while it is enabled, and never reach into the workspace of
 
 ![Pinch points on PAROL6](../assets/pinch_points.webp){ width="450" }
 
+## Clothing, hair and eyes
+
+A joint that closes catches more than fingers: its belts and pulleys pull in hair, loose sleeves, scarves,
+lanyards and jewellery. Tie back long hair and take those off before you work at a powered robot, and keep them
+out of the arm's reach while it moves. Wear safety glasses with a pneumatic gripper, with a sharp or pointed
+tool, and whenever the robot can drop or throw a part.
+
 ## The arm falls when the power goes
 
 PAROL6 has no brakes. The moment the motors lose power, from the button, the supply, a blown fuse or a pulled

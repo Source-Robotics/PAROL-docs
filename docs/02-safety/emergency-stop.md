@@ -30,6 +30,15 @@ software acts on it:
 - It does not stop a program that runs on the PC: the program waits; stop it as well before you release the
   button.
 
+## If someone is caught by the arm
+
+!!! danger "The E-stop does not free anyone"
+    Pressed, the E-stop leaves the motors holding the arm where it is, and a joint cannot be pushed back by hand
+    against a holding motor. To free a trapped hand or finger, either release the E-stop, enable the robot and
+    jog that joint away slowly, the smallest step at a time; or support the arm with one hand and switch off the
+    power supply with the other, knowing that the arm goes limp and falls. Decide which before you need it, and
+    keep the supply's switch within reach ([Planning the cell](planning-the-cell.md)).
+
 ## The contact
 
 Normally closed, so that a cut wire, a loose terminal or an unplugged button is read as a stop. A normally open
