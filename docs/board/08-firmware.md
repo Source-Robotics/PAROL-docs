@@ -33,7 +33,7 @@ A board from the shop carries the test firmware. Upload the main firmware before
    itself when the supply is connected.
 6. Reconnect the 24 V supply and press the power button.
 
-!!! check "Check"
+!!! success "Check"
     PlatformIO ends the upload with `SUCCESS`, and after step 6 the drivers click and the PC software
     connects. If not: [Troubleshooting](11-troubleshooting.md).
 

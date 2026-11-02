@@ -9,7 +9,7 @@ in the guide explains the choices.
 
 !!! note
     The referencing sequence is the firmware's ([Homing](../../05-operation/homing.md)): it ignores the collision
-    world, and it takes about half a minute. A later `home()` is a planned joint move to standby.
+    world, and it takes about half a minute. A later `home()` is a planned joint move to the API's standby, the after-homing pose.
 
 <!-- api: move_j -->
 

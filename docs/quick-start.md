@@ -26,7 +26,7 @@ Read in more detail: [What you need](01-overview/what-you-need.md).
 Bolt the base to the table through its six holes, or clamp it to the edge. A free-standing PAROL6 tips over when
 it extends.
 
-!!! check "Check"
+!!! success "Check"
     Push the top of the base sideways, firmly: it must not lift or slide.
 
 Read in more detail: [Mounting the robot](04-installation/mounting.md).
@@ -49,7 +49,7 @@ firmware: upload the main firmware first ([Firmware](board/08-firmware.md)).
 
 Read in more detail: [First power-on](04-installation/first-power-on.md) · [Switching on and off](05-operation/switching-on-off.md).
 
-!!! check "Check"
+!!! success "Check"
     Six drivers initialise and the arm supports itself before you let go. If it does not, use
     [First power-on: if nothing happens](04-installation/first-power-on.md#if-nothing-happens).
 
@@ -73,7 +73,7 @@ Read in more detail: [First power-on](04-installation/first-power-on.md) · [Swi
 
 Read in more detail: [The commander software](gui/commander/index.md) · [The Python API](programming/02-python-api/index.md).
 
-!!! check "Check"
+!!! success "Check"
     The commander shows incoming robot data, or `ping()` reports `hardware_connected=1`. If it does not,
     use [Communication troubleshooting](08-troubleshooting/communication.md).
 
@@ -91,7 +91,7 @@ firmware, not by trial: [Firmware and first run](build/firmware-and-first-run.md
 
 Read in more detail: [Jogging](05-operation/jogging.md).
 
-!!! check "Check"
+!!! success "Check"
     Every joint turned the way the figure shows. If one did not, fix it before you home:
     [A joint turns the wrong way](build/firmware-and-first-run.md#a-joint-turns-the-wrong-way).
 
@@ -103,7 +103,7 @@ that grinds at its end stop has a switch that does not trigger.
 
 Read in more detail: [Homing](05-operation/homing.md) · [Homing failures](08-troubleshooting/homing-failures.md).
 
-!!! check "Check"
+!!! success "Check"
     Homing finishes, the physical arm matches the simulator, and the witness marks agree. If a joint
     keeps travelling or the pose is wrong, stop and use [Homing failures](08-troubleshooting/homing-failures.md).
 

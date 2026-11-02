@@ -8,7 +8,7 @@ The first time, and every time after that:
    clicks, and the arm holds its position.
 4. Let go. The robot is now enabled, not homed, and waiting for the PC.
 
-!!! check "Check"
+!!! success "Check"
     Six clicks, the fan runs, and the arm holds when you let go. If not: [If nothing happens](#if-nothing-happens).
 
 Nothing moves until the PC software commands it. Start the [commander software](../gui/commander/index.md)

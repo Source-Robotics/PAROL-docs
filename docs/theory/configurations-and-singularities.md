@@ -55,6 +55,9 @@ The three singularities of a six-axis arm with a spherical wrist:
 | Shoulder | The wrist centre on the joint 1 axis. The shoulder axis is 23.4 mm in front of it, so the arm leans back to get there: with joint 3 at 180°, at joint 2 = −133.1° | The wrist straight above the middle of the base | working close to the joint 1 axis, above the base |
 | Elbow | Joint 3 at 256.2°: the upper arm and the line from the elbow to the wrist centre in one line, the wrist centre 362.3 mm from the shoulder axis | The arm fully stretched | at full reach |
 
+![The three singularities of PAROL6, each with its condition drawn: the wrist with the axes of joints 4 and 6 in one line, the shoulder with the wrist centre on the joint 1 axis, the elbow with joints 2 and 3 and the wrist centre in one line](../assets/theory/singularities_parol6.webp#only-light){ width="860" }
+![The three singularities of PAROL6, each with its condition drawn: the wrist with the axes of joints 4 and 6 in one line, the shoulder with the wrist centre on the joint 1 axis, the elbow with joints 2 and 3 and the wrist centre in one line](../assets/theory/singularities_parol6_dark.webp#only-dark){ width="860" }
+
 The angles are the ones the software shows, from PAROL6's model. The wrist centre is where the axes of joints 4,
 5 and 6 meet. The elbow singularity is the outer edge of the workspace
 ([Workspace and reach](workspace-and-reach.md)): singularities are part of its boundary, with the joint limits.

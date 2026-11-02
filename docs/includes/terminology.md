@@ -63,8 +63,10 @@
     and so on.
 
 **Standby pose**
-:   The pose the robot takes after homing and the zero of its joint angles: joints at 90°, −90°, 180°, 0°, 0°,
-    180°. The Denavit-Hartenberg zero of the kinematic model has joint 1 at 0° instead; the firmware homes to +90°.
+:   The pose of the Denavit-Hartenberg table and the reference of the joint angles: joints at 0°, −90°, 180°, 0°,
+    0°, 180°, the upper arm vertical, the forearm horizontal, the arm pointing away from the electronics box.
+    After homing the robot stands in it turned 90° about joint 1 (joint 1 at 90°): the after-homing pose,
+    which the Python API calls its standby.
 
 **Stepper motor**
 :   The motors of PAROL6: open-loop motors that move in steps, 200 full steps per turn, 6400 with the 32

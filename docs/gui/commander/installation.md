@@ -56,6 +56,6 @@ The terminal the program runs in prints the robot's data; `Time between 2 comman
 0.010 while you jog. If it is often much higher, the PC is too slow for the loop, and the robot will stutter
 ([Communication](../../08-troubleshooting/communication.md)).
 
-!!! check "Check"
+!!! success "Check"
     The commander shows the robot's data after **Connect**, and the simulator moves with the robot when you
     jog. If not: [Communication](../../08-troubleshooting/communication.md).

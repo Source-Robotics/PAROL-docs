@@ -35,7 +35,8 @@ The driver is set to `MOTORx_MAX_CURRENT × 0.85` as the running current and `ho
 | Driver position / LIMIT input | 1 / 6 | 6 / 2 | 5 / 3 | 4 / 4 | 2 / 5 | 3 / 1 |
 
 Joint 1's standby of 10240 steps is +90° (90 / 0.05625 × 6.4): the firmware homes to the pose the software
-reports as J1 = 90°.
+reports as J1 = 90°. The firmware's "standby" is what these pages call the after-homing pose: the standby
+pose turned 90° about joint 1 ([Joint limits and directions](../03-technical-data/joint-limits.md#standby-and-after-homing)).
 
 ## Joint 5 and the tool (`main.cpp`)
 

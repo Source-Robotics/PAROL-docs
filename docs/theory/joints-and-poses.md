@@ -24,16 +24,17 @@ hardware agrees with this convention; a new build sets it per joint on the first
 A set of six joint angles is a point in **joint space**: it describes the arm's configuration completely, and a
 joint move is a straight line in it, every joint moving proportionally and finishing at the same time.
 
-The reference point is the **standby pose**, the pose after homing:
+The reference point is the **standby pose**, the pose of the Denavit-Hartenberg table; after homing the robot
+stands in it turned 90° about joint 1:
 
-| J1 | J2 | J3 | J4 | J5 | J6 |
-|---|---|---|---|---|---|
-| 90° | −90° | 180° | 0° | 0° | 180° |
+| Pose | J1 | J2 | J3 | J4 | J5 | J6 |
+|---|---|---|---|---|---|---|
+| Standby | 0° | −90° | 180° | 0° | 0° | 180° |
+| After homing | 90° | −90° | 180° | 0° | 0° | 180° |
 
-Every joint angle the software reports is measured from the kinematic model's zero in this convention. The model's
-Denavit-Hartenberg zero has J1 at 0°, with the arm along the base's X axis; the firmware homes J1 a quarter turn
-further, to 90°, so that the arm stands square to the base, and the software reports 90°. Both say the same
-thing about the same pose.
+Every joint angle the software reports is measured in this convention. At J1 = 0° the arm points along the
+base's X axis, away from the electronics box; homing ends with J1 a quarter turn further, at 90°, and the
+software reports 90° there. The Python API calls that after-homing pose its standby.
 
 ## Limits
 

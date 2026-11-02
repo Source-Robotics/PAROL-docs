@@ -18,7 +18,7 @@ holds them with the holding current from then on.
     press the E-stop; if the E-stop has no effect, switch off the power supply. The power button is the last
     resort, and only with the arm held.
 
-1. Stop the program; bring the arm to the standby pose with Home, or jog it over the base.
+1. Stop the program; bring the arm to the after-homing pose with Home, or jog it over the base.
 2. Disconnect in the software, or stop the controller.
 3. Hold the forearm.
 4. Press the power button. The motors release at once and the arm goes limp in your hand.

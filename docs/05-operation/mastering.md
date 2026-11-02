@@ -1,6 +1,6 @@
 # Mastering
 
-Homing brings each joint to its switch and then a fixed number of steps to the standby pose. That number is in
+Homing brings each joint to its switch and then a fixed number of steps to the after-homing pose. That number is in
 the firmware, measured on the reference robot. Printers and parts differ, so on your robot the homed pose may be
 off by a fraction of a degree per joint. Mastering measures the difference and corrects the number, so that a
 homed robot stands exactly at its witness marks.

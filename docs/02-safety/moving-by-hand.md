@@ -3,11 +3,12 @@
 An unpowered PAROL6 can be moved by hand: the joints turn against the friction of their gearboxes and belts, and
 the arm has no brakes to release. This is how you pose it for packing and how you lift it. Two rules:
 
-!!! danger "Never more than one turn"
+!!! danger "Never more than one turn, except joint 6"
     **No joint may ever be turned more than one full turn**, by hand or by software. Cables and pneumatic tubes
-    run through the joints, and a second turn wraps and tears them. The one exception is **joint 6**: it may turn
-    further during assembly, and after assembly only where nothing runs through it. Joint 1 has printed blockers
-    that stop it; if your build has none, the rule is yours to keep.
+    run through the joints, and a second turn wraps and tears them. The one exception is **joint 6**: with the
+    bare flange it can turn without limit; with a gripper or a tool, the tool's cables and tubes wrap as it
+    turns, and they set how far it may go. Joint 1 has printed blockers that stop it; if your build has none,
+    the rule is yours to keep.
 
 ![Joint 5 at its lower and upper limit, -120 and +120 degrees, over the standby pose in grey. A gripper can reach the forearm before that: check the clearance with a slow jog](../assets/figures/parol6_j5_range.webp#only-light){ width="860" }
 ![Joint 5 at its lower and upper limit, -120 and +120 degrees, over the standby pose in grey. A gripper can reach the forearm before that: check the clearance with a slow jog](../assets/figures/parol6_j5_range_dark.webp#only-dark){ width="860" }

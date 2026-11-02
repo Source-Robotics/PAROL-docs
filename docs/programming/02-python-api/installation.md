@@ -64,7 +64,7 @@ with RobotClient() as rbt:
     print(rbt.ping())
 ```
 
-!!! check "Check"
+!!! success "Check"
     It prints a `PingResult` with `hardware_connected=0`. Stop the server with Ctrl-C.
 
 ## Versions
