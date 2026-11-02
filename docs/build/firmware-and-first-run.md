@@ -13,6 +13,11 @@ has the commands and what good output looks like.
     command stops them. Use it with the arm unmounted or free to move, never on a robot standing on the table with
     its arm folded against a stop.
 
+!!! check "Check"
+    Six `Connection is: GOOD` lines in the report; `#LIMIT` names each switch while you press it; `#IO` follows
+    the E-stop and the inputs and shows the supply near 24000 mV. If not:
+    [Control board troubleshooting](../board/11-troubleshooting.md).
+
 ## 2. Upload the main firmware
 
 The main firmware is in the repository under `PAROL6 control board main software`; it is a PlatformIO project
@@ -25,10 +30,17 @@ Before uploading, look at two things in the source:
 - `constants.h`: the motor currents, set for the BOM's motors. Lower them if yours are rated lower.
 - `main.cpp`: `j5_homing_offset`, 8900 for the pneumatic gripper holder, 8035 for the SSG-48.
 
+!!! check "Check"
+    PlatformIO ends the upload with `SUCCESS`. If not: [Control board troubleshooting](../board/11-troubleshooting.md).
+
 ## 3. First power-on
 
 Unplug the programming adapter, plug in the supply, hold the forearm and press the button. Six clicks, and the
 arm holds. Start the commander software, connect, and open the joint jog menu.
+
+!!! check "Check"
+    Six clicks, the fan runs, the arm holds itself, and the commander shows the robot's data. If not:
+    [First power-on: if nothing happens](../04-installation/first-power-on.md#if-nothing-happens).
 
 ## 4. A joint turns the wrong way { #a-joint-turns-the-wrong-way }
 
@@ -44,11 +56,16 @@ Joint__->direction_reversed = 1;
 Upload again and check again. Swapping one motor phase's wires has the same effect, if you prefer to open the
 base.
 
+!!! check "Check"
+    Every joint's left arrow turns it in its positive direction.
+
 ## 5. Home
 
 With every direction right, press **Home** and stay at the E-stop. The sequence is on [Homing](../05-operation/homing.md);
 if a joint grinds at a stop, press the E-stop and see [Homing failures](../08-troubleshooting/homing-failures.md).
-After a successful homing the simulator matches the robot and the positions on screen are right.
+
+!!! check "Check"
+    Homing finishes, the simulator matches the robot, and the witness marks agree.
 
 ## 6. Master, and reduce the currents
 

@@ -10,16 +10,44 @@
 
 ## Install
 
-From a clone of [PAROL6-python-API](https://github.com/PCrnjak/PAROL6-python-API):
+From a clone of [PAROL6-python-API](https://github.com/PCrnjak/PAROL6-python-API), in a virtual environment:
 
-```
-git clone https://github.com/PCrnjak/PAROL6-python-API.git
-cd PAROL6-python-API
-git checkout <!-- api-version -->
-pip install .
-```
+=== "Windows"
+    ```
+    git clone https://github.com/PCrnjak/PAROL6-python-API.git
+    cd PAROL6-python-API
+    git checkout <!-- api-version -->
+    py -3.11 -m venv .venv
+    .venv\Scripts\activate
+    pip install .
+    ```
+    The robot's serial port is `COM` and a number: Device Manager lists it under **Ports (COM & LPT)**.
 
-A virtual environment is a good idea; the package pulls numpy, msgspec, pinokin, Ruckig, python-can and the
+=== "Linux"
+    ```
+    git clone https://github.com/PCrnjak/PAROL6-python-API.git
+    cd PAROL6-python-API
+    git checkout <!-- api-version -->
+    python3 -m venv .venv
+    source .venv/bin/activate
+    pip install .
+    sudo usermod -aG dialout $USER     # access to the serial port; log out and in again once
+    ```
+    The robot's serial port is `/dev/ttyACM0` (`ls /dev/ttyACM*` lists it).
+
+=== "macOS"
+    ```
+    git clone https://github.com/PCrnjak/PAROL6-python-API.git
+    cd PAROL6-python-API
+    git checkout <!-- api-version -->
+    python3 -m venv .venv
+    source .venv/bin/activate
+    pip install .
+    ```
+    Apple silicon (ARM64) only. The robot's serial port is `/dev/cu.usbmodem` and a number
+    (`ls /dev/cu.usbmodem*` lists it).
+
+The package pulls numpy, msgspec, pinokin, Ruckig, python-can and the
 waldoctl interface layer. `pip install -e .` installs it editable for development.
 
 ## Check
@@ -36,7 +64,8 @@ with RobotClient() as rbt:
     print(rbt.ping())
 ```
 
-prints a `PingResult` with `hardware_connected=0`. Stop the server with Ctrl-C.
+!!! check "Check"
+    It prints a `PingResult` with `hardware_connected=0`. Stop the server with Ctrl-C.
 
 ## Versions
 

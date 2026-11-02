@@ -7,7 +7,8 @@ leave it running; clients connect and disconnect as they like.
 
 ```
 parol6-server --serial COM5                # Windows
-parol6-server --serial /dev/ttyACM0        # Linux, macOS
+parol6-server --serial /dev/ttyACM0        # Linux
+parol6-server --serial /dev/cu.usbmodem1   # macOS: ls /dev/cu.usbmodem* gives the name
 parol6-server                              # no serial port: simulator mode
 parol6-server --serial COM5 --log-level INFO
 ```
