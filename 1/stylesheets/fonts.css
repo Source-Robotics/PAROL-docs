@@ -1,0 +1,12 @@
+/* The site's fonts, served from the site itself: no request to Google Fonts on any page (faster, and nothing
+   about the reader goes to a third party before the cookie banner is answered). Roboto 300/400/700 and the 400
+   italic, Roboto Mono 400, the latin subsets from Google Fonts; theme.font is false in mkdocs.yml. */
+@font-face { font-family: "Roboto"; font-style: normal; font-weight: 300; font-display: swap; src: url("../assets/fonts/roboto-300.woff2") format("woff2"); }
+@font-face { font-family: "Roboto"; font-style: normal; font-weight: 400; font-display: swap; src: url("../assets/fonts/roboto-400.woff2") format("woff2"); }
+@font-face { font-family: "Roboto"; font-style: italic; font-weight: 400; font-display: swap; src: url("../assets/fonts/roboto-400-italic.woff2") format("woff2"); }
+@font-face { font-family: "Roboto"; font-style: normal; font-weight: 700; font-display: swap; src: url("../assets/fonts/roboto-700.woff2") format("woff2"); }
+@font-face { font-family: "Roboto Mono"; font-style: normal; font-weight: 400; font-display: swap; src: url("../assets/fonts/roboto-mono-400.woff2") format("woff2"); }
+:root {
+  --md-text-font: "Roboto";
+  --md-code-font: "Roboto Mono";
+}
