@@ -11,7 +11,7 @@ covers the gripper; this page covers PAROL6.
 |---|---|
 | Stroke | 55, 105 or 155 mm, with the 100, 150 or 200 mm rail |
 | Grip force | about 20, 25 or 36 N per ampere with the 21.5, 40 or 60 mm stepper; up to about 31, 50 or 76 N |
-| Mass | about 320 g plus the camera: mind the [payload](flange.md#payload) at full reach |
+| Mass | about 380 g plus the camera: mind the [payload](flange.md#payload) at full reach |
 | Shop | [MSG gripper](https://source-robotics.com/products/msg-gripper) |
 
 ## Mounting
