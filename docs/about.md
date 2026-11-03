@@ -53,11 +53,11 @@ Robotics name, the product names and the logos are not covered by any of these.
 
 | Document | Revision | Date | Changes |
 |---|---|---|---|
-| Robot Manual | 2026.A (draft) | — | First version in this form: the numbered chapters, the build guide, from the pages of the previous site |
-| Control Board Manual | 2026.A (draft) | — | First version in this form, from the control board and peripherals pages of the previous site |
-| End Effectors Guide | 2026.A (draft) | — | First version: the flange, the pneumatic and vacuum grippers, the SSG-48 and MSG, your own tool |
-| GUI Guide | 2026.A (draft) | — | First version: the commander software, Waldo Commander, Motor GUI |
-| Programming Guide | 2026.A (draft) | — | First version: the concepts, the Python API <!-- version: software.python_api -->, the commander software and RBTscript, ROS 2; the generated API reference |
+| Robot Manual | 2026.A | 2026-11-03 | First version in this form: the numbered chapters, the build guide, from the pages of the previous site |
+| Control Board Manual | 2026.A | 2026-11-03 | First version in this form, from the control board and peripherals pages of the previous site |
+| End Effectors Guide | 2026.A | 2026-11-03 | First version: the flange, the pneumatic and vacuum grippers, the SSG-48 and MSG, your own tool |
+| GUI Guide | 2026.A | 2026-11-03 | First version: the commander software, Waldo Commander, Motor GUI |
+| Programming Guide | 2026.A | 2026-11-03 | First version: the concepts, the Python API <!-- version: software.python_api -->, the commander software and RBTscript, ROS 2; the generated API reference |
 
 <!-- The revisions and dates of this table are written by hand: when a document is published, update its row here
 together with versions.yml. -->
