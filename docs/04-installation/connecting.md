@@ -10,6 +10,9 @@ The robot needs three connections to run. They are on the back of the base.
 | **USB** | USB type B | To the PC. USB does not power the board |
 | **E-stop** | Two screw terminals | A normally closed contact between them. Open means stop |
 
+Plug the power supply into the mains through a switch within your reach, a switched socket strip for example: it
+is the stop that still works when the PC software has frozen ([Emergency stop](../02-safety/emergency-stop.md)).
+
 ## The E-stop
 
 The E-stop must be a normally closed contact: pressing it, unplugging it or cutting its wire opens the circuit,

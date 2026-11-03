@@ -25,8 +25,8 @@ This page lists what to get right.
 - **The limit switches and sensors** positioned so that the moving part presses the lever, or passes the sensor
   within a millimetre or two, before the joint reaches its mechanical stop.
 - **Joint 1's blockers** fitted: without them joint 1 can spin a full turn and tear its wires.
-- **Wires and tubes** with enough slack through joints 5 and 6 for one full turn, and fixed so that they cannot
-  be pinched by the belts.
+- **Wires and tubes** with enough slack through each joint for its full range, and fixed so that they cannot be
+  pinched by the belts.
 - **Wire markings**: the print table spreadsheet's *Wire_markings* sheet lists the colour code of the motor and
   sensor cables used on the reference robots, which helps when the base is wired.
 

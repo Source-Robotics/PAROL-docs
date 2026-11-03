@@ -7,7 +7,8 @@ a supply that you choose.
 ## The supply
 
 - **Isolated**: connect an external supply's negative to **GND_SEL** and positive to **HV_SEL**. The inputs and
-  outputs then work at that voltage, 5, 12 or 24 V, and a fault on them cannot reach the robot.
+  outputs then work at that voltage, 12 or 24 V (the inputs need at least 12 V), and a fault on them cannot reach
+  the robot.
 - **Not isolated**: link the robot's own 24 V and GND to HV_SEL and GND_SEL. Simpler, and the valve of the
   pneumatic gripper is usually wired this way. A 2 A fuse protects the outputs in this mode.
 
@@ -23,8 +24,9 @@ Switches, push buttons, light barriers and sensors. A switch goes between **HV_S
 three-wire sensor takes HV_SEL and GND_SEL for its supply and gives its signal to the input. Input voltage 12 to
 50 V, 24 V nominal.
 
-The robot reports the inputs in every packet: the commander's **IO** tab shows them, RBTscript's `Input()`
-reads them, and the Python API's `io()` returns `[in1, in2, out1, out2, estop]`.
+The robot reports the inputs in every packet: the commander's **IO** tab shows them, and the Python API's `io()`
+returns `[in1, in2, out1, out2, estop]`. RBTscript's `Input()` has no action yet: a program stops on it
+([Known issues](../08-troubleshooting/known-issues.md)).
 
 ## Outputs
 

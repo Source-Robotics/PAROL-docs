@@ -2,8 +2,10 @@
 
 ## Moving the robot
 
-1. Home it, then jog joints 2 and 3 toward their limit switches so the arm folds over the base, or move it by
-   hand once it is switched off ([Moving the robot by hand](02-safety/moving-by-hand.md)).
+1. Home it, then bring it to the **parked pose**: joints 2 and 3 toward their limit switches so the arm folds
+   over the base. The commander's **Park** button writes a program that moves there
+   ([Switching off](05-operation/switching-on-off.md#switching-off)). Or move it by hand once it is switched off
+   ([Moving the robot by hand](02-safety/moving-by-hand.md)).
 2. Switch off with the forearm held; unplug the supply, the USB and the E-stop.
 3. Carry it by the base, not by the arm.
 

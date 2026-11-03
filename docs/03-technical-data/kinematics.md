@@ -17,9 +17,9 @@ colour for the printed parts (the motors stay black). The model is the robot's
 
 The sheets below come from PAROL6's models in
 [robot_descriptions](https://github.com/Source-Robotics/robot_descriptions) (version <!-- version: models.robot_descriptions -->). Each shows the robot's
-own meshes with every joint at 0, in one orthographic side view at one scale, with the dimensions taken from the
-URDF, not measured from the picture, and the standard DH table to the tool centre point (TCP) of that
-configuration. Click a sheet to enlarge it.
+own meshes in the standby pose (every joint of the model at 0), in one orthographic side view at one scale, with
+the dimensions taken from the URDF, not measured from the picture, and the standard DH table to the tool centre
+point (TCP) of that configuration. Click a sheet to enlarge it.
 
 === "Flange only"
 
@@ -87,8 +87,10 @@ reach one pose.
 ## Denavit-Hartenberg parameters
 
 Standard DH, each joint's transform being `A_i = Rz(theta_i) Tz(d_i) Tx(a_i) Rx(alpha_i)`, from the base to the
-TCP. `q1` to `q6` are the model's joint angles; the theta column already contains the joint offsets, so do not add
-them twice. The sheets above give the same table for each tool.
+TCP. `q1` to `q6` are the model's joint angles (the URDF's), all 0 in the standby pose; the theta column already
+contains the joint offsets, so do not add them twice. Theta is the angle the software shows: joint 2's software
+angle is q2 − 90°, joint 3's is q3 + 180° and joint 6's is q6 + 180°, the others are equal. The sheets above give
+the same table for each tool.
 
 | Joint | Link | theta | alpha | a | d |
 |---|---|---|---|---|---|

@@ -7,7 +7,8 @@ how you check a new robot, teach a pose and get out of trouble.
 
 Each joint has a pair of arrows in the commander's **Joint jog** menu: the **left arrow is the positive**
 direction, the right arrow negative, as in [Joint limits and directions](../03-technical-data/joint-limits.md).
-The speed slider sets the speed as a percentage of the joint's maximum. A jog stops at the joint limit.
+The speed slider sets the speed as a percentage of the commander's jog maximum, which is lower than the speed a
+program may use ([Speeds](../03-technical-data/specifications.md#speeds)). A jog stops at the joint limit.
 
 === "Python API"
     ```python
@@ -37,7 +38,19 @@ the singular pose and continue ([Configurations and singularities](../theory/con
 ## Jogging a robot that is not homed
 
 Joint jog works before homing: it is how you check the directions on a new build. The positions shown are
-meaningless until the robot is homed, the limits are not enforced, and a Cartesian jog is refused.
+meaningless until the robot is homed, and a Cartesian jog is refused.
+
+Both programs still check each jog against the joint limits, with a position count that starts at 0 when the
+board is switched on. That count puts joint 2 past its positive limit and joints 3 and 6 at or below their
+negative limits, so until the robot is homed:
+
+- **joint 2** jogs only in its negative direction (the right arrow);
+- **joints 3 and 6** jog only in their positive direction (the left arrow);
+- **joints 1, 4 and 5** jog both ways.
+
+A refused jog does not move: the commander logs `Error: Robot jog -> Position out of range`, the Python API stops
+the joint before it starts.
 
 !!! warning
-    Before homing, nothing stops a joint at its limit except the printed blocker. Jog briefly and slowly.
+    Before homing, the limits are checked against a count that does not match the arm, so they do not protect
+    the joint: nothing stops it at its real limit except the printed blocker. Jog briefly and slowly.

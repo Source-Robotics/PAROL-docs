@@ -5,10 +5,12 @@
 The PAROL6 Robot Manual covers the PAROL6 desktop robotic arm from the box, or the printer, to a robot that runs
 programs: what the robot is, how to install it safely, how it is switched on, homed, jogged and run, which tools
 and grippers it takes, its inputs, outputs and pneumatics, how it is maintained and what to do when something
-fails. The Build guide, part of the same document, covers building one from the published files. Two more
-documents live on this site: the [Control Board Manual](board/index.md), for the electronics inside the base, and
-the [Programming Guide](programming/index.md) with its [API reference](reference/index.md), for everyone who writes
-programs for the robot.
+fails. The Build guide, part of the same document, covers building one from the published files. Four more
+documents live on this site: the [Control Board Manual](board/index.md), for the electronics inside the base; the
+[End Effectors Guide](end-effectors/index.md), for the grippers and tools on the flange; the
+[GUI Guide](gui/index.md), for the graphical programs; and the [Programming Guide](programming/index.md) with its
+[API reference](reference/index.md), for everyone who writes programs for the robot. The list under *Related
+documents* gives their numbers.
 
 The manual is written for someone who has a PAROL6 or is building one: a maker, a student, a teacher or an engineer
 who can run a Python script and tighten a belt. It does not assume robotics training; the concepts the robot's
@@ -23,8 +25,9 @@ deeper.
 
 ## Warnings and notes
 
-Three kinds of highlighted text appear in this documentation. Read every Danger and Notice before you act on the
-step it belongs to.
+Three kinds of warnings and notes appear in this documentation. Read every Danger and Notice before you act on
+the step it belongs to. A green **Check** box after a setup step says what you should see when the step worked,
+and where to go when it did not.
 
 --8<-- "symbols.md"
 
@@ -52,4 +55,10 @@ Robotics name, the product names and the logos are not covered by any of these.
 |---|---|---|---|
 | Robot Manual | 2026.A (draft) | — | First version in this form: the numbered chapters, the build guide, from the pages of the previous site |
 | Control Board Manual | 2026.A (draft) | — | First version in this form, from the control board and peripherals pages of the previous site |
-| Programming Guide | 2026.A (draft) | — | First version: the concepts, the Python API 0.9.1, the commander software and RBTscript, ROS 2; the generated API reference |
+| End Effectors Guide | 2026.A (draft) | — | First version: the flange, the pneumatic and vacuum grippers, the SSG-48 and MSG, your own tool |
+| GUI Guide | 2026.A (draft) | — | First version: the commander software, Waldo Commander, Motor GUI |
+| Programming Guide | 2026.A (draft) | — | First version: the concepts, the Python API <!-- version: software.python_api -->, the commander software and RBTscript, ROS 2; the generated API reference |
+
+<!-- The revisions and dates of this table are written by hand: when a document is published, update its row here
+together with versions.yml. -->
+

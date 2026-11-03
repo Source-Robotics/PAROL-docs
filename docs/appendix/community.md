@@ -10,7 +10,7 @@ where a pull request adds yours.
 
 | Project | What it is |
 |---|---|
-| [Waldo Commander](https://github.com/Jepson2k/PAROL-Web-Commander) | A browser-based commander: Python programs with an editor and debugger, 3D simulation, teach by demonstration, and an MCP server so that an LLM can drive the arm. Built on the Python API through the waldoctl abstraction |
+| [Waldo Commander](https://github.com/Jepson2k/Waldo-Commander) | A browser-based commander: Python programs with an editor and debugger, 3D simulation, teach by demonstration, and an MCP server so that an LLM can drive the arm. Built on the Python API through the waldoctl abstraction |
 | [Parol6_Better_Command](https://github.com/thousands-star/Parol6_Better_Command) | The commander software refactored for easier editing, with vision |
 | [PAROL6 Pilot](https://github.com/jointAxis77/pilot) | A web GUI |
 | [PAROL6_GUI](https://github.com/jakubgrzebien1234-creator/PAROL6_GUI) | An alternative desktop GUI |

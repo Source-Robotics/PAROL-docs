@@ -10,8 +10,10 @@
   robot.
 - **Cables.** The power, USB and E-stop cables leave the base at the back; route them so that nothing pulls on
   them and so that the arm cannot sweep over them.
-- **Pneumatics.** If you use the pneumatic gripper, a valve and an air supply at 6 to 8 bar near the base
-  ([Pneumatics](../06-peripherals/pneumatics.md)).
+- **Pneumatics.** If you use the pneumatic gripper, a valve and an air supply at 5 to 7 bar near the base; check
+  your gripper's rating ([Pneumatics](../06-peripherals/pneumatics.md)).
+- **A mains switch within reach** on the power supply's mains side, a switched socket strip for example: the stop
+  for when the PC software has frozen ([Emergency stop](../02-safety/emergency-stop.md)).
 
 The [Planning the cell](../02-safety/planning-the-cell.md) page covers the safety side: who can reach the robot,
 guarding, and what the software can and cannot stop.

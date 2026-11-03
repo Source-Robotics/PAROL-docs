@@ -17,14 +17,18 @@ page before you plug anything in.
 ![Wiring diagram: motors, switches, sensors and connectors to the control board](../assets/parol6v2_connection.webp){ width="750" }
 
 - **Motors**: one four-wire cable per joint, to the terminals marked with its joint number (`J1_A+` to `J6_B-`).
-- **Limit switches** (joints 2, 3, 5): one lead to 24 V, the other to the joint's LIMIT terminal; polarity does
-  not matter.
-- **Inductive sensors** (joints 1, 4, 6): brown to 24 V, blue to GND, black (signal) to the LIMIT terminal.
+- **Limit switches** (joints 2, 3, 5): one lead to 24 V, the other to the LIMIT terminal the wiring diagram shows
+  in that joint's group; polarity does not matter.
+- **Inductive sensors** (joints 1, 4, 6): brown to 24 V, blue to GND, black (signal) to the LIMIT terminal the
+  wiring diagram shows in that joint's group.
 - **The gripper connector**: 24 V, GND, CAN H and CAN L from the board to the M8 socket at the forearm.
 - **The E-stop**: the NC contact to the two E-stop terminals.
 - **Power**: the GX16 socket on the base to the XT30 on the board, polarity checked twice.
 - **The power button**: the JST PH cable to the button connector.
 - **The fan**: 5 V, three-pin, on the fan header; not a PWM fan.
+
+Wire each switch and sensor to the terminal the diagram shows for its joint, joints 1 and 6 included, and check
+each one with the test firmware's `#LIMIT` before you close the base.
 
 The finished base looks like this:
 

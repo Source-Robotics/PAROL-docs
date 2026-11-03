@@ -32,5 +32,6 @@ pattern, for a plate you have machined or cut.
 
 ## Orientation
 
-PAROL6 is designed to stand upright on its base. Wall and ceiling mounting are not supported: the kinematic model
-assumes gravity along the base's axis, and the arm would fall into the mount when powered off.
+PAROL6 is designed to stand upright on its base. Wall and ceiling mounting are not supported: the payload, the
+motor currents and the speed limits are set for an upright arm, and with no brakes the arm would fall into the
+mount when powered off.

@@ -23,18 +23,19 @@ E-stop is within that person's reach, and so is the power supply's switch.
   the table.
 - Start on the real robot at low speed: in the commander, low `v=` or long `t=` in the moves (the speed slider
   only scales jogging); in the Python API, the `speed` fraction of each move.
-- Put the first move of a program at a known pose from the standby pose, so that a restart from standby is
-  always safe.
+- Make the first move of a program go from the after-homing pose to a known pose, so that a program started
+  right after homing always begins safely.
 - Use `Delay()` and the inputs to wait for the world, rather than assuming it.
 
 ## The tool and the parts
 
 - The payload includes the tool. A gripper and a camera together can be most of the 0.5 kg the arm carries at
   full reach.
-- A pneumatic gripper needs 6 to 8 bar and a valve wired to an output; the valve's two tubes decide whether it is
-  normally open or closed ([Pneumatics](../06-peripherals/pneumatics.md)).
-- Fingers that can hold the part also when the power goes: the electric grippers hold their grip when the robot
-  is E-stopped, the vacuum gripper does not.
+- A pneumatic gripper needs 5 to 7 bar (check your gripper's rating) and a valve wired to an output; the
+  valve's two tubes decide whether it is normally open or closed ([Pneumatics](../06-peripherals/pneumatics.md)).
+- Know what the gripper does at an E-stop and at a power loss. The E-stop leaves the gripper as it is: an
+  electric gripper keeps its grip, and a pneumatic or vacuum gripper stays where the valve left it. When the
+  power or the air goes, the vacuum gripper drops its part.
 
 ## When something changes
 

@@ -23,7 +23,8 @@ PAROL6 has no brakes. The moment the motors lose power, from the button, the sup
 cable, the arm goes limp and falls under its own weight, with whatever it carries. The gearing slows the fall of
 joints 2 and 3 a little; it does not stop it.
 
-- Never switch the robot off while it is extended or carrying something: bring it to the standby pose first.
+- Never switch the robot off while it is extended or carrying something: bring it to the parked pose first,
+  folded in over the base, where it has the least distance to fall ([Switching on and off](../05-operation/switching-on-off.md#switching-off)).
 - Hold the forearm when you press the power button.
 - Keep hands out from under the arm.
 - Expect the fall during any power failure, and place nothing fragile under the arm.
@@ -42,7 +43,7 @@ joints 2 and 3 a little; it does not stop it.
 
 A stepper motor turned by hand is a generator. Moving the arm quickly while the supply is connected and the
 board off can power the board on and energise the motors, with the arm wherever you left it. Move an unpowered
-robot slowly, and only to the standby pose or into its box.
+robot slowly, and only toward the parked pose or into its box.
 
 ## Hot motors
 

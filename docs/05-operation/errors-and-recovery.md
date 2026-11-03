@@ -27,7 +27,8 @@ a disabled robot; **Disable** stops the firmware from accepting motion commands 
 A refused command raises `MotionError` with a code, a cause and a remedy, from the controller's error catalog:
 `IK_TARGET_UNREACHABLE`, `MOTN_NOT_HOMED`, `SYS_ESTOP_ACTIVE`, `SYS_SELF_COLLISION`, `MOTN_CANCELLED` and the
 others on [Errors](../reference/python/errors.md). `error()` returns the current error, `activity()` what the
-robot is doing. After an E-stop, `reset()` clears the protective stop; after `stop()` nothing needs clearing.
+robot is doing. After an E-stop is released, call `reset()`: it enables the firmware again, and until then the arm
+does not move. After `stop()` nothing needs clearing.
 
 ## After a collision or a stall
 
@@ -49,5 +50,7 @@ until every joint jogs in the right direction.
 ## The gripper reports an error
 
 The electric grippers report their own errors through the robot: not calibrated, E-stop, timeout. The commander's
-**Gripper** tab has **Clear gripper error** and **Calibrate gripper**; the Python API's `tool.calibrate()`
-calibrates. The gripper manuals explain each error.
+**Gripper** tab has **Clear gripper error** and **Calibrate gripper**: clear the error first, then calibrate,
+and wait until the calibration has finished before the first move. The Python API's `tool.calibrate()`
+calibrates but has no clear ([SSG-48](../end-effectors/ssg-48.md), [MSG](../end-effectors/msg.md)). The gripper
+manuals explain each error.

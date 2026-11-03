@@ -13,10 +13,10 @@ enclosed in the forearm.
 | Joint 3 | 1900 mA | 1615 mA | 80 %: 1292 mA |
 | Joint 4 | 1700 mA | 1445 mA | 80 %: 1156 mA |
 | Joint 5 | 1700 mA | 1445 mA | 80 %: 1156 mA |
-| Joint 6 | 965 mA | 820 mA | 80 %: 656 mA |
+| Joint 6 | 965 mA | 820 mA | 88 %: 722 mA |
 
 The firmware calls `rms_current(MOTORx_MAX_CURRENT * 0.85, hold_multiplier)`; the hold multiplier is 0.7 for
-joint 1 and 0.8 for the others ([Firmware parameters](../reference/firmware-parameters.md)). Lower currents give
+joint 1, 0.8 for joints 2 to 5 and 0.88 for joint 6 (`motor_init.cpp`; [Firmware parameters](../reference/firmware-parameters.md)). Lower currents give
 less torque, which means lower reachable speeds and accelerations and a higher chance of lost steps; higher
 currents heat the motors and the plastic around them.
 
@@ -44,8 +44,10 @@ board at the back of the base. The scale runs from 29.6 to 50.0 °C.
     Joints 4 and 5 come within 10 °C of the plastic's limit after two hours of continuous motion. For a robot that
     runs for hours, reduce the currents in the firmware (`MOTORx_MAX_CURRENT` in `constants.h`, or the
     `hold_multiplier` in `motor_init.cpp`), lower the duty cycle, or let it rest in a pose that does not load the
-    motors. A deformed forearm is not repairable.
+    motors. A deformed forearm cannot be straightened: it has to be printed again.
 
-The stepper drivers themselves report a temperature warning at 100 °C and shut down at 120 °C, with the fan in the
-base keeping them well below that ([Control board technical data](../board/03-technical-data.md)). The driver
-temperature is not the motor temperature.
+The stepper drivers protect themselves: a TMC5160 that gets too hot shuts its outputs down, and its joint goes
+limp. The fan in the base keeps them well below that ([Control board technical data](../board/03-technical-data.md)).
+Firmware 1 does not tell the PC when a driver is hot: the joints' temperature error bits in its packet are
+always 0. The
+driver temperature is not the motor temperature.

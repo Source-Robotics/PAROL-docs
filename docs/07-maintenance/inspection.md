@@ -11,7 +11,8 @@ With the robot switched off and the supply unplugged:
   when a screw head comes near.
 - **Printed parts**: cracks at screw bosses and bearing seats, especially on the elbow and the upper arm, and
   any warping of the forearm from heat.
-- **Cables and tubes**: chafing where they pass through joints 5 and 6; the gripper cable's connector tight.
+- **Cables and tubes**: chafing where the arm's cables pass through the joints, and where the gripper's cable
+  and tubes cross joints 5 and 6 from the forearm; the gripper cable's connector tight.
 - **The fan**: turning when the robot is on, and the intake free of dust. A stopped fan overheats the drivers.
 - **The base**: the mounting bolts tight, the E-stop button firm in its housing.
 

@@ -15,7 +15,7 @@ the arm has no brakes to release. This is how you pose it for packing and how yo
 
 !!! danger "Not while the supply is connected"
     A stepper turned by hand generates voltage, and a quick move can switch the board on with the arm in your
-    hands. Unplug the power supply, or move slowly, and only to the standby pose.
+    hands. Unplug the power supply, or move slowly, and only toward the parked pose.
 
 ## When the robot is powered
 
@@ -30,5 +30,5 @@ or Cartesian move. The commander's position display and the simulator are wrong 
 
 ## Lifting
 
-Bring joints 2 and 3 toward their limit switches so that the arm folds over the base, then lift by the base, not
-by the arm. [Transport and storage](../09-transport.md) has the packing.
+Bring the arm to the parked pose, joints 2 and 3 toward their limit switches so that the arm folds over the base,
+then lift by the base, not by the arm. [Transport and storage](../09-transport.md) has the packing.

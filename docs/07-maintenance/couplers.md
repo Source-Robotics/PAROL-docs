@@ -6,7 +6,7 @@ loses its position without noticing.
 
 - If a joint starts to slip, or its position drifts between homings, find the set screw, tighten it, and apply
   **blue (medium) threadlocker**. Do not move the robot for 24 hours while it cures.
-- Put a screw in the keyhole as well as on the flat where the part has both.
+- Put a screw on the key as well as on the flat where the part has both.
 - Apply threadlocker to every metal-to-metal screw joint on the robot: the motor mounts, the gearbox flanges,
   the bearing clamps. Printed parts and brass inserts do not need it, and the solvent in some threadlockers
   attacks plastic: keep it on the metal.

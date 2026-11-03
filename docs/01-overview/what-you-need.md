@@ -7,6 +7,10 @@ any regulated 24 V 5 A supply with the robot's GX16 power connector wired to it 
 18 to 24 V; below 24 V the motors lose torque and speed. The robot draws about 40 W in typical use and more when
 all six motors accelerate at once.
 
+Plug the supply in through a **mains switch within reach**, a switched socket strip for example. It is the stop
+that still works when the PC software has frozen ([Emergency stop](../02-safety/emergency-stop.md)), and the
+switch you reach for when the E-stop has no effect.
+
 ## The E-stop
 
 A normally closed emergency stop button, wired to the two E-stop terminals of the control board. The robot does
@@ -18,7 +22,8 @@ setup ([Emergency stop](../02-safety/emergency-stop.md)).
 The PC runs the kinematics and the planner and must send a packet to the robot every 10 ms without hiccups. A
 machine that falls behind makes the robot stutter. Tested systems and the minimum are in the commander
 repository's [confirmed working systems](https://github.com/Source-Robotics/PAROL-commander-software/blob/main/confirmed_working_systems.md):
-at least a six-core desktop-class processor of 2017 or newer; a Raspberry Pi is not enough, a Radxa ROCK 5B is.
+at least an Intel i5 six-core processor of 2017 or newer, or an AMD equivalent. The tested systems include two
+Windows 10 PCs with six-core AMD Ryzen processors, a Radxa ROCK 5B on Linux and a six-core MacBook Pro.
 
 | | Commander software | Python API |
 |---|---|---|
@@ -36,6 +41,7 @@ threadlocker and the thermal cement.
 
 ## Knowledge
 
-You should be able to install Python packages and run a script, and to use a hex key. The
+You should be able to use a hex key. Python and the terminal you can learn on the way: the
+[Quick start](../quick-start.md) gives every command to type, for someone who has never used either. The
 [Theory corner](../theory/index.md) explains the robotics vocabulary the software uses, from
 joint numbering to singularities, in the order you meet it.

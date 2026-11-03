@@ -34,6 +34,7 @@ with RobotClient() as rbt:
     rbt.home(wait=True)
     rbt.select_tool("SSG-48")
     rbt.tool.calibrate()
+    rbt.delay(2)                  # the SSG-48 needs about 3 s; calibrate() waits only 2 s
     rbt.move_j([90, -90, 180, 0, 0, 180], speed=0.5)
     rbt.move_l([0, 263, 200, 90, 0, 90], speed=0.3)
     rbt.tool.close(speed=0.5, current=0.4)
@@ -60,5 +61,13 @@ The commander's speed slider scales jogging only; a program's speed is in its mo
 
 - **Stop** in the commander, or `stop()` in the API: the current move is cancelled, the queue cleared, the robot
   stays enabled and holding.
-- The **E-stop**: the robot is disabled or a protective stop is latched ([Emergency stop](../02-safety/emergency-stop.md)).
-- Closing the software: the firmware keeps running the last commanded speeds for one cycle, then holds.
+- The **E-stop**: the robot is disabled and the program or the queue is stopped; in the Python API, call
+  `reset()` after releasing it ([Emergency stop](../02-safety/emergency-stop.md)).
+- Closing the software: stop the program first. The firmware has no timeout: it keeps executing the last packet
+  it received until the next one arrives. After a move to a position the joints stop near that target and hold.
+
+!!! danger "When the PC stops sending during a jog"
+    If the commander closes, crashes or loses the USB connection while a joint jogs (in joint or Cartesian
+    jog), the firmware keeps that joint turning at its jog speed until it reaches its blocker. Programs that use
+    speed tracking (`speed` as the last argument of a move) behave the same way. Use the mains switch of the power
+    supply ([Emergency stop](../02-safety/emergency-stop.md)).

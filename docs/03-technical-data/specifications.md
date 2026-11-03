@@ -39,7 +39,7 @@ The ranges are those of the robot's model (robot_descriptions <!-- version: mode
 ## Speeds
 
 The speed limits are set in the PC software, not in the firmware, and the two programs differ: the commander
-software is the more conservative.
+allows less on joints 1, 2, 3 and 6 and on the tool, and more on joints 4 and 5.
 
 | Joint | Python API: maximum speed | Python API: acceleration | Commander: maximum speed |
 |---|---|---|---|
@@ -53,7 +53,9 @@ software is the more conservative.
 | Tool, angular | 100 °/s | 275 °/s² | 25 °/s |
 
 The steps per second are converted with the ratios of [Drives, ratios and resolution](drives-and-ratios.md). In
-the Python API the acceleration is three times the speed, so a joint reaches full speed in a third of a second,
-and jogging is limited to 80 % of the maxima; the commander scales its limits with the speed slider. A joint
+the Python API a joint's acceleration is three times its speed, so a joint reaches full speed in a third of a
+second, and jogging is limited to 80 % of the maxima. The commander jogs within lower limits of its own, which
+its speed slider scales: 13 °/s on joint 1, 8 °/s on joint 2, 11 °/s on joint 3, 98 °/s on joints 4 and 5 and
+101 °/s on joint 6 at 100 % (1500, 3000, 3600, 7000, 7000 and 18000 steps/s), and 60 mm/s for the tool. A joint
 driven at its maximum with a reduced motor current or a heavy payload loses steps: lower the speed before you
 lower the current.

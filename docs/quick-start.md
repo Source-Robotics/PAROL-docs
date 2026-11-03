@@ -17,6 +17,7 @@ follow it when a step is not clear or something fails.
 |---|---|
 | **Your PAROL6**, assembled and wired, with the control board inside the base | the [Build guide](build/index.md); the parts in the [BOM](build/bill-of-materials.md), or as kits from [the shop](https://source-robotics.com/) |
 | **A 24 V power supply**, 5 A | the [BOM](build/bill-of-materials.md) names one; any 24 V 5 A supply works |
+| **A mains switch within reach**, on the supply's mains side: a switched socket strip will do | it is the stop that still works when the PC software has frozen ([Emergency stop](02-safety/emergency-stop.md)) |
 | **An E-stop**, a normally closed button on the base | the [BOM](build/bill-of-materials.md) names one; any NC switch works |
 | **A USB cable**, type B, to the PC | |
 | **An ST-Link programmer and the programming adapter**, to upload the firmware once | the [programming adapter](https://source-robotics.com/products/parol6-programming-adapter) in the shop |
@@ -34,51 +35,73 @@ it extends.
 
 Read in more detail: [Mounting the robot](04-installation/mounting.md).
 
-## 3. Install Python and open a terminal
+## 3. Install Python and Git, and open a terminal
 
-The PC software is written in Python. A **terminal** is the window where you type commands: type one line, press
-Enter, wait until it finishes.
+The PC software is written in Python, and Git downloads it. A **terminal** is the window where you type commands:
+type one line, press Enter, wait until it finishes.
 
 === "Windows"
-    1. Download **Python 3.11** from [python.org](https://www.python.org/downloads/windows/): the "Windows
-       installer (64-bit)" of the newest 3.11 release.
+    1. Download **Python 3.11.9** from [python.org](https://www.python.org/downloads/release/python-3119/): the
+       "Windows installer (64-bit)". 3.11.9 is the last 3.11 release with an installer.
     2. Run it. On its first screen tick **Add python.exe to PATH**, then press **Install Now**.
-    3. Open a terminal: press the Windows key, type `cmd` and press Enter. A black window opens.
-    4. Type `python --version` and press Enter.
+    3. Download **Git** from [git-scm.com](https://git-scm.com/downloads/win) and install it with the settings it
+       proposes.
+    4. Open a terminal: press the Windows key, type `cmd` and press Enter. A black window opens.
+    5. Type `python --version` and press Enter, then `git --version`.
+
+    The commands on this page start with `cd %USERPROFILE%\Documents`, which takes the terminal to your Documents
+    folder. If Windows answers that it cannot find the path, your Documents folder is kept in OneDrive: type
+    `cd %USERPROFILE%\OneDrive\Documents` instead. To open a terminal in any folder, open the folder in File
+    Explorer, click the address bar, type `cmd` and press Enter.
 
 === "Linux"
     1. Open a terminal: Ctrl+Alt+T on Ubuntu, or Terminal in the applications menu.
-    2. Install Python's tools: `sudo apt install python3-pip python3-venv python3-tk python3-pil python3-pil.imagetk`
-       (it asks for your password).
-    3. Type `python3 --version` and press Enter. The commander software needs 3.10 or 3.11, the Python API 3.11
-       or newer. In the commands below, type `python3` where they say `python`.
+    2. Install Git: `sudo apt install git` (it asks for your password).
+    3. The software needs **Python 3.11**: the commander runs on 3.10 or 3.11 only, the Python API on 3.11 or
+       newer. Ubuntu's own Python is 3.10 on Ubuntu 22.04 and 3.12 on Ubuntu 24.04, so install 3.11 next to it,
+       with its virtual environments and its window toolkit:
+       ```
+       sudo add-apt-repository ppa:deadsnakes/ppa
+       sudo apt install python3.11 python3.11-venv python3.11-tk
+       ```
+    4. Type `python3.11 --version` and press Enter, then `git --version`. Each program below gets its own
+       virtual environment made with Python 3.11; inside it, `python` is that Python 3.11.
 
 === "macOS"
-    1. Download **Python 3.11** from [python.org](https://www.python.org/downloads/macos/): the "macOS 64-bit
-       universal2 installer" of the newest 3.11 release, and run it.
+    1. Download **Python 3.11.9** from [python.org](https://www.python.org/downloads/release/python-3119/): the
+       "macOS 64-bit universal2 installer". Run it.
     2. Open a terminal: press Cmd+Space, type `Terminal` and press Enter.
-    3. Type `python3 --version` and press Enter. In the commands below, type `python3` where they say `python`.
+    3. Install Git with the Xcode command line tools: type `xcode-select --install`, press Enter and confirm the
+       window that opens.
+    4. Type `python3.11 --version` and press Enter, then `git --version`. Each program below gets its own
+       virtual environment made with Python 3.11; inside it, `python` is that Python 3.11.
 
 !!! success "Check"
-    The terminal answers `Python 3.11` and a number. If it says the command is not found, install Python again and
-    (on Windows) tick **Add python.exe to PATH**; then open a new terminal.
+    The terminal answers `Python 3.11` and a number, and `git version` and a number. If it says a command is not
+    found, install that program again (on Windows, tick **Add python.exe to PATH**), then open a new terminal.
 
 ## 4. Upload the main firmware
 
 A control board from the shop comes with the **test firmware**, which turns all six motors as soon as the board
 starts. Put the **main firmware** on it before you switch on the assembled robot. You do this once.
 
-1. Download the [robot repository](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm): the green
-   **Code** button, then **Download ZIP**. Unzip it, for example into your Documents folder.
+1. Download the [robot repository](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm) into your
+   Documents folder:
+   ```
+   cd %USERPROFILE%\Documents
+   git clone https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm.git
+   ```
+   On Linux and macOS, the first line is `cd ~/Documents`.
 2. Install [VS Code](https://code.visualstudio.com/). Open it, click the **Extensions** icon on the left, search
    for **PlatformIO IDE** and install it. Restart VS Code when it asks.
-3. On Windows, install the ST-Link driver: unzip `en.stsw-link009.zip` from the robot repository and run
-   `dpinst_amd64.exe` in it.
+3. On Windows, install the ST-Link driver: in File Explorer, open `PAROL6-Desktop-robot-arm` in your Documents
+   folder, right-click `en.stsw-link009.zip`, choose **Extract All**, and run `dpinst_amd64.exe` from the
+   extracted folder.
 4. **Unplug the 24 V supply** from the robot. Plug the programming adapter onto the 2×5 header next to the USB
    port, and the ST-Link into the PC. The adapter powers the board's microcontroller, not the motors.
-5. In VS Code: **File**, **Open Folder**, and choose `PAROL6 control board main software` inside the robot
-   repository. The first time, PlatformIO downloads its tools for a few minutes: wait until the bar at the bottom
-   is quiet.
+5. In VS Code: **File**, **Open Folder**, and choose `PAROL6 control board main software` inside
+   `PAROL6-Desktop-robot-arm`. The first time, PlatformIO downloads its tools for a few minutes: wait until the bar
+   at the bottom is quiet.
 6. Click the **→** arrow (Upload) in the bar at the bottom of VS Code.
 7. When it has finished, unplug the programming adapter.
 
@@ -91,38 +114,75 @@ Read in more detail: [Firmware](board/08-firmware.md) · [Firmware and first run
 ## 5. Install the robot software
 
 Choose one, or install both: the **commander software** is a window with buttons, a program editor and a 3D
-simulator; the **Python API** drives the robot from Python programs you write.
+simulator; the **Python API** drives the robot from Python programs you write. Each one goes into its own folder
+with its own **virtual environment** (`.venv`), a private copy of Python for that program: the two need different
+versions of the same packages, so they cannot share one.
 
 === "Commander software"
-    1. Download the [commander software](https://github.com/Source-Robotics/PAROL-commander-software): **Code**,
-       then **Download ZIP**, and unzip it into Documents.
-    2. In the terminal, go into its folder and install what it needs (a few minutes):
-       ```
-       cd Documents\PAROL-commander-software-main
-       python -m pip install -r requirements.txt
-       ```
-       On Linux and macOS the folder is written `Documents/PAROL-commander-software-main`.
+    In the terminal, download the [commander software](https://github.com/Source-Robotics/PAROL-commander-software),
+    make its virtual environment and install what it needs (a few minutes):
+
+    ```
+    cd %USERPROFILE%\Documents
+    git clone https://github.com/Source-Robotics/PAROL-commander-software.git
+    cd PAROL-commander-software
+    python -m venv .venv
+    .venv\Scripts\activate
+    python -m pip install -r requirements.txt
+    ```
+
+    On Linux and macOS:
+
+    ```
+    cd ~/Documents
+    git clone https://github.com/Source-Robotics/PAROL-commander-software.git
+    cd PAROL-commander-software
+    python3.11 -m venv .venv
+    source .venv/bin/activate
+    python -m pip install -r requirements.txt
+    ```
+
+    After the activate line the prompt starts with `(.venv)`.
 
 === "Python API"
-    1. Open the [Python API at version <!-- version: software.python_api -->](<!-- version-url: software.python_api -->)
-       and download it: **Code**, then **Download ZIP**. Unzip it into Documents.
-    2. In the terminal, go into its folder and install it (a few minutes):
-       ```
-       cd Documents\PAROL6-python-API-<!-- version: software.python_api -->
-       python -m pip install .
-       ```
-       On Linux and macOS the folder is written with `/`, and a virtual environment is needed first:
-       [Python API installation](programming/02-python-api/installation.md#install) has the commands.
+    In the terminal, download the [Python API](https://github.com/PCrnjak/PAROL6-python-API), switch to version
+    <!-- version: software.python_api -->, make its virtual environment and install it (a few minutes):
+
+    ```
+    cd %USERPROFILE%\Documents
+    git clone https://github.com/PCrnjak/PAROL6-python-API.git
+    cd PAROL6-python-API
+    git checkout v<!-- version: software.python_api -->
+    python -m venv .venv
+    .venv\Scripts\activate
+    python -m pip install .
+    ```
+
+    On Linux and macOS:
+
+    ```
+    cd ~/Documents
+    git clone https://github.com/PCrnjak/PAROL6-python-API.git
+    cd PAROL6-python-API
+    git checkout v<!-- version: software.python_api -->
+    python3.11 -m venv .venv
+    source .venv/bin/activate
+    python -m pip install .
+    ```
+
+    After the activate line the prompt starts with `(.venv)`. Git reports a "detached HEAD" after the checkout:
+    that is expected.
 
 !!! success "Check"
-    The install ends without a red `ERROR` line. If one appears, see [Commander installation](gui/commander/installation.md)
+    The install ends without an `ERROR` line. If one appears, see [Commander installation](gui/commander/installation.md)
     or [Python API installation](programming/02-python-api/installation.md).
 
 ## 6. Connect
 
 1. The E-stop to the two E-stop terminals on the base. Without it the robot will not run.
 2. The USB cable to the PC.
-3. The 24 V supply to the power connector. Nothing happens yet: the board is off until the button is pressed.
+3. The 24 V supply to the power connector, and the supply's mains plug into the switched socket strip, or behind
+   the mains switch, within your reach. Nothing happens yet: the board is off until the button is pressed.
 
 Read in more detail: [Connecting](04-installation/connecting.md).
 
@@ -131,11 +191,11 @@ Read in more detail: [Connecting](04-installation/connecting.md).
 Hold the arm by the forearm and press the power button on the base. The motors energise, you hear six clicks,
 and the arm holds its position. Let go.
 
-Read in more detail: [First power-on](04-installation/first-power-on.md) · [Switching on and off](05-operation/switching-on-off.md).
-
 !!! success "Check"
     Six drivers initialise and the arm supports itself before you let go. If it does not, use
     [First power-on: if nothing happens](04-installation/first-power-on.md#if-nothing-happens).
+
+Read in more detail: [First power-on](04-installation/first-power-on.md) · [Switching on and off](05-operation/switching-on-off.md).
 
 ## 8. Start the software
 
@@ -148,8 +208,9 @@ First find the robot's **serial port**, the name the PC gives the USB connection
 - **macOS**: `ls /dev/cu.usbmodem*` in the terminal.
 
 === "Commander software"
-    For the first run, write the port into the program. Open `GUI/files/Serial_sender_good_latest.py` in a text
-    editor (VS Code: **File**, **Open File**) and find these lines near the top:
+    For the first run, write the port into the program. Open
+    `PAROL-commander-software/GUI/files/Serial_sender_good_latest.py` in a text editor (VS Code: **File**,
+    **Open File**) and find these lines near the top:
     ```python
     if my_os == "Windows": 
         STARTING_PORT = 8 # COM3
@@ -159,21 +220,39 @@ First find the robot's **serial port**, the name the PC gives the USB connection
     On Windows, replace `8` with the number of your port, `5` for `COM5`. On Linux, `0` is `/dev/ttyACM0`; change
     it if yours has another number. Save the file. Then start the program in the terminal:
     ```
-    cd Documents\PAROL-commander-software-main\GUI\files
+    cd %USERPROFILE%\Documents\PAROL-commander-software
+    .venv\Scripts\activate
+    cd GUI\files
     python Serial_sender_good_latest.py
     ```
-    (Linux and macOS: `cd Documents/PAROL-commander-software-main/GUI/files`, then `python3`.)
-    Two windows open: the commander and the simulator. At the bottom of the commander, check the serial port
-    (`COM5` on Windows, `ttyACM0` on Linux) and press **Connect**, more than once if the first try fails.
+    On Linux and macOS:
+    ```
+    cd ~/Documents/PAROL-commander-software
+    source .venv/bin/activate
+    cd GUI/files
+    python Serial_sender_good_latest.py
+    ```
+    Two windows open: the commander and the simulator. At the bottom of the commander, type the serial port in
+    the port field (`COM5` on Windows, `ttyACM0` on Linux) and press **Connect**, more than once if the first try
+    fails.
 
 === "Python API"
     1. Start the **controller**, the program that talks to the robot, with your port, and leave its terminal open:
        ```
+       cd %USERPROFILE%\Documents\PAROL6-python-API
+       .venv\Scripts\activate
        parol6-server --serial COM5
        ```
-       (Linux: `--serial /dev/ttyACM0`; macOS: `--serial` and the `/dev/cu.usbmodem…` name.)
-    2. Open a **second** terminal, type `python` and press Enter. The prompt changes to `>>>`: Python now runs each
-       line you type. Type these three lines:
+       On Linux and macOS: `cd ~/Documents/PAROL6-python-API`, then `source .venv/bin/activate`, then
+       `parol6-server --serial /dev/ttyACM0` (macOS: the `/dev/cu.usbmodem…` name).
+    2. Open a **second** terminal and activate the same virtual environment in it:
+       ```
+       cd %USERPROFILE%\Documents\PAROL6-python-API
+       .venv\Scripts\activate
+       python
+       ```
+       (Linux and macOS: `cd ~/Documents/PAROL6-python-API`, `source .venv/bin/activate`, `python`.) The prompt
+       changes to `>>>`: Python now runs each line you type. Type these three lines:
        ```python
        from parol6 import RobotClient
        rbt = RobotClient()
@@ -184,25 +263,38 @@ First find the robot's **serial port**, the name the PC gives the USB connection
 Read in more detail: [The commander software](gui/commander/index.md) · [The Python API](programming/02-python-api/index.md).
 
 !!! success "Check"
-    The commander's response log shows the robot's data, or `ping()` answers with `hardware_connected=1`. If it
-    does not, use [Communication troubleshooting](08-troubleshooting/communication.md).
+    The commander's response log shows the robot's data, or `ping()` answers with `hardware_connected=True`. If
+    it does not, use [Communication troubleshooting](08-troubleshooting/communication.md).
 
 ## 9. Jog each joint
 
-Before homing, check that every joint turns the way the software thinks it does: each one briefly, a few degrees,
-in its positive direction. The figure shows each joint's positive direction, in colour, over the pose in grey.
+Before homing, check that every joint turns the way the software thinks it does: each one briefly, a few degrees.
+The figure shows each joint's positive direction, in colour, over the pose in grey.
 
 ![Each joint turned 30 degrees in its positive direction, in colour, over the pose in grey](assets/kinematics/parol6_joint_directions.webp#only-light){ width="900" }
 ![Each joint turned 30 degrees in its positive direction, in colour, over the pose in grey](assets/kinematics/parol6_joint_directions_dark.webp#only-dark){ width="900" }
 
+Before homing, both programs check each jog against the joint limits with a position count that starts at 0
+when the board is switched on. That count puts joint 2 past its positive limit and joints 3 and 6 at or below
+their negative limits. So, until the robot is homed:
+
+- **Joint 2** jogs only in its **negative** direction. Check that it turns opposite to the figure.
+- **Joints 3 and 6** jog only in their positive direction, which is the one to check.
+- **Joints 1, 4 and 5** jog both ways.
+
+A refused jog does not move: the commander logs `Error: Robot jog -> Position out of range`, the Python API
+stops the joint before it starts.
+
 === "Commander software"
-    In the **Joint jog** menu, press each joint's left arrow briefly.
+    In the **Joint jog** menu, press the left arrow (positive) of joints 1 and 3 to 6 briefly, and the right arrow
+    (negative) of joint 2.
 
 === "Python API"
     ```python
     rbt.jog_j(0, speed=0.2, duration=0.5)     # joint 1, positive, half a second
+    rbt.jog_j(1, speed=-0.2, duration=0.5)    # joint 2, negative
     ```
-    The first number is the joint: `0` is joint 1, `5` is joint 6.
+    The first number is the joint: `0` is joint 1, `5` is joint 6. A negative `speed` jogs the negative way.
 
 A joint that turns the wrong way is fixed in the firmware, not by trial:
 [Firmware and first run](build/firmware-and-first-run.md#a-joint-turns-the-wrong-way).
@@ -210,7 +302,8 @@ A joint that turns the wrong way is fixed in the firmware, not by trial:
 Read in more detail: [Jogging](05-operation/jogging.md) · [Joint limits and directions](03-technical-data/joint-limits.md).
 
 !!! success "Check"
-    Every joint turned the way the figure shows. If one did not, fix it before you home:
+    Joints 1 and 3 to 6 turned the way the figure shows, and joint 2 turned the opposite way on its negative jog.
+    If one did not, fix it before you home:
     [A joint turns the wrong way](build/firmware-and-first-run.md#a-joint-turns-the-wrong-way).
 
 ## 10. Home
@@ -218,6 +311,18 @@ Read in more detail: [Jogging](05-operation/jogging.md) · [Joint limits and dir
 Homing finds each joint's reference at its limit switch or sensor. Joints 1, 2 and 3 move to their switches
 together, then 4, then 6, then 5, and the arm ends in the after-homing pose: the standby pose turned 90° about
 joint 1. Stay at the E-stop: a joint that grinds at its end stop has a switch that does not trigger.
+
+Before you press Home:
+
+- **Joint 6** stands so that it finds its sensor within one turn in the negative direction, with the tool's
+  cables and tubes not wound up. The figure shows the pose: the gripper as drawn, the sensor (blue) and the homing
+  pin (red); joint 6 turns along the green arrow.
+- **The tool** is mounted, and the firmware's joint 5 homing offset matches it. Joint 5 homes against a feature
+  of the tool holder; `j5_homing_offset` in `main.cpp` is 8900 for the pneumatic gripper holder (as shipped) and
+  8035 for the SSG-48. If you change it, upload the firmware again as in step 4
+  ([Joint 5 and the tool](05-operation/mastering.md#joint-5-and-the-tool)).
+
+![Joint 6 before homing: the sensor, the homing pin and the direction of rotation](assets/J6_home.webp){ width="700" }
 
 === "Commander software"
     Press **Home**.
@@ -230,12 +335,14 @@ joint 1. Stay at the E-stop: a joint that grinds at its end stop has a switch th
 Read in more detail: [Homing](05-operation/homing.md) · [Homing failures](08-troubleshooting/homing-failures.md).
 
 !!! success "Check"
-    Homing finishes, the physical arm matches the simulator, and the witness marks agree. If a joint
-    keeps travelling or the pose is wrong, stop and use [Homing failures](08-troubleshooting/homing-failures.md).
+    Homing finishes, the physical arm matches the simulator, and the pin passes through the witness marks of each
+    joint, which line up in the after-homing pose ([Witness marks](05-operation/mastering.md#witness-marks)). If a
+    joint keeps travelling or the pose is wrong, stop and use [Homing failures](08-troubleshooting/homing-failures.md).
 
 ## 11. Move it
 
-The robot now knows where it is. Three simple moves: bend the arm a little, turn the base, and come back.
+The robot now knows where it is. Three simple moves: bend the arm a little, turn the base, and come back. The
+Python API adds a short straight line down and up from the bent pose.
 
 === "Commander software"
     Paste this program into the program window and press **Start**; **Stop** halts it.
@@ -254,18 +361,31 @@ The robot now knows where it is. Three simple moves: bend the arm a little, turn
 === "Python API"
     Type these lines at the `>>>` prompt, one at a time; each waits until its move is done:
     ```python
-    rbt.move_j([90, -70, 160, 0, 30, 180], speed=0.3)   # bend the arm: six joint angles in degrees
-    rbt.move_j([60, -70, 160, 0, 30, 180], speed=0.3)   # turn the base
-    rbt.move_j([90, -90, 180, 0, 0, 180], speed=0.3)    # back to the after-homing pose
-    rbt.move_l([0, 263, 242, 90, 0, 90], speed=0.3)     # a straight line to a tool pose: x, y, z in mm, then rotations
+    rbt.move_j([90, -70, 160, 0, 30, 180], speed=0.3)       # bend the arm: six joint angles in degrees
+    rbt.move_l([0, 0, -30, 0, 0, 0], rel=True, speed=0.3)   # a straight line 30 mm down
+    rbt.move_l([0, 0, 30, 0, 0, 0], rel=True, speed=0.3)    # and 30 mm back up
+    rbt.move_j([60, -70, 160, 0, 30, 180], speed=0.3)       # turn the base
+    rbt.move_j([90, -90, 180, 0, 0, 180], speed=0.3)        # back to the after-homing pose
     ```
-    `speed` is a fraction of the maximum: 0.3 is gentle. Type `exit()` to leave Python.
+    `speed` is a fraction of the maximum: 0.3 is gentle. With `rel=True`, `move_l` takes a change from where the
+    tool is: x, y and z in mm in the world frame, then three rotations in degrees.
 
 Read in more detail: [RBTscript](programming/03-commander/rbtscript.md) · [The Python API](programming/02-python-api/index.md).
 
 ## 12. Switch off
 
-Hold the forearm, then press the power button. The arm goes limp the moment the motors lose power.
+Bring the arm to the **parked pose** first, folded in over the base, so that it has the least distance to fall:
+
+=== "Commander software"
+    Press **Park**: it writes a three-line program into the program window. Press **Start** to run it.
+
+=== "Python API"
+    ```python
+    rbt.move_j([90, -144.683, 108.171, 2.222, 25.003, 180], speed=0.3)   # the commander's park pose
+    ```
+    Type `exit()` to leave Python.
+
+Then hold the forearm and press the power button. The arm goes limp the moment the motors lose power.
 
 ## 13. Where to go next
 

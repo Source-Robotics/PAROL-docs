@@ -111,9 +111,9 @@ issues:
 
   - id: KI-10
     component: python_api
-    summary: Computes with the earlier robot model's dimensions (a5 = 176.35 mm), so its Cartesian positions are off
-      by up to about 0.65 mm from the model these pages use.
-    workaround: Teach the poses that need accuracy on the robot.
+    summary: Enforces the joint limits of the earlier robot model, and computes with its dimensions (a5 = 176.35 mm),
+      so its Cartesian positions are off by up to about 0.65 mm from the model these pages use.
+    workaround: Keep to the limits in the Joint limits table; teach the poses that need accuracy on the robot.
     page: 03-technical-data/kinematics.md
     title: Kinematics
     status: open

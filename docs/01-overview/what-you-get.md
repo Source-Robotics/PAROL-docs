@@ -13,8 +13,9 @@ The [full kit](https://source-robotics.com/products/parol6-robotic-arm-kit) cont
 and the power supply. The [partial kit](https://source-robotics.com/products/parol6-partial-kit) contains the hard-to-find parts: the board, the drivers, the
 bearings, belts, pulleys, connectors, sensors, switches and the pneumatics; you add the gearboxes, the motors,
 the power supply and the printed parts. The [Build guide](../build/index.md#kits) lists every kit. You assemble
-a kit with the Build guide and the assembly manual. The control board in a kit may carry the test firmware: the [first run](../build/firmware-and-first-run.md)
-says how to tell, and how to upload the main firmware.
+a kit with the Build guide and the assembly manual. The control board in a kit carries the test firmware, as
+every control board from the shop does: it turns all six motors as soon as it starts. Upload the main firmware
+before you switch on the assembled robot ([Firmware and first run](../build/firmware-and-first-run.md)).
 
 ## A control board on its own
 

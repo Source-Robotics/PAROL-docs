@@ -10,8 +10,9 @@ Stop with the E-stop first; a joint driven against its stop strips a belt or cra
 - **Joints 1, 4, 6** use inductive sensors that detect a screw head. The sensor's LED lights when it sees metal.
   If it does not light as the joint passes, adjust the trigger screw closer; the 4 mm sensors see about 1 to 2
   mm. Wiring: brown 24 V, blue GND, black signal.
-- A switch on the wrong joint's terminal: the firmware maps the LIMIT inputs to joints as in
-  [Connectors and pinout](../board/04-connectors.md); the test firmware shows which input changes.
+- A switch on the wrong joint's terminal: wire each switch and sensor to the terminal the
+  [wiring diagram](../build/electronics-and-wiring.md#wiring-the-arm-to-the-board) shows for its joint; the test
+  firmware's `#LIMIT` shows which input changes when you press a switch.
 
 ## A joint stops too early
 

@@ -20,15 +20,18 @@ A board from the shop carries the test firmware, which talks in text. Upload the
 ## The 100 Hz loop
 
 The PC must send a packet every 10 ms. The commander prints `Time between 2 commands in ms` in its terminal
-output; it should sit near 0.010. If it is often higher, the robot stutters and the position tracking suffers.
+output; it should sit near 0.010. The number is in seconds, despite the label: 0.010 is 10 ms. If it is often
+higher, the robot stutters and the position tracking suffers.
 
 - Close browsers and other heavy programs; disable power saving on the USB port and the CPU.
 - A faster PC: six cores from 2017 or newer ([What you need](../01-overview/what-you-need.md#the-pc)).
-- The Python API logs `Control loop avg period degraded` and shows the figures in `loop_stats()`; it also
-  accepts a lower `PAROL6_CONTROL_RATE_HZ`, at the cost of smoothness, and runs worse with TRACE or DEBUG
-  logging on.
+- The Python API's controller logs `loop overbudget by +N%` when its loop runs late, and shows the figures in
+  `loop_stats()`; it also accepts a lower `PAROL6_CONTROL_RATE_HZ`, at the cost of smoothness, and runs worse
+  with TRACE or DEBUG logging on.
 
 ## The connection drops
 
 A USB cable without ferrite near the motors, a hub, or a long cable: use a short, shielded cable straight into
-the PC. The robot keeps the last commanded speed for one cycle when packets stop, then holds.
+the PC. When packets stop, the firmware keeps executing the last one: after a move to a position the joints stop
+near that target and hold, but a joint that was jogging in the commander keeps turning until it reaches its
+blocker. Keep the mains switch of the power supply within reach ([Emergency stop](../02-safety/emergency-stop.md)).

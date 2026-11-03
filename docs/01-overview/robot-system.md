@@ -9,9 +9,9 @@ software. Each does a part of the job.
 
 Six revolute joints, driven by NEMA 17 stepper motors through planetary gearboxes and belts, in PETG printed links.
 Joints 1, 2 and 3 position the wrist; joints 4, 5 and 6 form a spherical wrist that orients the tool. Joint 6
-ends in a flange with the robot's tool connections next to it: an M8 connector for an electric gripper and two
-pneumatic lines. Each joint has a limit switch or an inductive sensor that gives it a reference when the robot
-homes.
+ends in the flange the tool mounts on. The tool connections are on the forearm: an M8 connector for an electric
+gripper and two push-in fittings for pneumatic lines. Each joint has a limit switch or an inductive sensor that
+gives it a reference when the robot homes.
 
 <div class="grid side-list" markdown>
 
