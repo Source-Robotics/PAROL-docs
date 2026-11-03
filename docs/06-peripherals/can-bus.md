@@ -7,8 +7,9 @@ error, or an empty status poll when nothing changed) and relays the gripper's an
 - **Bit rate**: 1 Mbit/s, the grippers' rate.
 - **Node ID**: the gripper's CAN ID, 0 as shipped; the PC packet carries the ID the board addresses, so a gripper
   with another ID works if the software is told.
-- **Termination**: the gripper has its termination on as shipped, which is right for the short bus from the base
-  to the forearm.
+- **Termination**: 120 Ω at each end of the bus. At the board end, the **CAN1 JUMPER** connects the board's
+  120 Ω resistor when it is on; at the other end, the gripper has its own termination switch, on as shipped
+  ([CAN bus](../board/07-can.md)).
 
 A second CAN controller is on the board, but its transceiver is not populated: CAN 2 is for your own
 experiments. More axes on the bus, a seventh axis or a second gripper, are not supported by the firmware or the

@@ -13,6 +13,7 @@
 | Programming | 2×5-pin, 2.54 mm pitch (SWD) |
 | Motors | 6 × 4-pin terminal blocks, one per driver |
 | Limit switches, inputs, outputs, E-stop, CAN, 24 V out, GND, HV_SEL, GND_SEL | Pluggable terminal blocks along the edges |
+| CAN termination | Two jumpers, CAN1 JUMPER and CAN2 JUMPER: on, each connects a 120 Ω resistor across its bus ([CAN bus](07-can.md)) |
 
 ## Pin definitions
 
