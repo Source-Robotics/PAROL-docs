@@ -18,7 +18,7 @@ planned joint move back to the after-homing pose, and `home(calibrate=True)` run
 
 The fixed number of steps from the switch to the after-homing pose is measured on the reference robot. Printers and
 switches vary, so on another robot the homed pose is a fraction of a degree off per joint. Mastering measures the
-error with the witness marks, pins through holes in neighbouring links that line up at the zero, and corrects
+error with the witness marks, pins through holes in neighbouring links that line up in the after-homing pose, and corrects
 the number in the firmware ([Mastering](../05-operation/mastering.md)).
 
 ![Witness marks on PAROL6](../assets/parolw.webp){ width="650" }

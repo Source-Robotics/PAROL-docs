@@ -31,8 +31,9 @@ not used.
 
 ## Cooling
 
-The fan over the heatsinks must run whenever the motors are energised. The drivers warn at 100 °C and shut down at
-120 °C; in PAROL6's base with the fan they stay far below.
+The fan over the heatsinks must run whenever the motors are energised. A driver that gets too hot shuts its outputs
+down and its joint goes limp, and firmware 1 does not tell the PC; in PAROL6's base with the fan they stay far
+below that.
 
 ## Checking a driver
 

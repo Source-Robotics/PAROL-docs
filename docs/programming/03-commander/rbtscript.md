@@ -121,15 +121,17 @@ from a program. `Input()` appears in the menu but has no action: a program stops
 
 ```
 Gripper_cal()
-Delay(3)
+Delay(4)
 Gripper(position, speed, current)
 Delay(2)
 ```
 
-`Gripper_cal()` calibrates the SSG-48 or MSG gripper; add a delay for it to finish. Activating it is the Gripper
-tab's **Activate** option, which is on by default. `Gripper()` moves it, with whole numbers only: position 0
-(open) to 255 (closed), speed 0 to 255, current 100 to 1000 mA, the current being the grip force; below about
-150 mA the gripper does not move. A value outside these ranges is logged as `Gripper() invalid input value`, the
+`Gripper_cal()` calibrates the SSG-48 or MSG gripper. Clear the gripper's error first, with the Gripper tab's
+**Clear gripper error** (RBTscript has no command for it), and add a delay for the calibration to finish:
+`Delay(4)` for the SSG-48 (about 3 s) and `Delay(7)` for the MSG (5 to 6 s on the longer rails). Activating it
+is the Gripper tab's **Activate** option, which is on by default. `Gripper()` moves it, with whole numbers only:
+position 0 (open) to 255 (closed), speed 0 to 255, current 100 to 1000 mA, the current being the grip force;
+below about 150 mA the gripper does not move. A value outside these ranges is logged as `Gripper() invalid input value`, the
 line is skipped and the program goes on. The program continues at once, so add a `Delay()` for the
 gripper to arrive.
 

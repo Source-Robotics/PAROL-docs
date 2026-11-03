@@ -35,17 +35,18 @@ the network, without authentication, so a GUI and a script can both be connected
 command motion:
 
 - **Planned motion** (`move_*`, `home`, `delay`, tool actions, checkpoints) goes into one **queue**, in the order
-  it arrives, and runs in that order. Every queued command gets an index; `wait_command(index)` waits for that
-  one.
+  it arrives, and runs in that order, together with the output writes (`write_io`), the tool selection
+  (`select_tool`) and the TCP corrections. Every queued command gets an index; `wait_command(index)` waits for
+  that one.
 - **Streamed motion** (`jog_*`, `servo_*`) takes the arm at once: it cancels the planned queue (every discarded
-  command fails with `MOTN_CANCELLED`) and drives the arm while targets keep coming; about a quarter of a second
-  after the last target the arm brakes to rest and holds.
+  command fails with `MOTN_CANCELLED`). A jog runs for its duration; a servo stream drives the arm while targets
+  keep coming and ends about a quarter of a second after the last one. Then the arm brakes to rest and holds.
 - **`stop()`** cancels the active move and clears the queue, from any client. **`estop()`** does the same and
   latches a protective stop until `reset()`.
 - **`pause()`** holds the queue where it is; `resume()` continues it; `set_execution_speed()` scales it between
   10 and 100 %.
-- **System commands** (`simulator`, `connect_hardware`, `select_tool`, `set_shapes`) change the controller's state
-  for everyone.
+- **System commands** (`simulator`, `connect_hardware`, `select_profile`, `set_shapes`) take effect at once and
+  change the controller's state for everyone. A queued `select_tool` does too, when its turn comes.
 
 The rule for a program that shares the controller: own the arm for the duration of a task by queuing it, wait for
 your indices, and expect `MotionError` if someone else stopped you.

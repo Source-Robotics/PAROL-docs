@@ -14,9 +14,27 @@ The firmware's I/O byte is `[in1, in2, out1, out2, estop, ...]`, so logical outp
 `write_io` does the mapping. `is_estop_pressed()` reads the E-stop alone. A per-call `timeout` bounds the setup,
 the retries and the reply; without one the client's defaults apply.
 
-Writes are system commands: they take effect at once, also while the controller is disabled, and do not wait for
-the queue. To switch an output at a point of a program, queue a `checkpoint()` and switch when it is reached, or
-use a tool: the pneumatic gripper's `open()` and `close()` are output writes queued with the motion.
+A write is queued with the motion: it takes effect when its turn in the queue comes, and it returns a command
+index that `wait_command()` waits on. The pneumatic gripper's `open()` and `close()` are output writes of the same
+kind. While the controller is disabled, after `estop()` or the E-stop until `reset()`, a write is refused with
+`SYS_CONTROLLER_DISABLED`, like a move.
+
+### Switching an output at a point of a program
+
+Queue the write between the two moves it belongs between. The output changes when the first move has finished,
+and the second move starts after it:
+
+```python
+rbt.move_l([0, 263, 200, 90, 0, 90], speed=0.5, wait=False)   # to the part
+rbt.write_io(0, 1)                                              # output 1 high, once the arm is there
+rbt.delay(0.5)                                                  # let the valve act
+rbt.move_l([0, 263, 242, 90, 0, 90], speed=0.5, wait=False)   # away again
+rbt.write_io(0, 0)                                              # output 1 low at the end
+rbt.wait_motion()
+```
+
+A `checkpoint()` is for something outside the robot that must know when the queue reaches a point; the outputs
+do not need one.
 
 ## Delays
 

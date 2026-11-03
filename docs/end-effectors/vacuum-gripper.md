@@ -24,7 +24,9 @@ an M3 screw and threadlocker screwed into it does the job.
 ## Driving it
 
 The valve switches the air to the ejector, which pulls the vacuum: `Output(1,HIGH)` holds, `Output(1,LOW)`
-drops. In the Python API, `select_tool("VACUUM")` gives `tool.close()` and `tool.open()` on the output.
+drops. In the Python API, `select_tool("VACUUM")` gives `tool.open()`, which switches output 1 high, and
+`tool.close()`, which switches it low. With the tubing above, `open()` holds the part and `close()` drops it;
+`write_io(0, 1)` and `write_io(0, 0)` do the same.
 
 !!! warning
     The part drops the moment the air stops, with the E-stop, a valve fault or a power failure. Do not carry

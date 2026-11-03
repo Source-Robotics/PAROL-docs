@@ -3,8 +3,9 @@
 ## Mounting
 
 Clamp onto the 8 mm shaft of joint 6 with a shaft coupler from the BOM, or print a holder with a coupler
-connector: the gripper repositories have a coupler connector template as a STEP file, and the `wrist.STL` in the
-robot's files shows the mating geometry. Keep the tool within the payload and short: every millimetre past the
+connector: the SSG-48 repository has a template, `STEPS/coupler_connector_generic_STEP.STEP` (and
+`Gripper STL parts/connector_coupler_generic.STL`), and the `STL/WRIST/wrist.STL` in the robot's files shows the
+mating geometry. Keep the tool within the payload and short: every millimetre past the
 flange is leverage against joints 4 and 5.
 
 ## The joint 5 homing feature

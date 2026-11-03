@@ -1,6 +1,6 @@
 # Waldo Commander (web)
 
-[Waldo Commander](https://github.com/Jepson2k/PAROL-Web-Commander), by a member of the community, is a browser
+[Waldo Commander](https://github.com/Jepson2k/Waldo-Commander), by a member of the community, is a browser
 interface on top of the Python API: control from any device on the network, Python programs with an editor and
 step-through debugging, a 3D simulation to preview paths, teaching by demonstration recorded as Python, and a
 built-in MCP server through which an LLM can read the robot's status, write and run programs and drive the arm

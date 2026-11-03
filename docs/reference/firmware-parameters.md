@@ -18,7 +18,8 @@ change.
 | `MOTOR6_MAX_CURRENT` | 965 mA | motor rated 1000 |
 | `VERSION` | 1 | |
 
-The driver is set to `MOTORx_MAX_CURRENT × 0.85` as the running current and `hold_multiplier` of that for holding.
+The driver is set to `MOTORx_MAX_CURRENT × 0.85` as the running current and `hold_multiplier` of that for holding
+(the per-joint table below has both); the driver rounds them to its own current steps.
 
 ## Per joint (`motor_init.cpp`)
 
@@ -32,6 +33,8 @@ The driver is set to `MOTORx_MAX_CURRENT × 0.85` as the running current and `ho
 | `limit_switch_trigger` (input level when triggered) | 0 (inductive) | 1 (switch) | 1 (switch) | 0 (inductive) | 1 (switch) | 0 (inductive) |
 | `direction_reversed` | 1 | 0 | 1 | 0 | 0 | 1 |
 | `hold_multiplier` | 0.7 | 0.8 | 0.8 | 0.8 | 0.8 | 0.88 |
+| Running current, `MOTORx_MAX_CURRENT × 0.85` | 1700 mA | 1700 mA | 1615 mA | 1445 mA | 1445 mA | 820 mA |
+| Holding current, the running current × `hold_multiplier` | 1190 mA | 1360 mA | 1292 mA | 1156 mA | 1156 mA | 722 mA |
 | Driver position / LIMIT input | 1 / 6 | 6 / 2 | 5 / 3 | 4 / 4 | 2 / 5 | 3 / 1 |
 
 Joint 1's standby of 10240 steps is +90° (90 / 0.05625 × 6.4): the firmware homes to the pose the software

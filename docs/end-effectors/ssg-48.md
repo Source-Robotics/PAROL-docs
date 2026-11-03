@@ -10,7 +10,7 @@ the gripper; this page covers PAROL6.
 | | |
 |---|---|
 | Stroke | 48 mm |
-| Grip force | about 54 N per ampere, 5 to 80 N |
+| Grip force | about 54 N per ampere, 5 to 80 N; on PAROL6 up to about 54 N from the commander, 70 N from the Python API |
 | Fingers | fin-ray or pinch, printed: `finger` and `pinch` in the Python API |
 | Shop | [SSG-48](https://source-robotics.com/products/compliant-gripper) |
 
@@ -40,7 +40,7 @@ Leave the gripper's CAN node ID at 0 and its termination switch on: it is the la
 
 The tool centre point (TCP) is a6 = 134.3 mm from the joint 6 centre along the tool axis and a7 = 0 mm to the side.
 The TCP lies on the joint 6 axis, with no sideways offset, for both jaw variants. The sheet is the robot's model
-from [robot_descriptions](https://github.com/Source-Robotics/robot_descriptions) (version 2.13.0) with every joint
+from [robot_descriptions](https://github.com/Source-Robotics/robot_descriptions) (version <!-- version: models.robot_descriptions -->) with every joint
 at 0. Tell the software about the tool ([Tools and the TCP](../programming/02-python-api/tools-and-tcp.md)); every
 tool is compared on [Dimensions and kinematics](../03-technical-data/kinematics.md).
 
@@ -63,39 +63,50 @@ witness marks after the first homing, and master if needed ([Mastering](../05-op
 
 ## Driving it
 
-The gripper calibrates after every power-up: it opens fully and closes fully to find its end stops, and does
-not move before that.
+The gripper must be calibrated after every power-up: it opens fully and closes fully to find its end stops, and
+does not move before that. Clear any error first, then calibrate, then wait until the gripper reports itself
+calibrated before the first move: about 3 s.
 
 === "Commander software"
-    The **Gripper** tab: after homing the robot press **Calibrate gripper**, then **Clear gripper error**, set
-    position, speed and current with the sliders and press **Move GoTo**. The feedback section shows the current,
-    the position and the status ([The GUI](../gui/commander/the-gui.md)). In RBTscript: `Gripper_cal()` then
-    `Gripper(position, speed, current)` ([RBTscript](../programming/03-commander/rbtscript.md#gripper)).
+    The **Gripper** tab: after homing the robot press **Clear gripper error**, then **Calibrate gripper**, and
+    wait until the tab shows `Calibration status is: 1`. Then set position, speed and current with the sliders
+    and press **Move GoTo**. The feedback section shows the current, the position and the status
+    ([The GUI](../gui/commander/the-gui.md)). In RBTscript, after clearing the error in the tab:
+    `Gripper_cal()`, `Delay(4)`, then `Gripper(position, speed, current)`
+    ([RBTscript](../programming/03-commander/rbtscript.md#gripper)).
 
 === "Python API"
     ```python
     rbt.select_tool("SSG-48")                             # or add variant_key="pinch"
-    rbt.tool.calibrate()                                   # queued; lasts a few seconds
-    rbt.tool.set_position(0.8, speed=0.5, current=0.4)     # fractions of the ranges
+    rbt.tool.calibrate()                                   # queued; the API counts it done after 2 s
+    rbt.delay(2)                                           # the rest of the calibration, with a margin
+    rbt.tool.set_position(0.8, speed=0.5, current=0.4)     # fractions of the ranges; 0.4 is 580 mA
     rbt.tool.close(current=0.6)
     rbt.tool.open()
     rbt.tool.release()                                     # drop the grip, the jaws stay
     rbt.tool.stop()                                        # immediate: halt where the jaws are
     ```
     Tool actions are queued with the motion, so a move after `close()` waits for the grip; a `move` on a gripper
-    that was never calibrated is refused when its turn comes ([Tools and the TCP](../programming/02-python-api/tools-and-tcp.md),
+    that was never calibrated is refused when its turn comes. The API does not read the calibrated bit and has
+    no clear-error action at this version: clear an error in the commander's Gripper tab or with Motor GUI
+    ([Tools and the TCP](../programming/02-python-api/tools-and-tcp.md#calibrating),
     [Tools](../reference/python/tools.md)).
 
 ## Current and force
 
-The current limit is the grip force, about 54 N per ampere: 300 mA is about 16 N, 1.5 A about 80 N. Start low
+The current limit is the grip force, about 54 N per ampere: 300 mA is about 16 N, 1 A about 54 N. Start low
 and raise it for a firmer grip; a high current with a high speed slams the jaws into the part. The gripper
 manual's [Force and speed](https://docs.source-robotics.com/SSG48-gripper-docs/latest/03-technical-data/force-and-speed/)
 has the curve and the heat limits.
 
+The commander takes the current in milliamps, 100 to 1000 mA, so its strongest grip is about 54 N. The Python
+API takes it as a fraction of 100 to 1300 mA: `current=1.0` is 1.3 A, about 70 N.
+
 ## Status
 
-The robot passes the gripper's status through: calibrated, in motion, object detected (while closing, while
-opening, or none), and its error bits. The commander shows them in the Gripper tab; the Python API in
-`tool.status()` and the status stream's `tool_status`. The gripper manual's errors page says what each error
-needs: [Errors and recovery](https://docs.source-robotics.com/SSG48-gripper-docs/latest/06-operation/errors/).
+The robot passes the gripper's status byte through: calibrated, in motion, object detected (while closing, while
+opening, or none), and its error bits. The commander's Gripper tab shows the calibrated and E-stop error bits, and
+the whole status byte as a number (labelled *Gripper object detection is*). The Python API's `tool.status()` gives
+the jaw position and the current; its `engaged` and `part_detected` do not follow the status byte's bits at this
+version ([Tool status](../programming/02-python-api/tools-and-tcp.md#tool-status)). The gripper manual's errors
+page says what each error needs: [Errors and recovery](https://docs.source-robotics.com/SSG48-gripper-docs/latest/06-operation/errors/).

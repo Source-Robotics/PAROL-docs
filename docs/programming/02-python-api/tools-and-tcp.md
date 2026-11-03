@@ -7,8 +7,9 @@ it. Tools are registered in the API with a transform, a collision mesh, variants
 
 <!-- api-tools-table -->
 
-`select_tool(key, variant_key)` sets the active tool for everyone; `tools()` lists them; `tool_status()` reports
-the applied variant and the tool's state. Changing the tool or the variant clears any TCP correction.
+`select_tool(key, variant_key)` sets the active tool for everyone, queued with the motion; `tools()` lists them;
+`rbt.tool.status()` and the status stream's `tool_status` report the applied variant and the tool's state.
+Changing the tool or the variant clears any TCP correction.
 
 ```python
 rbt.select_tool("PNEUMATIC")                        # the default variant
@@ -25,7 +26,8 @@ have open and close on an output.
 
 ```python
 rbt.select_tool("SSG-48")
-rbt.tool.calibrate()                                        # opens and closes fully; 200 ticks, two seconds
+rbt.tool.calibrate()                                        # queued; the API gives it 2 s
+rbt.delay(2)                                                # the rest of the SSG-48's calibration
 rbt.tool.set_position(0.7, speed=0.5, current=0.4)          # 0 open, 1 closed
 rbt.tool.close(speed=0.5, current=0.6)
 rbt.tool.open()
@@ -33,6 +35,28 @@ rbt.tool.release()                                          # drop the grip, the
 rbt.tool.stop()                                             # immediate
 print(rbt.tool.status())                                    # ToolStatus: state, engaged, part_detected, positions
 ```
+
+The current fraction spans the tool's current range: 100 to 1300 mA for the SSG-48 and 100 to 2800 mA for the
+MSG, so `current=0.4` is 580 mA on the SSG-48 and 1180 mA on the MSG. Keep an MSG within its stepper's rating
+([MSG](../../end-effectors/msg.md#current-and-force)).
+
+### Calibrating
+
+The gripper has to be calibrated after every power-up: it opens fully and closes fully to find its end stops.
+`calibrate()` sends the calibration and counts it done after a fixed 2 s (200 control cycles); it does not read
+the gripper's calibrated bit. The gripper takes longer: about 3 s for the SSG-48, and about 5 to 6 s for the MSG
+on the longer rails. Queue a `delay()` after `calibrate()` to cover the rest with a margin, 2 s for the SSG-48 and 5 s
+for the MSG, before the first move. A gripper that has latched an error must be cleared first: the API has no
+clear-error action at this version, so use the commander's **Clear gripper error** or Motor GUI, then calibrate.
+
+### Tool status
+
+`rbt.tool.status()` returns a `ToolStatus`. For the electric grippers, `positions` is the jaw position (0 open,
+1 closed) and `channels` the current in mA. `engaged` is taken from the gripper-speed field of the telemetry,
+which firmware 1 always reports as 1, so it reads true. `part_detected` is taken from bits 3 and 2 of the
+gripper's status byte, where the gripper manuals put the temperature and timeout errors (they put the object
+detection in bits 5 and 4). The calibrated and error bits are not in `ToolStatus` at this version. To know that a
+part is held, check the position the jaws stopped at, or use a sensor.
 
 Tool actions are **queued work**: an action waits for the motion queued before it, the arm holds still while it
 runs, and the motion queued after it waits for it. A `move` on a gripper that was never calibrated is refused

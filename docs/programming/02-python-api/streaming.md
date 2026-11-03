@@ -1,8 +1,12 @@
 # Jogging and servoing
 
 Streamed motion is for a hand on a button or a loop that computes the next target: a jog is a velocity held for
-a short time, a servo target is a position to go to now. Both bypass the queue, take the arm at once (the queue
-is cancelled), and stop about 0.25 s after the last command, when the arm brakes to rest and holds.
+a short time, a servo target is a position to go to now. Both bypass the queue and take the arm at once (the
+queue is cancelled). They end differently:
+
+- **A jog** runs for its `duration` (0.1 s by default), then the arm brakes to rest and holds. A held button sends
+  a new jog before the last one runs out.
+- **A servo stream** ends about 0.25 s after the last target arrives, when the arm brakes to rest and holds.
 
 ## Jogging
 
@@ -32,7 +36,9 @@ quarter second after the last target.
 
 ## Rules
 
-- Streamed motion needs a homed robot, like planned motion.
+- Cartesian jogs (`jog_l`) and servo targets need a homed robot, like planned motion; they are refused with
+  `MOTN_NOT_HOMED` before it. Joint jogs (`jog_j`) work before homing, so that an arm can be jogged clear of an
+  obstruction first.
 - It cancels the planned queue: every queued command fails with `MOTN_CANCELLED`. Do not interleave a servo
   stream with planned moves you still want.
 - Keep the targets reachable and the steps between them small; a target far from the current pose is a fast

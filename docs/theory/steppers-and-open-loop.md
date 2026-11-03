@@ -27,8 +27,9 @@ difference; accurate, robust against load, and more complex. PAROL6's joints are
 the position, and a lost step is an error nobody sees. The safeguards are the margins in the limits, the homing
 that resets the count, and the user's eyes.
 
-The electric grippers are different: their drivers run a brushless motor in closed loop with an encoder, which
-is what makes a force-controlled gripper possible ([Electric grippers](../end-effectors/index.md)).
+The electric grippers are different: their drivers run the motor in closed loop with an encoder, a brushless
+motor on the SSG-48's Spectral Micro and a stepper on the MSG's STEPFOC. That is what makes a force-controlled
+gripper possible ([End effectors](../end-effectors/index.md)).
 
 ## Position, velocity and torque control
 

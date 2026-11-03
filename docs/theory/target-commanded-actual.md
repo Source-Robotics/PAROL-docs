@@ -24,7 +24,7 @@ at the average of the commanded speed and the speed that would close the positio
 speed curve gives the smoothness, the position curve pulls the error back to zero every cycle, and the robot
 arrives exactly.
 
-![Commanded (blue) and actual (red) speed on a trapezoidal move; the robot spends a third of the path in each phase](../assets/trap_with_lines.webp){ width="700" }
+![Commanded (blue) and actual (red) speed on a trapezoidal move; the robot spends a third of the time in each phase](../assets/trap_with_lines.webp){ width="700" }
 
 ![Position with speed-only tracking and with speed-and-position tracking: the second reaches the target exactly](../assets/trap_position_ex.webp){ width="700" }
 

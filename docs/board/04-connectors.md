@@ -35,9 +35,9 @@ board:
 #define SELECT6 PC4  // driver 6 (joint 2)
 #define GLOBAL_ENABLE PA3   // ENABLE of all drivers
 
-#define LIMIT1 PC12  // LIMIT 1 terminal (joint 6)   #define LIMIT4 PD2   // LIMIT 4 (joint 4)
-#define LIMIT2 PB3   // LIMIT 2 (joint 2)            #define LIMIT5 PB4   // LIMIT 5 (joint 5)
-#define LIMIT3 PA15  // LIMIT 3 (joint 3)            #define LIMIT6 PC11  // LIMIT 6 (joint 1)
+#define LIMIT1 PC12  // limit input of joint 6      #define LIMIT4 PD2   // limit input of joint 4
+#define LIMIT2 PB3   // limit input of joint 2      #define LIMIT5 PB4   // limit input of joint 5
+#define LIMIT3 PA15  // limit input of joint 3      #define LIMIT6 PC11  // limit input of joint 1
 
 #define MISO PA6, MOSI PA7, SCK PA5   // SPI to the six drivers and the flash
 #define FLASH_SELECT PA4              // chip select of the flash memory
@@ -51,8 +51,11 @@ board:
 #define VBUS PB0                      // supply voltage sense
 #define USB_D_PLUS PA12, USB_D_MINUS PA11
 #define CAN1TX PB9, CAN1RX PB8        // CAN 1 (the gripper bus)
-#define CAN2TX PB13, CAN2RX PB12      // CAN 2 (transceiver not populated)
+#define CAN1TX PB13, CAN1RX PB12      // CAN 2's pins (transceiver not populated)
 ```
+
+`iodefs.h` defines `CAN1TX` and `CAN1RX` twice, the second time with CAN 2's pins, PB13 and PB12. The CAN driver
+does not use these names: `CANInit()` in `CAN.cpp` picks the pins itself.
 
 ## Wiring the robot
 

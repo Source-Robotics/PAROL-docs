@@ -54,7 +54,7 @@ manuals:
     published: null
     firmware: true
     software: [python_api, commander]
-    applies_to: PAROL6 V1 with the PAROL6 control board v2.0
+    applies_to: PAROL6 with the PAROL6 control board v2.0
     covers: "the robot: quick start, safety, technical data, installation, operation, peripherals, maintenance, troubleshooting, transport; the build guide"
   board:
     number: SR-2002
@@ -74,7 +74,7 @@ manuals:
     published: null
     firmware: true
     software: [python_api, commander]
-    applies_to: PAROL6 V1
+    applies_to: ""
     covers: "the ways to program the robot, the concepts behind them, the Python API, RBTscript, ROS 2; the reference: every method of the Python API, the RBTscript commands, the serial protocol, the firmware parameters"
   end_effectors:
     number: SR-3004
@@ -84,7 +84,7 @@ manuals:
     published: null
     firmware: true
     software: [python_api, commander]
-    applies_to: PAROL6 V1
+    applies_to: ""
     covers: "what goes on the flange: the pneumatic and vacuum grippers, the SSG-48 and MSG electric grippers, a tool of your own; mounting, connections, the joint 5 homing offset, driving them from the commander software and the Python API"
   gui:
     number: SR-4005
@@ -94,5 +94,5 @@ manuals:
     published: null
     firmware: true
     software: [commander]
-    applies_to: PAROL6 V1
+    applies_to: ""
     covers: "the graphical programs: the commander software (installation, the windows, the tabs), Waldo Commander in the browser, Motor GUI for the grippers"

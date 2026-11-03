@@ -61,27 +61,33 @@ describes.
 
 ## Driving it
 
-The gripper calibrates after every power-up: it opens fully and closes fully to find its end stops, and does
-not move before that.
+The gripper must be calibrated after every power-up: it opens fully and closes fully to find its end stops, and
+does not move before that. Clear any error first, then calibrate, then wait until the gripper reports itself
+calibrated before the first move: about 5 to 6 s on the longer rails.
 
 === "Commander software"
-    The **Gripper** tab: after homing the robot press **Calibrate gripper**, then **Clear gripper error**, set
-    position, speed and current with the sliders and press **Move GoTo**. The feedback section shows the current,
-    the position and the status ([The GUI](../gui/commander/the-gui.md)). In RBTscript: `Gripper_cal()` then
-    `Gripper(position, speed, current)` ([RBTscript](../programming/03-commander/rbtscript.md#gripper)).
+    The **Gripper** tab: after homing the robot press **Clear gripper error**, then **Calibrate gripper**, and
+    wait until the tab shows `Calibration status is: 1`. Then set position, speed and current with the sliders
+    and press **Move GoTo**. The feedback section shows the current, the position and the status
+    ([The GUI](../gui/commander/the-gui.md)). In RBTscript, after clearing the error in the tab:
+    `Gripper_cal()`, `Delay(7)`, then `Gripper(position, speed, current)`
+    ([RBTscript](../programming/03-commander/rbtscript.md#gripper)).
 
 === "Python API"
     ```python
     rbt.select_tool("MSG", variant_key="150mm")           # 100mm, 150mm or 200mm: the rail
-    rbt.tool.calibrate()                                   # queued; lasts a few seconds
-    rbt.tool.set_position(0.8, speed=0.5, current=0.4)     # fractions of the ranges
-    rbt.tool.close(current=0.6)
+    rbt.tool.calibrate()                                   # queued; the API counts it done after 2 s
+    rbt.delay(5)                                           # the rest of the calibration, with a margin
+    rbt.tool.set_position(0.8, speed=0.5, current=0.4)     # fractions of the ranges; 0.4 is 1180 mA
+    rbt.tool.close(current=0.4)
     rbt.tool.open()
     rbt.tool.release()                                     # drop the grip, the jaws stay
     rbt.tool.stop()                                        # immediate: halt where the jaws are
     ```
     Tool actions are queued with the motion, so a move after `close()` waits for the grip; a `move` on a gripper
-    that was never calibrated is refused when its turn comes ([Tools and the TCP](../programming/02-python-api/tools-and-tcp.md),
+    that was never calibrated is refused when its turn comes. The API does not read the calibrated bit and has
+    no clear-error action at this version: clear an error in the commander's Gripper tab or with Motor GUI
+    ([Tools and the TCP](../programming/02-python-api/tools-and-tcp.md#calibrating),
     [Tools](../reference/python/tools.md)).
 
 ## Current and force
@@ -91,9 +97,21 @@ The current limit is the grip force, and the slope depends on the stepper: about
 The gripper manual's [Force and speed](https://docs.source-robotics.com/MSG-gripper-docs/latest/03-technical-data/force-and-speed/)
 has the curves.
 
+The commander takes the current in milliamps, 100 to 1000 mA, which is within every stepper's maximum. The
+Python API takes it as a fraction of 100 to 2800 mA, a range above every stepper's maximum, so keep the fraction
+at or below the value for your stepper:
+
+| Stepper | Maximum current | Highest `current=` fraction |
+|---|---|---|
+| 21.5 mm | 1.5 A | 0.51 |
+| 40 mm | 2.0 A | 0.70 |
+| 60 mm | 2.1 A | 0.74 |
+
 ## Status
 
-The robot passes the gripper's status through: calibrated, in motion, object detected (while closing, while
-opening, or none), and its error bits. The commander shows them in the Gripper tab; the Python API in
-`tool.status()` and the status stream's `tool_status`. The gripper manual's errors page says what each error
-needs: [Errors and recovery](https://docs.source-robotics.com/MSG-gripper-docs/latest/06-operation/errors/).
+The robot passes the gripper's status byte through: calibrated, in motion, object detected (while closing, while
+opening, or none), and its error bits. The commander's Gripper tab shows the calibrated and E-stop error
+bits, and the whole status byte as a number (labelled *Gripper object detection is*). The Python API's `tool.status()` gives the jaw position and the current; its
+`engaged` and `part_detected` do not follow the status byte's bits at this version
+([Tool status](../programming/02-python-api/tools-and-tcp.md#tool-status)). The gripper manual's errors page says
+what each error needs: [Errors and recovery](https://docs.source-robotics.com/MSG-gripper-docs/latest/06-operation/errors/).

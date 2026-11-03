@@ -19,7 +19,7 @@ examples.
 | `SpeedCart()` | | Not accepted: a program containing it is refused |
 | `Output(n,HIGH\|LOW)` | output 1; `HIGH` or `LOW`, no space | Sets output 1; `Output(2,...)` is refused in the current version and stops the program |
 | `Input()`, `Home()` | | No action: the program stops on it until Stop |
-| `Gripper_cal()` | | Calibrates the electric gripper (activation is the Gripper tab's Activate option); follow with a `Delay()` |
+| `Gripper_cal()` | | Calibrates the electric gripper (clear its error in the Gripper tab first; activation is the tab's Activate option); follow with `Delay(4)` for the SSG-48, `Delay(7)` for the MSG |
 | `Gripper(position, speed, current)` | whole numbers: 0 to 255; 0 to 255; mA, 100 to 1000 | Moves the electric gripper; continues at once, so follow with a `Delay()` |
 
 Rules for `MoveJoint` and `MovePose`: `t` overrides `v` and `a` and makes the profile polynomial unless the word

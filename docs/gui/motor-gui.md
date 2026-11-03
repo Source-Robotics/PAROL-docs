@@ -11,7 +11,9 @@ you:
 - **update the gripper's firmware**, over CAN, from the driver's GitHub releases, through the gripper's
   bootloader;
 - **set up a self-built gripper**, or restore a gripper's configuration: the setup page has presets for the SSG-48
-  and for the three MSG steppers;
+  and for the three MSG steppers. They are applied over UART, with the
+  [USB-to-serial adapter](https://source-robotics.com/products/usb-to-serial-adapter) on the driver's UART port,
+  not over CAN. A preset writes CAN ID 6, the PAR6 gripper's: change it to 0 before you apply it for PAROL6;
 - **test a gripper off the robot**: calibrate, open and close it, watch its position and current, run a cycle
   test, in the gripper panel.
 

@@ -24,10 +24,21 @@ with RobotClient(host="127.0.0.1", port=5001, timeout=2.0) as rbt:
     print(rbt.pose(), rbt.angles())
 ```
 
-A motion call returns the **command index** the controller assigned, or −1 if it was not accepted. With
-`wait=True`, the default for moves, the call blocks until that command completes and raises `MotionError` if
-it failed; with `wait=False` the call returns at once and `wait_command(index)` waits later. Queries return
-values or `None` on a timeout.
+A motion call returns the **command index** the controller assigned, or −1 if no acknowledgement arrived; a
+command the controller refuses raises `MotionError`. With `wait=True` the call blocks until that command
+completes and raises `MotionError` if it failed; with `wait=False` the call returns at once and
+`wait_command(index)` waits later. Queries return values or `None` on a timeout.
+
+The defaults differ between the calls and between the clients:
+
+| Call | `RobotClient` | `AsyncRobotClient` | `timeout` (used when waiting) |
+|---|---|---|---|
+| `move_j`, `move_l`, `move_c`, `move_s`, `move_p` | `wait=True` | `wait=False` | 10 s |
+| `home` | `wait=False` | `wait=False` | 60 s |
+| `tool_action` and the `rbt.tool` methods | `wait=False` | `wait=False` | 10 s |
+
+A move that runs longer than its `timeout` raises `TimeoutError` while it goes on running: give long moves a
+larger `timeout`.
 
 ## The async client
 
@@ -47,7 +58,8 @@ async def main():
 asyncio.run(main())
 ```
 
-The same methods, awaited, plus `stream_status()`, which yields a copy of every status broadcast, and
+The same methods, awaited, with one difference: the moves return at once unless you pass `wait=True` (the
+table above). Plus `stream_status()`, which yields a copy of every status broadcast, and
 `stream_status_shared()`, which yields the same buffer each time for zero-copy hot paths. Slow consumers skip to
 the latest status.
 

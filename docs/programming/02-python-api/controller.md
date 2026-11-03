@@ -47,7 +47,8 @@ restart with `--serial`.
 ## The loop
 
 The controller sends a packet to the board every 10 ms (100 Hz) and broadcasts status at 50 Hz. If the PC cannot
-keep up it logs *Control loop avg period degraded*; `loop_stats()` shows the figures. Lower
+keep up it logs `loop overbudget by +N%`, as a warning when it happens more than three times a minute (at DEBUG
+level otherwise); `loop_stats()` shows the figures. Lower
 `PAROL6_CONTROL_RATE_HZ`, close other programs, and keep logging at INFO or above: TRACE and DEBUG cost time.
 
 ## Environment variables

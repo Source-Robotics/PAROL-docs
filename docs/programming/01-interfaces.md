@@ -8,11 +8,11 @@ want.
 |---|---|---|---|---|
 | What it is | A desktop GUI with a simulator and a program editor | A controller process and a Python client library | A MoveIt configuration and a `ros2_control` interface on top of the Python API's controller | A browser GUI on top of the Python API, with an MCP server for LLMs |
 | You write | RBTscript, one command per line | Python | ROS 2 nodes, MoveIt plans | Python, in the browser, or prompts |
-| Motion | Joint and Cartesian moves, trapezoidal or quintic profiles, teach by jogging | Planned moves (joint, linear, circular, spline, process), streamed jogs and servo targets, blending, six profiles, collision checking | MoveIt planning | What the API offers, plus teach by demonstration |
+| Motion | Joint and Cartesian moves, trapezoidal or quintic profiles, teach by jogging | Planned moves (joint, linear, circular, spline, process), streamed jogs and servo targets, blending, five profiles, collision checking | MoveIt planning | What the API offers, plus teach by demonstration |
 | Tools | SSG-48 and MSG gripper tab, outputs | Registered tools with variants, TCP transforms, tool actions in the motion queue | Through the bridge | Through the API |
 | Simulator | 3D window, needs the robot connected | Simulator mode and a dry-run client, no robot needed | RViz | 3D preview, no robot needed |
 | Runs on | The PC at the robot | The controller at the robot; clients anywhere on the network | Ubuntu 22.04 with ROS 2 Humble | Any browser; the server at the robot |
-| Python | 3.10 or 3.11 | 3.11 or newer | | 3.11 or newer |
+| Python | 3.10 or 3.11 | 3.11 to 3.14 | | 3.11 or newer |
 | Maturity | Stable, no releases, main branch | Pre-1.0, released often, interfaces can change between minors | Demo and real-robot launch files | Community project |
 | Best for | The first day; teaching points; demos; simple sequences | Everything else | ROS users | Remote use; AI-driven control |
 

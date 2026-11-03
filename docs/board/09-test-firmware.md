@@ -21,7 +21,7 @@ sends only a carriage return on Enter gets no answer. Two ways to power the boar
 
 - the programming adapter's 3.3 V, with the 24 V supply disconnected: the board talks, but the drivers have no
   power and report errors;
-- the 24 V supply: the board is off until you hold the power button, or supply 3.3 V from the adapter as well.
+- the 24 V supply: the board is off until you press the power button, or supply 3.3 V from the adapter as well.
 
 ## What it does by itself
 

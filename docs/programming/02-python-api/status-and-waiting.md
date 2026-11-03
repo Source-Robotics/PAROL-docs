@@ -59,4 +59,6 @@ polls `ping()` until the controller answers; `is_robot_stopped()` looks at the j
 A blocking move returns when the controller reports the command complete: the trajectory played to its end and
 the arm at the commanded position, in counted steps. For a tool action, when the gripper's estimated travel
 time or its reported state says so. Neither is a measurement of the world: a program that needs to know the
-part is in the gripper reads the tool status (`part_detected`) or a sensor.
+part is in the gripper checks where the jaws stopped (`tool.status().positions`) or reads a sensor. For the electric
+grippers, the tool status's `part_detected` does not follow the gripper's object-detection bits at this version
+([Tool status](tools-and-tcp.md#tool-status)).

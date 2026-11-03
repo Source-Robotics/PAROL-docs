@@ -24,7 +24,7 @@ Clients and the controller exchange msgpack messages over UDP: a command or quer
 an error, a response or a status. The protocol version is checked in every status broadcast, and a client that
 speaks another version raises `ProtocolVersionError`. The command and query types of this version:
 
-**Commands:** `CmdType.PING` and the others, one per client method, sixty in all; **queries:** `PING`, `STATUS`,
+**Commands:** `CmdType.PING` and the others, 54 in all, the queries among them; **queries:** `PING`, `STATUS`,
 `ANGLES`, `POSE`, `IO`, `SPEEDS`, `TOOL`, `QUEUE`, `CURRENT_ACTION`, `LOOP_STATS`, `PROFILE`, `TOOL_STATUS`,
 `ENABLEMENT`, `ERROR`, `TCP_SPEED`, `IS_SIMULATOR`, `TCP_OFFSET`, `SHAPES`, `STATUS_RATE`, `TCP_TRANSFORM`,
 `EXECUTION_SPEED`, `COMMAND_COMPLETION`. The definitions are `parol6/protocol/wire.py`; a program in another

@@ -11,7 +11,7 @@ of the control board's outputs.
 | Holder | `GRIPPER_ATTACHMENTS/Pneumatic_gripper_holder.STL` (vertical) or `Pneumatic_gripper_holder_horizontal.stl`; `Gripper_ARMS.STL` for the fingers |
 | Valve | 5/2 solenoid valve, 24 V, 4 mm tube ports |
 | Tube | 4 × 2.5 mm pneumatic tube, 5 m |
-| Air | 6 to 8 bar, as in industry; every example in the videos uses that |
+| Air | 5 to 7 bar; stay below the lowest rating of the gripper, the valve and the fittings ([Pneumatics](../06-peripherals/pneumatics.md)) |
 
 ## Connections
 
@@ -40,19 +40,21 @@ kinematics](../03-technical-data/kinematics.md).
 
 === "RBTscript"
     ```
-    Output(1,HIGH)    // the valve switches: close
+    Output(1,HIGH)    // the valve switches
     Delay(0.5)
-    Output(1,LOW)     // open
+    Output(1,LOW)     // and back
     ```
 
 === "Python API"
     ```python
     rbt.select_tool("PNEUMATIC")
-    rbt.tool.close()
-    rbt.tool.open()
-    rbt.write_io(0, 1)            # the same, as a plain output
+    rbt.tool.close()              # output 1 low
+    rbt.tool.open()               # output 1 high
+    rbt.write_io(0, 1)            # the same as open(), as a plain output
     ```
     The tool's action lasts its estimated stroke, so a move queued after `close()` waits for the gripper.
+    The API's `open()` switches output 1 high and `close()` switches it low: lay the tubes so that the gripper
+    is open with the valve switched, or `open()` and `close()` come out the other way round.
 
 ## Orientation
 

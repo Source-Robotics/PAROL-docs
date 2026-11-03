@@ -6,8 +6,8 @@ Two inputs and two outputs on optocouplers, with their own supply rails **HV_SEL
 blocks. You decide what feeds those rails:
 
 === "Isolated supply"
-    An external supply's negative to GND_SEL, positive to HV_SEL. The I/O then runs at that voltage, 5, 12 or
-    24 V, and a short or a surge on a sensor cannot reach the robot's electronics.
+    An external supply's negative to GND_SEL, positive to HV_SEL. The I/O then runs at that voltage, 24 V nominal
+    and at least 12 V for the inputs, and a short or a surge on a sensor cannot reach the robot's electronics.
 
     ![Isolated supply wiring](../assets/Ext_supply.webp){ width="650" }
 
@@ -44,4 +44,5 @@ reports it in the I/O byte; the PC software stops the robot when it sees the con
 ## The power button
 
 A momentary push button with an LED, on the JST PH connector. A press switches the 24 V stage on; a press while
-on switches it off. The LED is fed from the button connector. The firmware polls the button every 50 ms.
+on switches it off. The LED is fed from the button connector. The firmware reads the button on every pass of
+its main loop.

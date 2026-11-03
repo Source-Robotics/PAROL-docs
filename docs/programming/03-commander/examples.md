@@ -20,8 +20,8 @@ Loop()
 
 ## Cartesian moves in the world frame
 
-A joint move to a start pose, then straight-line moves: translations first, then rotations about each axis of the
-tool. Watch the simulator to see the tool follow its axes.
+A joint move to a start pose, then straight-line moves: translations first, then changes of orientation. Watch
+the simulator to see the tool follow.
 
 ```
 Begin()
@@ -43,9 +43,12 @@ Delay(1)
 End()
 ```
 
+The `MoveCart` lines have no `t=`, so each takes 3.6 s whatever its length ([MoveCart](rbtscript.md#movecart)).
+Give the long ones a `t=` for a slower first run.
+
 ## A move relative to the tool
 
-80 mm back along the tool's X axis from wherever the tool is.
+80 mm back along the tool's X axis, from the start pose the program moves to first.
 
 ```
 Begin()
@@ -85,6 +88,15 @@ Delay(1)
 End()
 ```
 
+Before you run it:
+
+- It does not calibrate the gripper: clear the gripper's error and calibrate it in the Gripper tab first.
+- `Gripper(255,20,120)`, `Gripper(0,100,120)` and `Gripper(0,100,100)` ask for 120 or 100 mA, below the about
+  150 mA the gripper needs to move: raise the current to at least 150 mA.
+- `Gripper(255,100,1000)` grips at 1000 mA and speed 100. Above about 700 mA, keep the speed low, or lower the
+  current ([Gripper](rbtscript.md#gripper)).
+- The `MoveCart` lines have no `t=` and take 3.6 s each.
+
 ## Gripper test
 
 Calibration, a few open and close cycles, then a small joint move and a Cartesian move.
@@ -104,6 +116,9 @@ Gripper(100,60,600)
 Delay(2)
 End()
 ```
+
+Clear the gripper's error in the Gripper tab before you start it. `Delay(3)` is just the SSG-48's calibration time;
+`Delay(4)` leaves a margin, and the MSG needs `Delay(7)`. The `MoveCart` has no `t=` and takes 3.6 s.
 
 ## Toggling an output
 

@@ -2,9 +2,10 @@
 
 ## Requirements
 
-- Python 3.11 or newer.
+- Python 3.11 to 3.14.
 - Windows (x86-64), Linux (x86-64, ARM64) or macOS (ARM64): the kinematics backend, pinokin, ships wheels for
-  these.
+  these, for Python 3.11 to 3.14. Its Linux wheels need glibc 2.39 or newer: Ubuntu 24.04 or newer, not 22.04. Its macOS
+  wheels need macOS 15 or newer.
 - The PC at the robot: the [minimum PC](../../01-overview/what-you-need.md#the-pc) of the Robot Manual. A client
   that only sends commands runs anywhere.
 
@@ -47,8 +48,8 @@ From a clone of [PAROL6-python-API](https://github.com/PCrnjak/PAROL6-python-API
     Apple silicon (ARM64) only. The robot's serial port is `/dev/cu.usbmodem` and a number
     (`ls /dev/cu.usbmodem*` lists it).
 
-The package pulls numpy, msgspec, pinokin, Ruckig, python-can and the
-waldoctl interface layer. `pip install -e .` installs it editable for development.
+The package pulls pinokin, numpy, scipy, Ruckig, TOPP-RA, numba, pyserial, msgspec, ormsgpack, psutil
+and the waldoctl interface layer. `pip install -e .` installs it editable for development.
 
 ## Check
 
@@ -65,7 +66,7 @@ with RobotClient() as rbt:
 ```
 
 !!! success "Check"
-    It prints a `PingResult` with `hardware_connected=0`. Stop the server with Ctrl-C.
+    It prints a `PingResult` with `hardware_connected=False`. Stop the server with Ctrl-C.
 
 ## Versions
 

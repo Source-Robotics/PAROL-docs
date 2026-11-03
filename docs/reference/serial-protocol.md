@@ -62,7 +62,7 @@ mode 1, a clear error for mode 2, an empty status poll otherwise.
 | 45 | 2 | Gripper position | 0 to 255 |
 | 47 | 2 | Gripper speed | Always 1 in firmware 1 (not reported by the gripper) |
 | 49 | 2 | Gripper current | mA |
-| 51 | 1 | Gripper status | The gripper's status byte, bits from the MSB: activated, moving to a position, object detection (two bits: 0 moving, 1 object while closing, 2 object while opening, 3 at position), temperature error, timeout error, E-stop error, calibrated |
+| 51 | 1 | Gripper status | The gripper's status byte, bits from the MSB: activated, moving to a position, object detection (bits 5 and 4, bit 5 the low bit: 0 moving, 1 object while closing, 2 object while opening, 3 at position), temperature error, timeout error, E-stop error, calibrated |
 | 52 | 1 | Object detection | Always 1 in firmware 1; the real value is in the status byte's object-detection bits |
 | 53 | 1 | CRC | Reserved |
 | 54 | 2 | End bytes | `0x01 0x02` |

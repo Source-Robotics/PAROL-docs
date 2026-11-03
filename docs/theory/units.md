@@ -36,6 +36,7 @@ fraction says. The commander's speed slider is a percentage applied to its own, 
 
 ## Angles wrap
 
-Joint 6 reports 0° to 360°, with the standby at 180°; the other joints report signed angles. Orientation angles
+Joint 3 reports about 105° to 295° and joint 6 0° to 360°, both with the standby at 180°; joints 1, 2, 4 and 5
+report signed angles. Orientation angles
 wrap at ±180°: a pose with Rz = 179° and one with Rz = −181° are the same, and a program that compares angles
 must take that into account.

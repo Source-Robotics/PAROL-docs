@@ -32,7 +32,8 @@ PLACE       = [-100, 300, 120, 90, 0, 90]
 with RobotClient() as rbt:
     rbt.select_tool("SSG-48")
     rbt.home(wait=True)
-    rbt.tool.calibrate()
+    rbt.tool.calibrate()                                # the API gives it 2 s
+    rbt.delay(2)                                        # the rest of the SSG-48's calibration
     rbt.tool.open()
     for _ in range(3):
         rbt.move_j(pose=ABOVE_PICK, speed=0.5)
@@ -89,7 +90,7 @@ from parol6 import AsyncRobotClient
 async def main():
     async with AsyncRobotClient() as rbt:
         await rbt.home(wait=True)
-        await rbt.move_l([0, 263, 242, 90, 0, 90], speed=0.5)
+        await rbt.move_l([0, 263, 272, 90, 0, 90], speed=0.5, wait=True)   # to the circle's start
         t0 = time.monotonic()
         while time.monotonic() - t0 < 10:
             t = time.monotonic() - t0
@@ -100,17 +101,24 @@ async def main():
 asyncio.run(main())
 ```
 
-## Waiting on a checkpoint and switching an output
+The async client's moves return at once unless `wait=True` is given (the sync client waits by default). Without
+it, the first `servo_l` would take the arm from the `move_l` and cancel it.
+
+## Switching an output between moves, and a checkpoint for the script
 
 ```python
 with RobotClient() as rbt:
     rbt.home(wait=True)
     rbt.move_l([0, 263, 200, 90, 0, 90], speed=0.5, wait=False)
+    rbt.write_io(0, 1)                                  # the valve, queued: it switches when the arm is at the part
     rbt.checkpoint("at_part")
     rbt.delay(0.5)
     rbt.move_l([0, 263, 242, 90, 0, 90], speed=0.5, wait=False)
+    rbt.write_io(0, 0)                                  # queued after the second move
     rbt.wait_checkpoint("at_part", timeout=20)
-    rbt.write_io(0, 1)                                  # the valve, as soon as the arm is at the part
+    print("at the part")                                # the script learns it here, e.g. to trigger a camera
     rbt.wait_motion()
-    rbt.write_io(0, 0)
 ```
+
+`write_io` is queued with the motion, so the valve switches between the two moves without the script's help; the
+checkpoint only tells the script when the queue got there.

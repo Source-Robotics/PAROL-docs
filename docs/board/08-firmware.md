@@ -14,13 +14,24 @@ A board from the shop carries the test firmware. Upload the main firmware before
 1. [VS Code](https://code.visualstudio.com/) with the **PlatformIO** extension from its marketplace.
 2. A clone of the [robot repository](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm).
 3. An **ST-Link** programmer and the [PAROL6 programming adapter](https://source-robotics.com/products/parol6-programming-adapter),
-   or an ST-Link whose cable carries exactly SWCLK, SWDIO, GND and 3V3 to the right pins of the 2×5 header.
+   or an ST-Link whose cable carries exactly SWCLK, SWDIO, GND and 3V3 to the pins of the 2×5 header in the
+   table below.
 4. On Windows, the [ST-Link USB driver (STSW-LINK009)](https://www.st.com/en/development-tools/stsw-link009.html)
    if PlatformIO cannot find the programmer.
 
 !!! danger
     Use the programming adapter, or the four named pins only. An ST-Link wired to the header with jumper wires
     without the adapter has destroyed boards: other pins of the header are not for it.
+
+The 2×5 programming header, as labelled in the side view of the [connections figure](04-connectors.md), left to
+right, the header to the left of the USB port:
+
+| Row | | | | | |
+|---|---|---|---|---|---|
+| Top | RESET | BOOT0 | **SWDIO** | none | **3V3** |
+| Bottom | **GND** | GND | **CLK** (SWCLK) | none | 3V3 |
+
+An ST-Link needs four of them: SWDIO, CLK, GND and 3V3. Leave RESET and BOOT0 unconnected.
 
 ## Uploading
 

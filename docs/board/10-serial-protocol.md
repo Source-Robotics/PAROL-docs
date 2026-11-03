@@ -1,9 +1,9 @@
 # 10. The serial protocol
 
-The PC and the board exchange one packet each per control cycle over USB, a virtual serial port at 3 Mbaud. The
-PC sends a command packet at 100 Hz; the board answers each valid packet with a telemetry packet. Both are binary,
-framed with start bytes, a length byte, two end bytes and a CRC byte, and together under 120 bytes: a round trip
-takes about 0.4 ms at 3 Mbaud. The byte-exact layout is on [The serial protocol](../reference/serial-protocol.md)
+The PC and the board exchange one packet each per control cycle over USB, a virtual serial port (the PC software
+opens it at 3 000 000 baud, a setting USB ignores). The PC sends a command packet at 100 Hz; the board answers each
+valid packet with a telemetry packet. Both are binary, framed with start bytes, a length byte, two end bytes and a
+CRC byte, and together under 120 bytes. The byte-exact layout is on [The serial protocol](../reference/serial-protocol.md)
 in the API reference; this page explains how it works.
 
 ![Packet structure](../assets/bytes.webp){ width="700" }
@@ -42,8 +42,9 @@ packet:
 | 103 | Clear error | Resets the homing state |
 | 69 | Repeatability test | A built-in two-pose cycle, for testing |
 
-Motion commands (100, 123, 156) are ignored while the robot is disabled. Jog and go-to mark the robot as homed in
-the firmware's eyes: the PC decides when a move is allowed.
+Motion commands (100, 123, 156) are ignored while the robot is disabled. A jog or go-to packet ends a homing in
+progress; the homed bits in the telemetry change only by homing. The firmware does not check them before a move:
+the PC decides when a move is allowed.
 
 ## Passive data
 

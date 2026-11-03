@@ -12,8 +12,10 @@ check when a tool's orientation drifts ([Couplers and threadlocker](../07-mainte
 | **M8 4-pin connector** | 24 V, GND, CAN H, CAN L for an electric gripper; wired from the control board's CAN 1 and 24 V |
 | **Two pneumatic tubes**, 4 mm | From the two push-in fittings at the base, through the arm, to the forearm |
 
-The tubes and the gripper cable pass through joints 5 and 6, which is why neither joint may be turned more than
-one rotation.
+The tubes and the gripper cable run through the arm and come out at the forearm. Joint 5 is held inside its
+limits by its stops. Joint 6 has no limit with the bare flange; with a tool, the tool's cable and tubes run from
+the forearm to the tool and wrap as joint 6 turns, so keep joint 6 within the turn they allow
+([Joint limits and directions](../03-technical-data/joint-limits.md#limits)).
 
 ## The tool in the software
 

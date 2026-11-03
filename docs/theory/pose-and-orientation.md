@@ -18,8 +18,9 @@ takes its angles as intrinsic XYZ rotations, `Rx · Ry · Rz`; its collision sha
 When a pose from one program goes into another, check the convention before trusting the numbers.
 
 The same position can be reached with many orientations, and the orientation is what a program usually gets
-wrong first: a gripper pointing down at a part on the table has Rx, Ry, Rz near `[90, 0, 90]` from the standby
-pose in the examples on this site, and a few degrees off puts a finger into the table.
+wrong first: a few degrees off puts a finger into the table. The Python API examples on this site use
+`[90, 0, 90]`, the orientation the tool has after homing: horizontal, pointing forward, away from the base. A
+tool pointing down at the table has other angles; jog it there and read them.
 
 ![The same position with two orientations](../assets/orientations.webp){ width="650" }
 

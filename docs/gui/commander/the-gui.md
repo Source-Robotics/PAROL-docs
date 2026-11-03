@@ -71,9 +71,17 @@ The state of the two inputs, and buttons for the two outputs.
 
 ![The gripper tab](../../assets/parol_grip_gui.PNG){ width="650" }
 
-For the SSG-48 and MSG grippers: **Calibrate gripper** after homing, **Clear gripper error**, then the position,
-speed and current sliders and **Move GoTo**. The feedback section shows the gripper's position, current and
-status.
+For the SSG-48 and MSG grippers. After homing: **Clear gripper error**, then **Calibrate gripper**, then wait until
+the tab shows `Calibration status is: 1` (about 3 s for the SSG-48, 5 to 6 s for the MSG on its longer rails).
+Then set the position, speed and current with the sliders and press **Move GoTo**. The feedback section shows the
+gripper's position and current, its calibrated and E-stop error bits, and its whole status byte as a number
+(labelled *Gripper object detection is*). **Change gripper ID** sets the CAN ID the board addresses, 0 as the
+grippers ship.
+
+## The Calibrate and Plot buttons
+
+The menu also has **Calibrate** and **Plot**. Both open the same panel, with **Disable motor**, **Enable motor**,
+**Go to limit** and a joint menu; none of them does anything in the current version.
 
 ## The Settings tab
 
@@ -85,4 +93,5 @@ Dark or light mode, and the scaling of the GUI for your display.
 
 The terminal the program was started from prints a block of data every few seconds: the positions and speeds
 from the robot, the homed, I/O and error bytes, the timing, the gripper data, the commanded data and the GUI's
-state. `Time between 2 commands in ms` is the one to watch: near 0.010 is right.
+state. `Time between 2 commands in ms` is the one to watch: near 0.010 is right. The value is in seconds, whatever
+the label says: 0.010 is the 10 ms cycle.
