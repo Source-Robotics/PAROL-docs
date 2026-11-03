@@ -3,7 +3,7 @@
 ## The serial port
 
 The control board appears on the PC as a serial port over USB: `COMx` on Windows, `/dev/ttyACMx` on Linux and
-macOS. The commander takes `COM5` or `ttyACM0` in its connection field; the Python API's controller takes
+`/dev/cu.usbmodem…` on macOS. The commander takes `COM5` or `ttyACM0` in its connection field; the Python API's controller takes
 `--serial COM5` or `--serial /dev/ttyACM0`, or finds the port from `PAROL6_COM_PORT`.
 
 - **Windows**: Device Manager, Ports, shows the number. If the board is missing, try another cable or port; the

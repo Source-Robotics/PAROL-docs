@@ -1,8 +1,9 @@
 # Quick start
 
-From an assembled robot to one that is homed and moves on command, on one page. Every step ends with a link to
-the chapter that explains it. Follow the link when a step is not clear or something fails. If you are still
-building the robot, start with the [Build guide](build/index.md); this page begins where it ends.
+From the PAROL6 you have built to one that is homed and moves on command, on one page. It begins where the
+[Build guide](build/index.md) ends: the robot assembled and wired, the control board in the base with the main
+firmware on it. Every step ends with a link to the chapter that explains it. Follow the link when a step is not
+clear or something fails.
 
 !!! danger "Read first"
     PAROL6 has no brakes: when the power goes, the arm falls. It has pinch points, it moves fast, and it moves by
@@ -13,9 +14,10 @@ building the robot, start with the [Build guide](build/index.md); this page begi
 
 | | Where to get it |
 |---|---|
-| **A PAROL6**, assembled, with the control board inside the base | [the shop](https://source-robotics.com/), or [build your own](build/index.md) |
-| **A 24 V power supply**, 5 A | in the kit, or any 24 V 5 A supply (the [BOM](build/bill-of-materials.md) names one) |
-| **An E-stop**, a normally closed button on the base | in the kit; any NC switch works |
+| **Your PAROL6**, built and wired, with the control board inside the base | the [Build guide](build/index.md); the parts in the [BOM](build/bill-of-materials.md), or as kits from [the shop](https://source-robotics.com/) |
+| **The main firmware** on the control board | [Firmware and first run](build/firmware-and-first-run.md): a board from the shop comes with the test firmware |
+| **A 24 V power supply**, 5 A | the [BOM](build/bill-of-materials.md) names one; any 24 V 5 A supply works |
+| **An E-stop**, a normally closed button on the base | the [BOM](build/bill-of-materials.md) names one; any NC switch works |
 | **A USB cable**, type B, to the PC | |
 | **A PC** with Python 3.10 or 3.11 and the [commander software](gui/commander/installation.md), or Python 3.11 and the [Python API](programming/02-python-api/installation.md) | see the [minimum PC](01-overview/what-you-need.md#the-pc) |
 
@@ -44,8 +46,10 @@ Read in more detail: [Connecting](04-installation/connecting.md).
 Hold the arm by the forearm and press the power button on the base. The motors energise, you hear six clicks,
 and the arm holds its position. Let go.
 
-The control board ships with the main firmware if it came with a robot. A board bought on its own has the test
-firmware: upload the main firmware first ([Firmware](board/08-firmware.md)).
+!!! warning "The main firmware first"
+    A control board from the shop comes with the test firmware, which turns all six motors as soon as the board
+    starts. Upload the main firmware before you switch on the assembled robot
+    ([Firmware and first run](build/firmware-and-first-run.md)).
 
 Read in more detail: [First power-on](04-installation/first-power-on.md) · [Switching on and off](05-operation/switching-on-off.md).
 

@@ -50,4 +50,5 @@ connector have it; a tool of your own needs it too, and the firmware's joint 5 h
 ## Payload
 
 1 kg near the base, 0.5 kg at full reach, the tool included. A gripper with a camera and a cable can be most of
-that.
+that. A short video shows the arm with a 1 kg payload:
+[PAROL6 robot arm 1kg payload](https://www.youtube.com/shorts/3Co42vz91Tg).

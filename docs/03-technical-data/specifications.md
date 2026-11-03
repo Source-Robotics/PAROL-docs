@@ -12,7 +12,7 @@
 | Gearing | Planetary gearboxes (joints 2, 3, 6) and HTD3 belts (joints 1, 3, 4, 5) |
 | Position reference | Limit switches (joints 2, 3, 5) and inductive sensors (joints 1, 4, 6); no joint encoders |
 | Brakes | None: the arm falls when the motors lose power |
-| Power supply | 24 V DC, 5 A (18 V minimum) |
+| Power supply | 24 V DC, 5 A, recommended for optimal robot performance (18 V minimum) |
 | Power consumption | About 40 W typical |
 | Control | PAROL6 control board (STM32F446, six TMC5160 drivers) in the base |
 | PC connection | USB, serial at 3 Mbaud, 100 Hz command cycle |

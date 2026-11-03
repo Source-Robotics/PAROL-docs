@@ -77,7 +77,7 @@ manuals:
     applies_to: PAROL6 V1
     covers: "the ways to program the robot, the concepts behind them, the Python API, RBTscript, ROS 2; the reference: every method of the Python API, the RBTscript commands, the serial protocol, the firmware parameters"
   end_effectors:
-    number: SR-1003
+    number: SR-3004
     title: PAROL6 End Effectors Guide
     revision: 2026.A
     status: draft

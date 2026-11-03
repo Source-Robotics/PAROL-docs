@@ -1,5 +1,7 @@
 # MSG compliant AI stepper gripper
 
+![The MSG gripper](../assets/msg_hero.webp){ .hero }
+
 Source Robotics' modular stepper gripper: a STEPFOC driver in gripper mode, three rail lengths, three stepper
 lengths and a camera mount. It plugs into the M8 connector at the forearm and the control board drives it over
 CAN with the same commands as the SSG-48. Its own manual, [MSG-gripper-docs](https://docs.source-robotics.com/MSG-gripper-docs/),

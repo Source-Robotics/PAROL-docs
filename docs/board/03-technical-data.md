@@ -16,7 +16,7 @@
 | Programming | SWD through the 2×5-pin header (ST-Link with the programming adapter) |
 | Fan | 5 V, 3-pin header, 0.3 A maximum, not PWM |
 | Power button | Soft switch: the button tells the firmware to switch the 24 V stage on and off |
-| Supply voltage | 18 V minimum, 24 V maximum |
+| Supply voltage | 18 V minimum, 24 V maximum; 24 V is recommended for optimal robot performance |
 | Supply voltage sense | The firmware reads the supply voltage (VBUS) |
 | Size | Three M3 mounting holes; dimensions in the drawing below |
 

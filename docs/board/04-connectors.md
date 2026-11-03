@@ -14,22 +14,31 @@
 | Motors | 6 × 4-pin terminal blocks, one per driver |
 | Limit switches, inputs, outputs, E-stop, CAN, 24 V out, GND, HV_SEL, GND_SEL | Pluggable terminal blocks along the edges |
 
-## Which driver drives which joint
+## Which parts of the board belong to which joint
 
-The drivers are not in joint order on the board. The firmware maps them:
+Each joint uses three things on the board: the terminals its motor plugs into, the driver module that powers
+that motor, and the input its limit switch or sensor is wired to. The board labels them with three different
+numberings, and only the motor terminals use the joint's own number:
 
-| Driver position (PUL/DIR/SELECT) | Joint |
-|---|---|
-| 1 | Joint 1 |
-| 2 | Joint 5 |
-| 3 | Joint 6 |
-| 4 | Joint 4 |
-| 5 | Joint 3 |
-| 6 | Joint 2 |
+| Joint | Motor terminals | Driver module socket | Limit switch or sensor input |
+|---|---|---|---|
+| 1 | `J1_A+` `J1_A-` `J1_B+` `J1_B-` | MOTOR1 | **Limit 6** |
+| 2 | `J2_…` | **MOTOR6** | Limit 2 |
+| 3 | `J3_…` | **MOTOR5** | Limit 3 |
+| 4 | `J4_…` | MOTOR4 | Limit 4 |
+| 5 | `J5_…` | **MOTOR2** | Limit 5 |
+| 6 | `J6_…` | **MOTOR3** | **Limit 1** |
 
-The LIMIT inputs are numbered on the board and mapped by the firmware as well: joint 1 uses LIMIT 6, joint 2
-LIMIT 2, joint 3 LIMIT 3, joint 4 LIMIT 4, joint 5 LIMIT 5 and joint 6 LIMIT 1. Wire by the diagram, and let the
-test firmware tell you which input changes when you press a switch.
+- **Motors:** connect each joint's motor to the terminals marked with its joint number. The board routes them to
+  the right driver; nothing to remap.
+- **Limit switches and sensors:** joints 2 to 5 go to the input with their own number, but joints 1 and 6 are
+  swapped: joint 1's sensor goes to **Limit 6**, joint 6's sensor to **Limit 1**.
+- **Driver modules:** the sockets MOTOR1 to MOTOR6 are not in joint order. All six modules are the same, so this
+  only matters when one is faulty: the joint that misbehaves tells you which socket to look at.
+
+The firmware sets this up in `motor_init.cpp` (each joint's step, select and limit pins). When in doubt, let the
+test firmware check it: `#LIMIT` prints `Joint N is pressed` for each switch you press
+([The test firmware](09-test-firmware.md)).
 
 ## Pin definitions
 

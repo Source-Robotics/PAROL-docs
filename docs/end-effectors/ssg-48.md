@@ -1,5 +1,7 @@
 # SSG-48 adaptive electric gripper
 
+![The SSG-48 gripper](../assets/ssg48_hero.webp){ .hero }
+
 Source Robotics' 48 mm electric gripper: a Spectral Micro BLDC driver in gripper mode. It plugs into the M8
 connector at the forearm and the control board drives it over CAN; the commander software and the Python API
 both know it. Its own manual, [SSG48-gripper-docs](https://docs.source-robotics.com/SSG48-gripper-docs/), covers

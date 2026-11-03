@@ -90,15 +90,6 @@ issues:
     since: 2026-11-01
 
   - id: KI-8
-    component: commander
-    summary: "Does not run on macOS: it opens the serial port only on Windows (`COMn`) and Linux (`/dev/ttyACMn`)."
-    workaround: Use Windows or Linux, or the Python API, which runs on macOS (ARM64).
-    page: gui/commander/installation.md
-    title: Commander installation
-    status: open
-    since: 2026-11-01
-
-  - id: KI-9
     component: test_firmware
     summary: Enables all six drivers when it boots and turns every motor slowly, without a command, with no limits and
       no homing, until the power is switched off; no command stops them.
@@ -108,7 +99,7 @@ issues:
     status: open
     since: 2026-11-01
 
-  - id: KI-10
+  - id: KI-9
     component: test_firmware
     summary: "Most command names the parser knows (`#STATUS`, `#STEP1` to `#STEP6`, `#FLASH`, `#CAN`) are answered
       with `Unknown command`: only `#IO`, `#LIMIT`, `#STOP` and `#start` do something."
@@ -118,7 +109,7 @@ issues:
     status: open
     since: 2026-11-01
 
-  - id: KI-11
+  - id: KI-10
     component: python_api
     summary: Computes with the earlier robot model's dimensions (a5 = 176.35 mm), so its Cartesian positions are off
       by up to about 0.65 mm from the model these pages use.

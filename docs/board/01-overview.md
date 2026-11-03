@@ -34,5 +34,8 @@ check the wiring of your robot before the main firmware goes on ([The test firmw
 The firmware, main and test, is in the robot repository:
 [PAROL6 control board main software](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/tree/main/PAROL6%20control%20board%20main%20software)
 and [PAROL6 control board test code](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/tree/main/PAROL6%20control%20board%20test%20code).
-The board is sold [in the shop](https://source-robotics.com/products/parol6-control-board); its design files are
-not published.
+The board is sold [in the shop](https://source-robotics.com/products/parol6-control-board).
+
+The board schematics and PCB design are not available as open source materials due to licensing agreements and
+confidentiality terms established with our development partners. These proprietary design elements are subject
+to contractual obligations that restrict their public distribution.
