@@ -18,7 +18,8 @@ interfere with the fan intake and the connectors at the back.
 
 ## A profile frame
 
-The repository's `UTILITY/connectors_4_alu_profiles.STL` prints a set of corner connectors for a frame of 30×30
+The repository's [`STL/UTILITY`](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/tree/main/STL/UTILITY)
+folder has `connectors_4_alu_profiles.STL`, which prints a set of corner connectors for a frame of 30×30
 profiles, as in the figure. You need M5 T-nuts, M5 × 12 mm screws for the connectors and M5 × 18 to 20 mm screws
 for the base.
 

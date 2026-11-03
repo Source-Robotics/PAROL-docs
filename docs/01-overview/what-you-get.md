@@ -2,16 +2,18 @@
 
 ## An assembled robot
 
-A PAROL6 from the shop comes assembled, wired and tested, with the control board in the base running the main
+A PAROL6 [from the shop](https://source-robotics.com/products/parol6-robotic-arm) comes assembled, wired and tested, with the control board in the base running the main
 firmware, the E-stop button, the pneumatic gripper holder, and the robot homed once on the bench. Check the
 contents against the order; the power supply, grippers and the programming adapter are separate items unless the
 order includes them.
 
 ## A kit
 
-A kit contains the printed parts, the mechanical parts, the motors and gearboxes, the control board and the
-electronics of the [BOM](../build/bill-of-materials.md). You assemble it with the [Build guide](../build/index.md)
-and the assembly manual. The control board in a kit may carry the test firmware: the [first run](../build/firmware-and-first-run.md)
+The [full kit](https://source-robotics.com/products/parol6-robotic-arm-kit) contains every part of the [BOM](../build/bill-of-materials.md) except the printed parts
+and the power supply. The [partial kit](https://source-robotics.com/products/parol6-partial-kit) contains the hard-to-find parts: the board, the drivers, the
+bearings, belts, pulleys, connectors, sensors, switches and the pneumatics; you add the gearboxes, the motors,
+the power supply and the printed parts. The [Build guide](../build/index.md#kits) lists every kit. You assemble
+a kit with the Build guide and the assembly manual. The control board in a kit may carry the test firmware: the [first run](../build/firmware-and-first-run.md)
 says how to tell, and how to upload the main firmware.
 
 ## A control board on its own

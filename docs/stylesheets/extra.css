@@ -24,6 +24,15 @@
   margin: 0.4rem 0;
 }
 
+/* A picture with its numbered list beside it (The robot system): the picture gets the wider column; on a narrow
+   screen Material's grid stacks them */
+@media screen and (min-width: 45em) {
+  .md-typeset .grid.side-list {
+    grid-template-columns: 3fr 2fr;
+    align-items: center;
+  }
+}
+
 /* Numbered figures: <figure> with <figcaption> */
 .md-typeset figure {
   margin: 1.5rem auto;

@@ -14,32 +14,6 @@
 | Motors | 6 × 4-pin terminal blocks, one per driver |
 | Limit switches, inputs, outputs, E-stop, CAN, 24 V out, GND, HV_SEL, GND_SEL | Pluggable terminal blocks along the edges |
 
-## Which parts of the board belong to which joint
-
-Each joint uses three things on the board: the terminals its motor plugs into, the driver module that powers
-that motor, and the input its limit switch or sensor is wired to. The board labels them with three different
-numberings, and only the motor terminals use the joint's own number:
-
-| Joint | Motor terminals | Driver module socket | Limit switch or sensor input |
-|---|---|---|---|
-| 1 | `J1_A+` `J1_A-` `J1_B+` `J1_B-` | MOTOR1 | **Limit 6** |
-| 2 | `J2_…` | **MOTOR6** | Limit 2 |
-| 3 | `J3_…` | **MOTOR5** | Limit 3 |
-| 4 | `J4_…` | MOTOR4 | Limit 4 |
-| 5 | `J5_…` | **MOTOR2** | Limit 5 |
-| 6 | `J6_…` | **MOTOR3** | **Limit 1** |
-
-- **Motors:** connect each joint's motor to the terminals marked with its joint number. The board routes them to
-  the right driver; nothing to remap.
-- **Limit switches and sensors:** joints 2 to 5 go to the input with their own number, but joints 1 and 6 are
-  swapped: joint 1's sensor goes to **Limit 6**, joint 6's sensor to **Limit 1**.
-- **Driver modules:** the sockets MOTOR1 to MOTOR6 are not in joint order. All six modules are the same, so this
-  only matters when one is faulty: the joint that misbehaves tells you which socket to look at.
-
-The firmware sets this up in `motor_init.cpp` (each joint's step, select and limit pins). When in doubt, let the
-test firmware check it: `#LIMIT` prints `Joint N is pressed` for each switch you press
-([The test firmware](09-test-firmware.md)).
-
 ## Pin definitions
 
 The microcontroller pins as the firmware defines them (`iodefs.h`), for anyone who writes firmware or probes the

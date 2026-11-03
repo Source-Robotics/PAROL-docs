@@ -18,7 +18,6 @@ not a certified industrial robot.
 - for anything that must not fail: it has no brakes and no joint position feedback, and a lost step is silent
 - with tools that cut, heat or spray without your own guarding and risk assessment
 - in wet, dusty or hot places, or outdoors
-- as a load-bearing structure, a lift or a seat
 
 A self-built robot is the builder's responsibility from the first screw: the currents, the wiring, the limit
 switches and the mechanical stops are all yours to get right, and the [Build guide](../build/index.md) says where
