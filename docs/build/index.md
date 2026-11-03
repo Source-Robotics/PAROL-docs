@@ -17,9 +17,6 @@ and the [video playlist](https://www.youtube.com/playlist?list=PLSueoDrBt5MMTL9O
 4. [Electronics and wiring](electronics-and-wiring.md): the control board, the drivers, the motors, the switches
 5. [Firmware and first run](firmware-and-first-run.md): the test firmware, the main firmware, directions, homing
 
-Budget a weekend for the printing, a weekend for the assembly and an evening for the electronics and the first
-run.
-
 ## Kits
 
 You do not have to source everything yourself. The [shop](https://source-robotics.com/collections/all) sells the

@@ -1,4 +1,4 @@
-# 9. Transport, storage and disposal
+# 9. Transport and storage
 
 ## Moving the robot
 
@@ -21,10 +21,3 @@ with foam around the base; the gripper and the E-stop separately.
 Dry, at room temperature, folded. The stepper motors and the drivers have no shelf-life issues; the PETG parts
 should not be stored where it gets hot, in a car or near a radiator. Before the first use after storage, run the
 [Inspection](07-maintenance/inspection.md).
-
-## Disposal
-
-Separate the parts: the printed PETG is recyclable where PETG is collected; the motors, gearboxes, bearings and
-shafts are scrap metal; the control board, the drivers, the power supply and the cables are electronic waste and
-go to an electronics collection point, as the law in your country requires. Nothing in the robot is hazardous
-waste.

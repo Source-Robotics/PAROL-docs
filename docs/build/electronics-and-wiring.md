@@ -36,4 +36,7 @@ The finished base looks like this:
 
 Power the board with the test firmware and check every driver, switch, sensor, input and output from the serial
 terminal ([The test firmware](../board/09-test-firmware.md)). It is far easier now than with the base closed and
-the arm on top.
+the arm on top. You can also test your motors here, before the arm is assembled, to see that each one works.
+
+Every control board sold by Source Robotics comes with the test firmware preloaded. It is the firmware every
+board was tested with: each board is fully tested, every part of it, at the end of the production line.

@@ -313,7 +313,7 @@ nav:
               - Homing failures: 08-troubleshooting/homing-failures.md
               - Communication: 08-troubleshooting/communication.md
               - Known issues: 08-troubleshooting/known-issues.md
-          - 9. Transport, storage and disposal: 09-transport.md
+          - 9. Transport and storage: 09-transport.md
       - Build guide:
           - build/index.md
           - Bill of materials: build/bill-of-materials.md

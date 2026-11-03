@@ -14,12 +14,6 @@ This page lists what to get right.
 
 [Download the building instructions (PDF, 8 MB)](../assets/pdf/PAROL6_building_instructions.pdf){ .md-button }
 
-## Order
-
-Base and joint 1, shoulder and joint 2, upper arm and joint 3, elbow and joint 4, forearm and joint 5, wrist and
-joint 6, then the tool. Each joint is built around its bearing, the motor and gearbox are mounted, and the belt or
-coupler is fitted before the next link goes on. Wires and tubes are threaded through each link as it is closed.
-
 ## Things to get right
 
 - **Bearings seated square**: the tapered roller bearings carry the joint; a bearing that sits crooked makes the

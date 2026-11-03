@@ -43,6 +43,19 @@ software runs.
 
 ## Run
 
+For the first run, write the robot's port into the program: open `GUI/files/Serial_sender_good_latest.py` in a
+text editor and find these lines near the top:
+
+```python
+if my_os == "Windows": 
+    STARTING_PORT = 8 # COM3
+else:   
+    STARTING_PORT = 0
+```
+
+On Windows, replace `8` with the number of the robot's port (`5` for `COM5`; Device Manager, **Ports (COM &
+LPT)**, shows it). On Linux, `0` means `/dev/ttyACM0`. Save, then start the program:
+
 ```
 cd GUI/files
 python Serial_sender_good_latest.py

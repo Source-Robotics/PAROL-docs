@@ -25,11 +25,6 @@ for VS Code. Install VS Code and the PlatformIO extension, open the folder, and 
 programming adapter, with the 24 V supply disconnected: [Firmware](../board/08-firmware.md) has the procedure and
 the warnings.
 
-Before uploading, look at two things in the source:
-
-- `constants.h`: the motor currents, set for the BOM's motors. Lower them if yours are rated lower.
-- `main.cpp`: `j5_homing_offset`, 8900 for the pneumatic gripper holder, 8035 for the SSG-48.
-
 !!! success "Check"
     PlatformIO ends the upload with `SUCCESS`. If not: [Control board troubleshooting](../board/11-troubleshooting.md).
 
@@ -44,7 +39,12 @@ arm holds. Start the commander software, connect, and open the joint jog menu.
 
 ## 4. A joint turns the wrong way { #a-joint-turns-the-wrong-way }
 
-Press each joint's **left** arrow briefly. The joint must turn in its positive direction ([Joint limits and directions](../03-technical-data/joint-limits.md)).
+Press each joint's **left** arrow briefly. The joint must turn in its positive direction, as in the figure
+([Joint limits and directions](../03-technical-data/joint-limits.md)).
+
+![Each joint turned 30 degrees in its positive direction, in colour, over the pose in grey](../assets/kinematics/parol6_joint_directions.webp#only-light){ width="900" }
+![Each joint turned 30 degrees in its positive direction, in colour, over the pose in grey](../assets/kinematics/parol6_joint_directions_dark.webp#only-dark){ width="900" }
+
 A joint that turns the other way is the most common first-run problem, and it is fixed in the firmware, not by
 rewiring:
 
@@ -66,11 +66,6 @@ if a joint grinds at a stop, press the E-stop and see [Homing failures](../08-tr
 
 !!! success "Check"
     Homing finishes, the simulator matches the robot, and the witness marks agree.
-
-## 6. Master, and reduce the currents
-
-Check the witness marks and master the joints that are off ([Mastering](../05-operation/mastering.md)). If the
-robot will run for hours, reduce the currents ([Currents and temperatures](../03-technical-data/operating-temperatures.md)).
 
 ## The commander's terminal output
 
