@@ -28,10 +28,13 @@ the flange, or set an offset at run time:
 
 ```python
 rbt.select_tool("NONE")
-rbt.set_tcp_offset(0, 0, 120)                  # the tip, 120 mm along the tool's Z
-index = rbt.set_tcp_transform(0, 0, 120, 0, 15, 0)   # with a rotation, intrinsic XYZ degrees
+rbt.set_tcp_offset(0, 0, -120)                 # the tip, 120 mm out from the flange: along the tool's -Z
+index = rbt.set_tcp_transform(0, 0, -120, 0, 15, 0)  # with a rotation, intrinsic XYZ degrees
 rbt.wait_command(index)
 ```
+
+The flange frame's Z axis points back into the wrist, so a tip in front of the flange has a negative z
+([The flange frame](../theory/reference-frames.md#the-flange-frame)).
 
 A permanent tool goes into the API's tool registry as a `ToolConfig` with its collision mesh, so that the
 collision checker knows its shape ([Tools and the TCP](../programming/02-python-api/tools-and-tcp.md)). The
