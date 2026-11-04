@@ -1,0 +1,41 @@
+# PAROL6 GUI Guide
+
+![The commander window](https://docs.source-robotics.com/PAROL-docs/1.1/assets/GUI2.webp)
+
+<div class="doc-meta" markdown>
+
+**Document number:** SR-4005
+
+**PAROL6 release:** 1.1
+
+**PAROL6 commander software:** main
+
+**Revision:** 2026.A
+
+**Published:** 2026-11-03
+
+**Applies to:** PAROL6 release 1.1, PAROL6 commander software main
+
+*Original instructions*
+
+</div>
+
+The graphical programs for PAROL6 and its grippers: which one to open for which job, how to install it, and
+what is on its screen. Programming the robot, in RBTscript or Python, is in the
+[Programming Guide](https://docs.source-robotics.com/PAROL-docs/1.1/programming/).
+
+| | Commander software | Waldo Commander | Motor GUI |
+|---|---|---|---|
+| What it is | Source Robotics' desktop program: jogging, a 3D simulator, the RBTscript editor, the I/O and gripper tabs | A community browser interface on the Python API: a simulator, Python programs, teaching by demonstration, an MCP server for LLMs | Source Robotics' browser tool for the drivers inside the electric grippers |
+| For | the first day, teaching poses, demos, simple sequences | remote use, programs in the browser, AI-driven control | setting up, testing and updating an SSG-48 or MSG gripper |
+| Runs | on the PC at the robot, Python 3.10 or 3.11 | a server at the robot, any browser | any Chromium browser, with the CANvas adapter |
+| Talks to | the control board over USB | the Python API's controller | the gripper's driver over CAN |
+
+## In this guide
+
+- The commander software: [Installation](https://docs.source-robotics.com/PAROL-docs/1.1/gui/commander/installation/), [The GUI](https://docs.source-robotics.com/PAROL-docs/1.1/gui/commander/the-gui/)
+- [Waldo Commander](https://docs.source-robotics.com/PAROL-docs/1.1/gui/waldo-commander/)
+- [Motor GUI](https://docs.source-robotics.com/PAROL-docs/1.1/gui/motor-gui/)
+
+One program owns the control board at a time: the commander and the Python API's controller cannot be connected
+together ([Control ownership](https://docs.source-robotics.com/PAROL-docs/1.1/theory/control-ownership/)).
