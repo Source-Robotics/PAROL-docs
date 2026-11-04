@@ -53,8 +53,10 @@ That is hot to the touch and close to the limit of the plastic around them.
 ## Electricity
 
 The robot runs on 24 V, which is safe to touch. The power supply you plug it into is connected to the mains:
-use a closed, approved supply, never an open-frame one on the desk. The control board has no reverse-polarity
-protection on its power input.
+use a closed, approved supply, never an open-frame one on the desk. A DIN-rail supply such as the one in the BOM
+has open screw terminals: it belongs in a closed box, with an earthed cable, and if you are not sure how to wire
+it, an electrician wires it ([The power supply](../04-installation/connecting.md#the-power-supply)). The control
+board has no reverse-polarity protection on its power input.
 
 ## The tool
 

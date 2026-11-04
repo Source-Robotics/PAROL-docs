@@ -16,7 +16,7 @@ follow it when a step is not clear or something fails.
 | | Where to get it |
 |---|---|
 | **Your PAROL6**, assembled and wired, with the control board inside the base | the [Build guide](build/index.md); the parts in the [BOM](build/bill-of-materials.md), or as kits from [the shop](https://source-robotics.com/) |
-| **A 24 V power supply**, 5 A | the [BOM](build/bill-of-materials.md) names one; any 24 V 5 A supply works |
+| **A 24 V power supply**, 5 A | the [BOM](build/bill-of-materials.md) names one; any 24 V 5 A supply works. A closed one with a mains cable needs no mains wiring ([The power supply](04-installation/connecting.md#the-power-supply)) |
 | **A mains switch within reach**, on the supply's mains side: a switched socket strip will do | it is the stop that still works when the PC software has frozen ([Emergency stop](02-safety/emergency-stop.md)) |
 | **An E-stop**, a normally closed button on the base | the [BOM](build/bill-of-materials.md) names one; any NC switch works |
 | **A USB cable**, type B, to the PC | |
@@ -182,7 +182,8 @@ versions of the same packages, so they cannot share one.
 1. The E-stop to the two E-stop terminals on the base. Without it the robot will not run.
 2. The USB cable to the PC.
 3. The 24 V supply to the power connector, and the supply's mains plug into the switched socket strip, or behind
-   the mains switch, within your reach. Nothing happens yet: the board is off until the button is pressed.
+   the mains switch, within your reach. Nothing happens yet: the board is off until the button is pressed. A
+   DIN-rail supply is wired and checked first ([The power supply](04-installation/connecting.md#the-power-supply)).
 
 Read in more detail: [Connecting](04-installation/connecting.md).
 

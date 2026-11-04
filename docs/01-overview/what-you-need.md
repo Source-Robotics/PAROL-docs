@@ -5,7 +5,8 @@
 A 24 V DC supply of at least 5 A. The [BOM](../build/bill-of-materials.md) names a Mean Well 120 W DIN-rail unit;
 any regulated 24 V 5 A supply with the robot's GX16 power connector wired to it does. The control board accepts
 18 to 24 V; below 24 V the motors lose torque and speed. The robot draws about 40 W in typical use and more when
-all six motors accelerate at once.
+all six motors accelerate at once. A closed supply with a mains cable needs no mains wiring; the DIN-rail unit
+does, in a closed box ([The power supply](../04-installation/connecting.md#the-power-supply)).
 
 Plug the supply in through a **mains switch within reach**, a switched socket strip for example. It is the stop
 that still works when the PC software has frozen ([Emergency stop](../02-safety/emergency-stop.md)), and the
