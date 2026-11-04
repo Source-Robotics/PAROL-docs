@@ -44,12 +44,13 @@ def load(path) -> dict:
     if not isinstance(data, dict):
         raise PluginError("versions.yml: not a mapping")
     docs_version = str(data.get("docs_version", ""))
-    if not re.fullmatch(r"\d+", docs_version):
-        raise PluginError(f"versions.yml: docs_version {docs_version!r} is not a release number, e.g. \"1\"")
+    # A PAROL6 release is a hardware version, MAJOR or MAJOR.MINOR (standards/VERSIONING_PLAYBOOK.md, section 2).
+    if not re.fullmatch(r"\d+(\.\d+)?", docs_version):
+        raise PluginError(f"versions.yml: docs_version {docs_version!r} is not a release number, e.g. \"1\" or \"1.1\"")
     firmware = data.get("firmware") or {}
     tag = str(firmware.get("tag", ""))
-    if not re.fullmatch(r"[Vv]\d+", tag):
-        raise PluginError(f"versions.yml: firmware.tag {tag!r} is not a release tag like V1")
+    if not re.fullmatch(r"[Vv]\d+(\.\d+)?", tag):
+        raise PluginError(f"versions.yml: firmware.tag {tag!r} is not a release tag like V1 or V1.1")
     if tag.upper() != f"V{docs_version}":
         raise PluginError(f"versions.yml: firmware.tag {tag} does not belong to docs_version {docs_version}")
     software = data.get("software") or {}

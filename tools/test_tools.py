@@ -60,8 +60,10 @@ def load_text(text):
 
 data, err = load_text(GOOD)
 check("A1 a valid versions.yml loads", data is not None, err)
+minor, err = load_text(GOOD.replace('"1"', '"1.1"').replace("tag: V1}", "tag: V1.1}"))
+check("A1b a MAJOR.MINOR release (1.1, tag V1.1) loads", minor is not None, err)
 for label, bad, word in (
-        ("docs_version not a release number", GOOD.replace('"1"', '"1.0"'), "docs_version"),
+        ("docs_version not a release number", GOOD.replace('"1"', '"1.1.0"'), "docs_version"),
         ("a tag of another release", GOOD.replace("tag: V1}", "tag: V2}"), "does not belong"),
         ("a malformed tag", GOOD.replace("tag: V1}", "tag: 1}"), "firmware.tag"),
         ("a revision not YEAR.LETTER", GOOD.replace("2026.A", "A"), "YEAR.LETTER"),
