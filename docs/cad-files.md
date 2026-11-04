@@ -42,5 +42,6 @@ The latest files, on the main branch of the
 | Community projects | [community_projects.md](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/blob/main/community_projects.md) |
 | Gripper documentation | [SSG-48](https://docs.source-robotics.com/SSG48-gripper-docs/), [MSG](https://docs.source-robotics.com/MSG-gripper-docs/) |
 | This documentation | [PAROL-docs](https://github.com/Source-Robotics/PAROL-docs) |
+| The old manual (2023 to October 2026), kept for reference | [Old manual](https://docs.source-robotics.com/PAROL-docs/0/) |
 | Shop | [source-robotics.com](https://source-robotics.com/) |
 | Community | [Discord](https://discord.gg/prjUvjmGpZ), [Hackaday](https://hackaday.io/project/191860-parol6-desktop-robotic-arm), [blog](https://source-robotics.com/blogs/blog) |

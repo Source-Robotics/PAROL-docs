@@ -132,7 +132,9 @@ demand (`DOCS_PDF=1 mkdocs build`). While the hook is on, the page-help line of 
 Each PAROL6 release has its own version of this site, named after the release: `1`, ... The version selector in
 the site's header switches between them, and a page of an older version says so in a bar at the top. The
 versions are built with [mike](https://github.com/jimporter/mike) and kept in the `gh-pages` branch; `latest`
-points at the newest.
+points at the newest. Version `0`, "Old manual (2023 to October 2026)", is the site from before the rebuild,
+not a release: it is built from commit 6d29879 with a patch and must never be deployed from `main`
+(`tools/old-manual/README.md`).
 
 **All version facts live in `versions.yml`, never in a page**: `docs_version` (the PAROL6 release these pages
 describe, which is also the name the version is published under), `firmware.tag` (`V` + `docs_version`), the

@@ -44,7 +44,9 @@ arm, is documented at [docs.source-robotics.com/par6](https://docs.source-roboti
 
 The documents on this site describe one PAROL6 release; one revision is kept per release, and the version selector
 in the header switches between them. The Programming Guide and the API reference also name the Python API version
-they describe, because the API is released more often than the robot.
+they describe, because the API is released more often than the robot. The documentation as it was from 2023 to
+October 2026, before this site was rebuilt, stays in the version selector as *Old manual*; it is kept for
+reference and no longer updated.
 
 The text and the images of this documentation are licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/),
 the code examples under the [MIT licence](https://github.com/Source-Robotics/PAROL-docs/blob/main/LICENSE-CODE).

@@ -1,0 +1,47 @@
+diff --git a/mkdocs.yml b/mkdocs.yml
+index 5778a3df..79dbfb08 100644
+--- a/mkdocs.yml
++++ b/mkdocs.yml
+@@ -4,6 +4,8 @@ site_description: Documentation for the PAROL6 desktop robotic arm by Source Rob
+ repo_url: https://github.com/Source-Robotics/PAROL-docs
+ theme:
+   name: material
++  # Version 0 of the published site (the old manual): overrides/main.html adds the banner and noindex.
++  custom_dir: overrides
+   features:
+     - navigation.sections
+     - toc.integrate
+@@ -31,10 +33,13 @@ theme:
+ 
+ plugins:
+ - search
+-- social:
+-    cards_layout: default
++# The social cards are left out of the old manual's build: they need the Cairo libraries, and its pages are noindex.
+ 
+ extra:
++  # The version selector in the header, the same as the current manual's (mike).
++  version:
++    provider: mike
++    alias: true
+   social:
+     - icon: fontawesome/brands/github-alt
+       link: https://github.com/PCrnjak
+diff --git a/overrides/main.html b/overrides/main.html
+new file mode 100644
+index 00000000..c7a337fa
+--- /dev/null
++++ b/overrides/main.html
+@@ -0,0 +1,12 @@
++{% extends "base.html" %}
++
++{#- Version 0 of the published site: the manual as it was before the rebuild of 2026-10-29, kept for reference.
++    Its pages stay out of search engines, so they do not compete with the current manual. -#}
++{% block extrahead %}
++  <meta name="robots" content="noindex">
++{% endblock %}
++
++{#- The banner on every page; the link goes to the current manual (the "latest" alias next to this version). -#}
++{% block announce %}
++  This is the old manual, kept for reference: <a href="{{ base_url }}/../latest/"><strong>the current manual is here</strong></a>.
++{% endblock %}
