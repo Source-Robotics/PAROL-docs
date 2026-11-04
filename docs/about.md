@@ -50,7 +50,7 @@ reference and no longer updated.
 
 The text and the images of this documentation are licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/),
 the code examples under the [MIT licence](https://github.com/Source-Robotics/PAROL-docs/blob/main/LICENSE-CODE).
-The robot's mechanical files, firmware and software are published under GPLv3 in their repositories. The Source
+The robot's hardware files are published under CERN-OHL-S-2.0, its firmware and software under GPLv3, in their repositories. The Source
 Robotics name, the product names and the logos are not covered by any of these.
 
 | Document | Revision | Date | Changes |
