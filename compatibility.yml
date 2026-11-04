@@ -12,6 +12,14 @@ columns:
   - {key: docs, title: Docs}
 
 rows:
+  - release: "1.1"
+    date: 2026-11-04
+    board: v2.0 (pluggable terminal blocks); v1.2 (spring contacts) is functionally identical
+    firmware: "1 (VERSION 1 in constants.h), unchanged since release 1"
+    python: "0.2.6 to 0.9.1 (the reference describes 0.9.1); Python 3.11 or newer"
+    commander: main branch (Python 3.10 or 3.11)
+    grippers: "SSG-48 (Spectral Micro firmware 101 or newer), MSG (STEPFOC firmware 103 or newer), pneumatic MHZ2-16D, vacuum"
+    docs: "1.1"
   - release: "1"
     date: 2025-03-08
     board: v2.0 (pluggable terminal blocks); v1.2 (spring contacts) is functionally identical

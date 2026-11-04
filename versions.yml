@@ -7,14 +7,15 @@
 # The documentation version: the PAROL6 release the pages describe (the arm's mechanical files, the control board
 # firmware and the BOM are released together, as V1). The publishing workflow publishes the site under this name
 # (the version selector in the header) and points "latest" at it.
-docs_version: "1"
+docs_version: "1.1"
 
 # The release the pages describe. Its tag must be V<docs_version>. The control board firmware lives in the same
-# repository (firmware.src); its #define VERSION is the same number.
+# repository (firmware.src); its #define VERSION is the number of the release that last changed it (1 for the
+# releases 1 and 1.1, whose firmware is the same).
 firmware:
   name: PAROL6 release
   repository: https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm
-  tag: V1
+  tag: V1.1
   src: PAROL6 control board main software/src
 
 # The PC software the pages describe. The Python API is released on its own schedule: tools/sync_api.py reads its
@@ -49,9 +50,9 @@ manuals:
   parol6:
     number: SR-1002
     title: PAROL6 Robot Manual
-    revision: 2026.A
+    revision: 2026.B
     status: published
-    published: 2026-11-03
+    published: 2026-11-04
     firmware: true
     software: [python_api, commander]
     applies_to: PAROL6 with the PAROL6 control board v2.0
@@ -59,9 +60,9 @@ manuals:
   board:
     number: SR-2002
     title: PAROL6 Control Board Manual
-    revision: 2026.A
+    revision: 2026.B
     status: published
-    published: 2026-11-03
+    published: 2026-11-04
     firmware: true
     software: []
     applies_to: PAROL6 control board v2.0 and v1.2

@@ -50,5 +50,5 @@ An ST-Link needs four of them: SWDIO, CLK, GND and 3V3. Leave RESET and BOOT0 un
 
 ## Version
 
-`#define VERSION 1` in `constants.h`. The firmware is released with the robot (tag V1) and has not changed since;
+`#define VERSION 1` in `constants.h`. The firmware is released with the robot (tag V1) and has not changed since: release V1.1 ships the same firmware;
 the protocol it speaks is on [The serial protocol](10-serial-protocol.md).

@@ -1,6 +1,6 @@
 # 3. Technical data
 
-The numbers of PAROL6 V1: the specifications, the joint limits and their directions, the dimensions and the
+The numbers of PAROL6 V1 and V1.1, which share the mechanics: the specifications, the joint limits and their directions, the dimensions and the
 kinematic model, the drives with their ratios and resolutions, and the motor currents with the temperatures they
 lead to.
 
