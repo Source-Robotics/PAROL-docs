@@ -21,7 +21,7 @@ the pose at the end should match the witness marks ([Checking the homing](homing
 
 ## Cleaning
 
-Clean the robot switched off and unplugged. Wipe the printed parts with a dry or slightly damp cloth; use no
-solvents on them, and never spray anything into the base, where the control board and the fan are open to it.
+Clean the robot switched off and unplugged. Wipe the printed parts with a dry or slightly damp cloth, or with a little
+isopropyl alcohol on the cloth for grease; use no other solvents on them, and never spray anything into the base, where the control board and the fan are open to it.
 Clear dust from the fan intake with a soft brush or a vacuum cleaner, not with compressed air, which drives the
 dust into the board.
