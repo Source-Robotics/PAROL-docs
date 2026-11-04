@@ -21,7 +21,7 @@ a relative `move_l` moves along the tool's own axes.
 rbt.move_j([90, -90, 180, 0, 0, 180], speed=0.5)                 # joint move
 rbt.move_j(pose=[100, 340, 334, 90, 0, 90], speed=0.5)           # IK at the target, then a joint move
 rbt.move_l([-50, 340, 334, 90, 0, 90], speed=0.3)                # straight line
-rbt.move_l([0, 0, -20, 0, 0, 0], frame="TRF", rel=True, speed=0.2)   # 20 mm along the tool's -Z
+rbt.move_l([0, 0, -20, 0, 0, 0], frame="TRF", rel=True, speed=0.2)   # 20 mm out of the tool: the API's -Z
 rbt.move_c(via=[0, 250, 250, 90, 0, 90], end=[0, 263, 242, 90, 0, 90], speed=0.5)
 rbt.move_s([[0, 263, 242, 90, 0, 90], [50, 250, 200, 90, 0, 90]], speed=0.5)
 rbt.move_p(waypoints, speed=0.8)

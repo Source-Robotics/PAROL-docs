@@ -35,7 +35,9 @@ rbt.select_tool("NONE")                            # the bare flange
 ## Tool centre point
 
 The tool centre point (TCP) is a6 = 50.5 mm from the joint 6 centre along the tool axis and a7 = 0 mm to the side.
-With nothing on the flange, the TCP is the flange's reference point. The sheet is the robot's model from
+With nothing on the flange, the TCP is the flange's reference point, the origin of the flange frame: on the
+joint 6 axis at the flange face, Z out of the flange, X up in the standby pose. The Python API has the frame's Y
+and Z the other way ([Reference frames](../theory/reference-frames.md#the-flange-frame)). The sheet is the robot's model from
 [robot_descriptions](https://github.com/Source-Robotics/robot_descriptions) (version <!-- version: models.robot_descriptions -->) with every joint at 0.
 Tell the software about the tool ([Tools and the TCP](../programming/02-python-api/tools-and-tcp.md)); every tool
 is compared on [Dimensions and kinematics](../03-technical-data/kinematics.md).

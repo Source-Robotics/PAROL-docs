@@ -33,8 +33,10 @@ index = rbt.set_tcp_transform(0, 0, -120, 0, 15, 0)  # with a rotation, intrinsi
 rbt.wait_command(index)
 ```
 
-The flange frame's Z axis points back into the wrist, so a tip in front of the flange has a negative z
-([The flange frame](../theory/reference-frames.md#the-flange-frame)).
+!!! warning "The Python API's tool frame has Y and Z the other way"
+    In the Python API (version 0.9.1) the flange frame's Z points back into the wrist, the other way from the
+    commander's and these pages' ([The flange frame](../theory/reference-frames.md#the-flange-frame)), so a tip in
+    front of the flange has a negative z there ([known issue KI-11](../08-troubleshooting/known-issues.md)).
 
 A permanent tool goes into the API's tool registry as a `ToolConfig` with its collision mesh, so that the
 collision checker knows its shape ([Tools and the TCP](../programming/02-python-api/tools-and-tcp.md)). The

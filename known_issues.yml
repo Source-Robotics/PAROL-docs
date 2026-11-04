@@ -112,9 +112,24 @@ issues:
   - id: KI-10
     component: python_api
     summary: Enforces the joint limits of the earlier robot model, and computes with its dimensions (a5 = 176.35 mm),
-      so its Cartesian positions are off by up to about 0.65 mm from the model these pages use.
+      so its Cartesian positions are off by up to about 0.65 mm from the model these pages use; its tool offsets
+      put the TCP up to about 14 mm from the model's.
     workaround: Keep to the limits in the Joint limits table; teach the poses that need accuracy on the robot.
     page: 03-technical-data/kinematics.md
     title: Kinematics
     status: open
     since: 2026-11-01
+
+  - id: KI-11
+    component: python_api
+    summary: "The tool frame (TRF) and the flange frame have Y and Z the other way from the commander's and these
+      pages': the frame is turned 180° about X, so its Z points back into the wrist. A TRF move or jog along +Z,
+      or a TCP offset with a positive z, goes towards the robot instead of out of the tool, and +Y goes the other
+      way."
+    workaround: "In the Python API, use negative z for out of the tool: `move_l([0, 0, -20, 0, 0, 0], frame=\"TRF\",
+      rel=True)`, `set_tcp_offset(0, 0, -120)`. Jog slowly in the TRF before you run a TRF move written for the
+      commander."
+    page: theory/reference-frames.md#trf-the-tool-reference-frame
+    title: Reference frames
+    status: open
+    since: 2026-11-04

@@ -70,7 +70,7 @@ The tool centre point is the point the robot positions: the registered tool's ti
 it:
 
 ```python
-index = rbt.set_tcp_offset(0, 0, -190)           # a translation in the tool frame, mm
+index = rbt.set_tcp_offset(0, 0, -190)           # a translation in the tool frame, mm: 190 mm out of the tool
 index = rbt.set_tcp_transform(0, 0, 25, 0, 90, 0) # translation and intrinsic XYZ rotation, degrees
 rbt.wait_command(index)                           # queued: wait before relying on it
 print(rbt.tcp_transform())                        # six values; tcp_offset() the three translations
@@ -79,6 +79,11 @@ print(rbt.tcp_transform())                        # six values; tcp_offset() the
 Both are queued with the motion so that moves planned before the change keep their frame. `set_tcp_offset`
 clears a rotation; a tool change clears both. The correction applies to live FK, Cartesian planning, TRF motion
 and dry-run previews alike; the collision meshes stay on their links regardless.
+
+!!! warning "The Python API's tool frame has Y and Z the other way"
+    In the Python API (version 0.9.1) the tool frame is the commander's turned 180° about X: its Z points back
+    into the wrist. An offset or a TRF move out of the tool is negative z, as in `set_tcp_offset(0, 0, -190)`
+    ([Reference frames](../../theory/reference-frames.md), [known issue KI-11](../../08-troubleshooting/known-issues.md)).
 
 ## Your own tool
 
