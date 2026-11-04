@@ -5,5 +5,10 @@
     "aliases": [
       "latest"
     ]
+  },
+  {
+    "version": "0",
+    "title": "Old manual (2023 to October 2026)",
+    "aliases": []
   }
 ]
