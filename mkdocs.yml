@@ -226,8 +226,6 @@ extra:
       link: https://www.linkedin.com/company/source-robotics
     - icon: fontawesome/brands/discord
       link: https://discord.gg/prjUvjmGpZ
-    - icon: fontawesome/brands/patreon
-      link: https://www.patreon.com/PCrnjak
   # Page status markers (front matter `status: ...`) shown as an icon in the sidebar.
   status:
     new: Recently added
