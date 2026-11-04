@@ -8,12 +8,15 @@ weighs on joints 4 and 5.
 
 ## Workspace
 
-![Where the flange centre can go in the arm's plane, within the joint limits, in mm](../assets/figures/parol6_workspace.webp#only-light){ width="760" }
-![Where the flange centre can go in the arm's plane, within the joint limits, in mm](../assets/figures/parol6_workspace_dark.webp#only-dark){ width="760" }
+![Where the flange centre can go within the joint limits, side and top view, in mm](../assets/figures/parol6_workspace_flange.webp#only-light){ width="900" }
+![Where the flange centre can go within the joint limits, side and top view, in mm](../assets/figures/parol6_workspace_flange_dark.webp#only-dark){ width="900" }
 
-The shaded region is everywhere the centre of the flange can go in the plane of the arm, within the joint limits
-of the robot's model; the dotted line is the same for the wrist centre. It reaches 408 mm in front of the joint 1
-axis and 359 mm behind it, 523 mm above the mounting surface and 25 mm below it. A tool adds its own length. The
+In the side view the shaded region is everywhere the centre of the flange can go in the plane of the arm, within
+the joint limits of the robot's model; the dotted line is the same for the wrist centre. It reaches 408 mm in
+front of the joint 1 axis and 359 mm behind it, 523 mm above the mounting surface and 25 mm below it. The top view
+sweeps that region about joint 1 through its ±97.4°: in front of the base the arm reaches out directly, behind it
+(lighter) only by folding back over the base. A tool adds its own length; the same figure for each gripper, with
+a table of the numbers, is on [Dimensions and kinematics](../03-technical-data/kinematics.md#workspace). The
 region is computed from the limits only: the arm's own parts, the tool and the table can block some of it.
 
 The volume the tool can reach. The **reachable workspace** is every point it can touch with some orientation: a

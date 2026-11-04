@@ -73,8 +73,61 @@ A riser under the base changes a1, and a tool of your own changes a6 and a7: tel
 
 !!! note "The software still computes with the earlier model"
     These pages give the model's dimensions. Until the software is updated, the Python API (its built-in URDF) and
-    the commander software compute with a5 = 176.35 mm, and the commander with a6 = 62.8 mm for the pneumatic
-    gripper, so a pose they report can differ from these sheets by up to about 0.65 mm.
+    the commander software compute with a5 = 176.35 mm. The commander uses a6 = 62.8 mm for the pneumatic
+    gripper, so a pose it reports can differ from these sheets by up to about 0.65 mm. The Python API has its own
+    tool offsets, which put its TCP up to about 14 mm from the model's
+    ([The TCP of each tool](../theory/reference-frames.md#the-tcp-of-each-tool)).
+
+## Workspace
+
+Where the tool centre point can go within the model's joint limits: on the left in the plane of the arm, on the
+right seen from above, as joint 1 turns through its range. Each tab is for one point: the flange centre, or the
+TCP of a gripper.
+
+=== "Flange only"
+
+    ![Workspace of the flange centre, side and top view, in mm](../assets/figures/parol6_workspace_flange.webp#only-light){ width="900" }
+    ![Workspace of the flange centre, side and top view, in mm](../assets/figures/parol6_workspace_flange_dark.webp#only-dark){ width="900" }
+
+=== "Pneumatic gripper"
+
+    ![Workspace of the pneumatic gripper's TCP, side and top view, in mm](../assets/figures/parol6_workspace_pneumatic.webp#only-light){ width="900" }
+    ![Workspace of the pneumatic gripper's TCP, side and top view, in mm](../assets/figures/parol6_workspace_pneumatic_dark.webp#only-dark){ width="900" }
+
+=== "SSG-48"
+
+    ![Workspace of the SSG-48's TCP, side and top view, in mm](../assets/figures/parol6_workspace_ssg48.webp#only-light){ width="900" }
+    ![Workspace of the SSG-48's TCP, side and top view, in mm](../assets/figures/parol6_workspace_ssg48_dark.webp#only-dark){ width="900" }
+
+=== "MSG"
+
+    ![Workspace of the MSG's TCP, side and top view, in mm](../assets/figures/parol6_workspace_msg.webp#only-light){ width="900" }
+    ![Workspace of the MSG's TCP, side and top view, in mm](../assets/figures/parol6_workspace_msg_dark.webp#only-dark){ width="900" }
+
+| Point | In front of the joint 1 axis | Behind it | Highest, above the mounting surface | Lowest |
+|---|---|---|---|---|
+| Wrist centre | 357 mm | 308 mm | 473 mm | 26 mm above |
+| Flange centre | 408 mm | 359 mm | 523 mm | 25 mm below |
+| Pneumatic gripper TCP | 434 mm | 385 mm | 550 mm | 52 mm below |
+| SSG-48 TCP | 492 mm | 443 mm | 607 mm | 109 mm below |
+| MSG TCP | 494 mm | 446 mm | 610 mm | 112 mm below |
+
+In the side view the shaded region is where the point can go, with joints 2, 3 and 5 anywhere within their limits,
+joint 4 at 0° and joint 6 at 0° or 180°, so that a TCP beside the tool axis stays in the plane; the dotted line is
+the same for the wrist centre. The region shows where the point can go, not where the tool can take every
+orientation: at its edge the tool can only point outwards ([Workspace and reach](../theory/workspace-and-reach.md)).
+It is computed from the joint limits only: the arm's own parts, the tool and the table can block some of it.
+
+- **Below the mounting surface.** The region dips below the surface the robot stands on, in front of the base.
+  On a table that part is solid; the arm reaches it only past the table's edge, or with the robot on a riser.
+- **Behind the base.** Joint 1 turns ±97.4°, so seen from above the arm reaches a little more than the half
+  circle in front of it. The lighter part behind the base it reaches only by folding back over the base, the way
+  the side view's region curls behind the joint 1 axis.
+- **Near the joint 1 axis.** Keep the work away from it. With the wrist centre on the joint 1 axis the arm is in
+  its shoulder singularity, and close to it joint 1 has to turn fast for a small move of the tool
+  ([Configurations and singularities](../theory/configurations-and-singularities.md)).
+- **X and Y** in the top view are the axes of the world frame: X is the way the arm points in the standby pose,
+  Y the way it points after homing ([Reference frames](../theory/reference-frames.md)).
 
 ## Kinematic structure
 

@@ -10,8 +10,16 @@ E-stop is within that person's reach, and so is the power supply's switch.
 
 ## The space
 
-- The arm's reach, 408 mm from the axis of joint 1 to the flange, plus the tool, and a margin for the elbow, which
-  swings behind the base when the arm folds: a sphere of about half a metre.
+The space to keep free is everything the arm, the tool and the part in the gripper can sweep, not only where the
+tool centre point goes. The TCP reaches 434 mm from the axis of joint 1 with the pneumatic gripper and 494 mm with
+the MSG, and the elbow swings behind the base when the arm folds back
+([Workspace](../03-technical-data/kinematics.md#workspace)). Add the part and a margin:
+
+![Where the pneumatic gripper's TCP can go, side and top view, in mm; the arm, the tool and the part need more room than this](../assets/figures/parol6_workspace_pneumatic.webp#only-light){ width="620" }
+![Where the pneumatic gripper's TCP can go, side and top view, in mm; the arm, the tool and the part need more room than this](../assets/figures/parol6_workspace_pneumatic_dark.webp#only-dark){ width="620" }
+
+- A sphere of about half a metre around the base with the pneumatic gripper, about 0.6 m with the SSG-48 or the
+  MSG, and more for a long part.
 - Nothing fragile inside it, and nothing that the arm could knock onto the floor.
 - The cables and tubes outside the sweep, or fixed so the arm cannot catch them.
 - For a robot that runs unattended or near others, an enclosure: acrylic panels on the profile frame are enough
