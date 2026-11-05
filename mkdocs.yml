@@ -178,16 +178,17 @@ extra:
       - accept
       - reject
       - manage
-  # Comments under every page, through Giscus. All the docs sites share one Discussions home, the hub repository
-  # Source-Robotics/source-robotics.github.io (the docs domain), category "Documentation": one thread per site and
-  # page, created when the first reader comments. The IDs are the hub repository's and the category's; giscus.app
-  # shows them for the repository and the category. Empty IDs: no comments are rendered. A page opts out with
-  # `comments: false` in its front matter.
+  # Comments under every page, through Giscus. All the docs sites share one Discussions home, the
+  # organisation's Discussions (https://github.com/orgs/Source-Robotics/discussions, source repository
+  # Source-Robotics/discussions), category "Manual comments": one thread per site and page, created when
+  # the first reader comments, answered where the questions are. The IDs are the source repository's and
+  # the category's; giscus.app shows them. Empty IDs: no comments are rendered. A page opts out with
+  # `comments: false` in its front matter. The giscus app must have access to Source-Robotics/discussions.
   comments:
-    repo: Source-Robotics/source-robotics.github.io
-    repo_id: "R_kgDOVTvtKQ"
-    category: Documentation
-    category_id: "DIC_kwDOVTvtKc4DKAXd"
+    repo: Source-Robotics/discussions
+    repo_id: "R_kgDOVipxrA"
+    category: Manual comments
+    category_id: "DIC_kwDOVipxrM4DKcet"
   # The published version the Markdown twins and llms.txt link to (mike publishes each build under its version).
   # Markdown exports use the release from versions.yml, including on archived versions.
   # The PDF of the manual (hooks/pdf.py): the file under site/, written when DOCS_PDF is set.

@@ -116,8 +116,9 @@ accepts the cookie banner of `extra.consent`), Material's own integration record
 vote as an event named `feedback`.
 
 Comments under every page come from Giscus, wired in `overrides/partials/comments.html` and configured under
-`extra.comments`: all the docs sites share one Discussions home, the hub repository
-`Source-Robotics/source-robotics.github.io`, with one thread per site and page. A page opts out with
+`extra.comments`: all the docs sites share one Discussions home, the organisation's
+Discussions (source repository `Source-Robotics/discussions`, category Manual comments), with one
+thread per site and page. A page opts out with
 `comments: false` in its front matter (the landing page does).
 
 ## The PDF of the manual
