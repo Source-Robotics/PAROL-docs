@@ -26,7 +26,7 @@
     commander's left arrows jog positive.
 
 **E-stop**
-:   The normally closed button on the base. Pressing it, unplugging it or cutting its wire opens the circuit, and
+:   The normally closed button in its own printed box, on a cable to the robot. Pressing it, unplugging it or cutting its wire opens the circuit, and
     the robot stops. It must be connected for the robot to run.
 
 **Firmware**

@@ -12,9 +12,9 @@
 
 **PAROL6 commander software:** main
 
-**Revision:** 2026.B
+**Revision:** 2026.C
 
-**Published:** 2026-11-04
+**Published:** 2026-11-05
 
 **Applies to:** PAROL6 with the PAROL6 control board v2.0, PAROL6 release 1.1, Python API (parol6) v0.9.1, PAROL6 commander software main
 

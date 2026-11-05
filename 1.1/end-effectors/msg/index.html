@@ -22,7 +22,7 @@
         
       
       
-      <link rel="icon" href="../../assets/Icon2.png">
+      <link rel="icon" href="../../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
@@ -1499,9 +1499,10 @@ covers the gripper; this page covers PAROL6.</p>
 </ol>
 <div class="admonition danger">
 <p class="admonition-title">Only the PAROL6 cable</p>
-<p>PAROL6 and PAR6 put the four signals on different pins. The PAR6 cable, or a self-made cable with a wrong
-pin, puts 24 V on the <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> pins and destroys the gripper's driver. The gripper manual's cable page has the
-pinout to check your own against.</p>
+<p>PAROL6 and PAR6 put the four signals on different pins. The PAR6 cable reverses the gripper's supply, and a
+self-made cable with a wrong pin can put 24 V on a <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> pin; either destroys the gripper's driver. The
+socket's pins are in <a href="../flange/#the-gripper-socket">The gripper socket</a>, the cable's in the gripper
+manual's cable page.</p>
 </div>
 <p>Leave the gripper's <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> node ID at 0 and its termination switch, reachable through the stepper cover, on: it is
 the last node on the robot's bus (<a href="../../06-peripherals/can-bus/"><abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> bus</a>).</p>
@@ -1627,7 +1628,7 @@ what each error needs: <a href="https://docs.source-robotics.com/MSG-gripper-doc
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 3, 2026 15:37:48 UTC">November 3, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 5, 2026 16:14:53 UTC">November 5, 2026</span>
   </span>
 
     

@@ -64,12 +64,12 @@ text editor and find these lines near the top:
 
 ```python
 if my_os == "Windows": 
-    STARTING_PORT = 8 # COM3
+    STARTING_PORT = 58 # COM3
 else:   
     STARTING_PORT = 0
 ```
 
-On Windows, replace `8` with the number of the robot's port (`5` for `COM5`; Device Manager, **Ports (COM &
+On Windows, replace `58` with the number of the robot's port (`5` for `COM5`; Device Manager, **Ports (COM &
 LPT)**, shows it). On Linux, `0` means `/dev/ttyACM0`. Save, then start the program from the activated virtual
 environment:
 

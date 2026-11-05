@@ -8,9 +8,9 @@
 
 **PAROL6 release:** 1.1
 
-**Revision:** 2026.B
+**Revision:** 2026.C
 
-**Published:** 2026-11-04
+**Published:** 2026-11-05
 
 **Applies to:** PAROL6 control board v2.0 and v1.2, PAROL6 release 1.1
 

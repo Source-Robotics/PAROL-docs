@@ -22,7 +22,7 @@
         
       
       
-      <link rel="icon" href="../../assets/Icon2.png">
+      <link rel="icon" href="../../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
@@ -1625,8 +1625,10 @@ reports it in the I/O byte; the PC software stops the robot when it sees the con
 <ul>
 <li>The contact must be <strong>normally closed</strong>: an open circuit means stop, so an unplugged button or a cut wire stops
   the robot too. A normally open button does not work.</li>
-<li>Both connectors share one microcontroller pin: a second button goes in series on the other connector.</li>
-<li>Any <abbr title="Normally Closed, a switch contact that is closed until it is pressed">NC</abbr> switch works for a bench setup. The <abbr title="Bill Of Materials, the list of parts to buy">BOM</abbr>'s 19 mm <abbr title="Emergency stop">E-stop</abbr> and the printed housing go on the base.</li>
+<li>Both connectors share one microcontroller pin: a second button goes in series on the other connector, so
+  pressing either button stops the robot.</li>
+<li>Any <abbr title="Normally Closed, a switch contact that is closed until it is pressed">NC</abbr> switch works for a bench setup. The <abbr title="Bill Of Materials, the list of parts to buy">BOM</abbr>'s 19 mm <abbr title="Emergency stop">E-stop</abbr> sits in its own printed box (<code>STL/ESTOP</code>), on a
+  cable as long as the setup needs.</li>
 </ul>
 <h2 id="the-power-button">The power button<a class="headerlink" href="#the-power-button" title="Permanent link">&para;</a></h2>
 <p>A momentary push button with an <abbr title="Light-Emitting Diode">LED</abbr>, on the JST PH connector. A press switches the 24 V stage on; a press while
@@ -1652,7 +1654,7 @@ its main loop.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 3, 2026 14:55:17 UTC">November 3, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 5, 2026 14:02:45 UTC">November 5, 2026</span>
   </span>
 
     

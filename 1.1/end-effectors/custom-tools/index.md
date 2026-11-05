@@ -17,7 +17,8 @@ Then measure the homing offset: home, jog joint 5 until the pin fits the witness
 
 ## Connections
 
-Up to 24 V and CAN at the M8 connector, two air lines, and the control board's two inputs and two outputs at the
+Up to 24 V and CAN at the M8 connector (its pins: [The gripper socket](https://docs.source-robotics.com/PAROL-docs/1.1/end-effectors/flange/#the-gripper-socket)), two air
+lines, and the control board's two inputs and two outputs at the
 base. A tool that needs more, a camera's USB for instance, runs its cable outside the arm, with enough slack for
 joints 4, 5 and 6 and fixed so the arm cannot catch it.
 

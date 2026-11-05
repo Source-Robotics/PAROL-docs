@@ -22,7 +22,7 @@
         
       
       
-      <link rel="icon" href="../../assets/Icon2.png">
+      <link rel="icon" href="../../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
@@ -2593,9 +2593,15 @@ page before you plug anything in.</p>
   in that joint's group; polarity does not matter.</li>
 <li><strong>Inductive sensors</strong> (joints 1, 4, 6): brown to 24 V, blue to GND, black (signal) to the LIMIT terminal the
   wiring diagram shows in that joint's group.</li>
-<li><strong>The gripper connector</strong>: 24 V, GND, <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> H and <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> L from the board to the M8 socket at the forearm.</li>
+<li><strong>The gripper connector</strong>: 24 V, GND, <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> H and <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> L from the board to the female M8 socket at the forearm:
+  pin 1 GND, 2 <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> H, 3 24 V, 4 <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> L, by the numbers moulded into it
+  (<a href="../../end-effectors/flange/#the-gripper-socket">The gripper socket</a>). Solder it as the photo on page 32 of the
+  assembly manual shows, the view from the back where the wires go. The numbered list next to that photo has
+  pins 1 and 3 the wrong way round for this socket: wired by the list, the PAROL6 gripper cable reverses the
+  gripper's supply.</li>
 <li><strong>The <abbr title="Emergency stop">E-stop</abbr></strong>: the <abbr title="Normally Closed, a switch contact that is closed until it is pressed">NC</abbr> contact to the two <abbr title="Emergency stop">E-stop</abbr> terminals.</li>
-<li><strong>Power</strong>: the GX16 socket on the base to the XT30 on the board, polarity checked twice.</li>
+<li><strong>Power</strong>: the GX16 socket on the base to the XT30 on the board, polarity checked twice. The GX16 has no
+  fixed +24 V pin: choose one, wire the supply's plug the same way, and mark it.</li>
 <li><strong>The power button</strong>: the JST PH cable to the button connector.</li>
 <li><strong>The fan</strong>: 5 V, three-pin, on the fan header; not a <abbr title="Pulse-Width Modulation">PWM</abbr> fan.</li>
 </ul>
@@ -2634,7 +2640,7 @@ board was tested with: each board is fully tested, every part of it, at the end 
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 3, 2026 14:55:17 UTC">November 3, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 5, 2026 16:14:53 UTC">November 5, 2026</span>
   </span>
 
     

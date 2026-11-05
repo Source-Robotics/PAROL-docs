@@ -1,8 +1,8 @@
 # Bill of materials
 
 !!! note "This is a copy"
-    The original is [BOM/BOM.md](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/blob/main/BOM/BOM.md) in the robot's repository; this page is that
-    file as of 2026-11-03 (commit `cc328a5`), with the reference images shown inline. If a link is broken or a part
+    The original is [BOM/README.md](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/blob/main/BOM/README.md) in the robot's repository; this page is that
+    file as of 2026-11-05 (commit `38d0b1a`), with the reference images shown inline. If a link is broken or a part
     is wrong, [open an issue](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/issues/new) there, and the fix lands here with the next sync. If you would
     rather not source the parts yourself, the shop's [kits](https://docs.source-robotics.com/PAROL-docs/1.1/build/#kits) cover every part or the hard-to-find ones.
 

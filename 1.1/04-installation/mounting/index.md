@@ -7,7 +7,7 @@
 ## The base holes
 
 Six holes in the base, spaced for 30×30 mm aluminium profiles. Bolt the base to a plate or a profile frame with
-M5 screws and T-nuts.
+six M5 × 16 mm socket head screws (DIN 912, in the kit), with T-nuts on a profile. They take a 4 mm hex key.
 
 ![The six holes in the base](https://docs.source-robotics.com/PAROL-docs/1.1/assets/base2.webp){ width="600" }
 
@@ -20,7 +20,7 @@ interfere with the fan intake and the connectors at the back.
 
 The repository's [`STL/UTILITY`](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/tree/main/STL/UTILITY)
 folder has `connectors_4_alu_profiles.STL`, which prints a set of corner connectors for a frame of 30×30
-profiles, as in the figure. You need M5 T-nuts, M5 × 12 mm screws for the connectors and M5 × 18 to 20 mm screws
+profiles, as in the figure. You need M5 T-nuts, M5 × 12 mm screws for the connectors and the six M5 × 16 mm screws
 for the base.
 
 ![PAROL6 on a 30×30 aluminium profile frame](https://docs.source-robotics.com/PAROL-docs/1.1/assets/alu_profile.webp){ width="600" }
@@ -28,7 +28,8 @@ for the base.
 ## Mounting plates
 
 The `mounting plates` folder of the repository has STEP files of a small and a big base plate, with the hole
-pattern, for a plate you have machined or cut.
+pattern, for a plate you have machined or cut. The small plate has more holes than PAROL6 uses, two more M5 and
+six M4: they were made for other robots and designs, and stay empty under PAROL6.
 
 ## Orientation
 

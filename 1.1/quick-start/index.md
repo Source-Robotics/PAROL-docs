@@ -18,7 +18,7 @@ follow it when a step is not clear or something fails.
 | **Your PAROL6**, assembled and wired, with the control board inside the base | the [Build guide](https://docs.source-robotics.com/PAROL-docs/1.1/build/); the parts in the [BOM](https://docs.source-robotics.com/PAROL-docs/1.1/build/bill-of-materials/), or as kits from [the shop](https://source-robotics.com/) |
 | **A 24 V power supply**, 5 A | the [BOM](https://docs.source-robotics.com/PAROL-docs/1.1/build/bill-of-materials/) names one; any 24 V 5 A supply works. A closed one with a mains cable needs no mains wiring ([The power supply](https://docs.source-robotics.com/PAROL-docs/1.1/04-installation/connecting/#the-power-supply)) |
 | **A mains switch within reach**, on the supply's mains side: a switched socket strip will do | it is the stop that still works when the PC software has frozen ([Emergency stop](https://docs.source-robotics.com/PAROL-docs/1.1/02-safety/emergency-stop/)) |
-| **An E-stop**, a normally closed button on the base | the [BOM](https://docs.source-robotics.com/PAROL-docs/1.1/build/bill-of-materials/) names one; any NC switch works |
+| **An E-stop**, a normally closed button in its printed box | the [BOM](https://docs.source-robotics.com/PAROL-docs/1.1/build/bill-of-materials/) names one; any NC switch works |
 | **A USB cable**, type B, to the PC | |
 | **An ST-Link programmer and the programming adapter**, to upload the firmware once | the [programming adapter](https://source-robotics.com/products/parol6-programming-adapter) in the shop |
 | **A PC** with Windows, Linux or macOS | see the [minimum PC](https://docs.source-robotics.com/PAROL-docs/1.1/01-overview/what-you-need/#the-pc) |
@@ -214,11 +214,11 @@ First find the robot's **serial port**, the name the PC gives the USB connection
     **Open File**) and find these lines near the top:
     ```python
     if my_os == "Windows": 
-        STARTING_PORT = 8 # COM3
+        STARTING_PORT = 58 # COM3
     else:   
         STARTING_PORT = 0
     ```
-    On Windows, replace `8` with the number of your port, `5` for `COM5`. On Linux, `0` is `/dev/ttyACM0`; change
+    On Windows, replace `58` with the number of your port, `5` for `COM5`. On Linux, `0` is `/dev/ttyACM0`; change
     it if yours has another number. Save the file. Then start the program in the terminal:
     ```
     cd %USERPROFILE%\Documents\PAROL-commander-software

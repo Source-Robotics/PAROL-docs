@@ -81,9 +81,10 @@ Other countries can use other colours: check, and do not guess.
 
 The E-stop must be a normally closed contact: pressing it, unplugging it or cutting its wire opens the circuit,
 and all of these stop the robot, which is what you want. A normally open button does not work. The control board
-has two E-stop connectors on the same input, so a second button can be wired in series.
+has two E-stop connectors on the same input, so a second button can be wired in series: pressing either button
+stops the robot.
 
-The kit's button comes with a printed housing and a PG7 cable gland. [Emergency stop](https://docs.source-robotics.com/PAROL-docs/1.1/02-safety/emergency-stop/)
+The kit's button sits in its own printed box with a PG7 cable gland, on a cable as long as you need. [Emergency stop](https://docs.source-robotics.com/PAROL-docs/1.1/02-safety/emergency-stop/)
 says what happens when it is pressed, and the [Control Board Manual](https://docs.source-robotics.com/PAROL-docs/1.1/board/06-io-and-estop/) has the wiring
 diagram.
 

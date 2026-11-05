@@ -25,9 +25,9 @@ Full text of every page, in the order of the site's navigation. Source: https://
 
 **PAROL6 commander software:** main
 
-**Revision:** 2026.B
+**Revision:** 2026.C
 
-**Published:** 2026-11-04
+**Published:** 2026-11-05
 
 **Applies to:** PAROL6 with the PAROL6 control board v2.0, PAROL6 release 1.1, Python API (parol6) v0.9.1, PAROL6 commander software main
 
@@ -136,7 +136,7 @@ follow it when a step is not clear or something fails.
 | **Your PAROL6**, assembled and wired, with the control board inside the base | the [Build guide](https://docs.source-robotics.com/PAROL-docs/1.1/build/); the parts in the [BOM](https://docs.source-robotics.com/PAROL-docs/1.1/build/bill-of-materials/), or as kits from [the shop](https://source-robotics.com/) |
 | **A 24 V power supply**, 5 A | the [BOM](https://docs.source-robotics.com/PAROL-docs/1.1/build/bill-of-materials/) names one; any 24 V 5 A supply works. A closed one with a mains cable needs no mains wiring ([The power supply](https://docs.source-robotics.com/PAROL-docs/1.1/04-installation/connecting/#the-power-supply)) |
 | **A mains switch within reach**, on the supply's mains side: a switched socket strip will do | it is the stop that still works when the PC software has frozen ([Emergency stop](https://docs.source-robotics.com/PAROL-docs/1.1/02-safety/emergency-stop/)) |
-| **An E-stop**, a normally closed button on the base | the [BOM](https://docs.source-robotics.com/PAROL-docs/1.1/build/bill-of-materials/) names one; any NC switch works |
+| **An E-stop**, a normally closed button in its printed box | the [BOM](https://docs.source-robotics.com/PAROL-docs/1.1/build/bill-of-materials/) names one; any NC switch works |
 | **A USB cable**, type B, to the PC | |
 | **An ST-Link programmer and the programming adapter**, to upload the firmware once | the [programming adapter](https://source-robotics.com/products/parol6-programming-adapter) in the shop |
 | **A PC** with Windows, Linux or macOS | see the [minimum PC](https://docs.source-robotics.com/PAROL-docs/1.1/01-overview/what-you-need/#the-pc) |
@@ -332,11 +332,11 @@ First find the robot's **serial port**, the name the PC gives the USB connection
     **Open File**) and find these lines near the top:
     ```python
     if my_os == "Windows": 
-        STARTING_PORT = 8 # COM3
+        STARTING_PORT = 58 # COM3
     else:   
         STARTING_PORT = 0
     ```
-    On Windows, replace `8` with the number of your port, `5` for `COM5`. On Linux, `0` is `/dev/ttyACM0`; change
+    On Windows, replace `58` with the number of your port, `5` for `COM5`. On Linux, `0` is `/dev/ttyACM0`; change
     it if yours has another number. Save the file. Then start the program in the terminal:
     ```
     cd %USERPROFILE%\Documents\PAROL-commander-software
@@ -608,11 +608,15 @@ Robotics name, the product names and the logos are not covered by any of these.
 
 | Document | Revision | Date | Changes |
 |---|---|---|---|
+| Robot Manual | 2026.C | 2026-11-05 | The base screws, M5 × 16 mm with a 4 mm key; the E-stop in its own printed box on a cable; either of two E-stop buttons stops the robot; the GX16 polarity is the builder's choice; the robot model's link names; the commander's `STARTING_PORT` (58) in the quick start; the gripper socket's pins in the build guide (page 32 of the assembly manual has 1 and 3 the wrong way round) |
 | Robot Manual | 2026.B | 2026-11-04 | PAROL6 release 1.1, with the files as downloads on the release; the workspace side and top views per tool; the reference frames per tool and the flange frame (the Python API's reversed tool frame as KI-11); the mains side of the power supply; cleaning; the old manual as version 0 in the version selector; the hardware licence CERN-OHL-S-2.0 |
 | Robot Manual | 2026.A | 2026-11-03 | First version in this form: the numbered chapters, the build guide, from the pages of the previous site |
+| Control Board Manual | 2026.C | 2026-11-05 | The E-stop in its own printed box; either of two E-stop buttons stops the robot |
 | Control Board Manual | 2026.B | 2026-11-04 | PAROL6 release 1.1: the same firmware as release 1 |
 | Control Board Manual | 2026.A | 2026-11-03 | First version in this form, from the control board and peripherals pages of the previous site |
+| End Effectors Guide | 2026.B | 2026-11-05 | The M8's 24 V has no fuse of its own; the gripper socket's pins; the PAR6 cable reverses a gripper's supply, it does not put 24 V on the CAN pins |
 | End Effectors Guide | 2026.A | 2026-11-03 | First version: the flange, the pneumatic and vacuum grippers, the SSG-48 and MSG, your own tool |
+| GUI Guide | 2026.B | 2026-11-05 | The commander's `STARTING_PORT` is 58 in the code, not 8 |
 | GUI Guide | 2026.A | 2026-11-03 | First version: the commander software, Waldo Commander, Motor GUI |
 | Programming Guide | 2026.A | 2026-11-03 | First version: the concepts, the Python API 0.9.1, the commander software and RBTscript, ROS 2; the generated API reference |
 
@@ -675,6 +679,9 @@ gives it a reference when the robot homes.
 12. Gripper, here the standard pneumatic gripper
 
 </div>
+
+The robot model (the URDF and MuJoCo files in `robot_descriptions`) uses the standard ROS link names, which count
+the parts differently: the elbow is `forearm_link`, the forearm `wrist_1_link` and the wrist `wrist_2_link`.
 
 The arm has no brakes and no joint encoders. The motors hold the arm while they are powered; the position is
 counted in steps from the homing reference. Both facts shape how the robot is used, and the
@@ -798,7 +805,7 @@ switch you reach for when the E-stop has no effect.
 ## The E-stop
 
 A normally closed emergency stop button, wired to the two E-stop terminals of the control board. The robot does
-not run without it. The kit's button mounts on the base in the printed holder; any NC switch works for a bench
+not run without it. The kit's button sits in its own 3D-printed box, on a cable as long as your setup needs; any NC switch works for a bench
 setup ([Emergency stop](https://docs.source-robotics.com/PAROL-docs/1.1/02-safety/emergency-stop/)).
 
 ## The PC
@@ -819,7 +826,7 @@ A USB type B cable connects the robot to the PC. USB does not power the board.
 
 ## Tools
 
-For an assembled robot: hex keys (2, 2.5, 3 mm) for the mounting screws and the gripper, a small screwdriver for
+For an assembled robot: hex keys, 4 mm for the M5 mounting screws and 2, 2.5 and 3 mm for the gripper, a small screwdriver for
 the terminal blocks. For a build, the [Build guide](https://docs.source-robotics.com/PAROL-docs/1.1/build/) lists the rest, down to the blue
 threadlocker and the thermal cement.
 
@@ -963,7 +970,8 @@ as part of the robot in every rule above.
 
 # Emergency stop
 
-The E-stop is the red button on the base, a normally closed contact wired to the control board's E-stop input.
+The E-stop is the red button in its own 3D-printed box, a normally closed contact wired by its cable to the control board's
+E-stop input.
 It must be connected for the robot to run.
 
 ![E-stop wiring to the control board](https://docs.source-robotics.com/PAROL-docs/1.1/assets/ESTOP_CON.webp){ width="800" }
@@ -1692,7 +1700,7 @@ guarding, and what the software can and cannot stop.
 ## The base holes
 
 Six holes in the base, spaced for 30×30 mm aluminium profiles. Bolt the base to a plate or a profile frame with
-M5 screws and T-nuts.
+six M5 × 16 mm socket head screws (DIN 912, in the kit), with T-nuts on a profile. They take a 4 mm hex key.
 
 ![The six holes in the base](https://docs.source-robotics.com/PAROL-docs/1.1/assets/base2.webp){ width="600" }
 
@@ -1705,7 +1713,7 @@ interfere with the fan intake and the connectors at the back.
 
 The repository's [`STL/UTILITY`](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/tree/main/STL/UTILITY)
 folder has `connectors_4_alu_profiles.STL`, which prints a set of corner connectors for a frame of 30×30
-profiles, as in the figure. You need M5 T-nuts, M5 × 12 mm screws for the connectors and M5 × 18 to 20 mm screws
+profiles, as in the figure. You need M5 T-nuts, M5 × 12 mm screws for the connectors and the six M5 × 16 mm screws
 for the base.
 
 ![PAROL6 on a 30×30 aluminium profile frame](https://docs.source-robotics.com/PAROL-docs/1.1/assets/alu_profile.webp){ width="600" }
@@ -1713,7 +1721,8 @@ for the base.
 ## Mounting plates
 
 The `mounting plates` folder of the repository has STEP files of a small and a big base plate, with the hole
-pattern, for a plate you have machined or cut.
+pattern, for a plate you have machined or cut. The small plate has more holes than PAROL6 uses, two more M5 and
+six M4: they were made for other robots and designs, and stay empty under PAROL6.
 
 ## Orientation
 
@@ -1809,9 +1818,10 @@ Other countries can use other colours: check, and do not guess.
 
 The E-stop must be a normally closed contact: pressing it, unplugging it or cutting its wire opens the circuit,
 and all of these stop the robot, which is what you want. A normally open button does not work. The control board
-has two E-stop connectors on the same input, so a second button can be wired in series.
+has two E-stop connectors on the same input, so a second button can be wired in series: pressing either button
+stops the robot.
 
-The kit's button comes with a printed housing and a PG7 cable gland. [Emergency stop](https://docs.source-robotics.com/PAROL-docs/1.1/02-safety/emergency-stop/)
+The kit's button sits in its own printed box with a PG7 cable gland, on a cable as long as you need. [Emergency stop](https://docs.source-robotics.com/PAROL-docs/1.1/02-safety/emergency-stop/)
 says what happens when it is pressed, and the [Control Board Manual](https://docs.source-robotics.com/PAROL-docs/1.1/board/06-io-and-estop/) has the wiring
 diagram.
 
@@ -2845,8 +2855,8 @@ kit skips the bill of materials; a printed parts kit skips the printing.
 # Bill of materials
 
 !!! note "This is a copy"
-    The original is [BOM/BOM.md](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/blob/main/BOM/BOM.md) in the robot's repository; this page is that
-    file as of 2026-11-03 (commit `cc328a5`), with the reference images shown inline. If a link is broken or a part
+    The original is [BOM/README.md](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/blob/main/BOM/README.md) in the robot's repository; this page is that
+    file as of 2026-11-05 (commit `38d0b1a`), with the reference images shown inline. If a link is broken or a part
     is wrong, [open an issue](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/issues/new) there, and the fix lands here with the next sync. If you would
     rather not source the parts yourself, the shop's [kits](https://docs.source-robotics.com/PAROL-docs/1.1/build/#kits) cover every part or the hard-to-find ones.
 
@@ -3100,9 +3110,15 @@ page before you plug anything in.
   in that joint's group; polarity does not matter.
 - **Inductive sensors** (joints 1, 4, 6): brown to 24 V, blue to GND, black (signal) to the LIMIT terminal the
   wiring diagram shows in that joint's group.
-- **The gripper connector**: 24 V, GND, CAN H and CAN L from the board to the M8 socket at the forearm.
+- **The gripper connector**: 24 V, GND, CAN H and CAN L from the board to the female M8 socket at the forearm:
+  pin 1 GND, 2 CAN H, 3 24 V, 4 CAN L, by the numbers moulded into it
+  ([The gripper socket](https://docs.source-robotics.com/PAROL-docs/1.1/end-effectors/flange/#the-gripper-socket)). Solder it as the photo on page 32 of the
+  assembly manual shows, the view from the back where the wires go. The numbered list next to that photo has
+  pins 1 and 3 the wrong way round for this socket: wired by the list, the PAROL6 gripper cable reverses the
+  gripper's supply.
 - **The E-stop**: the NC contact to the two E-stop terminals.
-- **Power**: the GX16 socket on the base to the XT30 on the board, polarity checked twice.
+- **Power**: the GX16 socket on the base to the XT30 on the board, polarity checked twice. The GX16 has no
+  fixed +24 V pin: choose one, wire the supply's plug the same way, and mark it.
 - **The power button**: the JST PH cable to the button connector.
 - **The fan**: 5 V, three-pin, on the fan header; not a PWM fan.
 
@@ -3489,7 +3505,7 @@ the [current Python API](https://docs.source-robotics.com/PAROL-docs/1.1/program
     commander's left arrows jog positive.
 
 **E-stop**
-:   The normally closed button on the base. Pressing it, unplugging it or cutting its wire opens the circuit, and
+:   The normally closed button in its own printed box, on a cable to the robot. Pressing it, unplugging it or cutting its wire opens the circuit, and
     the robot stops. It must be connected for the robot to run.
 
 **Firmware**
@@ -3643,9 +3659,9 @@ The latest files, on the main branch of the
 
 **PAROL6 release:** 1.1
 
-**Revision:** 2026.B
+**Revision:** 2026.C
 
-**Published:** 2026-11-04
+**Published:** 2026-11-05
 
 **Applies to:** PAROL6 control board v2.0 and v1.2, PAROL6 release 1.1
 
@@ -3979,8 +3995,10 @@ reports it in the I/O byte; the PC software stops the robot when it sees the con
 
 - The contact must be **normally closed**: an open circuit means stop, so an unplugged button or a cut wire stops
   the robot too. A normally open button does not work.
-- Both connectors share one microcontroller pin: a second button goes in series on the other connector.
-- Any NC switch works for a bench setup. The BOM's 19 mm E-stop and the printed housing go on the base.
+- Both connectors share one microcontroller pin: a second button goes in series on the other connector, so
+  pressing either button stops the robot.
+- Any NC switch works for a bench setup. The BOM's 19 mm E-stop sits in its own printed box (`STL/ESTOP`), on a
+  cable as long as the setup needs.
 
 ## The power button
 
@@ -4269,9 +4287,9 @@ in the Robot Manual.
 
 **PAROL6 commander software:** main
 
-**Revision:** 2026.A
+**Revision:** 2026.B
 
-**Published:** 2026-11-03
+**Published:** 2026-11-05
 
 **Applies to:** PAROL6 release 1.1, Python API (parol6) v0.9.1, PAROL6 commander software main
 
@@ -4320,13 +4338,30 @@ check when a tool's orientation drifts ([Couplers and threadlocker](https://docs
 
 | | |
 |---|---|
-| **M8 4-pin connector** | 24 V, GND, CAN H, CAN L for an electric gripper; wired from the control board's CAN 1 and 24 V |
+| **M8 4-pin connector** | 24 V, GND, CAN H, CAN L for an electric gripper; wired from the control board's CAN 1 and 24 V. The 24 V has no fuse of its own: the gripper draws what it needs, and a short in the gripper or its cable is limited only by the power supply |
 | **Two pneumatic tubes**, 4 mm | From the two push-in fittings at the base, through the arm, to the forearm |
 
 The tubes and the gripper cable run through the arm and come out at the forearm. Joint 5 is held inside its
 limits by its stops. Joint 6 has no limit with the bare flange; with a tool, the tool's cable and tubes run from
 the forearm to the tool and wrap as joint 6 turns, so keep joint 6 within the turn they allow
 ([Joint limits and directions](https://docs.source-robotics.com/PAROL-docs/1.1/03-technical-data/joint-limits/#limits)).
+
+## The gripper socket
+
+![The gripper socket at the forearm, seen from the front, with its four signals](https://docs.source-robotics.com/PAROL-docs/1.1/assets/GRIP_CON.webp){ width="600" }
+
+The M8 socket at the forearm is a female 4-pin. Its pins, by the numbers moulded into it:
+
+| Pin | Signal |
+|---|---|
+| **1** | GND |
+| **2** | CAN H |
+| **3** | +24 V |
+| **4** | CAN L |
+
+The grippers have +24 V on pin 1 and GND on pin 3, so the PAROL6 gripper cable crosses pin 1 with 3 and 2 with 4
+between its ends. A straight M8 cable, the PAR6 gripper cable among them, reverses a gripper's supply here and
+destroys its driver. A tool of your own takes its pins from the table above.
 
 ## The tool in the software
 
@@ -4512,9 +4547,10 @@ the gripper; this page covers PAROL6.
 ![The gripper connector at the forearm](https://docs.source-robotics.com/PAROL-docs/1.1/assets/GRIP_CON.webp){ width="600" }
 
 !!! danger "Only the PAROL6 cable"
-    PAROL6 and PAR6 put the four signals on different pins. The PAR6 cable, or a self-made cable with a wrong
-    pin, puts 24 V on the CAN pins and destroys the gripper's driver. The gripper manual's cable page has the
-    pinout to check your own against.
+    PAROL6 and PAR6 put the four signals on different pins. The PAR6 cable reverses the gripper's supply, and a
+    self-made cable with a wrong pin can put 24 V on a CAN pin; either destroys the gripper's driver. The
+    socket's pins are in [The gripper socket](https://docs.source-robotics.com/PAROL-docs/1.1/end-effectors/flange/#the-gripper-socket), the cable's in the gripper
+    manual's cable page.
 
 Leave the gripper's CAN node ID at 0 and its termination switch on: it is the last node on the robot's bus
 ([CAN bus](https://docs.source-robotics.com/PAROL-docs/1.1/06-peripherals/can-bus/)).
@@ -4628,9 +4664,10 @@ covers the gripper; this page covers PAROL6.
    and 6, and fix it so the arm cannot catch it.
 
 !!! danger "Only the PAROL6 cable"
-    PAROL6 and PAR6 put the four signals on different pins. The PAR6 cable, or a self-made cable with a wrong
-    pin, puts 24 V on the CAN pins and destroys the gripper's driver. The gripper manual's cable page has the
-    pinout to check your own against.
+    PAROL6 and PAR6 put the four signals on different pins. The PAR6 cable reverses the gripper's supply, and a
+    self-made cable with a wrong pin can put 24 V on a CAN pin; either destroys the gripper's driver. The
+    socket's pins are in [The gripper socket](https://docs.source-robotics.com/PAROL-docs/1.1/end-effectors/flange/#the-gripper-socket), the cable's in the gripper
+    manual's cable page.
 
 Leave the gripper's CAN node ID at 0 and its termination switch, reachable through the stepper cover, on: it is
 the last node on the robot's bus ([CAN bus](https://docs.source-robotics.com/PAROL-docs/1.1/06-peripherals/can-bus/)).
@@ -4741,7 +4778,8 @@ Then measure the homing offset: home, jog joint 5 until the pin fits the witness
 
 ## Connections
 
-Up to 24 V and CAN at the M8 connector, two air lines, and the control board's two inputs and two outputs at the
+Up to 24 V and CAN at the M8 connector (its pins: [The gripper socket](https://docs.source-robotics.com/PAROL-docs/1.1/end-effectors/flange/#the-gripper-socket)), two air
+lines, and the control board's two inputs and two outputs at the
 base. A tool that needs more, a camera's USB for instance, runs its cable outside the arm, with enough slack for
 joints 4, 5 and 6 and fixed so the arm cannot catch it.
 
@@ -4789,9 +4827,9 @@ the software's joint limits do not know the tool's shape.
 
 **PAROL6 commander software:** main
 
-**Revision:** 2026.A
+**Revision:** 2026.B
 
-**Published:** 2026-11-03
+**Published:** 2026-11-05
 
 **Applies to:** PAROL6 release 1.1, PAROL6 commander software main
 
@@ -4923,12 +4961,12 @@ text editor and find these lines near the top:
 
 ```python
 if my_os == "Windows": 
-    STARTING_PORT = 8 # COM3
+    STARTING_PORT = 58 # COM3
 else:   
     STARTING_PORT = 0
 ```
 
-On Windows, replace `8` with the number of the robot's port (`5` for `COM5`; Device Manager, **Ports (COM &
+On Windows, replace `58` with the number of the robot's port (`5` for `COM5`; Device Manager, **Ports (COM &
 LPT)**, shows it). On Linux, `0` means `/dev/ttyACM0`. Save, then start the program from the activated virtual
 environment:
 

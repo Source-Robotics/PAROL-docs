@@ -9,13 +9,30 @@ check when a tool's orientation drifts ([Couplers and threadlocker](https://docs
 
 | | |
 |---|---|
-| **M8 4-pin connector** | 24 V, GND, CAN H, CAN L for an electric gripper; wired from the control board's CAN 1 and 24 V |
+| **M8 4-pin connector** | 24 V, GND, CAN H, CAN L for an electric gripper; wired from the control board's CAN 1 and 24 V. The 24 V has no fuse of its own: the gripper draws what it needs, and a short in the gripper or its cable is limited only by the power supply |
 | **Two pneumatic tubes**, 4 mm | From the two push-in fittings at the base, through the arm, to the forearm |
 
 The tubes and the gripper cable run through the arm and come out at the forearm. Joint 5 is held inside its
 limits by its stops. Joint 6 has no limit with the bare flange; with a tool, the tool's cable and tubes run from
 the forearm to the tool and wrap as joint 6 turns, so keep joint 6 within the turn they allow
 ([Joint limits and directions](https://docs.source-robotics.com/PAROL-docs/1.1/03-technical-data/joint-limits/#limits)).
+
+## The gripper socket
+
+![The gripper socket at the forearm, seen from the front, with its four signals](https://docs.source-robotics.com/PAROL-docs/1.1/assets/GRIP_CON.webp){ width="600" }
+
+The M8 socket at the forearm is a female 4-pin. Its pins, by the numbers moulded into it:
+
+| Pin | Signal |
+|---|---|
+| **1** | GND |
+| **2** | CAN H |
+| **3** | +24 V |
+| **4** | CAN L |
+
+The grippers have +24 V on pin 1 and GND on pin 3, so the PAROL6 gripper cable crosses pin 1 with 3 and 2 with 4
+between its ends. A straight M8 cable, the PAR6 gripper cable among them, reverses a gripper's supply here and
+destroys its driver. A tool of your own takes its pins from the table above.
 
 ## The tool in the software
 

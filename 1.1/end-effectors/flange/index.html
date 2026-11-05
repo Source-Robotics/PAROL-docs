@@ -22,7 +22,7 @@
         
       
       
-      <link rel="icon" href="../../assets/Icon2.png">
+      <link rel="icon" href="../../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
@@ -833,6 +833,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#the-gripper-socket" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The gripper socket
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#the-tool-in-the-software" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1348,6 +1359,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#the-gripper-socket" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The gripper socket
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#the-tool-in-the-software" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1447,7 +1469,7 @@ check when a tool's orientation drifts (<a href="../../07-maintenance/couplers/"
 <tbody>
 <tr>
 <td><strong>M8 4-pin connector</strong></td>
-<td>24 V, GND, <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> H, <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> L for an electric gripper; wired from the control board's <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> 1 and 24 V</td>
+<td>24 V, GND, <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> H, <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> L for an electric gripper; wired from the control board's <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> 1 and 24 V. The 24 V has no fuse of its own: the gripper draws what it needs, and a short in the gripper or its cable is limited only by the power supply</td>
 </tr>
 <tr>
 <td><strong>Two pneumatic tubes</strong>, 4 mm</td>
@@ -1459,6 +1481,42 @@ check when a tool's orientation drifts (<a href="../../07-maintenance/couplers/"
 limits by its stops. Joint 6 has no limit with the bare flange; with a tool, the tool's cable and tubes run from
 the forearm to the tool and wrap as joint 6 turns, so keep joint 6 within the turn they allow
 (<a href="../../03-technical-data/joint-limits/#limits">Joint limits and directions</a>).</p>
+<h2 id="the-gripper-socket">The gripper socket<a class="headerlink" href="#the-gripper-socket" title="Permanent link">&para;</a></h2>
+<figure>
+  <a class="glightbox" href="../../assets/GRIP_CON.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="The gripper socket at the forearm, seen from the front, with its four signals" src="../../assets/GRIP_CON.webp" width="600" /></a>
+<br />
+<figcaption>Figure 1: The gripper socket at the forearm, seen from the front, with its four signals.</figcaption>
+</figure>
+<p>The M8 socket at the forearm is a female 4-pin. Its pins, by the numbers moulded into it:</p>
+<table>
+<thead>
+<tr>
+<th>Pin</th>
+<th>Signal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td>GND</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td><abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> H</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>+24 V</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td><abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> L</td>
+</tr>
+</tbody>
+</table>
+<p>The grippers have +24 V on pin 1 and GND on pin 3, so the PAROL6 gripper cable crosses pin 1 with 3 and 2 with 4
+between its ends. A straight M8 cable, the PAR6 gripper cable among them, reverses a gripper's supply here and
+destroys its driver. A tool of your own takes its pins from the table above.</p>
 <h2 id="the-tool-in-the-software">The tool in the software<a class="headerlink" href="#the-tool-in-the-software" title="Permanent link">&para;</a></h2>
 <p>The software must know the tool to compute the pose of its tip. The commander's kinematic model is built for the
 standard pneumatic gripper; the Python <abbr title="Application Programming Interface">API</abbr> has tool definitions with variants and a settable <abbr title="Tool Center Point, the point on the tool that the robot positions">TCP</abbr> offset
@@ -1482,7 +1540,7 @@ is compared on <a href="../../03-technical-data/kinematics/">Dimensions and kine
   <a class="glightbox" href="../../assets/kinematics/parol6_flange.webp#only-light" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="PAROL6 with the flange only: dimensions to the TCP and the DH table" src="../../assets/kinematics/parol6_flange.webp#only-light" width="600" /></a>
   <a class="glightbox" href="../../assets/kinematics/parol6_flange_dark.webp#only-dark" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="PAROL6 with the flange only: dimensions to the TCP and the DH table" src="../../assets/kinematics/parol6_flange_dark.webp#only-dark" width="600" /></a>
 <br />
-<figcaption>Figure 1: PAROL6 with the flange only: dimensions to the TCP and the DH table.</figcaption>
+<figcaption>Figure 2: PAROL6 with the flange only: dimensions to the TCP and the DH table.</figcaption>
 </figure>
 <h2 id="homing-and-the-tool">Homing and the tool<a class="headerlink" href="#homing-and-the-tool" title="Permanent link">&para;</a></h2>
 <p>Joint 5 homes against a feature of the tool holder. The pneumatic gripper holder and the SSG-48's coupler
@@ -1512,7 +1570,7 @@ that. A short video shows the arm with a 1 kg payload:
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 4, 2026 10:22:48 UTC">November 4, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 5, 2026 16:14:53 UTC">November 5, 2026</span>
   </span>
 
     

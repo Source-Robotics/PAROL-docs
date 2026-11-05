@@ -38,8 +38,10 @@ reports it in the I/O byte; the PC software stops the robot when it sees the con
 
 - The contact must be **normally closed**: an open circuit means stop, so an unplugged button or a cut wire stops
   the robot too. A normally open button does not work.
-- Both connectors share one microcontroller pin: a second button goes in series on the other connector.
-- Any NC switch works for a bench setup. The BOM's 19 mm E-stop and the printed housing go on the base.
+- Both connectors share one microcontroller pin: a second button goes in series on the other connector, so
+  pressing either button stops the robot.
+- Any NC switch works for a bench setup. The BOM's 19 mm E-stop sits in its own printed box (`STL/ESTOP`), on a
+  cable as long as the setup needs.
 
 ## The power button
 

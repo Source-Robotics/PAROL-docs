@@ -10,9 +10,9 @@
 
 **PAROL6 commander software:** main
 
-**Revision:** 2026.A
+**Revision:** 2026.B
 
-**Published:** 2026-11-03
+**Published:** 2026-11-05
 
 **Applies to:** PAROL6 release 1.1, PAROL6 commander software main
 

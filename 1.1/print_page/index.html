@@ -18,7 +18,7 @@
         
       
       
-      <link rel="icon" href="../assets/Icon2.png">
+      <link rel="icon" href="../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
@@ -3061,8 +3061,8 @@ Robot models and pictures made from them: <a href="https://github.com/Source-Rob
 <p><strong>PAROL6 release:</strong> 1.1</p>
 <p><strong>Python <abbr title="Application Programming Interface">API</abbr> (parol6):</strong> v0.9.1</p>
 <p><strong>PAROL6 commander software:</strong> main</p>
-<p><strong>Revision:</strong> 2026.B</p>
-<p><strong>Published:</strong> 2026-11-04</p>
+<p><strong>Revision:</strong> 2026.C</p>
+<p><strong>Published:</strong> 2026-11-05</p>
 <p><strong>Applies to:</strong> PAROL6 with the PAROL6 control board v2.0, PAROL6 release 1.1, Python <abbr title="Application Programming Interface">API</abbr> (parol6) v0.9.1, PAROL6 commander software main</p>
 <p><em>Original instructions</em></p>
 </div>
@@ -3170,7 +3170,7 @@ read the <a href="#02-safety">Safety</a> chapter: it is five minutes long.</p>
 <td>it is the stop that still works when the PC software has frozen (<a href="#02-safety-emergency-stop">Emergency stop</a>)</td>
 </tr>
 <tr>
-<td><strong>An <abbr title="Emergency stop">E-stop</abbr></strong>, a normally closed button on the base</td>
+<td><strong>An <abbr title="Emergency stop">E-stop</abbr></strong>, a normally closed button in its printed box</td>
 <td>the <a href="#build-bill-of-materials"><abbr title="Bill Of Materials, the list of parts to buy">BOM</abbr></a> names one; any <abbr title="Normally Closed, a switch contact that is closed until it is pressed">NC</abbr> switch works</td>
 </tr>
 <tr>
@@ -3368,11 +3368,11 @@ and the arm holds its position. Let go.</p>
 <code>PAROL-commander-software/GUI/files/Serial_sender_good_latest.py</code> in a text editor (VS Code: <strong>File</strong>,
 <strong>Open File</strong>) and find these lines near the top:
 <div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#quick-start-__codelineno-6-1"></a><span class="k">if</span> <span class="n">my_os</span> <span class="o">==</span> <span class="s2">"Windows"</span><span class="p">:</span> 
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#quick-start-__codelineno-6-2"></a>    <span class="n">STARTING_PORT</span> <span class="o">=</span> <span class="mi">8</span> <span class="c1"># COM3</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#quick-start-__codelineno-6-2"></a>    <span class="n">STARTING_PORT</span> <span class="o">=</span> <span class="mi">58</span> <span class="c1"># COM3</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#quick-start-__codelineno-6-3"></a><span class="k">else</span><span class="p">:</span>   
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#quick-start-__codelineno-6-4"></a>    <span class="n">STARTING_PORT</span> <span class="o">=</span> <span class="mi">0</span>
 </span></code></pre></div>
-On Windows, replace <code>8</code> with the number of your port, <code>5</code> for <code>COM5</code>. On Linux, <code>0</code> is <code>/dev/ttyACM0</code>; change
+On Windows, replace <code>58</code> with the number of your port, <code>5</code> for <code>COM5</code>. On Linux, <code>0</code> is <code>/dev/ttyACM0</code>; change
 it if yours has another number. Save the file. Then start the program in the terminal:
 <div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#quick-start-__codelineno-7-1"></a>cd %USERPROFILE%\Documents\PAROL-commander-software
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#quick-start-__codelineno-7-2"></a>.venv\Scripts\activate
@@ -3694,6 +3694,12 @@ Robotics name, the product names and the logos are not covered by any of these.<
 <tbody>
 <tr>
 <td>Robot Manual</td>
+<td>2026.C</td>
+<td>2026-11-05</td>
+<td>The base screws, M5 × 16 mm with a 4 mm key; the <abbr title="Emergency stop">E-stop</abbr> in its own printed box on a cable; either of two <abbr title="Emergency stop">E-stop</abbr> buttons stops the robot; the GX16 polarity is the builder's choice; the robot model's link names; the commander's <code>STARTING_PORT</code> (58) in the quick start; the gripper socket's pins in the build guide (page 32 of the assembly manual has 1 and 3 the wrong way round)</td>
+</tr>
+<tr>
+<td>Robot Manual</td>
 <td>2026.B</td>
 <td>2026-11-04</td>
 <td>PAROL6 release 1.1, with the files as downloads on the release; the workspace side and top views per tool; the reference frames per tool and the flange frame (the Python <abbr title="Application Programming Interface">API</abbr>'s reversed tool frame as KI-11); the mains side of the power supply; cleaning; the old manual as version 0 in the version selector; the hardware licence CERN-OHL-S-2.0</td>
@@ -3703,6 +3709,12 @@ Robotics name, the product names and the logos are not covered by any of these.<
 <td>2026.A</td>
 <td>2026-11-03</td>
 <td>First version in this form: the numbered chapters, the build guide, from the pages of the previous site</td>
+</tr>
+<tr>
+<td>Control Board Manual</td>
+<td>2026.C</td>
+<td>2026-11-05</td>
+<td>The <abbr title="Emergency stop">E-stop</abbr> in its own printed box; either of two <abbr title="Emergency stop">E-stop</abbr> buttons stops the robot</td>
 </tr>
 <tr>
 <td>Control Board Manual</td>
@@ -3718,9 +3730,21 @@ Robotics name, the product names and the logos are not covered by any of these.<
 </tr>
 <tr>
 <td>End Effectors Guide</td>
+<td>2026.B</td>
+<td>2026-11-05</td>
+<td>The M8's 24 V has no fuse of its own; the gripper socket's pins; the PAR6 cable reverses a gripper's supply, it does not put 24 V on the <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> pins</td>
+</tr>
+<tr>
+<td>End Effectors Guide</td>
 <td>2026.A</td>
 <td>2026-11-03</td>
 <td>First version: the flange, the pneumatic and vacuum grippers, the SSG-48 and MSG, your own tool</td>
+</tr>
+<tr>
+<td><abbr title="Graphical User Interface">GUI</abbr> Guide</td>
+<td>2026.B</td>
+<td>2026-11-05</td>
+<td>The commander's <code>STARTING_PORT</code> is 58 in the code, not 8</td>
 </tr>
 <tr>
 <td><abbr title="Graphical User Interface">GUI</abbr> Guide</td>
@@ -3793,6 +3817,8 @@ gives it a reference when the robot homes.</p>
 <li>Gripper, here the standard pneumatic gripper</li>
 </ol>
 </div>
+<p>The robot model (the <abbr title="Unified Robot Description Format, the robot description used by ROS 2 and the Python API">URDF</abbr> and MuJoCo files in <code>robot_descriptions</code>) uses the standard <abbr title="Robot Operating System">ROS</abbr> link names, which count
+the parts differently: the elbow is <code>forearm_link</code>, the forearm <code>wrist_1_link</code> and the wrist <code>wrist_2_link</code>.</p>
 <p>The arm has no brakes and no joint encoders. The motors hold the arm while they are powered; the position is
 counted in steps from the homing reference. Both facts shape how the robot is used, and the
 <a href="#02-safety">Safety</a> chapter returns to them.</p>
@@ -3927,7 +3953,7 @@ that still works when the PC software has frozen (<a href="#02-safety-emergency-
 switch you reach for when the <abbr title="Emergency stop">E-stop</abbr> has no effect.</p>
 <h2 id="01-overview-what-you-need-the-e-stop">The <abbr title="Emergency stop">E-stop</abbr><a class="headerlink" href="#01-overview-what-you-need-the-e-stop" title="Permanent link">&para;</a></h2>
 <p>A normally closed emergency stop button, wired to the two <abbr title="Emergency stop">E-stop</abbr> terminals of the control board. The robot does
-not run without it. The kit's button mounts on the base in the printed holder; any <abbr title="Normally Closed, a switch contact that is closed until it is pressed">NC</abbr> switch works for a bench
+not run without it. The kit's button sits in its own 3D-printed box, on a cable as long as your setup needs; any <abbr title="Normally Closed, a switch contact that is closed until it is pressed">NC</abbr> switch works for a bench
 setup (<a href="#02-safety-emergency-stop">Emergency stop</a>).</p>
 <h2 id="01-overview-what-you-need-the-pc">The PC<a class="headerlink" href="#01-overview-what-you-need-the-pc" title="Permanent link">&para;</a></h2>
 <p>The PC runs the kinematics and the planner and must send a packet to the robot every 10 ms without hiccups. A
@@ -3963,7 +3989,7 @@ Windows 10 PCs with six-core AMD Ryzen processors, a Radxa ROCK 5B on Linux and 
 </table>
 <p>A <abbr title="Universal Serial Bus, the connection between the control board and the PC">USB</abbr> type B cable connects the robot to the PC. <abbr title="Universal Serial Bus, the connection between the control board and the PC">USB</abbr> does not power the board.</p>
 <h2 id="01-overview-what-you-need-tools">Tools<a class="headerlink" href="#01-overview-what-you-need-tools" title="Permanent link">&para;</a></h2>
-<p>For an assembled robot: hex keys (2, 2.5, 3 mm) for the mounting screws and the gripper, a small screwdriver for
+<p>For an assembled robot: hex keys, 4 mm for the M5 mounting screws and 2, 2.5 and 3 mm for the gripper, a small screwdriver for
 the terminal blocks. For a build, the <a href="#build">Build guide</a> lists the rest, down to the blue
 threadlocker and the thermal cement.</p>
 <h2 id="01-overview-what-you-need-knowledge">Knowledge<a class="headerlink" href="#01-overview-what-you-need-knowledge" title="Permanent link">&para;</a></h2>
@@ -4068,7 +4094,8 @@ board has no reverse-polarity protection on its power input.</p>
 <p>A pneumatic gripper closes with the force of the compressed air behind it, whatever is between its fingers; the
 electric grippers close with up to 80 N. A vacuum gripper drops its load the moment the air stops. Treat the tool
 as part of the robot in every rule above.</p></section><section class="print-page" id="02-safety-emergency-stop" heading-number="1.3.2.4"><h1 id="02-safety-emergency-stop-emergency-stop">Emergency stop<a class="headerlink" href="#02-safety-emergency-stop-emergency-stop" title="Permanent link">&para;</a></h1>
-<p>The <abbr title="Emergency stop">E-stop</abbr> is the red button on the base, a normally closed contact wired to the control board's <abbr title="Emergency stop">E-stop</abbr> input.
+<p>The <abbr title="Emergency stop">E-stop</abbr> is the red button in its own 3D-printed box, a normally closed contact wired by its cable to the control board's
+<abbr title="Emergency stop">E-stop</abbr> input.
 It must be connected for the robot to run.</p>
 <figure>
   <a class="glightbox" href="../assets/ESTOP_CON.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="E-stop wiring to the control board" src="../assets/ESTOP_CON.webp" width="800" /></a>
@@ -5332,7 +5359,7 @@ test.</p>
 </div>
 <h2 id="04-installation-mounting-the-base-holes">The base holes<a class="headerlink" href="#04-installation-mounting-the-base-holes" title="Permanent link">&para;</a></h2>
 <p>Six holes in the base, spaced for 30×30 mm aluminium profiles. Bolt the base to a plate or a profile frame with
-M5 screws and T-nuts.</p>
+six M5 × 16 mm socket head screws (DIN 912, in the kit), with T-nuts on a profile. They take a 4 mm hex key.</p>
 <figure>
   <a class="glightbox" href="../assets/base2.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="The six holes in the base" src="../assets/base2.webp" width="600" /></a>
 <br />
@@ -5344,7 +5371,7 @@ interfere with the fan intake and the connectors at the back.</p>
 <h2 id="04-installation-mounting-a-profile-frame">A profile frame<a class="headerlink" href="#04-installation-mounting-a-profile-frame" title="Permanent link">&para;</a></h2>
 <p>The repository's <a href="https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/tree/main/STL/UTILITY"><code>STL/UTILITY</code></a>
 folder has <code>connectors_4_alu_profiles.STL</code>, which prints a set of corner connectors for a frame of 30×30
-profiles, as in the figure. You need M5 T-nuts, M5 × 12 mm screws for the connectors and M5 × 18 to 20 mm screws
+profiles, as in the figure. You need M5 T-nuts, M5 × 12 mm screws for the connectors and the six M5 × 16 mm screws
 for the base.</p>
 <figure>
   <a class="glightbox" href="../assets/alu_profile.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="PAROL6 on a 30×30 aluminium profile frame" src="../assets/alu_profile.webp" width="600" /></a>
@@ -5353,7 +5380,8 @@ for the base.</p>
 </figure>
 <h2 id="04-installation-mounting-mounting-plates">Mounting plates<a class="headerlink" href="#04-installation-mounting-mounting-plates" title="Permanent link">&para;</a></h2>
 <p>The <code>mounting plates</code> folder of the repository has <abbr title="the CAD exchange format of the mechanical parts">STEP</abbr> files of a small and a big base plate, with the hole
-pattern, for a plate you have machined or cut.</p>
+pattern, for a plate you have machined or cut. The small plate has more holes than PAROL6 uses, two more M5 and
+six M4: they were made for other robots and designs, and stay empty under PAROL6.</p>
 <h2 id="04-installation-mounting-orientation">Orientation<a class="headerlink" href="#04-installation-mounting-orientation" title="Permanent link">&para;</a></h2>
 <p>PAROL6 is designed to stand upright on its base. Wall and ceiling mounting are not supported: the payload, the
 motor currents and the speed limits are set for an upright arm, and with no brakes the arm would fall into the
@@ -5497,8 +5525,9 @@ cable and plug, approved for your country. There is nothing to wire on its mains
 <h2 id="04-installation-connecting-the-e-stop">The <abbr title="Emergency stop">E-stop</abbr><a class="headerlink" href="#04-installation-connecting-the-e-stop" title="Permanent link">&para;</a></h2>
 <p>The <abbr title="Emergency stop">E-stop</abbr> must be a normally closed contact: pressing it, unplugging it or cutting its wire opens the circuit,
 and all of these stop the robot, which is what you want. A normally open button does not work. The control board
-has two <abbr title="Emergency stop">E-stop</abbr> connectors on the same input, so a second button can be wired in series.</p>
-<p>The kit's button comes with a printed housing and a PG7 cable gland. <a href="#02-safety-emergency-stop">Emergency stop</a>
+has two <abbr title="Emergency stop">E-stop</abbr> connectors on the same input, so a second button can be wired in series: pressing either button
+stops the robot.</p>
+<p>The kit's button sits in its own printed box with a PG7 cable gland, on a cable as long as you need. <a href="#02-safety-emergency-stop">Emergency stop</a>
 says what happens when it is pressed, and the <a href="#board-06-io-and-estop">Control Board Manual</a> has the wiring
 diagram.</p>
 <h2 id="04-installation-connecting-the-gripper">The gripper<a class="headerlink" href="#04-installation-connecting-the-gripper" title="Permanent link">&para;</a></h2>
@@ -6539,8 +6568,8 @@ easy to get wrong, and leaves out the three items a local supplier sells cheaper
 kit skips the bill of materials; a printed parts kit skips the printing.</p></section><section class="print-page" id="build-bill-of-materials" heading-number="1.4.2"><h1 id="build-bill-of-materials-bill-of-materials">Bill of materials<a class="headerlink" href="#build-bill-of-materials-bill-of-materials" title="Permanent link">&para;</a></h1>
 <div class="admonition note">
 <p class="admonition-title">This is a copy</p>
-<p>The original is <a href="https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/blob/main/BOM/BOM.md"><abbr title="Bill Of Materials, the list of parts to buy">BOM</abbr>/<abbr title="Bill Of Materials, the list of parts to buy">BOM</abbr>.md</a> in the robot's repository; this page is that
-file as of 2026-11-03 (commit <code>cc328a5</code>), with the reference images shown inline. If a link is broken or a part
+<p>The original is <a href="https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/blob/main/BOM/README.md"><abbr title="Bill Of Materials, the list of parts to buy">BOM</abbr>/README.md</a> in the robot's repository; this page is that
+file as of 2026-11-05 (commit <code>38d0b1a</code>), with the reference images shown inline. If a link is broken or a part
 is wrong, <a href="https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/issues/new">open an issue</a> there, and the fix lands here with the next sync. If you would
 rather not source the parts yourself, the shop's <a href="#build-kits">kits</a> cover every part or the hard-to-find ones.</p>
 </div>
@@ -7319,9 +7348,15 @@ page before you plug anything in.</p>
   in that joint's group; polarity does not matter.</li>
 <li><strong>Inductive sensors</strong> (joints 1, 4, 6): brown to 24 V, blue to GND, black (signal) to the LIMIT terminal the
   wiring diagram shows in that joint's group.</li>
-<li><strong>The gripper connector</strong>: 24 V, GND, <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> H and <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> L from the board to the M8 socket at the forearm.</li>
+<li><strong>The gripper connector</strong>: 24 V, GND, <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> H and <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> L from the board to the female M8 socket at the forearm:
+  pin 1 GND, 2 <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> H, 3 24 V, 4 <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> L, by the numbers moulded into it
+  (<a href="#end-effectors-flange-the-gripper-socket">The gripper socket</a>). Solder it as the photo on page 32 of the
+  assembly manual shows, the view from the back where the wires go. The numbered list next to that photo has
+  pins 1 and 3 the wrong way round for this socket: wired by the list, the PAROL6 gripper cable reverses the
+  gripper's supply.</li>
 <li><strong>The <abbr title="Emergency stop">E-stop</abbr></strong>: the <abbr title="Normally Closed, a switch contact that is closed until it is pressed">NC</abbr> contact to the two <abbr title="Emergency stop">E-stop</abbr> terminals.</li>
-<li><strong>Power</strong>: the GX16 socket on the base to the XT30 on the board, polarity checked twice.</li>
+<li><strong>Power</strong>: the GX16 socket on the base to the XT30 on the board, polarity checked twice. The GX16 has no
+  fixed +24 V pin: choose one, wire the supply's plug the same way, and mark it.</li>
 <li><strong>The power button</strong>: the JST PH cable to the button connector.</li>
 <li><strong>The fan</strong>: 5 V, three-pin, on the fan header; not a <abbr title="Pulse-Width Modulation">PWM</abbr> fan.</li>
 </ul>
@@ -7724,7 +7759,7 @@ commands over <abbr title="User Datagram Protocol, the network transport between
 <dd>The direction in which a joint's angle increases, shown in the figure on <em>Joint limits and directions</em>. The
 commander's left arrows jog positive.</dd>
 <dt><strong><abbr title="Emergency stop">E-stop</abbr></strong></dt>
-<dd>The normally closed button on the base. Pressing it, unplugging it or cutting its wire opens the circuit, and
+<dd>The normally closed button in its own printed box, on a cable to the robot. Pressing it, unplugging it or cutting its wire opens the circuit, and
 the robot stops. It must be connected for the robot to run.</dd>
 <dt><strong>Firmware</strong></dt>
 <dd>The program on the control board. The <em>main</em> firmware runs the robot with the PC software; the <em>test</em> firmware
@@ -7935,8 +7970,8 @@ branch, as of the date given, is the one these pages describe. Known faults in e
 <div class="doc-meta">
 <p><strong>Document number:</strong> SR-2002</p>
 <p><strong>PAROL6 release:</strong> 1.1</p>
-<p><strong>Revision:</strong> 2026.B</p>
-<p><strong>Published:</strong> 2026-11-04</p>
+<p><strong>Revision:</strong> 2026.C</p>
+<p><strong>Published:</strong> 2026-11-05</p>
 <p><strong>Applies to:</strong> PAROL6 control board v2.0 and v1.2, PAROL6 release 1.1</p>
 <p><em>Original instructions</em></p>
 </div>
@@ -8356,8 +8391,10 @@ reports it in the I/O byte; the PC software stops the robot when it sees the con
 <ul>
 <li>The contact must be <strong>normally closed</strong>: an open circuit means stop, so an unplugged button or a cut wire stops
   the robot too. A normally open button does not work.</li>
-<li>Both connectors share one microcontroller pin: a second button goes in series on the other connector.</li>
-<li>Any <abbr title="Normally Closed, a switch contact that is closed until it is pressed">NC</abbr> switch works for a bench setup. The <abbr title="Bill Of Materials, the list of parts to buy">BOM</abbr>'s 19 mm <abbr title="Emergency stop">E-stop</abbr> and the printed housing go on the base.</li>
+<li>Both connectors share one microcontroller pin: a second button goes in series on the other connector, so
+  pressing either button stops the robot.</li>
+<li>Any <abbr title="Normally Closed, a switch contact that is closed until it is pressed">NC</abbr> switch works for a bench setup. The <abbr title="Bill Of Materials, the list of parts to buy">BOM</abbr>'s 19 mm <abbr title="Emergency stop">E-stop</abbr> sits in its own printed box (<code>STL/ESTOP</code>), on a
+  cable as long as the setup needs.</li>
 </ul>
 <h2 id="board-06-io-and-estop-the-power-button">The power button<a class="headerlink" href="#board-06-io-and-estop-the-power-button" title="Permanent link">&para;</a></h2>
 <p>A momentary push button with an <abbr title="Light-Emitting Diode">LED</abbr>, on the JST PH connector. A press switches the 24 V stage on; a press while
@@ -8757,8 +8794,8 @@ in the Robot Manual.</p></section></section>
 <p><strong>PAROL6 release:</strong> 1.1</p>
 <p><strong>Python <abbr title="Application Programming Interface">API</abbr> (parol6):</strong> v0.9.1</p>
 <p><strong>PAROL6 commander software:</strong> main</p>
-<p><strong>Revision:</strong> 2026.A</p>
-<p><strong>Published:</strong> 2026-11-03</p>
+<p><strong>Revision:</strong> 2026.B</p>
+<p><strong>Published:</strong> 2026-11-05</p>
 <p><strong>Applies to:</strong> PAROL6 release 1.1, Python <abbr title="Application Programming Interface">API</abbr> (parol6) v0.9.1, PAROL6 commander software main</p>
 <p><em>Original instructions</em></p>
 </div>
@@ -8846,7 +8883,7 @@ check when a tool's orientation drifts (<a href="#07-maintenance-couplers">Coupl
 <tbody>
 <tr>
 <td><strong>M8 4-pin connector</strong></td>
-<td>24 V, GND, <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> H, <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> L for an electric gripper; wired from the control board's <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> 1 and 24 V</td>
+<td>24 V, GND, <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> H, <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> L for an electric gripper; wired from the control board's <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> 1 and 24 V. The 24 V has no fuse of its own: the gripper draws what it needs, and a short in the gripper or its cable is limited only by the power supply</td>
 </tr>
 <tr>
 <td><strong>Two pneumatic tubes</strong>, 4 mm</td>
@@ -8858,6 +8895,42 @@ check when a tool's orientation drifts (<a href="#07-maintenance-couplers">Coupl
 limits by its stops. Joint 6 has no limit with the bare flange; with a tool, the tool's cable and tubes run from
 the forearm to the tool and wrap as joint 6 turns, so keep joint 6 within the turn they allow
 (<a href="#03-technical-data-joint-limits-limits">Joint limits and directions</a>).</p>
+<h2 id="end-effectors-flange-the-gripper-socket">The gripper socket<a class="headerlink" href="#end-effectors-flange-the-gripper-socket" title="Permanent link">&para;</a></h2>
+<figure>
+  <a class="glightbox" href="../assets/GRIP_CON.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="The gripper socket at the forearm, seen from the front, with its four signals" src="../assets/GRIP_CON.webp" width="600" /></a>
+<br />
+<figcaption>Figure 1: The gripper socket at the forearm, seen from the front, with its four signals.</figcaption>
+</figure>
+<p>The M8 socket at the forearm is a female 4-pin. Its pins, by the numbers moulded into it:</p>
+<table>
+<thead>
+<tr>
+<th>Pin</th>
+<th>Signal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td>GND</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td><abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> H</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>+24 V</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td><abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> L</td>
+</tr>
+</tbody>
+</table>
+<p>The grippers have +24 V on pin 1 and GND on pin 3, so the PAROL6 gripper cable crosses pin 1 with 3 and 2 with 4
+between its ends. A straight M8 cable, the PAR6 gripper cable among them, reverses a gripper's supply here and
+destroys its driver. A tool of your own takes its pins from the table above.</p>
 <h2 id="end-effectors-flange-the-tool-in-the-software">The tool in the software<a class="headerlink" href="#end-effectors-flange-the-tool-in-the-software" title="Permanent link">&para;</a></h2>
 <p>The software must know the tool to compute the pose of its tip. The commander's kinematic model is built for the
 standard pneumatic gripper; the Python <abbr title="Application Programming Interface">API</abbr> has tool definitions with variants and a settable <abbr title="Tool Center Point, the point on the tool that the robot positions">TCP</abbr> offset
@@ -8881,7 +8954,7 @@ is compared on <a href="#03-technical-data-kinematics">Dimensions and kinematics
   <a class="glightbox" href="../assets/kinematics/parol6_flange.webp#only-light" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="PAROL6 with the flange only: dimensions to the TCP and the DH table" src="../assets/kinematics/parol6_flange.webp#only-light" width="600" /></a>
   <a class="glightbox" href="../assets/kinematics/parol6_flange_dark.webp#only-dark" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="PAROL6 with the flange only: dimensions to the TCP and the DH table" src="../assets/kinematics/parol6_flange_dark.webp#only-dark" width="600" /></a>
 <br />
-<figcaption>Figure 1: PAROL6 with the flange only: dimensions to the TCP and the DH table.</figcaption>
+<figcaption>Figure 2: PAROL6 with the flange only: dimensions to the TCP and the DH table.</figcaption>
 </figure>
 <h2 id="end-effectors-flange-homing-and-the-tool">Homing and the tool<a class="headerlink" href="#end-effectors-flange-homing-and-the-tool" title="Permanent link">&para;</a></h2>
 <p>Joint 5 homes against a feature of the tool holder. The pneumatic gripper holder and the SSG-48's coupler
@@ -9049,9 +9122,10 @@ the gripper; this page covers PAROL6.</p>
 </figure>
 <div class="admonition danger">
 <p class="admonition-title">Only the PAROL6 cable</p>
-<p>PAROL6 and PAR6 put the four signals on different pins. The PAR6 cable, or a self-made cable with a wrong
-pin, puts 24 V on the <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> pins and destroys the gripper's driver. The gripper manual's cable page has the
-pinout to check your own against.</p>
+<p>PAROL6 and PAR6 put the four signals on different pins. The PAR6 cable reverses the gripper's supply, and a
+self-made cable with a wrong pin can put 24 V on a <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> pin; either destroys the gripper's driver. The
+socket's pins are in <a href="#end-effectors-flange-the-gripper-socket">The gripper socket</a>, the cable's in the gripper
+manual's cable page.</p>
 </div>
 <p>Leave the gripper's <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> node ID at 0 and its termination switch on: it is the last node on the robot's bus
 (<a href="#06-peripherals-can-bus"><abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> bus</a>).</p>
@@ -9175,9 +9249,10 @@ covers the gripper; this page covers PAROL6.</p>
 </ol>
 <div class="admonition danger">
 <p class="admonition-title">Only the PAROL6 cable</p>
-<p>PAROL6 and PAR6 put the four signals on different pins. The PAR6 cable, or a self-made cable with a wrong
-pin, puts 24 V on the <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> pins and destroys the gripper's driver. The gripper manual's cable page has the
-pinout to check your own against.</p>
+<p>PAROL6 and PAR6 put the four signals on different pins. The PAR6 cable reverses the gripper's supply, and a
+self-made cable with a wrong pin can put 24 V on a <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> pin; either destroys the gripper's driver. The
+socket's pins are in <a href="#end-effectors-flange-the-gripper-socket">The gripper socket</a>, the cable's in the gripper
+manual's cable page.</p>
 </div>
 <p>Leave the gripper's <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> node ID at 0 and its termination switch, reachable through the stepper cover, on: it is
 the last node on the robot's bus (<a href="#06-peripherals-can-bus"><abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> bus</a>).</p>
@@ -9295,7 +9370,8 @@ holder needs a surface in the same place as the pneumatic gripper holder's; comp
 Then measure the homing offset: home, jog joint 5 until the pin fits the witness marks, and set
 <code>j5_homing_offset</code> in <code>main.cpp</code> to the steps that gives (<a href="#05-operation-mastering">Mastering</a>).</p>
 <h2 id="end-effectors-custom-tools-connections">Connections<a class="headerlink" href="#end-effectors-custom-tools-connections" title="Permanent link">&para;</a></h2>
-<p>Up to 24 V and <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> at the M8 connector, two air lines, and the control board's two inputs and two outputs at the
+<p>Up to 24 V and <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> at the M8 connector (its pins: <a href="#end-effectors-flange-the-gripper-socket">The gripper socket</a>), two air
+lines, and the control board's two inputs and two outputs at the
 base. A tool that needs more, a camera's <abbr title="Universal Serial Bus, the connection between the control board and the PC">USB</abbr> for instance, runs its cable outside the arm, with enough slack for
 joints 4, 5 and 6 and fixed so the arm cannot catch it.</p>
 <h2 id="end-effectors-custom-tools-the-tool-frame">The tool frame<a class="headerlink" href="#end-effectors-custom-tools-the-tool-frame" title="Permanent link">&para;</a></h2>
@@ -9328,8 +9404,8 @@ the software's joint limits do not know the tool's shape.</p></section></section
 <p><strong>Document number:</strong> SR-4005</p>
 <p><strong>PAROL6 release:</strong> 1.1</p>
 <p><strong>PAROL6 commander software:</strong> main</p>
-<p><strong>Revision:</strong> 2026.A</p>
-<p><strong>Published:</strong> 2026-11-03</p>
+<p><strong>Revision:</strong> 2026.B</p>
+<p><strong>Published:</strong> 2026-11-05</p>
 <p><strong>Applies to:</strong> PAROL6 release 1.1, PAROL6 commander software main</p>
 <p><em>Original instructions</em></p>
 </div>
@@ -9468,11 +9544,11 @@ software runs.</p>
 <p>For the first run, write the robot's port into the program: open <code>GUI/files/Serial_sender_good_latest.py</code> in a
 text editor and find these lines near the top:</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#gui-commander-installation-__codelineno-3-1"></a><span class="k">if</span> <span class="n">my_os</span> <span class="o">==</span> <span class="s2">"Windows"</span><span class="p">:</span> 
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#gui-commander-installation-__codelineno-3-2"></a>    <span class="n">STARTING_PORT</span> <span class="o">=</span> <span class="mi">8</span> <span class="c1"># COM3</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#gui-commander-installation-__codelineno-3-2"></a>    <span class="n">STARTING_PORT</span> <span class="o">=</span> <span class="mi">58</span> <span class="c1"># COM3</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#gui-commander-installation-__codelineno-3-3"></a><span class="k">else</span><span class="p">:</span>   
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#gui-commander-installation-__codelineno-3-4"></a>    <span class="n">STARTING_PORT</span> <span class="o">=</span> <span class="mi">0</span>
 </span></code></pre></div>
-<p>On Windows, replace <code>8</code> with the number of the robot's port (<code>5</code> for <code>COM5</code>; Device Manager, <strong>Ports (COM &amp;
+<p>On Windows, replace <code>58</code> with the number of the robot's port (<code>5</code> for <code>COM5</code>; Device Manager, <strong>Ports (COM &amp;
 LPT)</strong>, shows it). On Linux, <code>0</code> means <code>/dev/ttyACM0</code>. Save, then start the program from the activated virtual
 environment:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#gui-commander-installation-__codelineno-4-1"></a>cd GUI/files

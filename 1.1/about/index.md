@@ -84,10 +84,14 @@ Robotics name, the product names and the logos are not covered by any of these.
 
 | Document | Revision | Date | Changes |
 |---|---|---|---|
+| Robot Manual | 2026.C | 2026-11-05 | The base screws, M5 × 16 mm with a 4 mm key; the E-stop in its own printed box on a cable; either of two E-stop buttons stops the robot; the GX16 polarity is the builder's choice; the robot model's link names; the commander's `STARTING_PORT` (58) in the quick start; the gripper socket's pins in the build guide (page 32 of the assembly manual has 1 and 3 the wrong way round) |
 | Robot Manual | 2026.B | 2026-11-04 | PAROL6 release 1.1, with the files as downloads on the release; the workspace side and top views per tool; the reference frames per tool and the flange frame (the Python API's reversed tool frame as KI-11); the mains side of the power supply; cleaning; the old manual as version 0 in the version selector; the hardware licence CERN-OHL-S-2.0 |
 | Robot Manual | 2026.A | 2026-11-03 | First version in this form: the numbered chapters, the build guide, from the pages of the previous site |
+| Control Board Manual | 2026.C | 2026-11-05 | The E-stop in its own printed box; either of two E-stop buttons stops the robot |
 | Control Board Manual | 2026.B | 2026-11-04 | PAROL6 release 1.1: the same firmware as release 1 |
 | Control Board Manual | 2026.A | 2026-11-03 | First version in this form, from the control board and peripherals pages of the previous site |
+| End Effectors Guide | 2026.B | 2026-11-05 | The M8's 24 V has no fuse of its own; the gripper socket's pins; the PAR6 cable reverses a gripper's supply, it does not put 24 V on the CAN pins |
 | End Effectors Guide | 2026.A | 2026-11-03 | First version: the flange, the pneumatic and vacuum grippers, the SSG-48 and MSG, your own tool |
+| GUI Guide | 2026.B | 2026-11-05 | The commander's `STARTING_PORT` is 58 in the code, not 8 |
 | GUI Guide | 2026.A | 2026-11-03 | First version: the commander software, Waldo Commander, Motor GUI |
 | Programming Guide | 2026.A | 2026-11-03 | First version: the concepts, the Python API 0.9.1, the commander software and RBTscript, ROS 2; the generated API reference |

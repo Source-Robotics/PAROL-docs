@@ -21,9 +21,15 @@ page before you plug anything in.
   in that joint's group; polarity does not matter.
 - **Inductive sensors** (joints 1, 4, 6): brown to 24 V, blue to GND, black (signal) to the LIMIT terminal the
   wiring diagram shows in that joint's group.
-- **The gripper connector**: 24 V, GND, CAN H and CAN L from the board to the M8 socket at the forearm.
+- **The gripper connector**: 24 V, GND, CAN H and CAN L from the board to the female M8 socket at the forearm:
+  pin 1 GND, 2 CAN H, 3 24 V, 4 CAN L, by the numbers moulded into it
+  ([The gripper socket](https://docs.source-robotics.com/PAROL-docs/1.1/end-effectors/flange/#the-gripper-socket)). Solder it as the photo on page 32 of the
+  assembly manual shows, the view from the back where the wires go. The numbered list next to that photo has
+  pins 1 and 3 the wrong way round for this socket: wired by the list, the PAROL6 gripper cable reverses the
+  gripper's supply.
 - **The E-stop**: the NC contact to the two E-stop terminals.
-- **Power**: the GX16 socket on the base to the XT30 on the board, polarity checked twice.
+- **Power**: the GX16 socket on the base to the XT30 on the board, polarity checked twice. The GX16 has no
+  fixed +24 V pin: choose one, wire the supply's plug the same way, and mark it.
 - **The power button**: the JST PH cable to the button connector.
 - **The fan**: 5 V, three-pin, on the fan header; not a PWM fan.
 
