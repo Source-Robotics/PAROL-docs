@@ -18,7 +18,7 @@ Python API in [PCrnjak/PAROL6-python-API](https://github.com/PCrnjak/PAROL6-pyth
 | `docs/` | the pages: the robot manual at the top level (numbered chapters, `build/`, `appendix/`), `board/`, `end-effectors/`, `gui/`, `programming/` and `reference/` (one tab), `support/` |
 | `docs/includes/` | text shared by pages (glossary, symbols, abbreviations) and the data the reference pages are built from |
 | `docs/includes/generated/` | written by `tools/sync_api.py` from the Python API's release tag: `api_facts.json`, `api_release_notes.md`. Never edit |
-| `docs/build/bill-of-materials.md`, `docs/assets/bom/` | written by `tools/sync_bom.py` from the robot repository's `BOM/BOM.md` and its reference images. Never edit |
+| `docs/build/bill-of-materials.md`, `docs/assets/bom/` | written by `tools/sync_bom.py` from the robot repository's `BOM/README.md` and its reference images. Never edit |
 | `docs/assets/print_table.webp` | rendered by `tools/sync_print_table.py` from the robot repository's `Print table/Print_table.pdf`. Never edit |
 | `versions.yml` | every version fact: the PAROL6 release the site describes, the software versions, the manuals' numbers and revisions |
 | `compatibility.yml` | which control board, firmware, Python API, commander and gripper versions work together |
@@ -69,7 +69,7 @@ The CI build does not run it; the generated files are committed.
 
 ## The bill of materials and the print table are copied from the robot repository
 
-`docs/build/bill-of-materials.md` is the robot repository's `BOM/BOM.md`, as it is, with its reference images
+`docs/build/bill-of-materials.md` is the robot repository's `BOM/README.md`, as it is, with its reference images
 shown inline: `tools/sync_bom.py` reads a clone of `PAROL6-Desktop-robot-arm` (`--repo PATH`, `$PAROL6_DIR`, or a
 sibling folder), converts the note blocks, copies and scales the images into `docs/assets/bom/`, and writes a
 header naming the commit it copied. A wrong part or a broken link is fixed in the repository's file, then:

@@ -3,7 +3,7 @@
 
     python tools/sync_bom.py [--repo PATH] [--check]
 
-Reads BOM/BOM.md and BOM/BOM reference images/ from a clone of PAROL6-Desktop-robot-arm (--repo, else $PAROL6_DIR,
+Reads BOM/README.md and BOM/BOM reference images/ from a clone of PAROL6-Desktop-robot-arm (--repo, else $PAROL6_DIR,
 else a sibling folder of this repository or ../../projects), and writes docs/build/bill-of-materials.md and
 docs/assets/bom/. The page is the repository's file with these changes only:
 
@@ -13,7 +13,7 @@ docs/assets/bom/. The page is the repository's file with these changes only:
   - links into the repository (../STL/...) become absolute, and PCrnjak/ paths become Source-Robotics/
 
 Everything else, the parts, the quantities, the purchase links, is left untouched: a wrong part is fixed in the
-repository's BOM.md, then this tool is run again. --check exits 1 when the page is out of date.
+repository's BOM/README.md, then this tool is run again. --check exits 1 when the page is out of date.
 """
 from __future__ import annotations
 
@@ -34,7 +34,7 @@ STORED = 400     # px long side of the stored copy
 HEADER = """# Bill of materials
 
 !!! note "This is a copy"
-    The original is [BOM/BOM.md]({url}/blob/main/BOM/BOM.md) in the robot's repository; this page is that
+    The original is [BOM/README.md]({url}/blob/main/BOM/README.md) in the robot's repository; this page is that
     file as of {when} (commit `{commit}`), with the reference images shown inline. If a link is broken or a part
     is wrong, [open an issue]({url}/issues/new) there, and the fix lands here with the next sync. If you would
     rather not source the parts yourself, the shop's [kits](index.md#kits) cover every part or the hard-to-find ones.
@@ -46,7 +46,7 @@ def find_repo(arg: str | None) -> Path:
     candidates = [arg, os.environ.get("PAROL6_DIR"), ROOT.parent / "PAROL6-Desktop-robot-arm",
                   ROOT.parent.parent / "projects" / "PAROL6-Desktop-robot-arm"]
     for c in candidates:
-        if c and (Path(c) / "BOM" / "BOM.md").exists():
+        if c and (Path(c) / "BOM" / "README.md").exists():
             return Path(c)
     sys.exit("sync_bom: no clone of PAROL6-Desktop-robot-arm found; pass --repo PATH")
 
@@ -80,7 +80,7 @@ def convert(text: str, repo: Path, write_images: bool) -> str:
         safe = safe_name(name)
         src = img_src / name
         if not src.exists():
-            sys.exit(f"sync_bom: BOM.md refers to a missing image: {name}")
+            sys.exit(f"sync_bom: the BOM refers to a missing image: {name}")
         used[name] = safe
         return f'![{Path(name).stem}](../assets/bom/{safe}){{ width="{THUMB}" }}'
     text = re.sub(r"\[Link\]\(BOM%20reference%20images/([^)]+)\)", image, text)
@@ -105,11 +105,11 @@ def main(argv=None) -> int:
     args = ap.parse_args(argv)
     repo = find_repo(args.repo)
     try:
-        commit, when = subprocess.run(["git", "-C", str(repo), "log", "-1", "--format=%h %cs", "--", "BOM/BOM.md"],
+        commit, when = subprocess.run(["git", "-C", str(repo), "log", "-1", "--format=%h %cs", "--", "BOM/README.md"],
                                       capture_output=True, text=True, check=True).stdout.split()
     except (subprocess.CalledProcessError, ValueError, FileNotFoundError):
         commit, when = "unknown", "today"
-    body = convert((repo / "BOM" / "BOM.md").read_text(encoding="utf-8"), repo, write_images=not args.check)
+    body = convert((repo / "BOM" / "README.md").read_text(encoding="utf-8"), repo, write_images=not args.check)
     page = (HEADER.format(url=REPO_URL, when=when, commit=commit) + body).replace("\n", "\r\n")
     if args.check:
         current = PAGE.read_bytes().decode("utf-8") if PAGE.exists() else ""
