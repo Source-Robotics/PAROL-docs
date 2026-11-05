@@ -19,7 +19,7 @@ theme:
   name: material
   custom_dir: overrides
   logo: assets/logo_new_2.png
-  favicon: assets/Icon2.png
+  favicon: assets/favicon.png
   language: en
   font: false                  # Roboto is served from the site: docs/stylesheets/fonts.css
   icon:
