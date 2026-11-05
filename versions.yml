@@ -50,9 +50,9 @@ manuals:
   parol6:
     number: SR-1002
     title: PAROL6 Robot Manual
-    revision: 2026.B
+    revision: 2026.C
     status: published
-    published: 2026-11-04
+    published: 2026-11-05
     firmware: true
     software: [python_api, commander]
     applies_to: PAROL6 with the PAROL6 control board v2.0
@@ -60,9 +60,9 @@ manuals:
   board:
     number: SR-2002
     title: PAROL6 Control Board Manual
-    revision: 2026.B
+    revision: 2026.C
     status: published
-    published: 2026-11-04
+    published: 2026-11-05
     firmware: true
     software: []
     applies_to: PAROL6 control board v2.0 and v1.2
@@ -80,9 +80,9 @@ manuals:
   end_effectors:
     number: SR-3004
     title: PAROL6 End Effectors Guide
-    revision: 2026.A
+    revision: 2026.B
     status: published
-    published: 2026-11-03
+    published: 2026-11-05
     firmware: true
     software: [python_api, commander]
     applies_to: ""
@@ -90,9 +90,9 @@ manuals:
   gui:
     number: SR-4005
     title: PAROL6 GUI Guide
-    revision: 2026.A
+    revision: 2026.B
     status: published
-    published: 2026-11-03
+    published: 2026-11-05
     firmware: true
     software: [commander]
     applies_to: ""

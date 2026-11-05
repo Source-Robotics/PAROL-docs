@@ -33,6 +33,9 @@ gives it a reference when the robot homes.
 
 </div>
 
+The robot model (the URDF and MuJoCo files in `robot_descriptions`) uses the standard ROS link names, which count
+the parts differently: the elbow is `forearm_link`, the forearm `wrist_1_link` and the wrist `wrist_2_link`.
+
 The arm has no brakes and no joint encoders. The motors hold the arm while they are powered; the position is
 counted in steps from the homing reference. Both facts shape how the robot is used, and the
 [Safety](../02-safety/index.md) chapter returns to them.

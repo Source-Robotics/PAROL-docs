@@ -18,7 +18,7 @@ follow it when a step is not clear or something fails.
 | **Your PAROL6**, assembled and wired, with the control board inside the base | the [Build guide](build/index.md); the parts in the [BOM](build/bill-of-materials.md), or as kits from [the shop](https://source-robotics.com/) |
 | **A 24 V power supply**, 5 A | the [BOM](build/bill-of-materials.md) names one; any 24 V 5 A supply works. A closed one with a mains cable needs no mains wiring ([The power supply](04-installation/connecting.md#the-power-supply)) |
 | **A mains switch within reach**, on the supply's mains side: a switched socket strip will do | it is the stop that still works when the PC software has frozen ([Emergency stop](02-safety/emergency-stop.md)) |
-| **An E-stop**, a normally closed button on the base | the [BOM](build/bill-of-materials.md) names one; any NC switch works |
+| **An E-stop**, a normally closed button in its printed box | the [BOM](build/bill-of-materials.md) names one; any NC switch works |
 | **A USB cable**, type B, to the PC | |
 | **An ST-Link programmer and the programming adapter**, to upload the firmware once | the [programming adapter](https://source-robotics.com/products/parol6-programming-adapter) in the shop |
 | **A PC** with Windows, Linux or macOS | see the [minimum PC](01-overview/what-you-need.md#the-pc) |

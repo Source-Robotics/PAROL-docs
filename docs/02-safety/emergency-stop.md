@@ -1,6 +1,7 @@
 # Emergency stop
 
-The E-stop is the red button on the base, a normally closed contact wired to the control board's E-stop input.
+The E-stop is the red button in its own 3D-printed box, a normally closed contact wired by its cable to the control board's
+E-stop input.
 It must be connected for the robot to run.
 
 ![E-stop wiring to the control board](../assets/ESTOP_CON.webp){ width="800" }

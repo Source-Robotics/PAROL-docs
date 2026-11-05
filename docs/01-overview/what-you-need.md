@@ -15,7 +15,7 @@ switch you reach for when the E-stop has no effect.
 ## The E-stop
 
 A normally closed emergency stop button, wired to the two E-stop terminals of the control board. The robot does
-not run without it. The kit's button mounts on the base in the printed holder; any NC switch works for a bench
+not run without it. The kit's button sits in its own 3D-printed box, on a cable as long as your setup needs; any NC switch works for a bench
 setup ([Emergency stop](../02-safety/emergency-stop.md)).
 
 ## The PC
@@ -36,7 +36,7 @@ A USB type B cable connects the robot to the PC. USB does not power the board.
 
 ## Tools
 
-For an assembled robot: hex keys (2, 2.5, 3 mm) for the mounting screws and the gripper, a small screwdriver for
+For an assembled robot: hex keys, 4 mm for the M5 mounting screws and 2, 2.5 and 3 mm for the gripper, a small screwdriver for
 the terminal blocks. For a build, the [Build guide](../build/index.md) lists the rest, down to the blue
 threadlocker and the thermal cement.
 

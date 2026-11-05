@@ -23,7 +23,8 @@ page before you plug anything in.
   wiring diagram shows in that joint's group.
 - **The gripper connector**: 24 V, GND, CAN H and CAN L from the board to the M8 socket at the forearm.
 - **The E-stop**: the NC contact to the two E-stop terminals.
-- **Power**: the GX16 socket on the base to the XT30 on the board, polarity checked twice.
+- **Power**: the GX16 socket on the base to the XT30 on the board, polarity checked twice. The GX16 has no
+  fixed +24 V pin: choose one, wire the supply's plug the same way, and mark it.
 - **The power button**: the JST PH cable to the button connector.
 - **The fan**: 5 V, three-pin, on the fan header; not a PWM fan.
 

@@ -9,7 +9,7 @@ check when a tool's orientation drifts ([Couplers and threadlocker](../07-mainte
 
 | | |
 |---|---|
-| **M8 4-pin connector** | 24 V, GND, CAN H, CAN L for an electric gripper; wired from the control board's CAN 1 and 24 V |
+| **M8 4-pin connector** | 24 V, GND, CAN H, CAN L for an electric gripper; wired from the control board's CAN 1 and 24 V. The 24 V has no fuse of its own: the gripper draws what it needs, and a short in the gripper or its cable is limited only by the power supply |
 | **Two pneumatic tubes**, 4 mm | From the two push-in fittings at the base, through the arm, to the forearm |
 
 The tubes and the gripper cable run through the arm and come out at the forearm. Joint 5 is held inside its
