@@ -17,6 +17,23 @@ limits by its stops. Joint 6 has no limit with the bare flange; with a tool, the
 the forearm to the tool and wrap as joint 6 turns, so keep joint 6 within the turn they allow
 ([Joint limits and directions](../03-technical-data/joint-limits.md#limits)).
 
+## The gripper socket
+
+![The gripper socket at the forearm, seen from the front, with its four signals](../assets/GRIP_CON.webp){ width="600" }
+
+The M8 socket at the forearm is a female 4-pin. Its pins, by the numbers moulded into it:
+
+| Pin | Signal |
+|---|---|
+| **1** | GND |
+| **2** | CAN H |
+| **3** | +24 V |
+| **4** | CAN L |
+
+The grippers have +24 V on pin 1 and GND on pin 3, so the PAROL6 gripper cable crosses pin 1 with 3 and 2 with 4
+between its ends. A straight M8 cable, the PAR6 gripper cable among them, reverses a gripper's supply here and
+destroys its driver. A tool of your own takes its pins from the table above.
+
 ## The tool in the software
 
 The software must know the tool to compute the pose of its tip. The commander's kinematic model is built for the

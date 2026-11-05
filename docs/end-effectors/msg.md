@@ -27,9 +27,10 @@ covers the gripper; this page covers PAROL6.
    and 6, and fix it so the arm cannot catch it.
 
 !!! danger "Only the PAROL6 cable"
-    PAROL6 and PAR6 put the four signals on different pins. The PAR6 cable, or a self-made cable with a wrong
-    pin, puts 24 V on the CAN pins and destroys the gripper's driver. The gripper manual's cable page has the
-    pinout to check your own against.
+    PAROL6 and PAR6 put the four signals on different pins. The PAR6 cable reverses the gripper's supply, and a
+    self-made cable with a wrong pin can put 24 V on a CAN pin; either destroys the gripper's driver. The
+    socket's pins are in [The gripper socket](flange.md#the-gripper-socket), the cable's in the gripper
+    manual's cable page.
 
 Leave the gripper's CAN node ID at 0 and its termination switch, reachable through the stepper cover, on: it is
 the last node on the robot's bus ([CAN bus](../06-peripherals/can-bus.md)).
