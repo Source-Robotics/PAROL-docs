@@ -214,11 +214,11 @@ First find the robot's **serial port**, the name the PC gives the USB connection
     **Open File**) and find these lines near the top:
     ```python
     if my_os == "Windows": 
-        STARTING_PORT = 8 # COM3
+        STARTING_PORT = 58 # COM3
     else:   
         STARTING_PORT = 0
     ```
-    On Windows, replace `8` with the number of your port, `5` for `COM5`. On Linux, `0` is `/dev/ttyACM0`; change
+    On Windows, replace `58` with the number of your port, `5` for `COM5`. On Linux, `0` is `/dev/ttyACM0`; change
     it if yours has another number. Save the file. Then start the program in the terminal:
     ```
     cd %USERPROFILE%\Documents\PAROL-commander-software
