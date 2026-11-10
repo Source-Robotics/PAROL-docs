@@ -1,9 +1,13 @@
 # 2. The Python API
 
-The Python API, package `parol6`, is two things: a **controller** process that owns the robot, talks to the
-control board over serial at 100 Hz, plans the motion and checks collisions; and a **client library** that sends
-it commands over UDP, from the same PC or any other on the network, with a blocking interface for scripts and an
-asynchronous one for applications. A **dry-run client** runs the same planning without a robot, for tests.
+The Python API, package `parol6`, is two things:
+
+| Part | What it does |
+|---|---|
+| A **controller** process | Owns the robot, talks to the control board over serial at 100 Hz, plans the motion and checks collisions |
+| A **client library** | Sends it commands over UDP, from the same PC or any other on the network, with a blocking interface for scripts and an asynchronous one for applications |
+
+A **dry-run client** runs the same planning without a robot, for tests.
 
 This chapter walks through it in the order you use it. The reference lists every method:
 [Python API reference](../../reference/python/index.md), read from the API's source at the version this site

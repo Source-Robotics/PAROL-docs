@@ -14,10 +14,14 @@ The firmware's I/O byte is `[in1, in2, out1, out2, estop, ...]`, so logical outp
 `write_io` does the mapping. `is_estop_pressed()` reads the E-stop alone. A per-call `timeout` bounds the setup,
 the retries and the reply; without one the client's defaults apply.
 
-A write is queued with the motion: it takes effect when its turn in the queue comes, and it returns a command
-index that `wait_command()` waits on. The pneumatic gripper's `open()` and `close()` are output writes of the same
-kind. While the controller is disabled, after `estop()` or the E-stop until `reset()`, a write is refused with
-`SYS_CONTROLLER_DISABLED`, like a move.
+A write is queued with the motion:
+
+- it takes effect when its turn in the queue comes;
+- it returns a command index that `wait_command()` waits on;
+- while the controller is disabled, after `estop()` or the E-stop until `reset()`, it is refused with
+  `SYS_CONTROLLER_DISABLED`, like a move.
+
+The pneumatic gripper's `open()` and `close()` are output writes of the same kind.
 
 ### Switching an output at a point of a program
 

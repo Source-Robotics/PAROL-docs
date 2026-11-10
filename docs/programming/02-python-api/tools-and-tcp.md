@@ -43,26 +43,45 @@ MSG, so `current=0.4` is 580 mA on the SSG-48 and 1180 mA on the MSG. Keep an MS
 ### Calibrating
 
 The gripper has to be calibrated after every power-up: it opens fully and closes fully to find its end stops.
-`calibrate()` sends the calibration and counts it done after a fixed 2 s (200 control cycles); it does not read
-the gripper's calibrated bit. The gripper takes longer: about 3 s for the SSG-48, and about 5 to 6 s for the MSG
-on the longer rails. Queue a `delay()` after `calibrate()` to cover the rest with a margin, 2 s for the SSG-48 and 5 s
-for the MSG, before the first move. A gripper that has latched an error must be cleared first: the API has no
-clear-error action at this version, so use the commander's **Clear gripper error** or Motor GUI, then calibrate.
+
+`calibrate()` sends the calibration and counts it done after a fixed 2 s (200 control cycles). It does not read the
+gripper's calibrated bit, and the gripper takes longer. Queue a `delay()` after `calibrate()` to cover the rest
+with a margin, before the first move:
+
+| Gripper | The calibration takes | `delay()` after `calibrate()` |
+|---|---|---|
+| SSG-48 | About 3 s | 2 s |
+| MSG | About 5 to 6 s on the longer rails | 5 s |
+
+!!! note "Clear an error first"
+    A gripper that has latched an error must be cleared first: the API has no clear-error action at this version,
+    so use the commander's **Clear gripper error** or Motor GUI, then calibrate.
 
 ### Tool status
 
-`rbt.tool.status()` returns a `ToolStatus`. For the electric grippers, `positions` is the jaw position (0 open,
-1 closed) and `channels` the current in mA. `engaged` is taken from the gripper-speed field of the telemetry,
-which firmware 1 always reports as 1, so it reads true. `part_detected` is taken from bits 3 and 2 of the
-gripper's status byte, where the gripper manuals put the temperature and timeout errors (they put the object
-detection in bits 5 and 4). The calibrated and error bits are not in `ToolStatus` at this version. To know that a
-part is held, check the position the jaws stopped at, or use a sensor.
+`rbt.tool.status()` returns a `ToolStatus`. For the electric grippers:
 
-Tool actions are **queued work**: an action waits for the motion queued before it, the arm holds still while it
-runs, and the motion queued after it waits for it. A `move` on a gripper that was never calibrated is refused
-when its turn comes and, like any failing command, cancels what is queued behind it. `stop()` is the exception:
-it is immediate, halts the running action, and keeps the queue. `tool_action(key, action, params)` is the generic
-form the tool methods are built on.
+| Field | What it holds |
+|---|---|
+| `positions` | The jaw position (0 open, 1 closed) |
+| `channels` | The current in mA |
+| `engaged` | Taken from the gripper-speed field of the telemetry, which firmware 1 always reports as 1, so it reads true |
+| `part_detected` | Taken from bits 3 and 2 of the gripper's status byte, where the gripper manuals put the temperature and timeout errors (they put the object detection in bits 5 and 4) |
+
+The calibrated and error bits are not in `ToolStatus` at this version. To know that a part is held, check the
+position the jaws stopped at, or use a sensor.
+
+Tool actions are **queued work**:
+
+- an action waits for the motion queued before it;
+- the arm holds still while it runs;
+- the motion queued after it waits for it.
+
+A `move` on a gripper that was never calibrated is refused when its turn comes and, like any failing command,
+cancels what is queued behind it. `stop()` is the exception: it is immediate, halts the running action, and keeps
+the queue.
+
+`tool_action(key, action, params)` is the generic form the tool methods are built on.
 
 ## The TCP
 
@@ -94,6 +113,7 @@ The controller validates every tool action against the config before it is ackno
 ## Held objects
 
 A program can declare the shape of what the gripper holds, attached to the flange, so that the collision checker
-accounts for it: `shape.attach(...)` on a shape from `rbt.shapes()`, applied with `set_shapes()`. The declaration
-is tied to the tool, the world and a fresh position reference; a change in any of them invalidates it and
-blocks motion until it is reconciled. The README of the API has the rules in full.
+accounts for it: `shape.attach(...)` on a shape from `rbt.shapes()`, applied with `set_shapes()`.
+
+The declaration is tied to the tool, the world and a fresh position reference. A change in any of them invalidates
+it and blocks motion until it is reconciled. The README of the API has the rules in full.
