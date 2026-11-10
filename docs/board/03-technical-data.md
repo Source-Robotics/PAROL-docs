@@ -40,5 +40,11 @@ The PAROL6 firmware runs the motors well below the drivers' ratings: 0.8 to 1.7 
 
 ## Mounting and cooling
 
-Three M3 holes. The drivers need active cooling: a 40 × 40 × 20 mm 5 V fan, a Noctua NF-A4x20 or any 5 V fan of
-that size that is not PWM controlled, blowing over the heatsinks. In PAROL6 the fan sits in the base's fan cover.
+Three M3 holes.
+
+The drivers need active cooling:
+
+| | |
+|---|---|
+| Fan | A 40 × 40 × 20 mm 5 V fan: a Noctua NF-A4x20, or any 5 V fan of that size that is not PWM controlled |
+| Where | Blowing over the heatsinks. In PAROL6 the fan sits in the base's fan cover. |
