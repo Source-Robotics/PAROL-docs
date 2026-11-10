@@ -1,19 +1,26 @@
 # Firmware and first run
 
+Five parts, in order: check the board with the test firmware, upload the main firmware, switch on, fix any joint
+that turns the wrong way, and home.
+
 ## 1. The test firmware
 
-A control board from the shop ships with the test firmware. Use it, with the base open and the motors not yet
-driving the arm, to check every driver, every switch and sensor, and the I/O from a serial terminal: on the bench
-before the arm is assembled, as in [Electronics and wiring](electronics-and-wiring.md#test-before-you-close-the-base).
-At power-on it prints a report on
-each driver (`joint N Connection is: GOOD` or `BAD`) and turns every motor slowly; `#LIMIT` then shows the
-switches and `#IO` the E-stop, the inputs and the supply voltage. [The test firmware](../board/09-test-firmware.md)
-has the commands and what good output looks like.
+A control board from the shop ships with the test firmware. Use it with the base open and the motors not yet
+driving the arm: on the bench, before the arm is assembled, as in
+[Electronics and wiring](electronics-and-wiring.md#test-before-you-close-the-base).
 
 !!! danger
     The test firmware turns all six motors slowly from the moment it boots until the power is switched off; no
     command stops them. On an assembled arm joints 1 to 5 reach their blockers within about a minute and keep
     pushing. Use it with the motors free to turn, never on an assembled robot.
+
+| When | The test firmware shows |
+|---|---|
+| At power-on | A report on each driver (`joint N Connection is: GOOD` or `BAD`), and it turns every motor slowly |
+| `#LIMIT` | The switches |
+| `#IO` | The E-stop, the inputs and the supply voltage |
+
+[The test firmware](../board/09-test-firmware.md) has the commands and what good output looks like.
 
 !!! success "Check"
     Six `Connection is: GOOD` lines in the report; `#LIMIT` names each switch while you press it; `#IO` follows
@@ -22,18 +29,25 @@ has the commands and what good output looks like.
 
 ## 2. Upload the main firmware
 
-The main firmware is in the repository under `PAROL6 control board main software`; it is a PlatformIO project
-for VS Code. Install VS Code and the PlatformIO extension, open the folder, and upload with an ST-Link through the
-programming adapter, with the 24 V supply disconnected: [Firmware](../board/08-firmware.md) has the procedure and
-the warnings.
+The main firmware is in the repository under `PAROL6 control board main software`. It is a PlatformIO project for
+VS Code.
+
+1. Install VS Code and the PlatformIO extension.
+2. Open the folder.
+3. Disconnect the 24 V supply.
+4. Upload with an ST-Link through the programming adapter.
+
+[Firmware](../board/08-firmware.md) has the procedure and the warnings.
 
 !!! success "Check"
     PlatformIO ends the upload with `SUCCESS`. If not: [Control board troubleshooting](../board/11-troubleshooting.md).
 
 ## 3. First power-on
 
-Unplug the programming adapter, plug in the supply, hold the forearm and press the button. Six clicks, and the
-arm holds. Start the commander software, connect, and open the joint jog menu.
+1. Unplug the programming adapter.
+2. Plug in the supply.
+3. Hold the forearm and press the button. Six clicks, and the arm holds.
+4. Start the commander software, connect, and open the joint jog menu.
 
 !!! success "Check"
     Six clicks, the fan runs, the arm holds itself, and the commander shows the robot's data. If not:
@@ -42,27 +56,34 @@ arm holds. Start the commander software, connect, and open the joint jog menu.
 ## 4. A joint turns the wrong way { #a-joint-turns-the-wrong-way }
 
 Jog each joint briefly. The joint must turn as in the figure, which shows each joint's positive direction
-([Joint limits and directions](../03-technical-data/joint-limits.md)). Before homing, the commander checks jogs
-against the joint limits with a position count that starts at 0, so some directions are refused with
-`Error: Robot jog -> Position out of range`:
-
-- **Joint 2**: press its **right** arrow (negative). It must turn opposite to the figure; its left arrow does
-  nothing until the robot is homed.
-- **Joints 1, 3, 4, 5 and 6**: press the **left** arrow (positive). It must turn as in the figure.
+([Joint limits and directions](../03-technical-data/joint-limits.md)).
 
 ![Each joint turned 30 degrees in its positive direction, in colour, over the pose in grey](../assets/kinematics/parol6_joint_directions.webp#only-light){ width="900" }
 ![Each joint turned 30 degrees in its positive direction, in colour, over the pose in grey](../assets/kinematics/parol6_joint_directions_dark.webp#only-dark){ width="900" }
 
-A joint that turns the other way is the most common first-run problem, and it is fixed in the firmware, not by
+| Joint | Press | It must turn |
+|---|---|---|
+| **Joint 2** | Its **right** arrow (negative) | Opposite to the figure. Its left arrow does nothing until the robot is homed. |
+| **Joints 1, 3, 4, 5 and 6** | The **left** arrow (positive) | As in the figure |
+
+??? info "Why joint 2 jogs only one way before homing"
+    Before homing, the commander checks jogs against the joint limits with a position count that starts at 0, so
+    some directions are refused with `Error: Robot jog -> Position out of range`.
+
+A joint that turns the other way is the most common first-run problem. It is fixed in the firmware, not by
 rewiring:
 
-```cpp
-// motor_init.cpp, in Init_Joint_N: switch between 0 and 1
-Joint__->direction_reversed = 1;
-```
+1. In `motor_init.cpp`, in `Init_Joint_N`, switch `direction_reversed` between 0 and 1:
 
-Upload again and check again. Swapping one motor phase's wires has the same effect, if you prefer to open the
-base.
+    ```cpp
+    // motor_init.cpp, in Init_Joint_N: switch between 0 and 1
+    Joint__->direction_reversed = 1;
+    ```
+
+2. Upload again.
+3. Check again.
+
+Swapping one motor phase's wires has the same effect, if you prefer to open the base.
 
 !!! success "Check"
     The left arrows of joints 1 and 3 to 6 turn them as in the figure, and joint 2's right arrow turns it the
@@ -70,10 +91,12 @@ base.
 
 ## 5. Home
 
-With every direction right, set joint 6 and check the tool's homing offset as in
-[Before you press Home](../05-operation/homing.md#before-you-press-home), then press **Home** and stay at the
-E-stop. The sequence is on [Homing](../05-operation/homing.md);
-if a joint grinds at a stop, press the E-stop and see [Homing failures](../08-troubleshooting/homing-failures.md).
+1. With every direction right, set joint 6 and check the tool's homing offset, as in
+   [Before you press Home](../05-operation/homing.md#before-you-press-home).
+2. Press **Home**, and stay at the E-stop.
+
+The sequence is on [Homing](../05-operation/homing.md). If a joint grinds at a stop, press the E-stop and see
+[Homing failures](../08-troubleshooting/homing-failures.md).
 
 !!! success "Check"
     Homing finishes, the simulator matches the robot, and the pin passes through the witness marks of each joint,
@@ -81,7 +104,9 @@ if a joint grinds at a stop, press the E-stop and see [Homing failures](../08-tr
 
 ## The commander's terminal output
 
-While it runs, the commander prints the robot's data to its terminal: the positions, the homed and I/O bytes,
-the errors, the gripper data, and `Time between 2 commands in ms`, which should be near 0.010 (the number is in
-seconds, despite the label: 0.010 is 10 ms). Watch it for a few minutes while jogging: if it is often much higher,
-the PC is too slow ([Communication](../08-troubleshooting/communication.md)).
+While it runs, the commander prints the robot's data to its terminal: the positions, the homed and I/O bytes, the
+errors, the gripper data, and `Time between 2 commands in ms`.
+
+That last number should be near 0.010. It is in seconds, despite the label: 0.010 is 10 ms. Watch it for a few
+minutes while jogging. If it is often much higher, the PC is too slow
+([Communication](../08-troubleshooting/communication.md)).
