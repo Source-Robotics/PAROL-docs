@@ -1,5 +1,16 @@
 # About this manual
 
+## This document
+
+Source Robotics d.o.o. publishes this document as part of the open-source PAROL6 project. It is revised as the
+product changes; the document number, release, revision and date on the [home page](index.md) identify the version
+you are reading, and the document history on this page says what changed.
+
+Take care that the release named under *Applies to* matches the robot in front of you, and that the Python API
+version matches what `pip` installed: the version selector in the header switches between releases.
+
+The text and the images are licensed CC BY-SA 4.0, the code examples MIT.
+
 ## Scope and audience
 
 The PAROL6 Robot Manual covers the PAROL6 desktop robotic arm from the box, or the printer, to a robot that runs

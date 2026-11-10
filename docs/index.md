@@ -8,16 +8,14 @@ comments: false
 
 ![PAROL6 desktop robotic arm](assets/hero.webp){ .hero }
 
-<!-- doc-meta: parol6 -->
+Everything about PAROL6, the 3D-printed six-axis desktop robotic arm: building it, setting it up, running it and
+programming it.
 
 [Quick start](quick-start/index.md){ .md-button .md-button--primary } [About this manual](about.md){ .md-button }
 
-Source Robotics d.o.o. publishes this document as part of the open-source PAROL6 project. It is revised as the
-product changes; the document number, release, revision and date above identify the version you are reading, and
-the document history on the About page says what changed. Take care that the release named under *Applies to*
-matches the robot in front of you, and that the Python API version matches what `pip` installed: the version
-selector in the header switches between releases. The text and the images are licensed CC BY-SA 4.0, the code
-examples MIT.
+<!-- doc-meta: parol6 -->
+
+Which version you are reading, and the licences: [About this manual](about.md#this-document).
 
 <div class="arm-viewer" data-base="assets/models/parol6/" markdown="0">
   <canvas class="arm-viewer__canvas" aria-label="PAROL6 in 3D: drag to turn, scroll to zoom"></canvas>
