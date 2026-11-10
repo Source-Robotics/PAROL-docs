@@ -19,10 +19,14 @@ Two things pull the actual position away from the commanded one:
   rounds them.
 
 If the board followed the speed alone, the errors would add up over a long move and the robot would miss the
-target by a few steps. So the planners use the go-to-position command (156), in which the board runs each joint
-at the average of the commanded speed and the speed that would close the position error within one cycle: the
-speed curve gives the smoothness, the position curve pulls the error back to zero every cycle, and the robot
-arrives exactly.
+target by a few steps.
+
+So the planners use the go-to-position command (156), in which the board runs each joint at the average of the
+commanded speed and the speed that would close the position error within one cycle:
+
+- the speed curve gives the smoothness;
+- the position curve pulls the error back to zero every cycle;
+- the robot arrives exactly.
 
 ![Commanded (blue) and actual (red) speed on a trapezoidal move; the robot spends a third of the time in each phase](../assets/trap_with_lines.webp){ width="700" }
 

@@ -12,10 +12,13 @@ waypoint, it starts the next move, and the path rounds the corner.
 
 ## In the Python API
 
-`move_j`, `move_l` and `move_c` take `r`, the blend radius; `r=0` stops at the target. `move_p` is the
-process move: a list of waypoints run at constant tool speed with automatic blending at every corner, for scan
-and dispensing paths. A tool action or a `delay()` queued after a blended move ends the blend there: the arm
-stops for it. The zig-zag example in the API's repository shows a raster scan with blends.
+| Call | Blending |
+|---|---|
+| `move_j`, `move_l` and `move_c` | Take `r`, the blend radius; `r=0` stops at the target |
+| `move_p`, the process move | A list of waypoints run at constant tool speed, with automatic blending at every corner, for scan and dispensing paths |
+
+A tool action or a `delay()` queued after a blended move ends the blend there: the arm stops for it. The zig-zag
+example in the API's repository shows a raster scan with blends.
 
 ```python
 rbt.move_l([200, 0, 250, 90, 0, 90], speed=0.5, r=15)

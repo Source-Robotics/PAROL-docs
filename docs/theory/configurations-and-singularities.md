@@ -3,15 +3,19 @@
 ## Configurations
 
 The same tool pose can be reached with the elbow up or down, the wrist flipped or not, the base facing the
-target or turned 180° with the arm reaching backwards. Each combination is a **configuration**. A joint move
-keeps the configuration it is in unless the target is in another; a Cartesian move cannot change configuration
-at all, because that would mean passing through a pose where two configurations meet, which is a singularity.
+target or turned 180° with the arm reaching backwards. Each combination is a **configuration**.
+
+| Move | Its configuration |
+|---|---|
+| A joint move | Keeps the configuration it is in, unless the target is in another |
+| A Cartesian move | Cannot change configuration at all, because that would mean passing through a pose where two configurations meet, which is a singularity |
 
 Three choices with two answers each make eight configurations. The figure shows all eight for one tool pose:
 PAROL6 with nothing on the flange, the tool centre point 250 mm in front of the base and 230 mm up, the tool
-tilted 30° from vertical. The flange is in exactly the same place and orientation in every picture; only the
-joints differ. The teal dot marks the centre of the flange and the arrow its axis, the same in every
-picture.
+tilted 30° from vertical.
+
+The flange is in exactly the same place and orientation in every picture; only the joints differ. The teal dot
+marks the centre of the flange and the arrow its axis, the same in every picture.
 
 - **Shoulder right or left**: the wrist centre in front of the joint 1 axis, or behind it with joint 1 turned
   about 180° and the arm reaching back over itself.
@@ -24,7 +28,9 @@ picture.
 
 Mathematically all eight reach the pose. On the real robot, the joint limits rule most of them out: for this pose
 only (a) is within every joint limit ([Joint limits and directions](../03-technical-data/joint-limits.md)), and
-several of the others would also hit the robot itself. The poses were solved and drawn from PAROL6's model in
+several of the others would also hit the robot itself.
+
+The poses were solved and drawn from PAROL6's model in
 [robot_descriptions](https://github.com/Source-Robotics/robot_descriptions), the same model the limits come from.
 
 The practical rule: teach the poses of a program in the configuration you want, and make the move between two
@@ -42,10 +48,16 @@ To be sure of the configuration, give the target as joint angles.
 ## Singularities
 
 When the arm moves in Cartesian space, the software converts a tool velocity into six joint velocities every
-cycle. In most poses that works. In some poses two joint axes line up, and a motion of the tool in a certain
-direction would need infinite joint speed, or the joints can turn without the tool moving: a **singularity**. The
-maths divides by something that goes to zero. Near it, small tool motions ask for huge joint speeds; at it, the
-move is impossible.
+cycle. In most poses that works.
+
+In some poses two joint axes line up, and a motion of the tool in a certain direction would need infinite joint
+speed, or the joints can turn without the tool moving: a **singularity**. The maths divides by something that goes
+to zero.
+
+| Where | What happens |
+|---|---|
+| Near it | Small tool motions ask for huge joint speeds |
+| At it | The move is impossible |
 
 The three singularities of a six-axis arm with a spherical wrist:
 
