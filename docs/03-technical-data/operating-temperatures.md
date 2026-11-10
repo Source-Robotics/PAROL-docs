@@ -48,6 +48,9 @@ board at the back of the base. The scale runs from 29.6 to 50.0 °C.
 
 The stepper drivers protect themselves: a TMC5160 that gets too hot shuts its outputs down, and its joint goes
 limp. The fan in the base keeps them well below that ([Control board technical data](../board/03-technical-data.md)).
-Firmware 1 does not tell the PC when a driver is hot: the joints' temperature error bits in its packet are
-always 0. The
-driver temperature is not the motor temperature.
+
+!!! note "The PC is not told"
+    Firmware 1 does not tell the PC when a driver is hot: the joints' temperature error bits in its packet are
+    always 0.
+
+The driver temperature is not the motor temperature.
