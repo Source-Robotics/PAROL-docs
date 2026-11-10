@@ -112,10 +112,13 @@ Output(1,HIGH)
 Output(1,LOW)
 ```
 
-Sets output 1, with no space after the comma. In the current version `Output(2,HIGH)` and `Output(2,LOW)` are
-refused by a bug in the check (`Invalid Output() command`) and stop the program, so only output 1 can be switched
-from a program. `Input()` appears in the menu but has no action: a program stops on it until you press **Stop**;
-`Home()` behaves the same.
+Sets output 1, with no space after the comma.
+
+!!! warning "In the current version"
+    - `Output(2,HIGH)` and `Output(2,LOW)` are refused by a bug in the check (`Invalid Output() command`) and stop
+      the program, so only output 1 can be switched from a program.
+    - `Input()` appears in the menu but has no action: a program stops on it until you press **Stop**; `Home()`
+      behaves the same.
 
 ## Gripper
 
@@ -126,14 +129,25 @@ Gripper(position, speed, current)
 Delay(2)
 ```
 
-`Gripper_cal()` calibrates the SSG-48 or MSG gripper. Clear the gripper's error first, with the Gripper tab's
-**Clear gripper error** (RBTscript has no command for it), and add a delay for the calibration to finish:
-`Delay(4)` for the SSG-48 (about 3 s) and `Delay(7)` for the MSG (5 to 6 s on the longer rails). Activating it
-is the Gripper tab's **Activate** option, which is on by default. `Gripper()` moves it, with whole numbers only:
-position 0 (open) to 255 (closed), speed 0 to 255, current 100 to 1000 mA, the current being the grip force;
-below about 150 mA the gripper does not move. A value outside these ranges is logged as `Gripper() invalid input value`, the
-line is skipped and the program goes on. The program continues at once, so add a `Delay()` for the
-gripper to arrive.
+`Gripper_cal()` calibrates the SSG-48 or MSG gripper:
+
+1. Clear the gripper's error first, with the Gripper tab's **Clear gripper error** (RBTscript has no command for it).
+2. Run `Gripper_cal()`.
+3. Add a delay for the calibration to finish: `Delay(4)` for the SSG-48 (about 3 s) and `Delay(7)` for the MSG
+   (5 to 6 s on the longer rails).
+
+Activating it is the Gripper tab's **Activate** option, which is on by default.
+
+`Gripper()` moves it, with whole numbers only:
+
+| Argument | Range |
+|---|---|
+| Position | 0 (open) to 255 (closed) |
+| Speed | 0 to 255 |
+| Current | 100 to 1000 mA, the current being the grip force; below about 150 mA the gripper does not move |
+
+A value outside these ranges is logged as `Gripper() invalid input value`, the line is skipped and the program goes
+on. The program continues at once, so add a `Delay()` for the gripper to arrive.
 
 !!! danger
     A current above about 700 mA with a high speed slams the jaws into the part and can damage the gripper, the

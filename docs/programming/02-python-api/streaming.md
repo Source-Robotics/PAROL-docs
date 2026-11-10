@@ -29,10 +29,12 @@ rbt.servo_j(pose=[0, 263, 242, 90, 0, 90])                          # via IK
 rbt.servo_l([0, 263, 242, 90, 0, 90], speed=0.5)                    # a straight line to the pose
 ```
 
-A servo target is fire-and-forget: the controller plans a jerk-limited motion from where the arm is to the
-target and follows it, re-planning as new targets arrive. A stream of targets at 20 to 100 Hz gives smooth
-tracking of a moving goal, which is how teleoperation and following a camera are built. The stream ends a
-quarter second after the last target.
+A servo target is fire-and-forget: the controller plans a jerk-limited motion from where the arm is to the target,
+and follows it, re-planning as new targets arrive.
+
+- A stream of targets at 20 to 100 Hz gives smooth tracking of a moving goal. That is how teleoperation and
+  following a camera are built.
+- The stream ends a quarter second after the last target.
 
 ## Rules
 

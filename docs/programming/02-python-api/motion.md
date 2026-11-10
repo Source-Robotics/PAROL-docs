@@ -29,11 +29,17 @@ rbt.move_p(waypoints, speed=0.8)
 
 ## Speed, acceleration, duration
 
-`speed` and `accel` are fractions of the robot model's maxima in (0, 1], default 0.5 each. For a joint move
-they scale the leading joint; for a Cartesian move they scale the tool's linear and angular limits, with the
-joint limits as hard bounds. A `duration` in seconds times the move instead and `speed` is ignored; `duration`
-and `speed` are not combined. The move's actual speed is also capped by what the profile and the limits allow:
-a short move never reaches the asked speed.
+`speed` and `accel` are fractions of the robot model's maxima in (0, 1], default 0.5 each.
+
+| Move | `speed` and `accel` scale |
+|---|---|
+| A joint move | The leading joint |
+| A Cartesian move | The tool's linear and angular limits, with the joint limits as hard bounds |
+
+A `duration` in seconds times the move instead, and `speed` is ignored: `duration` and `speed` are not combined.
+
+The move's actual speed is also capped by what the profile and the limits allow: a short move never reaches the
+asked speed.
 
 ```python
 rbt.move_l(target, speed=0.25, accel=1.0)      # a quarter of the Cartesian speed limit, full acceleration
@@ -53,10 +59,12 @@ next queued move within that radius ([Blending](../../theory/blending.md)). `mov
 
 ## Waiting
 
-`wait=True`, the default, blocks until the move completes and raises `MotionError` if it was cancelled or
-failed; `TimeoutError` if the `timeout` runs out first, in which case the move is still queued and `stop()`
-cancels it. `wait=False` returns the index for a later `wait_command()`; `wait_motion()` waits for the whole
-queue and for the arm to come to rest ([Status and waiting](status-and-waiting.md)).
+| Argument | The call |
+|---|---|
+| `wait=True`, the default | Blocks until the move completes. It raises `MotionError` if the move was cancelled or failed; `TimeoutError` if the `timeout` runs out first, in which case the move is still queued and `stop()` cancels it. |
+| `wait=False` | Returns the index for a later `wait_command()` |
+
+`wait_motion()` waits for the whole queue and for the arm to come to rest ([Status and waiting](status-and-waiting.md)).
 
 ## Execution speed and pause
 

@@ -44,21 +44,33 @@ index = rbt.move_l(target, wait=False)
 ok = rbt.wait_command(index, timeout=10)        # True when completed; raises MotionError if it failed
 ```
 
-`wait_command` asks the controller for that command's exact result. Queued commands run in index order, so a
-wait on one covers everything queued before it; a jog or a `tool.stop()` can finish earlier than something queued
-before it, which is why a wait never infers success from the highest completed index. A command discarded by
-`stop()`, an E-stop, `reset_state()`, a teleport or a failure ahead of it raises `MotionError` with
-`MOTN_CANCELLED` at once; an unknown or expired result stays unconfirmed and the wait returns `False` at its
-timeout. The controller keeps its last 1024 completions and 1024 failures.
+`wait_command` asks the controller for that command's exact result.
+
+- Queued commands run in index order, so a wait on one covers everything queued before it.
+- A jog or a `tool.stop()` can finish earlier than something queued before it. That is why a wait never infers
+  success from the highest completed index.
+
+| The command | The wait |
+|---|---|
+| Discarded by `stop()`, an E-stop, `reset_state()`, a teleport or a failure ahead of it | Raises `MotionError` with `MOTN_CANCELLED` at once |
+| Unknown, or its result expired | Stays unconfirmed, and returns `False` at its timeout |
+
+The controller keeps its last 1024 completions and 1024 failures.
 
 `wait_motion()` waits for the whole queue to run out and the arm to hold still for a settle window; `wait_ready()`
 polls `ping()` until the controller answers; `is_robot_stopped()` looks at the joint speeds only.
 
 ## What "done" means
 
-A blocking move returns when the controller reports the command complete: the trajectory played to its end and
-the arm at the commanded position, in counted steps. For a tool action, when the gripper's estimated travel
-time or its reported state says so. Neither is a measurement of the world: a program that needs to know the
-part is in the gripper checks where the jaws stopped (`tool.status().positions`) or reads a sensor. For the electric
-grippers, the tool status's `part_detected` does not follow the gripper's object-detection bits at this version
-([Tool status](tools-and-tcp.md#tool-status)).
+A blocking move returns when the controller reports the command complete:
+
+| Command | Complete when |
+|---|---|
+| A move | The trajectory played to its end and the arm is at the commanded position, in counted steps |
+| A tool action | The gripper's estimated travel time or its reported state says so |
+
+!!! note "Complete is not a measurement"
+    Neither is a measurement of the world: a program that needs to know the part is in the gripper checks where
+    the jaws stopped (`tool.status().positions`) or reads a sensor. For the electric grippers, the tool status's
+    `part_detected` does not follow the gripper's object-detection bits at this version
+    ([Tool status](tools-and-tcp.md#tool-status)).
