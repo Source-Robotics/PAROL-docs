@@ -29,10 +29,14 @@ steps = degrees / 0.05625 × ratio
 
 ## Speed fractions
 
-The Python API's `speed` and `accel` are fractions of the robot model's maxima, in (0, 1], not percentages: a
-`speed=0.5` joint move runs the leading joint at half its maximum speed, and the others proportionally so that
-all finish together. A `duration` above zero overrides the speed: the move takes that long, whatever the speed
-fraction says. The commander's speed slider is a percentage applied to its own, lower, maxima.
+| Program | Speed is given as |
+|---|---|
+| The Python API | `speed` and `accel` are fractions of the robot model's maxima, in (0, 1], not percentages |
+| The commander | Its speed slider is a percentage applied to its own, lower, maxima |
+
+In the Python API, a `speed=0.5` joint move runs the leading joint at half its maximum speed, and the others
+proportionally so that all finish together. A `duration` above zero overrides the speed: the move takes that long,
+whatever the speed fraction says.
 
 ## Angles wrap
 

@@ -5,11 +5,16 @@ Kinematics is the geometry of the arm: how the joint angles decide where the too
 ## The kinematic diagram and the DH table
 
 A kinematic diagram shows the links and joints without the shapes: six revolute joints, their axes, and the
-distances between them. The Denavit-Hartenberg convention writes that down as four numbers per joint, a link
-length, a link offset, a joint angle and a link twist, and PAROL6's table is in the Robot Manual
-([Dimensions and kinematics](../03-technical-data/kinematics.md)). The commander software's robot model is
-built from this table; the Python API loads the robot's URDF, which carries the same geometry, and computes the
-kinematics numerically with Pinocchio.
+distances between them.
+
+The Denavit-Hartenberg convention writes that down as four numbers per joint: a link length, a link offset, a
+joint angle and a link twist. PAROL6's table is in the Robot Manual
+([Dimensions and kinematics](../03-technical-data/kinematics.md)).
+
+| Program | Its robot model |
+|---|---|
+| Commander software | Built from this table |
+| Python API | Loads the robot's URDF, which carries the same geometry, and computes the kinematics numerically with Pinocchio |
 
 The sheet below shows both at once for PAROL6 with nothing on the flange: the robot's real outline with every
 joint at 0, the joint centres J1 to J6, the dimensions a1 to a7 between them, and under it the DH table those
@@ -37,7 +42,10 @@ so the problem splits in two. Even so:
 - Near a **singularity** the solution exists but demands enormous joint speeds; the next page.
 
 The Python API solves the inverse kinematics numerically, which is general but can fail on poses a closed-form
-solver would find, especially around joint 4; re-planning from a slightly different pose or starting posture
-usually helps. `MovePose` in RBTscript and `move_j(pose=...)` in the API solve the kinematics once, at the target,
-and move in joint space; `MoveCart` and `move_l` solve it all along a straight line, which is where the next
-page matters.
+solver would find, especially around joint 4. Re-planning from a slightly different pose or starting posture
+usually helps.
+
+| Commands | Solve the kinematics |
+|---|---|
+| `MovePose` in RBTscript and `move_j(pose=...)` in the API | Once, at the target, and move in joint space |
+| `MoveCart` and `move_l` | All along a straight line, which is where the next page matters |

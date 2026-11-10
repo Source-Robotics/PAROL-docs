@@ -11,16 +11,25 @@ finger tips; for a selected tool in the API it is the tool's registered point, m
 
 ## Orientation
 
-Three angles describe how the tool frame is rotated relative to the reference frame. There are many conventions;
+Three angles describe how the tool frame is rotated relative to the reference frame. There are many conventions.
+
 PAROL6's software uses **roll, pitch and yaw as rotations about X, Y and Z**, which is what the commander shows
-as Rx, Ry, Rz and what the API's `pose()` returns and its motion commands take. The API's `set_tcp_transform()`
-takes its angles as intrinsic XYZ rotations, `Rx · Ry · Rz`; its collision shapes take extrinsic XYZ in radians.
-When a pose from one program goes into another, check the convention before trusting the numbers.
+as Rx, Ry, Rz and what the API's `pose()` returns and its motion commands take.
+
+| In the API | Takes its angles as |
+|---|---|
+| `set_tcp_transform()` | Intrinsic XYZ rotations, `Rx · Ry · Rz` |
+| Its collision shapes | Extrinsic XYZ in radians |
+
+!!! tip "Check the convention"
+    When a pose from one program goes into another, check the convention before trusting the numbers.
 
 The same position can be reached with many orientations, and the orientation is what a program usually gets
-wrong first: a few degrees off puts a finger into the table. The Python API examples on this site use
-`[90, 0, 90]`, the orientation the tool has after homing: horizontal, pointing forward, away from the base. A
-tool pointing down at the table has other angles; jog it there and read them.
+wrong first: a few degrees off puts a finger into the table.
+
+The Python API examples on this site use `[90, 0, 90]`, the orientation the tool has after homing: horizontal,
+pointing forward, away from the base. A tool pointing down at the table has other angles; jog it there and read
+them.
 
 ![The same position with two orientations](../assets/orientations.webp){ width="650" }
 
