@@ -10,12 +10,15 @@ intervals below and after any collision.
 | After a collision, a fall or a lost step | Inspection, then [Checking the homing](homing-check.md) |
 | When a belt slips or a joint is loose | [Belts](belts.md), [Couplers and threadlocker](couplers.md) |
 
-Before any work inside the base, unplug the supply and touch earthed metal: static electricity damages the
-control board and its drivers.
+!!! warning "Before any work inside the base"
+    Before any work inside the base, unplug the supply and touch earthed metal: static electricity damages the
+    control board and its drivers.
 
 ## In this chapter
 
-- [Inspection](inspection.md)
-- [Belts](belts.md)
-- [Couplers and threadlocker](couplers.md)
-- [Checking the homing](homing-check.md)
+| Page | What it covers |
+|---|---|
+| [Inspection](inspection.md) | What to look at, joint by joint, and cleaning |
+| [Belts](belts.md) | Tension, the tensioners per joint, grease, replacement |
+| [Couplers and threadlocker](couplers.md) | Loose set screws, and where threadlocker goes |
+| [Checking the homing](homing-check.md) | Whether the robot still homes repeatably, to the right place |
