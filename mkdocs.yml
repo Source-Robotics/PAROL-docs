@@ -79,7 +79,7 @@ plugins:
       redirect_maps:
         page2_2.md: 03-technical-data/specifications.md
         page3_1.md: board/index.md
-        page3_2.md: quick-start.md
+        page3_2.md: quick-start/index.md
         page4.md: programming/index.md
         page4_1.md: gui/commander/the-gui.md
         page5.md: 06-peripherals/index.md
@@ -258,7 +258,12 @@ nav:
   - PAROL6 Robot Manual:
       - index.md
       - Before you start:
-          - Quick start: quick-start.md
+          - Quick start:
+              - quick-start/index.md
+              - 1. Install the software: quick-start/1-software.md
+              - 2. Upload the firmware: quick-start/2-firmware.md
+              - 3. Connect and switch on: quick-start/3-connect.md
+              - 4. First moves: quick-start/4-first-moves.md
           - About this manual: about.md
       - Chapters:
           - 1. Overview:

@@ -16,7 +16,7 @@ The manual is written for someone who has a PAROL6 or is building one: a maker, 
 who can run a Python script and tighten a belt. It does not assume robotics training; the concepts the robot's
 software uses are explained in the [Theory corner](theory/index.md), which
 anyone can read first. Read the [Safety](02-safety/index.md) chapter before you power anything. The
-[Quick start](quick-start.md) is the first day on one page; the chapters are in the order you need them and go
+[Quick start](quick-start/index.md) is the first day, in four short parts; the chapters are in the order you need them and go
 deeper.
 
 ## Finding your way

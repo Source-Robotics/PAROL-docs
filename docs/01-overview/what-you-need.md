@@ -71,5 +71,5 @@ You should be able to use a hex key. Python and the terminal you can learn on th
 
 | To learn | Read |
 |---|---|
-| Every command to type, for someone who has never used Python or a terminal | The [Quick start](../quick-start.md) |
+| Every command to type, for someone who has never used Python or a terminal | The [Quick start](../quick-start/index.md) |
 | The robotics vocabulary the software uses, from joint numbering to singularities, in the order you meet it | The [Theory corner](../theory/index.md) |

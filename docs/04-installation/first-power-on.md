@@ -20,7 +20,7 @@ Nothing moves until the PC software commands it. Next:
 2. Check the jog directions.
 3. Home.
 
-The [Quick start](../quick-start.md) walks through it.
+The [Quick start](../quick-start/index.md) walks through it.
 
 ## What the button does
 
