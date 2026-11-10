@@ -10,7 +10,7 @@ comments: false
 
 <!-- doc-meta: parol6 -->
 
-[Quick start](quick-start.md){ .md-button .md-button--primary } [About this manual](about.md){ .md-button }
+[Quick start](quick-start/index.md){ .md-button .md-button--primary } [About this manual](about.md){ .md-button }
 
 Source Robotics d.o.o. publishes this document as part of the open-source PAROL6 project. It is revised as the
 product changes; the document number, release, revision and date above identify the version you are reading, and
@@ -38,8 +38,8 @@ colour for the printed parts (the motors stay black). The model is the robot's
 
     ---
 
-    [One page](quick-start.md) from an assembled robot to a homed one that moves: power, the commander software,
-    the first jog, homing, with a link into the manual at every step.
+    [Four short parts](quick-start/index.md) from an assembled robot to a homed one that moves: the software, the
+    firmware, power, the first jog, homing, with a link into the manual at every step.
 
 -   :material-book-open-variant:{ .lg .middle } **The robot manual**
 

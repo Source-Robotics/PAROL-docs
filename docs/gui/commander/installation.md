@@ -10,7 +10,7 @@
 
 The commander goes into its own folder with its own virtual environment (`.venv`), on every operating system. It
 pins numpy 1.23.4 and the Python API needs numpy 2, so the two cannot share one Python: give each its own
-environment, as the [Quick start](../../quick-start.md) does.
+environment, as the [Quick start](../../quick-start/index.md) does.
 
 === "Windows"
     ```

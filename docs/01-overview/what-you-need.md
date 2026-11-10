@@ -43,6 +43,6 @@ threadlocker and the thermal cement.
 ## Knowledge
 
 You should be able to use a hex key. Python and the terminal you can learn on the way: the
-[Quick start](../quick-start.md) gives every command to type, for someone who has never used either. The
+[Quick start](../quick-start/index.md) gives every command to type, for someone who has never used either. The
 [Theory corner](../theory/index.md) explains the robotics vocabulary the software uses, from
 joint numbering to singularities, in the order you meet it.
