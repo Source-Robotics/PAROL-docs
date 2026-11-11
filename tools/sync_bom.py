@@ -37,7 +37,8 @@ HEADER = """# Bill of materials
     The original is [BOM/README.md]({url}/blob/main/BOM/README.md) in the robot's repository; this page is that
     file as of {when} (commit `{commit}`), with the reference images shown inline. If a link is broken or a part
     is wrong, [open an issue]({url}/issues/new) there, and the fix lands here with the next sync. If you would
-    rather not source the parts yourself, the shop's [kits](index.md#kits) cover every part or the hard-to-find ones.
+    rather not source the parts yourself, the shop's [kits](index.md#kits) carry most of them: the *In the kits*
+    column says which.
 
 """
 
