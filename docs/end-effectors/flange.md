@@ -39,8 +39,8 @@ The M8 socket at the forearm is a female 4-pin. Its pins, by the numbers moulded
 | **3** | +24 V |
 | **4** | CAN L |
 
-The grippers have +24 V on pin 1 and GND on pin 3, so the PAROL6 gripper cable crosses pin 1 with 3 and 2 with 4
-between its ends.
+The PAROL6 gripper cable mirrors the CAN pair and the power pair between its ends, so each signal reaches the
+gripper's pin for the same signal: +24 V to +24 V, GND to GND, CAN H to CAN H, CAN L to CAN L.
 
 !!! danger "Never a straight M8 cable"
     A straight M8 cable, the PAR6 gripper cable among them, reverses a gripper's supply here and destroys its
