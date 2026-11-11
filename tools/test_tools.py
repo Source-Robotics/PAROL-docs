@@ -3,6 +3,7 @@
 fixtures and the files in the repository. Run: python tools/test_tools.py (the build check runs it on every push)."""
 from __future__ import annotations
 
+import html
 import importlib.util
 import json
 import re
@@ -265,6 +266,28 @@ data, err = load_issues([ISSUE, dict(ISSUE, id="KI-2", status="fixed", fixed_in=
 out = ki.all_issues(data, "08-troubleshooting/known-issues.md") if data else ""
 check("F5 open issues are listed by component, fixed ones under Fixed with their version",
       "### C" in out and "### Fixed" in out and "| KI-2 | s | 1.1 |" in out and "| KI-1 | s | w |" in out, err or out)
+
+# ---------------------------------------------------------------- G. the kits on the bill of materials
+bom = load_module("sync_bom", ROOT / "tools" / "sync_bom.py")
+kits = yaml.safe_load((DOCS / "includes" / "bom-kits.yml").read_text(encoding="utf-8"))
+page = (DOCS / "build" / "bill-of-materials.md").read_text(encoding="utf-8")
+rows = bom.bom_rows(page)
+problems = bom.kit_problems(kits, rows)
+check("G1 every row of the bill of materials has its kit entry, and every entry a row", rows and not problems,
+      "; ".join(problems))
+box = re.search(r'<div class="bom-kits" data-kits="([^"]*)"></div>', page)
+check("G2 the page carries the current bom-kits.yml (else run tools/sync_bom.py)",
+      box is not None and json.loads(html.unescape(box.group(1))) == kits)
+SAMPLE = "## Motors\n\n| Name | Quantity |\n| :--- | :--- |\n| Stepper 1 | 1 |\n\n## Electronics\n\n| Name | Quantity |\n|---|---|\n| Fan | 1 |\n"
+TOY = {"kits": {"full": {}}, "sections": {"Motors": {"kits": ["full"]}, "Electronics": {"rows": {"Fan": {"kits": ["full"]}}}}}
+check("G3 the BOM's rows are read with their section", bom.bom_rows(SAMPLE) == [("Motors", "Stepper 1"), ("Electronics", "Fan")])
+check("G4 a row without an entry is reported",
+      bom.kit_problems({"kits": {"full": {}}, "sections": {"Motors": {"kits": ["full"]}, "Electronics": {"rows": {}}}},
+                       bom.bom_rows(SAMPLE)) == ["no entry for Electronics / Fan"])
+toy = {"kits": {"full": {}}, "sections": dict(TOY["sections"], Belts={"kits": ["half"]})}
+found = bom.kit_problems(toy, bom.bom_rows(SAMPLE))
+check("G5 an entry without a row, and an unknown kit, are reported",
+      "an entry for a section the BOM does not have: Belts" in found and any("unknown kit" in f for f in found), found)
 
 print()
 if fails:

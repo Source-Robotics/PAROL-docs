@@ -1,0 +1,63 @@
+# What the PAROL6 kits contain, row by row of the bill of materials (docs/build/bill-of-materials.md, copied from
+# the robot repository's BOM/README.md by tools/sync_bom.py). The BOM page shows it through the selector at its top
+# (docs/javascripts/bom-kits.js): pick a kit, and each row says "Included" or "Not included".
+#
+# Source: the partial kit's packing list (owner, 2026-11-11) and the owner's rule: the full kit is the partial kit
+# plus all the motors and gearboxes. Neither has the power supply or the printed parts.
+#
+# A row is found by its section (the BOM's ## heading) and its first cell. A section's `kits` covers every row in it;
+# `rows` names rows one by one. `kits` lists the kits that contain the row; `needed: false` means a kit builder does
+# not need the row at all; `note` is shown beside "Included"; `optional: true` marks a section nobody has to buy.
+# tools/sync_bom.py and tools/test_tools.py fail when a BOM row has no entry here, or an entry has no row.
+
+kits:
+  partial:
+    label: I have the partial kit
+    name: the partial kit
+    url: https://source-robotics.com/products/parol6-partial-kit
+  full:
+    label: I have the full kit
+    name: the full kit
+    url: https://source-robotics.com/products/parol6-robotic-arm-kit
+
+# Shown with either kit: what the kits carry beyond the BOM's rows.
+extras: >-
+  six M5 × 16 mm screws for the base, wire to extend the motor and sensor cables, heat shrink tube, the cable from
+  the XT30 connector to the power socket, and two silencers and three PC4-M5 fittings for the valve
+
+sections:
+  Screws and Nuts: {kits: [partial, full]}
+  Gearboxes: {kits: [full]}
+  Motors: {kits: [full]}
+  Belts: {kits: [partial, full]}
+  Pulleys: {kits: [partial, full]}
+  Shaft couplers: {kits: [partial, full]}
+  Bearings: {kits: [partial, full]}
+  Electronics:
+    rows:
+      PAROL control board: {kits: [partial, full]}
+      TMC5160: {kits: [partial, full], note: on the control board}
+      Thermal paste / cement: {kits: [], needed: false, note: "the kits' control board has its drivers"}
+      On/Off button: {kits: [partial, full]}
+      JST PH 2.0mm 200mm 4PIN: {kits: [partial, full]}
+      Noctua NF-A4x20 5V 40mm: {kits: [partial, full]}
+      Power connector - male + female: {kits: [partial, full]}
+      Gripper connector (electric): {kits: [partial, full]}
+      Power supply: {kits: []}
+      Limit switches: {kits: [partial, full]}
+      Inductive sensor 1: {kits: [partial, full]}
+      Inductive sensor 2: {kits: [partial, full]}
+      Inductive sensor 3: {kits: [partial, full]}
+      Estop: {kits: [partial, full]}
+      Cable gland for estop: {kits: [partial, full]}
+      M3 brass insert: {kits: []}                        # not on the packing list: to confirm with the owner
+      Pneumatic connector - robot: {kits: [partial, full]}
+      Pneumatic Gripper: {kits: [partial, full]}
+      Pneumatic gripper connector: {kits: [partial, full]}
+      Pneumatic tube: {kits: [partial, full], note: 2.5 m}      # the BOM says 5 m: to confirm
+      xt30 connector female: {kits: [partial, full]}
+      Stlink / programming adapter: {kits: [partial, full], note: the programming adapter}   # the ST-Link itself: to confirm
+      USB B cable: {kits: []}                            # not on the packing list: to confirm
+      5/2 solenoid air valve: {kits: [partial, full]}
+  Vacuum gripper: {kits: [], optional: true}
+  Small print bed modification: {kits: [], optional: true}

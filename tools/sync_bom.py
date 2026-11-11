@@ -14,10 +14,15 @@ docs/assets/bom/. The page is the repository's file with these changes only:
 
 Everything else, the parts, the quantities, the purchase links, is left untouched: a wrong part is fixed in the
 repository's BOM/README.md, then this tool is run again. --check exits 1 when the page is out of date.
+
+What the shop's kits contain is docs/includes/bom-kits.yml, one entry per BOM row; the tool writes it into the page
+for the kit selector (docs/javascripts/bom-kits.js) and stops when a BOM row has no entry or an entry no row.
 """
 from __future__ import annotations
 
 import argparse
+import html
+import json
 import os
 import re
 import subprocess
@@ -27,6 +32,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 PAGE = ROOT / "docs" / "build" / "bill-of-materials.md"
 IMG_DIR = ROOT / "docs" / "assets" / "bom"
+KITS = ROOT / "docs" / "includes" / "bom-kits.yml"
 REPO_URL = "https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm"
 THUMB = 120      # px shown in the table
 STORED = 400     # px long side of the stored copy
@@ -37,8 +43,8 @@ HEADER = """# Bill of materials
     The original is [BOM/README.md]({url}/blob/main/BOM/README.md) in the robot's repository; this page is that
     file as of {when} (commit `{commit}`), with the reference images shown inline. If a link is broken or a part
     is wrong, [open an issue]({url}/issues/new) there, and the fix lands here with the next sync. If you would
-    rather not source the parts yourself, the shop's [kits](index.md#kits) carry most of them: the *In the kits*
-    column says which.
+    rather not source the parts yourself, the shop's [kits](index.md#kits) carry most of them: pick yours below,
+    and each row says whether it is included.
 
 """
 
@@ -50,6 +56,54 @@ def find_repo(arg: str | None) -> Path:
         if c and (Path(c) / "BOM" / "README.md").exists():
             return Path(c)
     sys.exit("sync_bom: no clone of PAROL6-Desktop-robot-arm found; pass --repo PATH")
+
+
+def bom_rows(text: str) -> list[tuple[str, str]]:
+    """(section, first cell) of every row of every table: the section is the ## heading above the table."""
+    rows, section, header = [], "", False
+    for line in text.replace("\r\n", "\n").split("\n"):
+        if line.startswith("## "):
+            section = line[3:].strip()
+        if not line.startswith("|"):
+            header = False
+            continue
+        cells = [c.strip() for c in line.strip().strip("|").split("|")]
+        if not header:
+            header = True                                   # the first line of a table is its header
+        elif not set("".join(cells)) <= set(":- "):
+            rows.append((section, cells[0]))
+    return rows
+
+
+def kit_problems(data: dict, rows: list[tuple[str, str]]) -> list[str]:
+    """Every BOM row needs an entry in bom-kits.yml (its section's `kits`, or its own under `rows`), every entry a
+    row, and every kit named in an entry must be one of `kits`."""
+    problems, sections, kits = [], data.get("sections") or {}, set(data.get("kits") or {})
+    for section, name in rows:
+        s = sections.get(section)
+        if s is None or ("kits" not in s and name not in (s.get("rows") or {})):
+            problems.append(f"no entry for {section} / {name}")
+    for section, s in sections.items():
+        if not any(r[0] == section for r in rows):
+            problems.append(f"an entry for a section the BOM does not have: {section}")
+        for name in s.get("rows") or {}:
+            if (section, name) not in rows:
+                problems.append(f"an entry for a row the BOM does not have: {section} / {name}")
+        for name, e in [(section, s)] + list((s.get("rows") or {}).items()):
+            if "kits" in e and not set(e["kits"]) <= kits:
+                problems.append(f"an unknown kit in {name}: {e['kits']}")
+    return problems
+
+
+def kit_box(body: str) -> str:
+    """The element the kit selector fills, with bom-kits.yml in it; stops when the BOM and the file disagree."""
+    import yaml
+    data = yaml.safe_load(KITS.read_text(encoding="utf-8"))
+    problems = kit_problems(data, bom_rows(body))
+    if problems:
+        sys.exit("sync_bom: the BOM and docs/includes/bom-kits.yml disagree:\n  " + "\n  ".join(problems))
+    payload = html.escape(json.dumps(data, ensure_ascii=False, separators=(",", ":")), quote=True)
+    return f'<div class="bom-kits" data-kits="{payload}"></div>\n\n'
 
 
 def safe_name(name: str) -> str:
@@ -111,7 +165,7 @@ def main(argv=None) -> int:
     except (subprocess.CalledProcessError, ValueError, FileNotFoundError):
         commit, when = "unknown", "today"
     body = convert((repo / "BOM" / "README.md").read_text(encoding="utf-8"), repo, write_images=not args.check)
-    page = (HEADER.format(url=REPO_URL, when=when, commit=commit) + body).replace("\n", "\r\n")
+    page = (HEADER.format(url=REPO_URL, when=when, commit=commit) + kit_box(body) + body).replace("\n", "\r\n")
     if args.check:
         current = PAGE.read_bytes().decode("utf-8") if PAGE.exists() else ""
         # the commit line changes with every repository commit that touches the file; compare the body only
