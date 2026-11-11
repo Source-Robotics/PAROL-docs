@@ -1,40 +1,26 @@
 # The commander software
 
-The PAROL6 commander software is the desktop program for using the robot by hand, and the program to start with.
+The PAROL6 commander software is the desktop program for using the robot by hand: a GUI with joint and
+Cartesian jogging, a 3D simulator that mirrors the robot, a response log, a program editor and interpreter for
+RBTscript, the I/O tab and the gripper tab. It is written in Python with customtkinter and the Robotics Toolbox,
+runs a 100 Hz loop to the control board, and is the program to start with.
 
 ![The commander window](../../assets/GUI2.webp){ width="800" }
 
-| It has | |
-|---|---|
-| Jogging | Joint and Cartesian |
-| A 3D simulator | It mirrors the robot |
-| A response log | What the robot and the program are doing |
-| A program editor and interpreter | For RBTscript |
-| Tabs | The I/O tab and the gripper tab |
-
-It is written in Python with customtkinter and the Robotics Toolbox, and runs a 100 Hz loop to the control board.
-
 ## In this guide
 
-| Page | What it covers |
-|---|---|
-| [Installation](installation.md) | Installing it, the first run, checking the loop |
-| [The GUI](the-gui.md) | The windows, the menus, connecting, jogging, the tabs |
+- [Installation](installation.md)
+- [The GUI](the-gui.md): the windows, the menus, connecting, jogging, the tabs
 
 Its program language, RBTscript, is in the Programming Guide: [RBTscript](../../programming/03-commander/rbtscript.md),
 [Examples](../../programming/03-commander/examples.md).
 
 ## What it is and is not
 
-| Use it for | It has no |
-|---|---|
-| The first day | Blending |
-| Teaching poses | Collision checking |
-| Demos | Network interface |
-| Simple sequences | Tool selection: its kinematic model is the one with the pneumatic gripper |
-
-For programs that need those, the [Python API](../../programming/02-python-api/index.md). The two cannot be
-connected to the robot at the same time.
+It is the tool for the first day, for teaching poses, for demos and for simple sequences. It has no blending, no
+collision checking, no network interface and no tool selection: its kinematic model is the one with the pneumatic
+gripper. For programs that need those, the [Python API](../../programming/02-python-api/index.md). The two cannot be connected
+to the robot at the same time.
 
 !!! warning "The experimental kinematics branch"
     The repository's `experimental_kinematics` branch resolves most Cartesian jogging errors but can command

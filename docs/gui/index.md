@@ -9,8 +9,8 @@ hide:
 
 <!-- doc-meta: gui -->
 
-The graphical programs for PAROL6 and its grippers: which one to open for which job, how to install it, and what
-is on its screen. Programming the robot, in RBTscript or Python, is in the
+The graphical programs for PAROL6 and its grippers: which one to open for which job, how to install it, and
+what is on its screen. Programming the robot, in RBTscript or Python, is in the
 [Programming Guide](../programming/index.md).
 
 | | Commander software | Waldo Commander | Motor GUI |
@@ -20,16 +20,11 @@ is on its screen. Programming the robot, in RBTscript or Python, is in the
 | Runs | on the PC at the robot, Python 3.10 or 3.11 | a server at the robot, any browser | any Chromium browser, with the CANvas adapter |
 | Talks to | the control board over USB | the Python API's controller | the gripper's driver over CAN |
 
-!!! note "One program at a time"
-    One program owns the control board at a time: the commander and the Python API's controller cannot be
-    connected together ([Control ownership](../theory/control-ownership.md)).
-
 ## In this guide
 
-| Page | What it covers |
-|---|---|
-| [The commander software](commander/index.md) | What it is and is not |
-| [Installation](commander/installation.md) | Installing the commander, the first run, checking the loop |
-| [The GUI](commander/the-gui.md) | The windows, the menus, connecting, jogging, the tabs |
-| [Waldo Commander](waldo-commander.md) | The community browser interface |
-| [Motor GUI](motor-gui.md) | The browser tool for the grippers' drivers |
+- The commander software: [Installation](commander/installation.md), [The GUI](commander/the-gui.md)
+- [Waldo Commander](waldo-commander.md)
+- [Motor GUI](motor-gui.md)
+
+One program owns the control board at a time: the commander and the Python API's controller cannot be connected
+together ([Control ownership](../theory/control-ownership.md)).

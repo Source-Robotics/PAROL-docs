@@ -7,16 +7,12 @@ hide:
 
 <!-- doc-meta: programming -->
 
-This guide is for everyone who makes PAROL6 do something: from a first RBTscript program in the commander software
-to a Python application on the API, a ROS 2 pipeline, or a program that an AI agent writes.
-
-It starts with the interfaces and how to choose, walks through the Python API and the commander software, and ends
-with ROS 2 and the other interfaces.
-
-| Also | Where |
-|---|---|
-| The ideas the software is built on: the units, the frames, the kinematics, the configurations, the motion profiles | The [Theory corner](../theory/index.md), a tab of their own |
-| Every method and command, read from the API's source at the version named above | The [API reference](../reference/index.md) |
+This guide is for everyone who makes PAROL6 do something: from a first RBTscript program in the commander
+software to a Python application on the API, a ROS 2 pipeline, or a program that an AI agent writes. It starts
+with the interfaces and how to choose, walks through the Python API and the commander software, and ends with
+ROS 2 and the other interfaces. The ideas the software is built on, the units, the frames, the kinematics, the
+configurations, the motion profiles, are in the [Theory corner](../theory/index.md), a tab of their own. The [API reference](../reference/index.md)
+is where every method and command is listed, read from the API's source at the version named above.
 
 <div class="grid cards" markdown>
 

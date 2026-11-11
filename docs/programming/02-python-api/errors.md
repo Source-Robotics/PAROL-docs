@@ -32,13 +32,11 @@ carries `error`.
 
 ## ValueError and TimeoutError
 
-The client checks parameters before sending:
-
-| What happens | Result |
-|---|---|
-| A wrong number of angles, a speed outside (0, 1], a non-finite value, an unknown tool action | `ValueError`, raised locally |
-| A blocking call whose completion is not confirmed in its `timeout` | `TimeoutError`; the command stays queued, and `stop()` cancels it |
-| A query that gets no reply | It returns `None`, except the TCP queries and bounded I/O writes, which raise rather than report a misleading value |
+The client checks parameters before sending: a wrong number of angles, a speed outside (0, 1], a non-finite
+value, an unknown tool action raise `ValueError` locally. A blocking call whose completion is not confirmed in
+its `timeout` raises `TimeoutError`; the command stays queued, and `stop()` cancels it. A query that gets no
+reply returns `None`, except the TCP queries and bounded I/O writes, which raise rather than report a misleading
+value.
 
 ## ConnectionError
 
