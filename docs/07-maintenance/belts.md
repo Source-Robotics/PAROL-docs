@@ -5,20 +5,15 @@ a tooth loses the robot's position.
 
 ## Tension
 
-The reference is the [belt tension video](https://www.youtube.com/watch?v=v0PYfEoIr3k). In it, maximum hand force
-is applied to the belt:
-
-| Joints | Tension |
-|---|---|
-| 3 and 5 | The video's: maximum hand force |
-| 1 and 4 | Slightly less |
+The reference is the [belt tension video](https://www.youtube.com/watch?v=v0PYfEoIr3k): in it, maximum hand force
+is applied to the belt, and that is the tension to aim for on joints 3 and 5. Joints 1 and 4 take slightly less.
 
 A belt is tensioned by adding or moving the small tension bearings (3 × 8 × 4 mm and 3 × 10 × 4 mm) that press on
 its back. If a belt is not tight enough, add another bearing as in the photos.
 
-!!! note "A tensioner only where it is needed"
-    You may or may not need a tensioner on a given joint: it depends on your belts and printed parts, so fit one
-    only where the belt is not tight enough without it.
+You may or may not need a tensioner
+on a given joint: it depends on your belts and printed parts, so fit one only where the belt is not tight enough
+without it.
 
 === "Joint 5"
 

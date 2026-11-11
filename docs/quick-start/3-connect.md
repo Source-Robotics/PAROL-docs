@@ -218,5 +218,3 @@ The **serial port** is the name the PC gives the USB connection.
     it does not, use [Communication troubleshooting](../08-troubleshooting/communication.md).
 
 More: [The commander software](../gui/commander/index.md) · [The Python API](../programming/02-python-api/index.md).
-
-[Next: 4. First moves :material-arrow-right:](4-first-moves.md){ .md-button .md-button--primary }

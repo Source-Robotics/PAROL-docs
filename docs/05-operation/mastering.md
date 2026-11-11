@@ -1,5 +1,10 @@
 # Mastering
 
+!!! tip "First build? Skip this step"
+    Mastering is not needed to use PAROL6, and we recommend that first-time builders skip it. Without it, a homed
+    robot still returns to the same place every time; mastering only makes that place match the witness marks
+    exactly. Come back to it when absolute accuracy matters ([When to master again](#when-to-master-again)).
+
 Homing brings each joint to its switch, and then a fixed number of steps to the after-homing pose. That number is
 in the firmware, measured on the reference robot.
 
@@ -15,17 +20,10 @@ them on every joint.
 
 ![Witness marks of PAROL6](../assets/parolw.webp){ width="800" }
 
-## What you change, per joint
-
-| Joints | What you change | Where |
-|---|---|---|
-| [1 to 4](#the-procedure) | The joint's `homed_position` | `motor_init.cpp` |
-| [5](#joint-5-and-the-tool) | `j5_homing_offset`, which depends on the tool | `main.cpp` |
-| [6](#joint-6) | Nothing in firmware 1: its sensor or its homing pin | On the robot |
-
 ## The procedure
 
-For joints 1 to 4. Joints 5 and 6 work differently, below.
+This is for joints 1 to 4: you change their `homed_position` in `motor_init.cpp`. Joint 5 has its own value,
+`j5_homing_offset` in `main.cpp`, and joint 6 has none in firmware 1. Both are [below](#joint-5-and-the-tool).
 
 1. Home the robot.
 2. Jog the joint in small steps until the pin fits through its witness marks. Jog at the lowest speed.

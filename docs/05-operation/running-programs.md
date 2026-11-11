@@ -1,11 +1,7 @@
 # Running programs
 
-A program is a list of moves, delays, I/O and gripper commands. PAROL6 runs programs in two ways:
-
-| | Where | Language |
-|---|---|---|
-| [RBTscript in the commander software](#rbtscript-in-the-commander-software) | The commander's **Program** window | RBTscript, one command per line |
-| [Python with the Python API](#python-with-the-python-api) | A Python script, on the PC at the robot or on another machine | Python |
+A program is a list of moves, delays, I/O and gripper commands. PAROL6 runs programs in two ways: as RBTscript in
+the commander software, or as a Python script with the Python API.
 
 ## RBTscript in the commander software
 
@@ -63,15 +59,11 @@ at the robot. [The Python API](../programming/02-python-api/index.md) is the gui
 
 ## Simulate first
 
-Both programs have a simulator:
+Both programs have a simulator. The commander opens its 3D window with the GUI and mirrors the robot. The Python
+API's controller runs with `simulator(True)` or the `DryRunRobotClient` without hardware, through the same
+kinematics and collision checks.
 
-| Program | Its simulator |
-|---|---|
-| Commander software | Its 3D window opens with the GUI and mirrors the robot |
-| Python API | The controller runs with `simulator(True)` or the `DryRunRobotClient`, without hardware, through the same kinematics and collision checks |
-
-1. Run a new program in the simulator at full speed.
-2. Then run it on the robot at low speed.
+Run a new program in the simulator at full speed, then on the robot at low speed.
 
 ## Speed
 
@@ -82,11 +74,12 @@ Both programs have a simulator:
 
 ## Stopping a program
 
-| How | What happens |
-|---|---|
-| **Stop** in the commander, or `stop()` in the API | The current move is cancelled and the queue cleared. The robot stays enabled and holding. |
-| The **E-stop** | The robot is disabled and the program or the queue is stopped. In the Python API, call `reset()` after releasing it ([Emergency stop](../02-safety/emergency-stop.md)). |
-| Closing the software | Stop the program first. The firmware has no timeout: it keeps executing the last packet it received until the next one arrives. After a move to a position the joints stop near that target and hold. |
+- **Stop** in the commander, or `stop()` in the API: the current move is cancelled, the queue cleared, the robot
+  stays enabled and holding.
+- The **E-stop**: the robot is disabled and the program or the queue is stopped; in the Python API, call
+  `reset()` after releasing it ([Emergency stop](../02-safety/emergency-stop.md)).
+- Closing the software: stop the program first. The firmware has no timeout: it keeps executing the last packet
+  it received until the next one arrives. After a move to a position the joints stop near that target and hold.
 
 !!! danger "When the PC stops sending during a jog"
     If the commander closes, crashes or loses the USB connection while a joint jogs (in joint or Cartesian

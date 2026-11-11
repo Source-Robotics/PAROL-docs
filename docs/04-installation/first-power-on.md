@@ -32,8 +32,8 @@ connected ST-Link keeps the robot on and the button useless: [Switching on and o
 
 ## If nothing happens
 
-| What you see | What it means, what to do |
-|---|---|
-| No clicks, no fan | No 24 V. Check the supply, the GX16 cable and its polarity. |
-| Clicks, but the PC software does not connect | The serial port name, or the board runs the test firmware. See [Communication](../08-troubleshooting/communication.md). |
-| The board turned on by itself when the supply was plugged in | Something supplies 3.3 V to the programming header, or the arm was moved while unpowered ([Hazards](../02-safety/hazards.md#stepper-induced-voltage)). |
+- No clicks, no fan: no 24 V. Check the supply, the GX16 cable and its polarity.
+- Clicks, but the PC software does not connect: the serial port name, or the board runs the test firmware. See
+  [Communication](../08-troubleshooting/communication.md).
+- The board turned on by itself when the supply was plugged in: something supplies 3.3 V to the programming
+  header, or the arm was moved while unpowered ([Hazards](../02-safety/hazards.md#stepper-induced-voltage)).

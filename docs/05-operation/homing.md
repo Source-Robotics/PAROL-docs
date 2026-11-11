@@ -42,11 +42,9 @@ Home the robot:
     rbt.home(wait=True)
     ```
 
-    | Call | What it does |
-    |---|---|
-    | The first `home()` after power-up | Runs the referencing sequence |
-    | A later `home()`, on a referenced robot | A planned, collision-checked joint move back to the after-homing pose |
-    | `home(calibrate=True)` | Runs the sequence again |
+    The first `home()` after power-up runs the referencing sequence. A later `home()` on a referenced robot is a
+    planned, collision-checked joint move back to the after-homing pose. `home(calibrate=True)` runs the sequence
+    again.
 
     Planned motion is refused with `MOTN_NOT_HOMED` until the robot is referenced.
 
@@ -74,23 +72,27 @@ flowchart TD
 
 ??? info "Each step in detail, with the step counts"
 
-    | Step | Joints | What happens |
-    |---|---|---|
-    | 1 | 1, 2 and 3 | They move together toward their switches: joint 1 to its inductive sensor, joints 2 and 3 to their limit switches. Each stops when it triggers. |
-    | 2 | 1, 2 and 3 | Each backs off, 850 steps on joint 1 and 1050 on joints 2 and 3, and approaches again slowly. The position where it triggers the second time is the reference: the first hit may have pressed the switch too far. |
-    | 3 | 1, 2 and 3 | They move from the reference to their after-homing positions, 13500, 19588 and 23020 steps away. |
-    | 4 | 4 | The same against its inductive sensor (backing off 1550 steps), then to its after-homing position. |
-    | 5 | 6 | It turns in the negative direction until its sensor sees the homing pin, backs off, re-approaches, and moves on to the position from which joint 5 can home. |
-    | 6 | 5 and 6 | Joint 5 homes against its switch. Then joints 5 and 6 move to their after-homing positions together: joint 5 by `j5_homing_offset`, joint 6 back to the point where its sensor triggered. |
-    | 7 | All | The firmware sets every joint's counter to its after-homing value (`standby_position` in the firmware), and reports all six joints as homed. |
+    1. **Joints 1, 2 and 3 move together** toward their switches: joint 1 to its inductive sensor, joints 2 and 3
+       to their limit switches. Each stops when it triggers.
+    2. Each backs off, 850 steps on joint 1 and 1050 on joints 2 and 3, and approaches again slowly. The position
+       where it triggers the second time is the reference: the first hit may have pressed the switch too far.
+    3. Joints 1, 2 and 3 move from the reference to their after-homing positions (13500, 19588 and 23020 steps
+       away).
+    4. **Joint 4** does the same against its inductive sensor (backing off 1550 steps) and moves to its
+       after-homing position.
+    5. **Joint 6** turns in the negative direction until its sensor sees the homing pin, backs off, re-approaches,
+       and moves on to the position from which joint 5 can home.
+    6. **Joint 5** homes against its switch. Then joints 5 and 6 move to their after-homing positions together:
+       joint 5 by `j5_homing_offset`, joint 6 back to the point where its sensor triggered.
+    7. The firmware sets every joint's counter to its after-homing value (`standby_position` in the firmware), and
+       reports all six joints as homed.
 
 ## If it goes wrong
 
-| What you see | What it means, what to do |
-|---|---|
-| A joint grinds at its end without stopping | Its switch does not trigger. Press the E-stop. |
-| The LED of an inductive sensor does not light | The sensor needs its trigger screw adjusted. Joints 1, 4 and 6 use inductive sensors, whose LED lights when they see metal. |
-| Joint 6 keeps turning | Its homing pin is not where the sensor looks. |
+Press the E-stop when a joint grinds at its end without stopping: its switch does not trigger.
+
+Joints 1, 4 and 6 use inductive sensors whose LED lights when they see metal. A sensor that does not light needs
+its trigger screw adjusted. If joint 6 keeps turning, its homing pin is not where the sensor looks.
 
 [Homing failures](../08-troubleshooting/homing-failures.md) has the cases.
 

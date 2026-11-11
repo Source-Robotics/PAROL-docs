@@ -1,25 +1,19 @@
 # The robot system
 
-A working PAROL6 is three things, and each does a part of the job:
-
-| Part | What it does |
-|---|---|
-| [The arm](#the-arm) | Six joints, driven by stepper motors, with the tool at the end |
-| [The control board](#the-control-board), inside the base | Runs the motors, the switches, the I/O and the gripper |
-| [A PC](#the-pc-software), running the high-level software | Plans every move and sends it to the board |
+A working PAROL6 is three things: the arm, the control board inside its base, and a PC running the high-level
+software. Each does a part of the job.
 
 ![PAROL6 with the connections on its base](../assets/Connectors.webp){ width="700" }
 
 ## The arm
 
 Six revolute joints, driven by NEMA 17 stepper motors through planetary gearboxes and belts, in PETG printed links.
+Joints 1, 2 and 3 position the wrist; joints 4, 5 and 6 form a spherical wrist that orients the tool. Joint 6
+ends in the flange the tool mounts on.
 
-- Joints 1, 2 and 3 position the wrist.
-- Joints 4, 5 and 6 form a spherical wrist that orients the tool.
-- Joint 6 ends in the flange the tool mounts on.
-- The tool connections are on the forearm: an M8 connector for an electric gripper and two push-in fittings for
-  pneumatic lines.
-- Each joint has a limit switch or an inductive sensor that gives it a reference when the robot homes.
+The tool connections are on the forearm: an M8 connector for an electric
+gripper and two push-in fittings for pneumatic lines. Each joint has a limit switch or an inductive sensor that
+gives it a reference when the robot homes.
 
 <div class="grid side-list" markdown>
 
@@ -41,36 +35,22 @@ Six revolute joints, driven by NEMA 17 stepper motors through planetary gearboxe
 
 </div>
 
-??? info "The link names in the robot model"
-    The robot model (the URDF and MuJoCo files in `robot_descriptions`) uses the standard ROS link names, which
-    count the parts differently:
+The robot model (the URDF and MuJoCo files in `robot_descriptions`) uses the standard ROS link names, which count
+the parts differently: the elbow is `forearm_link`, the forearm `wrist_1_link` and the wrist `wrist_2_link`.
 
-    | Here | In the robot model |
-    |---|---|
-    | The elbow | `forearm_link` |
-    | The forearm | `wrist_1_link` |
-    | The wrist | `wrist_2_link` |
-
-!!! note "No brakes, no joint encoders"
-    The arm has no brakes and no joint encoders. The motors hold the arm while they are powered; the position is
-    counted in steps from the homing reference. Both facts shape how the robot is used, and the
-    [Safety](../02-safety/index.md) chapter returns to them.
+The arm has no brakes and no joint encoders. The motors hold the arm while they are powered; the position is
+counted in steps from the homing reference. Both facts shape how the robot is used, and the
+[Safety](../02-safety/index.md) chapter returns to them.
 
 ## The control board
 
-The [PAROL6 control board](../board/index.md) sits in the base.
+The [PAROL6 control board](../board/index.md) sits in the base: an STM32F446 microcontroller, six TMC5160 stepper
+drivers, two isolated inputs and two isolated outputs, the E-stop input, a CAN bus for electric grippers, and USB
+to the PC.
 
-| It has | |
-|---|---|
-| A microcontroller | STM32F446 |
-| Stepper drivers | Six TMC5160 |
-| I/O | Two isolated inputs and two isolated outputs, the E-stop input |
-| Buses | A CAN bus for electric grippers, and USB to the PC |
-
-Its firmware generates the step pulses, runs the homing sequence, reads the switches and the inputs, drives the
-outputs and the gripper, and exchanges a packet with the PC at 100 Hz.
-
-It does not plan motion: it executes the joint speeds and positions the PC sends it, 100 times a second.
+Its firmware generates the step pulses, runs the homing sequence, reads the switches and the inputs,
+drives the outputs and the gripper, and exchanges a packet with the PC at 100 Hz. It does not plan motion: it
+executes the joint speeds and positions the PC sends it, 100 times a second.
 
 ## The PC software
 

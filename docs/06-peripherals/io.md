@@ -1,62 +1,38 @@
 # Inputs and outputs
 
-The control board has two isolated inputs and two isolated outputs, on screw terminals at the side of the board,
-reachable through the base. Optocouplers isolate them from the robot's electronics, and they share a supply that
-you choose.
-
-| | Inputs | Outputs |
-|---|---|---|
-| Terminals | **IN1**, **IN2** | **OUT1**, **OUT2** |
-| For | Switches, push buttons, light barriers and sensors | Relays, valves, lamps, small actuators |
-| Voltage | 12 to 50 V, 24 V nominal | 48 V maximum |
-| Current | | Up to 0.5 A each (1 A peak) |
+The control board has two isolated inputs and two isolated outputs on screw terminals at the side of the board,
+reachable through the base. They are isolated from the robot's electronics through optocouplers, and they share
+a supply that you choose.
 
 ## The supply
 
-Choose one:
+- **Isolated**: connect an external supply's negative to **GND_SEL** and positive to **HV_SEL**. The inputs and
+  outputs then work at that voltage, 12 or 24 V (the inputs need at least 12 V), and a fault on them cannot reach
+  the robot.
+- **Not isolated**: link the robot's own 24 V and GND to HV_SEL and GND_SEL. Simpler, and the valve of the
+  pneumatic gripper is usually wired this way. A 2 A fuse protects the outputs in this mode.
 
-| | Isolated | Not isolated |
-|---|---|---|
-| Wiring | An external supply's negative to **GND_SEL**, its positive to **HV_SEL** | The robot's own 24 V and GND linked to HV_SEL and GND_SEL |
-| Voltage | That supply's: 12 or 24 V (the inputs need at least 12 V) | 24 V |
-| Protection | A fault on the inputs and outputs cannot reach the robot | A 2 A fuse protects the outputs |
+![Isolated supply wiring](../assets/Ext_supply.webp){ width="650" }
 
-Not isolated is simpler, and the valve of the pneumatic gripper is usually wired this way.
-
-=== "Isolated"
-
-    ![Isolated supply wiring](../assets/Ext_supply.webp){ width="650" }
-
-=== "Not isolated"
-
-    ![Non-isolated wiring from the robot's 24 V](../assets/Internal_24V.webp){ width="650" }
+![Non-isolated wiring from the robot's 24 V](../assets/Internal_24V.webp){ width="650" }
 
 The E-stop is not part of this: it is wired to the robot's own supply whichever option you choose.
 
 ## Inputs
 
-| Device | Wiring |
-|---|---|
-| A switch | Between **HV_SEL** and **IN1** or **IN2** |
-| A three-wire sensor | HV_SEL and GND_SEL for its supply; its signal to the input |
+Switches, push buttons, light barriers and sensors. A switch goes between **HV_SEL** and **IN1** or **IN2**; a
+three-wire sensor takes HV_SEL and GND_SEL for its supply and gives its signal to the input. Input voltage 12 to
+50 V, 24 V nominal.
 
-The robot reports the inputs in every packet:
-
-| Program | Shows the inputs |
-|---|---|
-| Commander software | In the **IO** tab |
-| Python API | `io()` returns `[in1, in2, out1, out2, estop]` |
-
-!!! warning "RBTscript's Input() does not work yet"
-    RBTscript's `Input()` has no action yet: a program stops on it
-    ([Known issues](../08-troubleshooting/known-issues.md)).
+The robot reports the inputs in every packet: the commander's **IO** tab shows them, and the Python API's `io()`
+returns `[in1, in2, out1, out2, estop]`. RBTscript's `Input()` has no action yet: a program stops on it
+([Known issues](../08-troubleshooting/known-issues.md)).
 
 ## Outputs
 
-A load goes between **GND_SEL** and **OUT1** or **OUT2**; the output switches it to the supply.
-
-!!! tip "A flyback diode on an inductive load"
-    An inductive load, a valve or a relay coil, gets a flyback diode across it.
+Relays, valves, lamps, small actuators, up to 0.5 A each (1 A peak), 48 V maximum. A load goes between
+**GND_SEL** and **OUT1** or **OUT2**; the output switches it to the supply. An inductive load, a valve or a relay
+coil, gets a flyback diode across it.
 
 === "RBTscript"
     ```

@@ -16,10 +16,10 @@ If a joint starts to slip, or its position drifts between homings:
 
 ## Where threadlocker goes
 
-| Where | Threadlocker |
-|---|---|
-| Every metal-to-metal screw joint on the robot: the motor mounts, the gearbox flanges, the bearing clamps | Blue (medium) |
-| Printed parts and brass inserts | None: they do not need it, and the solvent in some threadlockers attacks plastic. Keep it on the metal. |
-| Anywhere | Never red (permanent): the parts cannot be taken apart again without heat |
+Apply blue threadlocker to every metal-to-metal screw joint on the robot: the motor mounts, the gearbox flanges,
+the bearing clamps. Printed parts and brass inserts do not need it, and the solvent in some threadlockers attacks
+plastic: keep it on the metal.
+
+Never use red (permanent) threadlocker: the parts cannot be taken apart again without heat.
 
 After tightening a coupler, home the robot and check the witness marks.

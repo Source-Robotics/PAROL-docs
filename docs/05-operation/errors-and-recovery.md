@@ -28,13 +28,9 @@ The common entries:
 | Jogging stops in Cartesian mode | A singularity | Jog a joint away from it |
 | The time between commands rises above 10 ms | The PC cannot keep the 100 Hz loop | Close other programs; a faster PC ([Communication](../08-troubleshooting/communication.md)) |
 
-The three buttons:
-
-| Button | What it does |
-|---|---|
-| **Enable** | Clears the errors and enables the robot |
-| **Clear error** | Resets the homing state, but does not re-enable a disabled robot |
-| **Disable** | Stops the firmware from accepting motion commands, while the motors keep holding |
+**Enable** clears the errors and enables the robot. **Clear error** resets the homing state, but does not
+re-enable a disabled robot. **Disable** stops the firmware from accepting motion commands, while the motors keep
+holding.
 
 ## The Python API
 
@@ -42,13 +38,9 @@ A refused command raises `MotionError` with a code, a cause and a remedy, from t
 `IK_TARGET_UNREACHABLE`, `MOTN_NOT_HOMED`, `SYS_ESTOP_ACTIVE`, `SYS_SELF_COLLISION`, `MOTN_CANCELLED` and the
 others on [Errors](../reference/python/errors.md).
 
-| Call | What it does |
-|---|---|
-| `error()` | Returns the current error |
-| `activity()` | Returns what the robot is doing |
-| `reset()` | After an E-stop is released: enables the firmware again. Until then the arm does not move. |
-
-After `stop()` nothing needs clearing.
+`error()` returns the current error, `activity()` what the robot is doing. After an E-stop is released, call
+`reset()`: it enables the firmware again, and until then the arm does not move. After `stop()` nothing needs
+clearing.
 
 ## After a collision or a stall
 

@@ -39,5 +39,3 @@ Each step links the page that explains it. Follow the link when a step is not cl
 | **A PC** | Windows, Linux or macOS. See the [minimum PC](../01-overview/what-you-need.md#the-pc). |
 
 More: [What you need](../01-overview/what-you-need.md).
-
-[Start: 1. Install the software :material-arrow-right:](1-software.md){ .md-button .md-button--primary }

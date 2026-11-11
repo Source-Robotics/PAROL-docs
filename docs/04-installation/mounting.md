@@ -4,14 +4,8 @@
     When the arm extends, the centre of gravity leaves the base. Never run PAROL6 free-standing, not even for a
     test.
 
-Four ways to fix the base:
-
-| Way | What you need | More |
-|---|---|---|
-| Bolted to a plate or a profile frame | Six M5 × 16 mm socket head screws (DIN 912, in the kit), T-nuts on a profile, a 4 mm hex key | [The base holes](#the-base-holes) |
-| Clamped to a desk | Two screw clamps | [Clamps](#clamps) |
-| On a printed-connector profile frame | 30×30 profiles, the printed corner connectors, M5 T-nuts and screws | [A profile frame](#a-profile-frame) |
-| On a machined or cut plate | The STEP files of the base plates | [Mounting plates](#mounting-plates) |
+There are four ways to fix the base: bolted to a plate or a profile frame, clamped to a desk, on a frame with
+printed connectors, or on a plate you have machined or cut.
 
 ## The base holes
 
@@ -41,11 +35,7 @@ in the figure.
 
 ![PAROL6 on a 30×30 aluminium profile frame](../assets/alu_profile.webp){ width="600" }
 
-| You need | For |
-|---|---|
-| M5 T-nuts | The connectors and the base |
-| M5 × 12 mm screws | The connectors |
-| The six M5 × 16 mm screws | The base |
+You need M5 T-nuts, M5 × 12 mm screws for the connectors and the six M5 × 16 mm screws for the base.
 
 ## Mounting plates
 

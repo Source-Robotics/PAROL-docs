@@ -14,11 +14,8 @@ driving the arm: on the bench, before the arm is assembled, as in
     command stops them. On an assembled arm joints 1 to 5 reach their blockers within about a minute and keep
     pushing. Use it with the motors free to turn, never on an assembled robot.
 
-| When | The test firmware shows |
-|---|---|
-| At power-on | A report on each driver (`joint N Connection is: GOOD` or `BAD`), and it turns every motor slowly |
-| `#LIMIT` | The switches |
-| `#IO` | The E-stop, the inputs and the supply voltage |
+At power-on it prints a report on each driver (`joint N Connection is: GOOD` or `BAD`) and turns every motor
+slowly. `#LIMIT` then shows the switches, and `#IO` the E-stop, the inputs and the supply voltage.
 
 [The test firmware](../board/09-test-firmware.md) has the commands and what good output looks like.
 
@@ -61,10 +58,9 @@ Jog each joint briefly. The joint must turn as in the figure, which shows each j
 ![Each joint turned 30 degrees in its positive direction, in colour, over the pose in grey](../assets/kinematics/parol6_joint_directions.webp#only-light){ width="900" }
 ![Each joint turned 30 degrees in its positive direction, in colour, over the pose in grey](../assets/kinematics/parol6_joint_directions_dark.webp#only-dark){ width="900" }
 
-| Joint | Press | It must turn |
-|---|---|---|
-| **Joint 2** | Its **right** arrow (negative) | Opposite to the figure. Its left arrow does nothing until the robot is homed. |
-| **Joints 1, 3, 4, 5 and 6** | The **left** arrow (positive) | As in the figure |
+- **Joint 2**: press its **right** arrow (negative). It must turn opposite to the figure; its left arrow does
+  nothing until the robot is homed.
+- **Joints 1, 3, 4, 5 and 6**: press the **left** arrow (positive). It must turn as in the figure.
 
 ??? info "Why joint 2 jogs only one way before homing"
     Before homing, the commander checks jogs against the joint limits with a position count that starts at 0, so

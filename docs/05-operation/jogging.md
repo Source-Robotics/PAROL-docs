@@ -3,12 +3,8 @@
 Jogging moves one joint, or the tool along one axis, for as long as you hold a button or repeat a command. It is
 how you check a new robot, teach a pose and get out of trouble.
 
-| | Joint jog | Cartesian jog |
-|---|---|---|
-| Moves | One joint | The tool along X, Y or Z, or about them |
-| Before homing | Works, with the limits below | Refused |
-| In the commander | The **Joint jog** menu | The **Cartesian jog** menu |
-| In the Python API | `jog_j()` | `jog_l()` |
+There are two kinds. A joint jog moves one joint, and works before homing. A Cartesian jog moves the tool along
+X, Y or Z, or about them, and needs a homed robot.
 
 ## Joint jog
 
@@ -38,12 +34,9 @@ A jog stops at the joint limit.
 
 ## Cartesian jog
 
-The tool moves along X, Y or Z, or rotates about them, in one of two frames:
-
-| Frame | Fixed to | The tool moves |
-|---|---|---|
-| The **world frame** (WRF) | The base | Along the world's axes |
-| The **tool frame** (TRF) | The tool | Along its own axes: the natural way to approach a part |
+The tool moves along X, Y or Z, or rotates about them, in the **world frame** (WRF, fixed to the base) or the
+**tool frame** (TRF, fixed to the tool). A jog in the tool frame moves the tool along its own axes, which is the
+natural way to approach a part.
 
 === "Commander software"
 

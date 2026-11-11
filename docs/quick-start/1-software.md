@@ -276,5 +276,3 @@ To install both, do this step once in each tab.
 !!! success "Check"
     The install ends without an `ERROR` line. If one appears, see [Commander installation](../gui/commander/installation.md)
     or [Python API installation](../programming/02-python-api/installation.md).
-
-[Next: 2. Upload the firmware :material-arrow-right:](2-firmware.md){ .md-button .md-button--primary }

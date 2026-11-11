@@ -327,3 +327,14 @@
 .sr-repo--docs .md-source__repository { font-size: 0.55rem; }
 .md-nav__source .sr-repo { padding: 0.35rem 0.4rem; }
 .md-nav__source .sr-repo--docs { padding-top: 0; }
+
+/* Previous / Next at the end of every page's text (overrides/partials/page-nav.html): Previous left, Next right; on a
+   phone one above the other, full width */
+.md-typeset .page-nav { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.6rem; margin: 2.4rem 0 1.2rem; }
+.md-typeset .page-nav .md-button { display: inline-flex; align-items: center; gap: 0.5em; margin: 0; max-width: 100%; }
+.md-typeset .page-nav__next { margin-left: auto; text-align: right; }
+@media screen and (max-width: 44.9375em) {
+  .md-typeset .page-nav .md-button { width: 100%; justify-content: center; text-align: center; }
+}
+#print-site-page .page-nav { display: none !important; }
+@media print { .page-nav { display: none !important; } }

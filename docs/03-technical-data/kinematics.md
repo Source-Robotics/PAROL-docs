@@ -16,14 +16,12 @@ colour for the printed parts (the motors stay black). The model is the robot's
 ## Dimensions
 
 The sheets below come from PAROL6's models in
-[robot_descriptions](https://github.com/Source-Robotics/robot_descriptions) (version <!-- version: models.robot_descriptions -->). Each shows:
+[robot_descriptions](https://github.com/Source-Robotics/robot_descriptions) (version <!-- version: models.robot_descriptions -->).
 
-- the robot's own meshes in the standby pose (every joint of the model at 0), in one orthographic side view at one
-  scale;
-- the dimensions, taken from the URDF, not measured from the picture;
-- the standard DH table to the tool centre point (TCP) of that configuration.
-
-Click a sheet to enlarge it.
+Each shows the robot's
+own meshes in the standby pose (every joint of the model at 0), in one orthographic side view at one scale, with
+the dimensions taken from the URDF, not measured from the picture, and the standard DH table to the tool centre
+point (TCP) of that configuration. Click a sheet to enlarge it.
 
 === "Flange only"
 
@@ -116,15 +114,12 @@ TCP of a gripper.
 | SSG-48 TCP | 492 mm | 443 mm | 607 mm | 109 mm below |
 | MSG TCP | 494 mm | 446 mm | 610 mm | 112 mm below |
 
-In the side view:
+In the side view the shaded region is where the point can go, with joints 2, 3 and 5 anywhere within their limits,
+joint 4 at 0° and joint 6 at 0° or 180°, so that a TCP beside the tool axis stays in the plane; the dotted line is
+the same for the wrist centre.
 
-- the shaded region is where the point can go, with joints 2, 3 and 5 anywhere within their limits, joint 4 at 0°
-  and joint 6 at 0° or 180°, so that a TCP beside the tool axis stays in the plane;
-- the dotted line is the same for the wrist centre.
-
-The region shows where the point can go, not where the tool can take every orientation: at its edge the tool can
-only point outwards ([Workspace and reach](../theory/workspace-and-reach.md)).
-
+The region shows where the point can go, not where the tool can take every
+orientation: at its edge the tool can only point outwards ([Workspace and reach](../theory/workspace-and-reach.md)).
 It is computed from the joint limits only: the arm's own parts, the tool and the table can block some of it.
 
 - **Below the mounting surface.** The region dips below the surface the robot stands on, in front of the base.
@@ -151,19 +146,12 @@ reach one pose.
 Standard DH, each joint's transform being `A_i = Rz(theta_i) Tz(d_i) Tx(a_i) Rx(alpha_i)`, from the base to the
 TCP.
 
-- `q1` to `q6` are the model's joint angles (the URDF's), all 0 in the standby pose.
-- The theta column already contains the joint offsets, so do not add them twice.
+`q1` to `q6` are the model's joint angles (the URDF's), all 0 in the standby pose; the theta column already
+contains the joint offsets, so do not add them twice.
 
-Theta is the angle the software shows:
-
-| Joint | Its software angle |
-|---|---|
-| Joint 2 | q2 − 90° |
-| Joint 3 | q3 + 180° |
-| Joint 6 | q6 + 180° |
-| The others | Equal |
-
-The sheets above give the same table for each tool.
+Theta is the angle the software shows: joint 2's software
+angle is q2 − 90°, joint 3's is q3 + 180° and joint 6's is q6 + 180°, the others are equal. The sheets above give
+the same table for each tool.
 
 | Joint | Link | theta | alpha | a | d |
 |---|---|---|---|---|---|

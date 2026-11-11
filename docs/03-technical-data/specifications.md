@@ -52,24 +52,10 @@ allows less on joints 1, 2, 3 and 6 and on the tool, and more on joints 4 and 5.
 | Tool, linear | 200 mm/s | 550 mm/s² | 60 mm/s |
 | Tool, angular | 100 °/s | 275 °/s² | 25 °/s |
 
-The steps per second are converted with the ratios of [Drives, ratios and resolution](drives-and-ratios.md).
-
-| Program | Its limits |
-|---|---|
-| Python API | A joint's acceleration is three times its speed, so a joint reaches full speed in a third of a second. Jogging is limited to 80 % of the maxima. |
-| Commander software | It jogs within lower limits of its own, which its speed slider scales: the table below |
-
-The commander's jog limits, at 100 %:
-
-| | Jog limit | Steps/s |
-|---|---|---|
-| Joint 1 | 13 °/s | 1500 |
-| Joint 2 | 8 °/s | 3000 |
-| Joint 3 | 11 °/s | 3600 |
-| Joints 4 and 5 | 98 °/s | 7000 |
-| Joint 6 | 101 °/s | 18000 |
-| The tool | 60 mm/s | |
-
-!!! warning "Lower the speed before you lower the current"
-    A joint driven at its maximum with a reduced motor current or a heavy payload loses steps: lower the speed
-    before you lower the current.
+The steps per second are converted with the ratios of [Drives, ratios and resolution](drives-and-ratios.md). In
+the Python API a joint's acceleration is three times its speed, so a joint reaches full speed in a third of a
+second, and jogging is limited to 80 % of the maxima. The commander jogs within lower limits of its own, which
+its speed slider scales: 13 °/s on joint 1, 8 °/s on joint 2, 11 °/s on joint 3, 98 °/s on joints 4 and 5 and
+101 °/s on joint 6 at 100 % (1500, 3000, 3600, 7000, 7000 and 18000 steps/s), and 60 mm/s for the tool. A joint
+driven at its maximum with a reduced motor current or a heavy payload loses steps: lower the speed before you
+lower the current.

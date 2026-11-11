@@ -73,5 +73,3 @@ The adapter powers the board's microcontroller, not the motors.
     ![Picture needed: the VS Code terminal ending with SUCCESS](../assets/pilot/p5-upload-success.svg){ width="560" }
 
 More: [Firmware](../board/08-firmware.md) · [Firmware and first run](../build/firmware-and-first-run.md).
-
-[Next: 3. Connect and switch on :material-arrow-right:](3-connect.md){ .md-button .md-button--primary }

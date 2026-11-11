@@ -27,12 +27,11 @@ The Build guide, part of the same document, covers building one from the publish
 
 Four more documents live on this site:
 
-| Document | For |
-|---|---|
-| The [Control Board Manual](board/index.md) | The electronics inside the base |
-| The [End Effectors Guide](end-effectors/index.md) | The grippers and tools on the flange |
-| The [GUI Guide](gui/index.md) | The graphical programs |
-| The [Programming Guide](programming/index.md), with its [API reference](reference/index.md) | Everyone who writes programs for the robot |
+- the [Control Board Manual](board/index.md), for the electronics inside the base;
+- the [End Effectors Guide](end-effectors/index.md), for the grippers and tools on the flange;
+- the [GUI Guide](gui/index.md), for the graphical programs;
+- the [Programming Guide](programming/index.md) with its [API reference](reference/index.md), for everyone who
+  writes programs for the robot.
 
 The list under *Related documents* gives their numbers.
 

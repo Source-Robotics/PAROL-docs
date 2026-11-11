@@ -30,12 +30,12 @@ steps. Through the gearing, one step at the joint is:
 | Joint 5 | 25 600 | 0.01406° (0.000245 rad) |
 | Joint 6 | 64 000 | 0.00563° (0.000098 rad) |
 
-Conversions: degrees per step = 360 / (200 × 32) / ratio. The software's `DEG2STEPS` and `STEPS2DEG` do exactly
+Conversions: degrees per step = 360 / (200 × 32) / ratio; the software's `DEG2STEPS` and `STEPS2DEG` do exactly
 this.
 
-!!! note "A microstep is not a guaranteed position"
-    The motor's holding torque at a fraction of a full step is small, so the real resolution under load is coarser
-    than the table. That is why the repeatability is specified at 0.1 mm rather than at the step size.
+A microstep is not a guaranteed position: the motor's holding torque at a fraction of a full step is small,
+so the real resolution under load is coarser than the table, which is why the repeatability is specified at
+0.1 mm rather than at the step size.
 
 ## Try it
 
@@ -63,13 +63,11 @@ The conversions of this page, with your numbers: 6400 microsteps per motor turn,
 
 ## Why open loop works here
 
-The motors are not fitted with encoders: the position is the count of steps commanded since homing.
+The motors are not fitted with encoders: the position is the count of steps commanded since homing. This works
+because the planner never asks a motor for more than its torque at the commanded speed and acceleration, with
+margin; a stepper that is not overloaded does not lose steps.
 
-This works because the planner never asks a motor for more than its torque at the commanded speed and
-acceleration, with margin. A stepper that is not overloaded does not lose steps.
-
-!!! warning "An overloaded stepper loses steps silently"
-    If one is overloaded (a collision, a payload over the limit, too high a speed with a reduced current) it loses
-    steps silently. The arm is then not where the software thinks it is, and the only cure is to home again.
-
-[Steppers, open loop and backlash](../theory/steppers-and-open-loop.md) goes deeper.
+If one is overloaded (a collision, a payload over
+the limit, too high a speed with a reduced current) it loses steps silently, the arm is then not where the
+software thinks it is, and the only cure is to home again. [Steppers, open loop and backlash](../theory/steppers-and-open-loop.md)
+goes deeper.

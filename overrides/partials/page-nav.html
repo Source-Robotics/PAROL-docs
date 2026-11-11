@@ -1,0 +1,26 @@
+{#-
+  Previous and Next buttons at the end of every page's text, where the reader finishes, so nobody has to scroll past
+  the comments to the footer to go on (owner, 2026-11-11: "on every single page to move left and right"). The order
+  is the navigation's, the same as the footer's. Not on the print page, and not on a page whose front matter says
+  `page_nav: false`.
+-#}
+{% if page and page.meta.page_nav is not sameas false and 'print_page' not in page.url %}
+  {% set prev = page.previous_page %}
+  {% set next = page.next_page %}
+  {% if prev or next %}
+    <nav class="page-nav" aria-label="{{ lang.t('footer') }}">
+      {% if prev %}
+        <a href="{{ prev.url | url }}" class="md-button page-nav__prev" rel="prev" aria-label="{{ lang.t('footer.previous') }}: {{ prev.title | e }}">
+          <span class="twemoji">{% include ".icons/material/arrow-left.svg" %}</span>
+          <span>{{ lang.t("footer.previous") }}: {{ prev.title }}</span>
+        </a>
+      {% endif %}
+      {% if next %}
+        <a href="{{ next.url | url }}" class="md-button md-button--primary page-nav__next" rel="next" aria-label="{{ lang.t('footer.next') }}: {{ next.title | e }}">
+          <span>{{ lang.t("footer.next") }}: {{ next.title }}</span>
+          <span class="twemoji">{% include ".icons/material/arrow-right.svg" %}</span>
+        </a>
+      {% endif %}
+    </nav>
+  {% endif %}
+{% endif %}

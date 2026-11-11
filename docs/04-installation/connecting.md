@@ -17,13 +17,9 @@ is the stop that still works when the PC software has frozen ([Emergency stop](.
 
 ## The power supply
 
-The robot needs 24 V DC at 5 A or more, into its GX16 socket. There are two good ways to get it:
-
-| | A. A closed supply with a mains cable | B. The Mean Well EDR-120-24 from the BOM |
-|---|---|---|
-| Mains side | Nothing to wire | You wire it yourself |
-| Output | Needs a GX16 plug or an adapter cable | Screw terminals |
-| For | Anyone | Someone who can wire mains, or a qualified electrician |
+The robot needs 24 V DC at 5 A or more, into its GX16 socket. There are two good ways to get it: a closed supply
+with a mains cable, which needs no mains wiring, or the DIN-rail supply in the BOM, whose mains side you wire
+yourself.
 
 !!! danger "Mains voltage kills"
     The mains side of a power supply carries 230 V or 120 V. Never open, wire or touch it while the plug is in
@@ -85,15 +81,8 @@ Other countries can use other colours: check, and do not guess.
 
 ## The E-stop
 
-The E-stop must be a normally closed contact. A normally open button does not work.
-
-| What happens to the E-stop | The circuit | The robot |
-|---|---|---|
-| Pressed | Opens | Stops |
-| Unplugged | Opens | Stops |
-| Its wire cut | Opens | Stops |
-
-All of these stop the robot, which is what you want.
+The E-stop must be a normally closed contact: pressing it, unplugging it or cutting its wire opens the circuit,
+and all of these stop the robot, which is what you want. A normally open button does not work.
 
 The control board has two E-stop connectors on the same input, so a second button can be wired in series:
 pressing either button stops the robot.
@@ -106,10 +95,9 @@ The kit's button sits in its own printed box with a PG7 cable gland, on a cable 
 
 ## The gripper
 
-| Gripper | Connects to |
-|---|---|
-| An electric gripper (SSG-48, MSG) | The M8 connector at the forearm, which carries 24 V and CAN: [Electric grippers](../end-effectors/index.md) |
-| A pneumatic gripper | Tubes from the valve to the two push-in fittings at the base: [Pneumatics](../06-peripherals/pneumatics.md) |
+An electric gripper (SSG-48, MSG) plugs into the M8 connector at the forearm, which carries 24 V and CAN:
+[Electric grippers](../end-effectors/index.md). Pneumatic tubes from the valve go to the two push-in
+fittings at the base: [Pneumatics](../06-peripherals/pneumatics.md).
 
 ![The gripper socket at the forearm, seen from the front, with its four signals](../assets/GRIP_CON.webp){ width="600" }
 
