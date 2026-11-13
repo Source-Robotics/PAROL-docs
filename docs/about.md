@@ -53,6 +53,13 @@ the code examples under the [MIT licence](https://github.com/Source-Robotics/PAR
 The robot's hardware files are published under CERN-OHL-S-2.0, its firmware and software under GPLv3, in their repositories. The Source
 Robotics name, the product names and the logos are not covered by any of these.
 
+Four screenshots in the quick start come from other projects and keep their licences: the Python installer from the
+[Python documentation](https://docs.python.org/3.11/using/windows.html) under the
+[PSF licence](https://docs.python.org/3/license.html), with a ring added; the three VS Code pictures from the
+[PlatformIO documentation](https://docs.platformio.org/en/latest/integration/ide/vscode.html) under
+[Apache 2.0](https://github.com/platformio/platformio-docs/blob/develop/LICENSE), one of them cut from a larger
+picture.
+
 | Document | Revision | Date | Changes |
 |---|---|---|---|
 | Robot Manual | 2026.C | 2026-11-05 | The base screws, M5 × 16 mm with a 4 mm key; the E-stop in its own printed box on a cable; either of two E-stop buttons stops the robot; the GX16 polarity is the builder's choice; the robot model's link names; the commander's `STARTING_PORT` (58) in the quick start; the gripper socket's pins in the build guide (page 32 of the assembly manual has 1 and 3 the wrong way round) |

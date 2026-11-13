@@ -42,8 +42,6 @@ More: [Connecting](../04-installation/connecting.md).
 1. Hold the arm by the forearm.
 2. Press the power button on the base.
 
-    ![Picture needed: one hand holding the forearm, the other pressing the power button on the base](../assets/pilot/p7-switch-on.svg){ width="560" }
-
 3. The motors energise, you hear six clicks, and the arm holds its position. Let go.
 
 !!! success "Check"
@@ -62,7 +60,8 @@ The **serial port** is the name the PC gives the USB connection.
     2. Open **Ports (COM & LPT)**.
     3. The robot is a "USB Serial Device" with a number, for example `COM5`.
 
-        ![Picture needed: Device Manager with Ports (COM & LPT) open and the USB Serial Device marked](../assets/pilot/p6-device-manager.svg){ width="560" }
+        ![Device Manager with Ports (COM & LPT) open: the robot is the USB Serial Device, here COM5. A drawing; the other entries depend on the PC](../assets/quick-start/device-manager.svg#only-light){ width="500" }
+        ![Device Manager with Ports (COM & LPT) open: the robot is the USB Serial Device, here COM5. A drawing; the other entries depend on the PC](../assets/quick-start/device-manager_dark.svg#only-dark){ width="500" }
 
 === "Linux"
 

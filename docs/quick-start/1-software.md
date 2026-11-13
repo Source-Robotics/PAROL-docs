@@ -13,7 +13,7 @@ Pick your operating system in the first tab. The other tabs on these pages follo
        "Windows installer (64-bit)". It is the last 3.11 release with an installer.
     2. Run it. On its first screen, tick **Add python.exe to PATH**.
 
-        ![Picture needed: the first screen of the Python installer, with Add python.exe to PATH ticked](../assets/pilot/p1-python-installer.svg){ width="560" }
+        ![The first screen of the Python installer, shown for Python 3.8, with the box to tick ringed: on 3.11.9 it reads Add python.exe to PATH. Picture: Python documentation, PSF licence](../assets/quick-start/python-installer.png){ width="560" }
 
     3. Press **Install Now**.
     4. Download **Git** from [git-scm.com](https://git-scm.com/downloads/win). Install it with the settings it

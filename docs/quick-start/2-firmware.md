@@ -35,7 +35,7 @@ You need the ST-Link programmer and the programming adapter.
 2. Install [VS Code](https://code.visualstudio.com/) and open it.
 3. Click the **Extensions** icon on the left. Search for **PlatformIO IDE** and install it.
 
-    ![Picture needed: VS Code with the Extensions icon marked and PlatformIO IDE in the search result](../assets/pilot/p2-platformio-extension.svg){ width="560" }
+    ![VS Code's Extensions view: (1) the Extensions icon, (2) PlatformIO IDE typed in the search, (3) Install. Picture: PlatformIO documentation, Apache 2.0](../assets/quick-start/platformio-extension.png){ width="560" }
 
 4. Restart VS Code when it asks.
 
@@ -49,8 +49,6 @@ You need the ST-Link programmer and the programming adapter.
 1. **Unplug the 24 V supply** from the robot.
 2. Plug the programming adapter onto the 2×5 header next to the USB port.
 
-    ![Picture needed: the programming adapter on the 2×5 header next to the USB port, with the ST-Link](../assets/pilot/p3-programming-adapter.svg){ width="560" }
-
 3. Plug the ST-Link into the PC.
 
 The adapter powers the board's microcontroller, not the motors.
@@ -62,7 +60,7 @@ The adapter powers the board's microcontroller, not the motors.
 3. Wait until the bar at the bottom is quiet. The first time, PlatformIO downloads its tools for a few minutes.
 4. Click the **→** arrow (Upload) in the bar at the bottom of VS Code.
 
-    ![Picture needed: the bar at the bottom of VS Code with the Upload arrow marked](../assets/pilot/p4-upload-arrow.svg){ width="560" }
+    ![The PlatformIO buttons in the bar at the bottom of VS Code: the tick builds, the arrow uploads. Picture: PlatformIO documentation, Apache 2.0](../assets/quick-start/platformio-upload.png){ width="560" }
 
 5. When it has finished, unplug the programming adapter.
 
@@ -70,6 +68,6 @@ The adapter powers the board's microcontroller, not the motors.
     The terminal at the bottom of VS Code ends with `SUCCESS`. If not, see the [Firmware](../board/08-firmware.md)
     page and [Control board troubleshooting](../board/11-troubleshooting.md).
 
-    ![Picture needed: the VS Code terminal ending with SUCCESS](../assets/pilot/p5-upload-success.svg){ width="560" }
+    ![The end of a run that worked: the last line says SUCCESS. The lines above it depend on the board. Picture: PlatformIO documentation, Apache 2.0](../assets/quick-start/platformio-success.png){ width="430" }
 
 More: [Firmware](../board/08-firmware.md) · [Firmware and first run](../build/firmware-and-first-run.md).

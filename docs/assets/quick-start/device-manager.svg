@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 438" width="500" height="438" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif">
+<rect x="1" y="1" width="498" height="436" rx="8" fill="#ffffff" stroke="#c9c9c9"/>
+<path d="M1 33 V9 a8 8 0 0 1 8 -8 H491 a8 8 0 0 1 8 8 V33 Z" fill="#f3f3f3"/>
+<rect x="14" y="11" width="13" height="11" rx="2" fill="none" stroke="#6f8fb8" stroke-width="1.6"/>
+<text x="36" y="22" font-size="13" fill="#1b1b1b">Device Manager</text>
+<g stroke="#616161" stroke-width="1.2"><path d="M388 17 h10"/><rect x="428" y="12" width="10" height="10" fill="none"/><path d="M468 12 l10 10 M478 12 l-10 10"/></g>
+<text x="16" y="55" font-size="13" fill="#1b1b1b">File<tspan dx="18">Action</tspan><tspan dx="18">View</tspan><tspan dx="18">Help</tspan></text>
+<path d="M1 68 H499" stroke="#e3e3e3"/>
+<path d="M14 85 l4 4 l4 -4" fill="none" stroke="#616161" stroke-width="1.4"/>
+<rect x="30" y="80" width="14" height="10" rx="1.5" fill="none" stroke="#6f8fb8" stroke-width="1.5"/><path d="M34 93 h6" stroke="#6f8fb8" stroke-width="1.5"/>
+<text x="50" y="92" font-size="13" fill="#1b1b1b">DESKTOP-PC</text>
+<path d="M38 105 l4 4 l-4 4" fill="none" stroke="#616161" stroke-width="1.4"/>
+<rect x="52" y="103" width="13" height="10" rx="2" fill="#6f8fb8" opacity="0.55"/>
+<text x="72" y="114" font-size="13" fill="#1b1b1b">Audio inputs and outputs</text>
+<path d="M38 127 l4 4 l-4 4" fill="none" stroke="#616161" stroke-width="1.4"/>
+<rect x="52" y="125" width="13" height="10" rx="2" fill="#6f8fb8" opacity="0.55"/>
+<text x="72" y="136" font-size="13" fill="#1b1b1b">Batteries</text>
+<path d="M38 149 l4 4 l-4 4" fill="none" stroke="#616161" stroke-width="1.4"/>
+<rect x="52" y="147" width="13" height="10" rx="2" fill="#6f8fb8" opacity="0.55"/>
+<text x="72" y="158" font-size="13" fill="#1b1b1b">Bluetooth</text>
+<path d="M38 171 l4 4 l-4 4" fill="none" stroke="#616161" stroke-width="1.4"/>
+<rect x="52" y="169" width="13" height="10" rx="2" fill="#6f8fb8" opacity="0.55"/>
+<text x="72" y="180" font-size="13" fill="#1b1b1b">Computer</text>
+<path d="M38 193 l4 4 l-4 4" fill="none" stroke="#616161" stroke-width="1.4"/>
+<rect x="52" y="191" width="13" height="10" rx="2" fill="#6f8fb8" opacity="0.55"/>
+<text x="72" y="202" font-size="13" fill="#1b1b1b">Disk drives</text>
+<path d="M38 215 l4 4 l-4 4" fill="none" stroke="#616161" stroke-width="1.4"/>
+<rect x="52" y="213" width="13" height="10" rx="2" fill="#6f8fb8" opacity="0.55"/>
+<text x="72" y="224" font-size="13" fill="#1b1b1b">Display adapters</text>
+<path d="M38 237 l4 4 l-4 4" fill="none" stroke="#616161" stroke-width="1.4"/>
+<rect x="52" y="235" width="13" height="10" rx="2" fill="#6f8fb8" opacity="0.55"/>
+<text x="72" y="246" font-size="13" fill="#1b1b1b">Human Interface Devices</text>
+<path d="M38 259 l4 4 l-4 4" fill="none" stroke="#616161" stroke-width="1.4"/>
+<rect x="52" y="257" width="13" height="10" rx="2" fill="#6f8fb8" opacity="0.55"/>
+<text x="72" y="268" font-size="13" fill="#1b1b1b">Keyboards</text>
+<path d="M38 281 l4 4 l-4 4" fill="none" stroke="#616161" stroke-width="1.4"/>
+<rect x="52" y="279" width="13" height="10" rx="2" fill="#6f8fb8" opacity="0.55"/>
+<text x="72" y="290" font-size="13" fill="#1b1b1b">Mice and other pointing devices</text>
+<path d="M38 303 l4 4 l-4 4" fill="none" stroke="#616161" stroke-width="1.4"/>
+<rect x="52" y="301" width="13" height="10" rx="2" fill="#6f8fb8" opacity="0.55"/>
+<text x="72" y="312" font-size="13" fill="#1b1b1b">Network adapters</text>
+<path d="M36 327 l4 4 l4 -4" fill="none" stroke="#616161" stroke-width="1.4"/>
+<g fill="none" stroke="#6f8fb8" stroke-width="1.5"><rect x="53" y="324" width="12" height="8" rx="1.5"/><path d="M56 321 v3 M62 321 v3 M59 332 v3"/></g>
+<text x="72" y="334" font-size="13" fill="#1b1b1b" font-weight="bold">Ports (COM &amp; LPT)</text>
+<rect x="58" y="341" width="214" height="21" rx="3" fill="#cce8ff"/>
+<rect x="54" y="337" width="222" height="29" rx="7" fill="none" stroke="#f7941e" stroke-width="2.5"/>
+<path d="M288 351 h34" stroke="#f7941e" stroke-width="2"/><path d="M288 351 l7 -4 v8 z" fill="#f7941e"/>
+<text x="330" y="356" font-size="13" font-weight="bold" fill="#f7941e">the robot</text>
+<g fill="none" stroke="#6f8fb8" stroke-width="1.5"><rect x="75" y="346" width="12" height="8" rx="1.5"/><path d="M78 343 v3 M84 343 v3 M81 354 v3"/></g>
+<text x="94" y="356" font-size="13" fill="#1b1b1b" font-weight="bold">USB Serial Device (COM5)</text>
+<path d="M38 369 l4 4 l-4 4" fill="none" stroke="#616161" stroke-width="1.4"/>
+<rect x="52" y="367" width="13" height="10" rx="2" fill="#6f8fb8" opacity="0.55"/>
+<text x="72" y="378" font-size="13" fill="#1b1b1b">Processors</text>
+<path d="M38 391 l4 4 l-4 4" fill="none" stroke="#616161" stroke-width="1.4"/>
+<rect x="52" y="389" width="13" height="10" rx="2" fill="#6f8fb8" opacity="0.55"/>
+<text x="72" y="400" font-size="13" fill="#1b1b1b">Universal Serial Bus controllers</text>
+</svg>
