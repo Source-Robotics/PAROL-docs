@@ -2,9 +2,19 @@
 
 ## Numbering
 
-Joints are numbered 1 to 6 from the base up: J1 turns the whole arm about the vertical axis, J2 is the shoulder,
-J3 the elbow, J4 rotates the forearm, J5 pitches the wrist, J6 rotates the tool. The Python API indexes joints
-from 0 in its jog calls (`jog_j(0, ...)` is J1) and lists angles in order J1 to J6 everywhere.
+Joints are numbered 1 to 6 from the base up:
+
+| Joint | What it does |
+|---|---|
+| J1 | Turns the whole arm about the vertical axis |
+| J2 | The shoulder |
+| J3 | The elbow |
+| J4 | Rotates the forearm |
+| J5 | Pitches the wrist |
+| J6 | Rotates the tool |
+
+The Python API indexes joints from 0 in its jog calls (`jog_j(0, ...)` is J1) and lists angles in order J1 to J6
+everywhere.
 
 Joints 4, 5 and 6 are also called wrist 1, wrist 2 and wrist 3, as in the robot model and ROS.
 The forearm is also called the lower arm: both names mean the link from the elbow to the wrist.
@@ -16,8 +26,10 @@ The forearm is also called the lower arm: both names mean the link from the elbo
 
 Each joint has a positive direction, the one in which its angle increases, drawn as the arrows in the figure on
 [Joint limits and directions](https://docs.source-robotics.com/PAROL-docs/1.1/03-technical-data/joint-limits/). The commander's left arrows jog
-positive, the right arrows negative. The firmware has a per-joint flag that inverts the motor so that the
-hardware agrees with this convention; a new build sets it per joint on the first run.
+positive, the right arrows negative.
+
+The firmware has a per-joint flag that inverts the motor so that the hardware agrees with this convention. A new
+build sets it per joint on the first run.
 
 ## Joint space and the standby pose
 

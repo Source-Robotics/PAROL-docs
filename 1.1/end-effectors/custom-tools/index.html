@@ -1433,21 +1433,61 @@
 
 <h1 id="your-own-tool">Your own tool<a class="headerlink" href="#your-own-tool" title="Permanent link">&para;</a></h1>
 <h2 id="mounting">Mounting<a class="headerlink" href="#mounting" title="Permanent link">&para;</a></h2>
-<p>Clamp onto the 8 mm shaft of joint 6 with a shaft coupler from the <abbr title="Bill Of Materials, the list of parts to buy">BOM</abbr>, or print a holder with a coupler
-connector: the SSG-48 repository has a template, <code>STEPS/coupler_connector_generic_STEP.STEP</code> (and
-<code>Gripper STL parts/connector_coupler_generic.STL</code>), and the <code>STL/WRIST/wrist.STL</code> in the robot's files shows the
-mating geometry. Keep the tool within the payload and short: every millimetre past the
-flange is leverage against joints 4 and 5.</p>
+<p>Two ways to fix a tool to the 8 mm shaft of joint 6:</p>
+<table>
+<thead>
+<tr>
+<th>Way</th>
+<th>What you use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clamp it</td>
+<td>A shaft coupler from the <abbr title="Bill Of Materials, the list of parts to buy">BOM</abbr></td>
+</tr>
+<tr>
+<td>Print a holder with a coupler connector</td>
+<td>The SSG-48 repository's template, <code>STEP files/Couplers/coupler_connector_generic_STEP.STEP</code> (and <code>Print files/Couplers/connector_coupler_generic.STL</code>). The <code>STL/WRIST/wrist.STL</code> in the robot's files shows the mating geometry.</td>
+</tr>
+</tbody>
+</table>
+<p>Keep the tool within the payload, and short: every millimetre past the flange is leverage against joints 4 and 5.</p>
 <h2 id="the-joint-5-homing-feature">The joint 5 homing feature<a class="headerlink" href="#the-joint-5-homing-feature" title="Permanent link">&para;</a></h2>
 <p>Joint 5 finds its reference by driving the forearm's limit switch against a feature of the tool holder. Your
-holder needs a surface in the same place as the pneumatic gripper holder's; compare with <code>Pneumatic_gripper_holder.STL</code>.
-Then measure the homing offset: home, jog joint 5 until the pin fits the witness marks, and set
-<code>j5_homing_offset</code> in <code>main.cpp</code> to the steps that gives (<a href="../../05-operation/mastering/">Mastering</a>).</p>
+holder needs a surface in the same place as the pneumatic gripper holder's; compare with
+<code>Pneumatic_gripper_holder.STL</code>.</p>
+<p>Then measure the homing offset (<a href="../../05-operation/mastering/">Mastering</a>):</p>
+<ol>
+<li>Home.</li>
+<li>Jog joint 5 until the pin fits the witness marks.</li>
+<li>Set <code>j5_homing_offset</code> in <code>main.cpp</code> to the steps that gives.</li>
+</ol>
 <h2 id="connections">Connections<a class="headerlink" href="#connections" title="Permanent link">&para;</a></h2>
-<p>Up to 24 V and <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> at the M8 connector (its pins: <a href="../flange/#the-gripper-socket">The gripper socket</a>), two air
-lines, and the control board's two inputs and two outputs at the
-base. A tool that needs more, a camera's <abbr title="Universal Serial Bus, the connection between the control board and the PC">USB</abbr> for instance, runs its cable outside the arm, with enough slack for
-joints 4, 5 and 6 and fixed so the arm cannot catch it.</p>
+<table>
+<thead>
+<tr>
+<th>What</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Up to 24 V and <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr></td>
+<td>The M8 connector (its pins: <a href="../flange/#the-gripper-socket">The gripper socket</a>)</td>
+</tr>
+<tr>
+<td>Two air lines</td>
+<td>At the forearm</td>
+</tr>
+<tr>
+<td>The control board's two inputs and two outputs</td>
+<td>At the base</td>
+</tr>
+</tbody>
+</table>
+<p>A tool that needs more, a camera's <abbr title="Universal Serial Bus, the connection between the control board and the PC">USB</abbr> for instance, runs its cable outside the arm, with enough slack for joints
+4, 5 and 6, and fixed so the arm cannot catch it.</p>
 <h2 id="the-tool-frame">The tool frame<a class="headerlink" href="#the-tool-frame" title="Permanent link">&para;</a></h2>
 <p>The software positions the tool centre point. In the Python <abbr title="Application Programming Interface">API</abbr>, register the tool once with its transform from
 the flange, or set an offset at run time:</p>
@@ -1462,13 +1502,50 @@ the flange, or set an offset at run time:</p>
 commander's and these pages' (<a href="../../theory/reference-frames/#the-flange-frame">The flange frame</a>), so a tip in
 front of the flange has a negative z there (<a href="../../08-troubleshooting/known-issues/">known issue KI-11</a>).</p>
 </div>
-<p>A permanent tool goes into the <abbr title="Application Programming Interface">API</abbr>'s tool registry as a <code>ToolConfig</code> with its collision mesh, so that the
-collision checker knows its shape (<a href="../../programming/02-python-api/tools-and-tcp/">Tools and the <abbr title="Tool Center Point, the point on the tool that the robot positions">TCP</abbr></a>). The
-commander software has no tool setting: its poses are for the standard pneumatic gripper, and a different tool
-means editing its robot model.</p>
+<table>
+<thead>
+<tr>
+<th>Program</th>
+<th>A permanent tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Python <abbr title="Application Programming Interface">API</abbr></td>
+<td>Goes into the tool registry as a <code>ToolConfig</code> with its collision mesh, so that the collision checker knows its shape (<a href="../../programming/02-python-api/tools-and-tcp/">Tools and the <abbr title="Tool Center Point, the point on the tool that the robot positions">TCP</abbr></a>)</td>
+</tr>
+<tr>
+<td>Commander software</td>
+<td>Has no tool setting: its poses are for the standard pneumatic gripper, and a different tool means editing its robot model</td>
+</tr>
+</tbody>
+</table>
 <h2 id="check-before-you-run">Check before you run<a class="headerlink" href="#check-before-you-run" title="Permanent link">&para;</a></h2>
-<p>Jog joint 5 and joint 6 through their ranges slowly with the tool mounted and watch for contact with the forearm:
-the software's joint limits do not know the tool's shape.</p>
+<p>Jog joint 5 and joint 6 through their ranges slowly with the tool mounted.</p>
+<div class="admonition success">
+<p class="admonition-title">Check</p>
+<p>No contact with the forearm. The software's joint limits do not know the tool's shape.</p>
+</div>
+
+  
+  
+  
+    <nav class="page-nav" aria-label="Footer">
+      
+        <a href="../msg/" class="md-button page-nav__prev" rel="prev" aria-label="Previous: MSG electric gripper">
+          <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg></span>
+          <span>Previous: MSG electric gripper</span>
+        </a>
+      
+      
+        <a href="../../gui/" class="md-button md-button--primary page-nav__next" rel="next" aria-label="Next: PAROL6 GUI Guide">
+          <span>Next: PAROL6 GUI Guide</span>
+          <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg></span>
+        </a>
+      
+    </nav>
+  
+
 
 
 
@@ -1489,7 +1566,7 @@ the software's joint limits do not know the tool's shape.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 5, 2026 16:14:53 UTC">November 5, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 13, 2026 10:31:23 UTC">November 13, 2026</span>
   </span>
 
     
@@ -1753,6 +1830,17 @@ Robot models and pictures made from them: <a href="https://github.com/Source-Rob
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M492.5 69.8c-.2-.3-.4-.6-.8-.7-38.1-17.5-78.4-30-119.7-37.1-.4-.1-.8 0-1.1.1s-.6.4-.8.8c-5.5 9.9-10.5 20.2-14.9 30.6-44.6-6.8-89.9-6.8-134.4 0-4.5-10.5-9.5-20.7-15.1-30.6-.2-.3-.5-.6-.8-.8s-.7-.2-1.1-.2C162.5 39 122.2 51.5 84.1 69c-.3.1-.6.4-.8.7C7.1 183.5-13.8 294.6-3.6 404.2c0 .3.1.5.2.8s.3.4.5.6c44.4 32.9 94 58 146.8 74.2.4.1.8.1 1.1 0s.7-.4.9-.7c11.3-15.4 21.4-31.8 30-48.8.1-.2.2-.5.2-.8s0-.5-.1-.8-.2-.5-.4-.6-.4-.3-.7-.4c-15.8-6.1-31.2-13.4-45.9-21.9-.3-.2-.5-.4-.7-.6s-.3-.6-.3-.9 0-.6.2-.9.3-.5.6-.7c3.1-2.3 6.2-4.7 9.1-7.1.3-.2.6-.4.9-.4s.7 0 1 .1c96.2 43.9 200.4 43.9 295.5 0 .3-.1.7-.2 1-.2s.7.2.9.4c2.9 2.4 6 4.9 9.1 7.2.2.2.4.4.6.7s.2.6.2.9-.1.6-.3.9-.4.5-.6.6c-14.7 8.6-30 15.9-45.9 21.8-.2.1-.5.2-.7.4s-.3.4-.4.7-.1.5-.1.8.1.5.2.8c8.8 17 18.8 33.3 30 48.8.2.3.6.6.9.7s.8.1 1.1 0c52.9-16.2 102.6-41.3 147.1-74.2.2-.2.4-.4.5-.6s.2-.5.2-.8c12.3-126.8-20.5-236.9-86.9-334.5zm-302 267.7c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.4 59.2-52.8 59.2m195.4 0c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.2 59.2-52.8 59.2"/></svg>
     </a>
   
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.tiktok.com/@source.robotics" target="_blank" rel="noopener" title="www.tiktok.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M448.5 209.9c-44 .1-87-13.6-122.8-39.2v178.7c0 33.1-10.1 65.4-29 92.6s-45.6 48-76.6 59.6-64.8 13.5-96.9 5.3-60.9-25.9-82.7-50.8-35.3-56-39-88.9 2.9-66.1 18.6-95.2 40-52.7 69.6-67.7 62.9-20.5 95.7-16v89.9c-15-4.7-31.1-4.6-46 .4s-27.9 14.6-37 27.3-14 28.1-13.9 43.9 5.2 31 14.5 43.7 22.4 22.1 37.4 26.9 31.1 4.8 46-.1 28-14.4 37.2-27.1 14.2-28.1 14.2-43.8V0h88c-.1 7.4.6 14.9 1.9 22.2 3.1 16.3 9.4 31.9 18.7 45.7s21.3 25.6 35.2 34.6c19.9 13.1 43.2 20.1 67 20.1V210z"/></svg>
+    </a>
+  
 </div>
       
     </div>
@@ -1861,6 +1949,8 @@ Robot models and pictures made from them: <a href="https://github.com/Source-Rob
         <script src="../../javascripts/copy-markdown.js"></script>
       
         <script src="../../javascripts/joint-calculator.js"></script>
+      
+        <script src="../../javascripts/bom-kits.js"></script>
       
         <script src="../../javascripts/arm-viewer-loader.js"></script>
       

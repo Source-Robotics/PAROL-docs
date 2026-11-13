@@ -16,7 +16,9 @@ colour for the printed parts (the motors stay black). The model is the robot's
 ## Dimensions
 
 The sheets below come from PAROL6's models in
-[robot_descriptions](https://github.com/Source-Robotics/robot_descriptions) (version 2.15.1). Each shows the robot's
+[robot_descriptions](https://github.com/Source-Robotics/robot_descriptions) (version 2.15.1).
+
+Each shows the robot's
 own meshes in the standby pose (every joint of the model at 0), in one orthographic side view at one scale, with
 the dimensions taken from the URDF, not measured from the picture, and the standard DH table to the tool centre
 point (TCP) of that configuration. Click a sheet to enlarge it.
@@ -114,7 +116,9 @@ TCP of a gripper.
 
 In the side view the shaded region is where the point can go, with joints 2, 3 and 5 anywhere within their limits,
 joint 4 at 0° and joint 6 at 0° or 180°, so that a TCP beside the tool axis stays in the plane; the dotted line is
-the same for the wrist centre. The region shows where the point can go, not where the tool can take every
+the same for the wrist centre.
+
+The region shows where the point can go, not where the tool can take every
 orientation: at its edge the tool can only point outwards ([Workspace and reach](https://docs.source-robotics.com/PAROL-docs/1.1/theory/workspace-and-reach/)).
 It is computed from the joint limits only: the arm's own parts, the tool and the table can block some of it.
 
@@ -140,8 +144,12 @@ reach one pose.
 ## Denavit-Hartenberg parameters
 
 Standard DH, each joint's transform being `A_i = Rz(theta_i) Tz(d_i) Tx(a_i) Rx(alpha_i)`, from the base to the
-TCP. `q1` to `q6` are the model's joint angles (the URDF's), all 0 in the standby pose; the theta column already
-contains the joint offsets, so do not add them twice. Theta is the angle the software shows: joint 2's software
+TCP.
+
+`q1` to `q6` are the model's joint angles (the URDF's), all 0 in the standby pose; the theta column already
+contains the joint offsets, so do not add them twice.
+
+Theta is the angle the software shows: joint 2's software
 angle is q2 − 90°, joint 3's is q3 + 180° and joint 6's is q6 + 180°, the others are equal. The sheets above give
 the same table for each tool.
 

@@ -672,9 +672,43 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../quick-start/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../quick-start/" class="md-nav__link">
+      
   
   
   <span class="md-ellipsis">
@@ -688,7 +722,13 @@
   
   
 
-      </a>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -2784,29 +2824,50 @@
 <h1 id="jogging">Jogging<a class="headerlink" href="#jogging" title="Permanent link">&para;</a></h1>
 <p>Jogging moves one joint, or the tool along one axis, for as long as you hold a button or repeat a command. It is
 how you check a new robot, teach a pose and get out of trouble.</p>
+<p>There are two kinds. A joint jog moves one joint, and works before homing. A Cartesian jog moves the tool along
+X, Y or Z, or about them, and needs a homed robot.</p>
 <h2 id="joint-jog">Joint jog<a class="headerlink" href="#joint-jog" title="Permanent link">&para;</a></h2>
-<p>Each joint has a pair of arrows in the commander's <strong>Joint jog</strong> menu: the <strong>left arrow is the positive</strong>
-direction, the right arrow negative, as in <a href="../../03-technical-data/joint-limits/">Joint limits and directions</a>.
-The speed slider sets the speed as a percentage of the commander's jog maximum, which is lower than the speed a
-program may use (<a href="../../03-technical-data/specifications/#speeds">Speeds</a>). A jog stops at the joint limit.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python <abbr title="Application Programming Interface">API</abbr></label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Commander software</label><label for="__tabbed_1_2">Python <abbr title="Application Programming Interface">API</abbr></label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">rbt</span><span class="o">.</span><span class="n">jog_j</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">speed</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>               <span class="c1"># joint index 0 = J1, 30 % speed, 0.5 s</span>
+<p>Each joint has a pair of arrows in the commander's <strong>Joint jog</strong> menu.</p>
+<ul>
+<li>The <strong>left arrow is the positive</strong> direction, the right arrow negative, as in
+  <a href="../../03-technical-data/joint-limits/">Joint limits and directions</a>.</li>
+<li>The speed slider sets the speed as a percentage of the commander's jog maximum. That maximum is lower than
+  the speed a program may use (<a href="../../03-technical-data/specifications/#speeds">Speeds</a>).</li>
+</ul>
+<p><figure markdown="span">
+  <a class="glightbox" href="../../assets/GUI2.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="The commander window" src="../../assets/GUI2.webp" width="800" /></a>
+  <figcaption>Figure 5.4: The commander window.</figcaption>
+</figure></p>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">rbt</span><span class="o">.</span><span class="n">jog_j</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">speed</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>               <span class="c1"># joint index 0 = J1, 30 % speed, 0.5 s</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">rbt</span><span class="o">.</span><span class="n">jog_j</span><span class="p">(</span><span class="n">joints</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">speeds</span><span class="o">=</span><span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">],</span> <span class="n">duration</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
 </span></code></pre></div>
-A jog command runs for <code>duration</code> and the arm brakes to rest when no newer jog arrives; a <abbr title="Graphical User Interface">GUI</abbr> repeats it while
-the button is held. Joints are indexed from 0 in the <abbr title="Application Programming Interface">API</abbr>.</p>
+<ul>
+<li>Joints are indexed from 0 in the <abbr title="Application Programming Interface">API</abbr>.</li>
+<li>A jog command runs for <code>duration</code>, and the arm brakes to rest when no newer jog arrives.</li>
+<li>A <abbr title="Graphical User Interface">GUI</abbr> repeats it while the button is held.</li>
+</ul>
 </div>
 </div>
 </div>
+<p>A jog stops at the joint limit.</p>
 <h2 id="cartesian-jog">Cartesian jog<a class="headerlink" href="#cartesian-jog" title="Permanent link">&para;</a></h2>
 <p>The tool moves along X, Y or Z, or rotates about them, in the <strong>world frame</strong> (<abbr title="World Reference Frame, the coordinate frame fixed to the robot's base">WRF</abbr>, fixed to the base) or the
-<strong>tool frame</strong> (<abbr title="Tool Reference Frame, the coordinate frame fixed to the tool">TRF</abbr>, fixed to the tool). The commander's <strong>Cartesian jog</strong> menu has the six pairs of arrows and
-the <abbr title="World Reference Frame, the coordinate frame fixed to the robot's base">WRF</abbr>/<abbr title="Tool Reference Frame, the coordinate frame fixed to the tool">TRF</abbr> switch; a jog in the tool frame moves the tool along its own axes, which is the natural way to
-approach a part.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Python <abbr title="Application Programming Interface">API</abbr></label></div>
+<strong>tool frame</strong> (<abbr title="Tool Reference Frame, the coordinate frame fixed to the tool">TRF</abbr>, fixed to the tool). A jog in the tool frame moves the tool along its own axes, which is the
+natural way to approach a part.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Commander software</label><label for="__tabbed_2_2">Python <abbr title="Application Programming Interface">API</abbr></label></div>
 <div class="tabbed-content">
+<div class="tabbed-block">
+<p>The commander's <strong>Cartesian jog</strong> menu has the six pairs of arrows and the <abbr title="World Reference Frame, the coordinate frame fixed to the robot's base">WRF</abbr>/<abbr title="Tool Reference Frame, the coordinate frame fixed to the tool">TRF</abbr> switch.</p>
+<p><figure markdown="span">
+  <a class="glightbox" href="../../assets/GUI1.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="The Cartesian jog menu" src="../../assets/GUI1.webp" width="800" /></a>
+  <figcaption>Figure 5.5: The Cartesian jog menu.</figcaption>
+</figure></p>
+</div>
 <div class="tabbed-block">
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">rbt</span><span class="o">.</span><span class="n">jog_l</span><span class="p">(</span><span class="s2">"WRF"</span><span class="p">,</span> <span class="s2">"X"</span><span class="p">,</span> <span class="n">speed</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">rbt</span><span class="o">.</span><span class="n">jog_l</span><span class="p">(</span><span class="s2">"TRF"</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="p">[</span><span class="s2">"Z"</span><span class="p">,</span> <span class="s2">"RZ"</span><span class="p">],</span> <span class="n">speeds_list</span><span class="o">=</span><span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="n">duration</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
@@ -2814,27 +2875,72 @@ approach a part.</p>
 </div>
 </div>
 </div>
-<p>A Cartesian jog needs a homed robot, and it can run into a singularity, where the planner cannot find joint
-speeds for the tool's motion: the commander stops the jog, and the Python <abbr title="Application Programming Interface">API</abbr> refuses it. Jog a joint away from
-the singular pose and continue (<a href="../../theory/configurations-and-singularities/">Configurations and singularities</a>).</p>
+<p>A Cartesian jog needs a homed robot.</p>
+<div class="admonition note">
+<p class="admonition-title">When a Cartesian jog stops: a singularity</p>
+<p>A Cartesian jog can run into a singularity, where the planner cannot find joint speeds for the tool's motion.
+The commander stops the jog, and the Python <abbr title="Application Programming Interface">API</abbr> refuses it. Jog a joint away from the singular pose and
+continue (<a href="../../theory/configurations-and-singularities/">Configurations and singularities</a>).</p>
+</div>
 <h2 id="jogging-a-robot-that-is-not-homed">Jogging a robot that is not homed<a class="headerlink" href="#jogging-a-robot-that-is-not-homed" title="Permanent link">&para;</a></h2>
 <p>Joint jog works before homing: it is how you check the directions on a new build. The positions shown are
 meaningless until the robot is homed, and a Cartesian jog is refused.</p>
-<p>Both programs still check each jog against the joint limits, with a position count that starts at 0 when the
-board is switched on. That count puts joint 2 past its positive limit and joints 3 and 6 at or below their
-negative limits, so until the robot is homed:</p>
-<ul>
-<li><strong>joint 2</strong> jogs only in its negative direction (the right arrow);</li>
-<li><strong>joints 3 and 6</strong> jog only in their positive direction (the left arrow);</li>
-<li><strong>joints 1, 4 and 5</strong> jog both ways.</li>
-</ul>
-<p>A refused jog does not move: the commander logs <code>Error: Robot jog -&gt; Position out of range</code>, the Python <abbr title="Application Programming Interface">API</abbr> stops
-the joint before it starts.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Before homing, the limits are checked against a count that does not match the arm, so they do not protect
 the joint: nothing stops it at its real limit except the printed blocker. Jog briefly and slowly.</p>
 </div>
+<p>Until the robot is homed, some joints jog one way only:</p>
+<table>
+<thead>
+<tr>
+<th>Joint</th>
+<th>Jogs before homing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Joints 1, 4 and 5</strong></td>
+<td>Both ways</td>
+</tr>
+<tr>
+<td><strong>Joint 2</strong></td>
+<td>Only in its negative direction (the right arrow)</td>
+</tr>
+<tr>
+<td><strong>Joints 3 and 6</strong></td>
+<td>Only in their positive direction (the left arrow)</td>
+</tr>
+</tbody>
+</table>
+<p>A refused jog does not move. The commander logs <code>Error: Robot jog -&gt; Position out of range</code>; the Python <abbr title="Application Programming Interface">API</abbr> stops
+the joint before it starts.</p>
+<details class="info">
+<summary>Why some joints jog one way only before homing</summary>
+<p>Both programs still check each jog against the joint limits, with a position count that starts at 0 when the
+board is switched on. That count puts joint 2 past its positive limit and joints 3 and 6 at or below their
+negative limits.</p>
+</details>
+
+  
+  
+  
+    <nav class="page-nav" aria-label="Footer">
+      
+        <a href="../homing/" class="md-button page-nav__prev" rel="prev" aria-label="Previous: Homing">
+          <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg></span>
+          <span>Previous: Homing</span>
+        </a>
+      
+      
+        <a href="../running-programs/" class="md-button md-button--primary page-nav__next" rel="next" aria-label="Next: Running programs">
+          <span>Next: Running programs</span>
+          <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg></span>
+        </a>
+      
+    </nav>
+  
+
 
 
 
@@ -2855,7 +2961,7 @@ the joint: nothing stops it at its real limit except the printed blocker. Jog br
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 3, 2026 14:55:17 UTC">November 3, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 11, 2026 13:31:56 UTC">November 11, 2026</span>
   </span>
 
     
@@ -3119,6 +3225,17 @@ Robot models and pictures made from them: <a href="https://github.com/Source-Rob
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M492.5 69.8c-.2-.3-.4-.6-.8-.7-38.1-17.5-78.4-30-119.7-37.1-.4-.1-.8 0-1.1.1s-.6.4-.8.8c-5.5 9.9-10.5 20.2-14.9 30.6-44.6-6.8-89.9-6.8-134.4 0-4.5-10.5-9.5-20.7-15.1-30.6-.2-.3-.5-.6-.8-.8s-.7-.2-1.1-.2C162.5 39 122.2 51.5 84.1 69c-.3.1-.6.4-.8.7C7.1 183.5-13.8 294.6-3.6 404.2c0 .3.1.5.2.8s.3.4.5.6c44.4 32.9 94 58 146.8 74.2.4.1.8.1 1.1 0s.7-.4.9-.7c11.3-15.4 21.4-31.8 30-48.8.1-.2.2-.5.2-.8s0-.5-.1-.8-.2-.5-.4-.6-.4-.3-.7-.4c-15.8-6.1-31.2-13.4-45.9-21.9-.3-.2-.5-.4-.7-.6s-.3-.6-.3-.9 0-.6.2-.9.3-.5.6-.7c3.1-2.3 6.2-4.7 9.1-7.1.3-.2.6-.4.9-.4s.7 0 1 .1c96.2 43.9 200.4 43.9 295.5 0 .3-.1.7-.2 1-.2s.7.2.9.4c2.9 2.4 6 4.9 9.1 7.2.2.2.4.4.6.7s.2.6.2.9-.1.6-.3.9-.4.5-.6.6c-14.7 8.6-30 15.9-45.9 21.8-.2.1-.5.2-.7.4s-.3.4-.4.7-.1.5-.1.8.1.5.2.8c8.8 17 18.8 33.3 30 48.8.2.3.6.6.9.7s.8.1 1.1 0c52.9-16.2 102.6-41.3 147.1-74.2.2-.2.4-.4.5-.6s.2-.5.2-.8c12.3-126.8-20.5-236.9-86.9-334.5zm-302 267.7c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.4 59.2-52.8 59.2m195.4 0c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.2 59.2-52.8 59.2"/></svg>
     </a>
   
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.tiktok.com/@source.robotics" target="_blank" rel="noopener" title="www.tiktok.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M448.5 209.9c-44 .1-87-13.6-122.8-39.2v178.7c0 33.1-10.1 65.4-29 92.6s-45.6 48-76.6 59.6-64.8 13.5-96.9 5.3-60.9-25.9-82.7-50.8-35.3-56-39-88.9 2.9-66.1 18.6-95.2 40-52.7 69.6-67.7 62.9-20.5 95.7-16v89.9c-15-4.7-31.1-4.6-46 .4s-27.9 14.6-37 27.3-14 28.1-13.9 43.9 5.2 31 14.5 43.7 22.4 22.1 37.4 26.9 31.1 4.8 46-.1 28-14.4 37.2-27.1 14.2-28.1 14.2-43.8V0h88c-.1 7.4.6 14.9 1.9 22.2 3.1 16.3 9.4 31.9 18.7 45.7s21.3 25.6 35.2 34.6c19.9 13.1 43.2 20.1 67 20.1V210z"/></svg>
+    </a>
+  
 </div>
       
     </div>
@@ -3227,6 +3344,8 @@ Robot models and pictures made from them: <a href="https://github.com/Source-Rob
         <script src="../../javascripts/copy-markdown.js"></script>
       
         <script src="../../javascripts/joint-calculator.js"></script>
+      
+        <script src="../../javascripts/bom-kits.js"></script>
       
         <script src="../../javascripts/arm-viewer-loader.js"></script>
       

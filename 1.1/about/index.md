@@ -16,7 +16,7 @@ The manual is written for someone who has a PAROL6 or is building one: a maker, 
 who can run a Python script and tighten a belt. It does not assume robotics training; the concepts the robot's
 software uses are explained in the [Theory corner](https://docs.source-robotics.com/PAROL-docs/1.1/theory/), which
 anyone can read first. Read the [Safety](https://docs.source-robotics.com/PAROL-docs/1.1/02-safety/) chapter before you power anything. The
-[Quick start](https://docs.source-robotics.com/PAROL-docs/1.1/quick-start/) is the first day on one page; the chapters are in the order you need them and go
+[Quick start](https://docs.source-robotics.com/PAROL-docs/1.1/quick-start/) is the first day, in four short parts; the chapters are in the order you need them and go
 deeper.
 
 ## Finding your way
@@ -81,6 +81,13 @@ The text and the images of this documentation are licensed under [CC BY-SA 4.0](
 the code examples under the [MIT licence](https://github.com/Source-Robotics/PAROL-docs/blob/main/LICENSE-CODE).
 The robot's hardware files are published under CERN-OHL-S-2.0, its firmware and software under GPLv3, in their repositories. The Source
 Robotics name, the product names and the logos are not covered by any of these.
+
+Four screenshots in the quick start come from other projects and keep their licences: the Python installer from the
+[Python documentation](https://docs.python.org/3.11/using/windows.html) under the
+[PSF licence](https://docs.python.org/3/license.html), with a ring added; the three VS Code pictures from the
+[PlatformIO documentation](https://docs.platformio.org/en/latest/integration/ide/vscode.html) under
+[Apache 2.0](https://github.com/platformio/platformio-docs/blob/develop/LICENSE), one of them cut from a larger
+picture.
 
 | Document | Revision | Date | Changes |
 |---|---|---|---|

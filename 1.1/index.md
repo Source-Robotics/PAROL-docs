@@ -50,8 +50,8 @@ colour for the printed parts (the motors stay black). The model is the robot's
 
     ---
 
-    [One page](https://docs.source-robotics.com/PAROL-docs/1.1/quick-start/) from an assembled robot to a homed one that moves: power, the commander software,
-    the first jog, homing, with a link into the manual at every step.
+    [Four short parts](https://docs.source-robotics.com/PAROL-docs/1.1/quick-start/) from an assembled robot to a homed one that moves: the software, the
+    firmware, power, the first jog, homing, with a link into the manual at every step.
 
 -   :material-book-open-variant: **The robot manual**
 

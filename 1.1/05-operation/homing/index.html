@@ -672,9 +672,43 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../quick-start/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../quick-start/" class="md-nav__link">
+      
   
   
   <span class="md-ellipsis">
@@ -688,7 +722,13 @@
   
   
 
-      </a>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -1267,6 +1307,17 @@
     <span class="md-ellipsis">
       
         Before you press Home
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#home-the-robot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Home the robot
       
     </span>
   </a>
@@ -2662,6 +2713,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#home-the-robot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Home the robot
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#the-sequence" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2804,28 +2866,61 @@
 
 
 <h1 id="homing">Homing<a class="headerlink" href="#homing" title="Permanent link">&para;</a></h1>
-<p>After power-up the robot does not know where its joints are: the motors count steps, and the count starts at
-zero wherever the arm happens to stand. Homing gives each joint a reference by driving it to its limit switch or
-sensor, then moving a known number of steps to the after-homing pose. It must be done after every power-up, and again
-after a collision, a stall or any move by hand.</p>
+<p>After power-up the robot does not know where its joints are. The motors count steps, and the count starts at
+zero wherever the arm happens to stand.</p>
+<p>Homing gives each joint a reference. It drives the joint to its limit switch or sensor, then moves a known number
+of steps to the after-homing pose.</p>
+<p>Home the robot:</p>
+<ul>
+<li>after every power-up;</li>
+<li>again after a collision, a stall or any move by hand.</li>
+</ul>
 <h2 id="before-you-press-home">Before you press Home<a class="headerlink" href="#before-you-press-home" title="Permanent link">&para;</a></h2>
 <ul>
 <li>The arm can move freely to every limit: nothing on the table in the way, no cable caught.</li>
-<li>The tool is mounted: joint 5 homes against the tool's feature on the SSG-48 and the pneumatic gripper, and
-  the homing offset in the firmware matches the tool (<a href="../mastering/#joint-5-and-the-tool">Joint 5 and the tool</a>,
+<li>The tool is mounted. Joint 5 homes against the tool's feature on the SSG-48 and the pneumatic gripper, and the
+  homing offset in the firmware matches the tool (<a href="../mastering/#joint-5-and-the-tool">Joint 5 and the tool</a>,
   <a href="../../end-effectors/ssg-48/">SSG-48</a>).</li>
-<li>Joint 6 stands so that it finds its sensor within one turn in the negative direction, with the cables and
-  tubes not already wound up. The figure shows the pose: the gripper as drawn, the sensor (blue) and the homing
-  pin (red); joint 6 turns along the green arrow.</li>
-<li>You are at the <abbr title="Emergency stop">E-stop</abbr>.</li>
-</ul>
-<figure>
+<li>
+<p>Joint 6 stands so that it finds its sensor within one turn in the negative direction, with the cables and
+  tubes not already wound up.</p>
+<p><figure markdown="span">
   <a class="glightbox" href="../../assets/J6_home.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Joint 6 before homing: the sensor, the homing pin and the direction of rotation" src="../../assets/J6_home.webp" width="700" /></a>
-<br />
-<figcaption>Figure 5.1: Joint 6 before homing: the sensor, the homing pin and the direction of rotation.</figcaption>
-</figure>
+  <figcaption>Figure 5.3: Joint 6 before homing: the sensor, the homing pin and the direction of rotation.</figcaption>
+</figure></p>
+<p>The figure shows the pose: the gripper as drawn, the sensor (blue) and the homing pin (red). Joint 6 turns
+along the green arrow.</p>
+</li>
+<li>
+<p>You are at the <abbr title="Emergency stop">E-stop</abbr>.</p>
+</li>
+</ul>
+<h2 id="home-the-robot">Home the robot<a class="headerlink" href="#home-the-robot" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Commander software</label><label for="__tabbed_1_2">Python <abbr title="Application Programming Interface">API</abbr></label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Press <strong>Home</strong>.</p>
+<p>The response log reports the joints as they home. The position display and the simulator are right once all
+six are homed.</p>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">rbt</span><span class="o">.</span><span class="n">home</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></code></pre></div>
+<p>The first <code>home()</code> after power-up runs the referencing sequence. A later <code>home()</code> on a referenced robot is a
+planned, collision-checked joint move back to the after-homing pose. <code>home(calibrate=True)</code> runs the sequence
+again.</p>
+<p>Planned motion is refused with <code>MOTN_NOT_HOMED</code> until the robot is referenced.</p>
+</div>
+</div>
+</div>
+<p>Homing takes about half a minute. A video of a correct homing: <a href="https://www.youtube.com/watch?v=OCCQkIWPWwo">Homing reference</a>.</p>
+<div class="admonition success">
+<p class="admonition-title">Check</p>
+<p>The arm ends in the after-homing pose: the standby pose turned 90° about joint 1, with joint 1 at +90°
+(<a href="../../03-technical-data/joint-limits/#standby-and-after-homing">Joint limits and directions</a>).</p>
+</div>
 <h2 id="the-sequence">The sequence<a class="headerlink" href="#the-sequence" title="Permanent link">&para;</a></h2>
-<p>The firmware runs the sequence; the PC only starts it and watches.</p>
+<p>The firmware runs the sequence. The PC only starts it and watches.</p>
 <pre class="mermaid"><code>flowchart TD
     S([Home]) --&gt; A[Joints 1, 2 and 3 drive together to their sensor and switches]
     A --&gt; B[Each backs off about a thousand steps and approaches again slowly:&lt;br&gt;the second trigger is the reference]
@@ -2835,47 +2930,53 @@ after a collision, a stall or any move by hand.</p>
     E --&gt; F[Joint 5 homes against its switch]
     F --&gt; G[Joints 5 and 6 move to their after-homing positions together]
     G --&gt; H([Every counter set to its after-homing value: six joints homed])</code></pre>
+<details class="info">
+<summary>Each step in detail, with the step counts</summary>
 <ol>
-<li><strong>Joints 1, 2 and 3 move together</strong> toward their switches: joint 1 to its inductive sensor, joints 2 and 3 to
-   their limit switches. Each stops when it triggers.</li>
-<li>Each backs off, 850 steps on joint 1 and 1050 on joints 2 and 3, and approaches again slowly, and the position
+<li><strong>Joints 1, 2 and 3 move together</strong> toward their switches: joint 1 to its inductive sensor, joints 2 and 3
+   to their limit switches. Each stops when it triggers.</li>
+<li>Each backs off, 850 steps on joint 1 and 1050 on joints 2 and 3, and approaches again slowly. The position
    where it triggers the second time is the reference: the first hit may have pressed the switch too far.</li>
-<li>Joints 1, 2 and 3 move from the reference to their after-homing positions (13500, 19588 and 23020 steps away).</li>
-<li><strong>Joint 4</strong> does the same against its inductive sensor (backing off 1550 steps) and moves to its after-homing
-   position.</li>
+<li>Joints 1, 2 and 3 move from the reference to their after-homing positions (13500, 19588 and 23020 steps
+   away).</li>
+<li><strong>Joint 4</strong> does the same against its inductive sensor (backing off 1550 steps) and moves to its
+   after-homing position.</li>
 <li><strong>Joint 6</strong> turns in the negative direction until its sensor sees the homing pin, backs off, re-approaches,
    and moves on to the position from which joint 5 can home.</li>
-<li><strong>Joint 5</strong> homes against its switch, and joints 5 and 6 move to their after-homing positions together:
+<li><strong>Joint 5</strong> homes against its switch. Then joints 5 and 6 move to their after-homing positions together:
    joint 5 by <code>j5_homing_offset</code>, joint 6 back to the point where its sensor triggered.</li>
 <li>The firmware sets every joint's counter to its after-homing value (<code>standby_position</code> in the firmware), and
    reports all six joints as homed.</li>
 </ol>
-<p>A video of a correct homing: <a href="https://www.youtube.com/watch?v=OCCQkIWPWwo">Homing reference</a>. It takes about half
-a minute. The result is the after-homing pose: the standby pose turned 90° about joint 1, with joint 1 at +90°
-(<a href="../../03-technical-data/joint-limits/#standby-and-after-homing">Joint limits and directions</a>).</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Commander software</label><label for="__tabbed_1_2">Python <abbr title="Application Programming Interface">API</abbr></label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p>Press <strong>Home</strong>. The response log reports the joints as they home; the position display and the simulator are
-right once all six are homed.</p>
-</div>
-<div class="tabbed-block">
-<p><div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">rbt</span><span class="o">.</span><span class="n">home</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span></code></pre></div>
-The first <code>home()</code> after power-up runs the referencing sequence. A later <code>home()</code> on a referenced robot is a
-planned, collision-checked joint move back to the after-homing pose; <code>home(calibrate=True)</code> runs the sequence again.
-Planned motion is refused with <code>MOTN_NOT_HOMED</code> until the robot is referenced.</p>
-</div>
-</div>
-</div>
+</details>
 <h2 id="if-it-goes-wrong">If it goes wrong<a class="headerlink" href="#if-it-goes-wrong" title="Permanent link">&para;</a></h2>
-<p>Press the <abbr title="Emergency stop">E-stop</abbr> when a joint grinds at its end without stopping: its switch does not trigger. Joints 1, 4 and 6
-use inductive sensors whose <abbr title="Light-Emitting Diode">LED</abbr> lights when they see metal; a sensor that does not light needs its trigger screw
-adjusted. If joint 6 keeps turning, its homing pin is not where the sensor looks. <a href="../../08-troubleshooting/homing-failures/">Homing failures</a>
-has the cases.</p>
+<p>Press the <abbr title="Emergency stop">E-stop</abbr> when a joint grinds at its end without stopping: its switch does not trigger.</p>
+<p>Joints 1, 4 and 6 use inductive sensors whose <abbr title="Light-Emitting Diode">LED</abbr> lights when they see metal. A sensor that does not light needs
+its trigger screw adjusted. If joint 6 keeps turning, its homing pin is not where the sensor looks.</p>
+<p><a href="../../08-troubleshooting/homing-failures/">Homing failures</a> has the cases.</p>
 <h2 id="mastering">Mastering<a class="headerlink" href="#mastering" title="Permanent link">&para;</a></h2>
-<p>A homed robot stands within a few steps of the after-homing pose. The exact number of steps from each switch to the
-witness marks differs between builds; <a href="../mastering/">Mastering</a> says how to measure and set it.</p>
+<p>A homed robot stands within a few steps of the after-homing pose. The exact number of steps from each switch to
+the witness marks differs between builds. <a href="../mastering/">Mastering</a> says how to measure and set it.</p>
+
+  
+  
+  
+    <nav class="page-nav" aria-label="Footer">
+      
+        <a href="../switching-on-off/" class="md-button page-nav__prev" rel="prev" aria-label="Previous: Switching on and off">
+          <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg></span>
+          <span>Previous: Switching on and off</span>
+        </a>
+      
+      
+        <a href="../jogging/" class="md-button md-button--primary page-nav__next" rel="next" aria-label="Next: Jogging">
+          <span>Next: Jogging</span>
+          <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg></span>
+        </a>
+      
+    </nav>
+  
+
 
 
 
@@ -2896,7 +2997,7 @@ witness marks differs between builds; <a href="../mastering/">Mastering</a> says
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 3, 2026 14:55:17 UTC">November 3, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 11, 2026 13:31:56 UTC">November 11, 2026</span>
   </span>
 
     
@@ -3160,6 +3261,17 @@ Robot models and pictures made from them: <a href="https://github.com/Source-Rob
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M492.5 69.8c-.2-.3-.4-.6-.8-.7-38.1-17.5-78.4-30-119.7-37.1-.4-.1-.8 0-1.1.1s-.6.4-.8.8c-5.5 9.9-10.5 20.2-14.9 30.6-44.6-6.8-89.9-6.8-134.4 0-4.5-10.5-9.5-20.7-15.1-30.6-.2-.3-.5-.6-.8-.8s-.7-.2-1.1-.2C162.5 39 122.2 51.5 84.1 69c-.3.1-.6.4-.8.7C7.1 183.5-13.8 294.6-3.6 404.2c0 .3.1.5.2.8s.3.4.5.6c44.4 32.9 94 58 146.8 74.2.4.1.8.1 1.1 0s.7-.4.9-.7c11.3-15.4 21.4-31.8 30-48.8.1-.2.2-.5.2-.8s0-.5-.1-.8-.2-.5-.4-.6-.4-.3-.7-.4c-15.8-6.1-31.2-13.4-45.9-21.9-.3-.2-.5-.4-.7-.6s-.3-.6-.3-.9 0-.6.2-.9.3-.5.6-.7c3.1-2.3 6.2-4.7 9.1-7.1.3-.2.6-.4.9-.4s.7 0 1 .1c96.2 43.9 200.4 43.9 295.5 0 .3-.1.7-.2 1-.2s.7.2.9.4c2.9 2.4 6 4.9 9.1 7.2.2.2.4.4.6.7s.2.6.2.9-.1.6-.3.9-.4.5-.6.6c-14.7 8.6-30 15.9-45.9 21.8-.2.1-.5.2-.7.4s-.3.4-.4.7-.1.5-.1.8.1.5.2.8c8.8 17 18.8 33.3 30 48.8.2.3.6.6.9.7s.8.1 1.1 0c52.9-16.2 102.6-41.3 147.1-74.2.2-.2.4-.4.5-.6s.2-.5.2-.8c12.3-126.8-20.5-236.9-86.9-334.5zm-302 267.7c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.4 59.2-52.8 59.2m195.4 0c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.2 59.2-52.8 59.2"/></svg>
     </a>
   
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.tiktok.com/@source.robotics" target="_blank" rel="noopener" title="www.tiktok.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M448.5 209.9c-44 .1-87-13.6-122.8-39.2v178.7c0 33.1-10.1 65.4-29 92.6s-45.6 48-76.6 59.6-64.8 13.5-96.9 5.3-60.9-25.9-82.7-50.8-35.3-56-39-88.9 2.9-66.1 18.6-95.2 40-52.7 69.6-67.7 62.9-20.5 95.7-16v89.9c-15-4.7-31.1-4.6-46 .4s-27.9 14.6-37 27.3-14 28.1-13.9 43.9 5.2 31 14.5 43.7 22.4 22.1 37.4 26.9 31.1 4.8 46-.1 28-14.4 37.2-27.1 14.2-28.1 14.2-43.8V0h88c-.1 7.4.6 14.9 1.9 22.2 3.1 16.3 9.4 31.9 18.7 45.7s21.3 25.6 35.2 34.6c19.9 13.1 43.2 20.1 67 20.1V210z"/></svg>
+    </a>
+  
 </div>
       
     </div>
@@ -3268,6 +3380,8 @@ Robot models and pictures made from them: <a href="https://github.com/Source-Rob
         <script src="../../javascripts/copy-markdown.js"></script>
       
         <script src="../../javascripts/joint-calculator.js"></script>
+      
+        <script src="../../javascripts/bom-kits.js"></script>
       
         <script src="../../javascripts/arm-viewer-loader.js"></script>
       

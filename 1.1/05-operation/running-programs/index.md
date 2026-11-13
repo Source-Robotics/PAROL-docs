@@ -1,13 +1,24 @@
 # Running programs
 
-A program is a list of moves, delays, I/O and gripper commands. PAROL6 runs programs in two ways.
+A program is a list of moves, delays, I/O and gripper commands. PAROL6 runs programs in two ways: as RBTscript in
+the commander software, or as a Python script with the Python API.
 
 ## RBTscript in the commander software
 
 The commander's **Program** window takes an RBTscript program: one command per line, `MoveJoint`, `MoveCart`,
-`MoveCartRelTRF`, `Delay`, `Output`, `Gripper`, with `Begin()` and `End()` or `Loop()` around it. The command
-list next to the window inserts a command with the robot's current pose as its arguments, which is how you teach
-points: jog to the pose, click the command. **Start** runs the program, **Stop** halts it.
+`MoveCartRelTRF`, `Delay`, `Output`, `Gripper`, with `Begin()` and `End()` or `Loop()` around it.
+
+![The program editor](https://docs.source-robotics.com/PAROL-docs/1.1/assets/program_window.PNG){ width="800" }
+
+To teach points:
+
+1. Jog to the pose.
+2. Click the command in the command list next to the window. It is inserted with the robot's current pose as its
+   arguments.
+
+![The command list](https://docs.source-robotics.com/PAROL-docs/1.1/assets/Commands.PNG){ width="180" }
+
+To run the program, press **Start**. **Stop** halts it.
 
 ```
 Begin()
@@ -19,12 +30,12 @@ Output(1,LOW)
 End()
 ```
 
-[RBTscript](https://docs.source-robotics.com/PAROL-docs/1.1/programming/03-commander/rbtscript/) has the language and [Examples](https://docs.source-robotics.com/PAROL-docs/1.1/programming/03-commander/examples/)
-has programs to start from. Programs are plain text files you can keep and share.
+Programs are plain text files you can keep and share. [RBTscript](https://docs.source-robotics.com/PAROL-docs/1.1/programming/03-commander/rbtscript/) has the
+language, and [Examples](https://docs.source-robotics.com/PAROL-docs/1.1/programming/03-commander/examples/) has programs to start from.
 
 ## Python with the Python API
 
-A Python script that calls the client is a program: every motion call queues a move on the controller, and the
+A Python script that calls the client is a program. Every motion call queues a move on the controller, and the
 script waits for it or not, as you choose.
 
 ```python
@@ -42,20 +53,24 @@ with RobotClient() as rbt:
     rbt.tool.open()
 ```
 
-The Python API also runs programs written for other tools, and from other machines: the controller accepts
+The Python API also runs programs written for other tools, and from other machines. The controller accepts
 commands over the network from any client, so a program can run on a laptop while the controller runs on the PC
 at the robot. [The Python API](https://docs.source-robotics.com/PAROL-docs/1.1/programming/02-python-api/) is the guide.
 
 ## Simulate first
 
-Both programs have a simulator. The commander opens its 3D window with the GUI and mirrors the robot; the Python
+Both programs have a simulator. The commander opens its 3D window with the GUI and mirrors the robot. The Python
 API's controller runs with `simulator(True)` or the `DryRunRobotClient` without hardware, through the same
-kinematics and collision checks. Run a new program in the simulator at full speed, then on the robot at low speed.
+kinematics and collision checks.
+
+Run a new program in the simulator at full speed, then on the robot at low speed.
 
 ## Speed
 
-The commander's speed slider scales jogging only; a program's speed is in its moves, `v=` and `a=` or `t=`. The Python API takes a `speed` fraction per move and
-`set_execution_speed()` scales the queue while it runs; `pause()` and `resume()` hold and continue it.
+- **Commander software:** the speed slider scales jogging only. A program's speed is in its moves: `v=` and `a=`,
+  or `t=`.
+- **Python API:** each move takes a `speed` fraction. `set_execution_speed()` scales the queue while it runs;
+  `pause()` and `resume()` hold and continue it.
 
 ## Stopping a program
 

@@ -11,6 +11,7 @@ fittings. The tubes and fittings are standard 4 mm pneumatic parts.
 ## The valve
 
 A 5/2 valve, 24 V coil, 4 mm ports: one port from the compressor, two to the base fittings, the exhausts open.
+
 The coil goes between **GND_SEL** and **OUTPUT1** ([Inputs and outputs](https://docs.source-robotics.com/PAROL-docs/1.1/06-peripherals/io/)). Which of the two outputs is
 pressurised when the coil is off decides whether the gripper is normally open or normally closed: swap the two
 tubes to change it.
@@ -20,7 +21,9 @@ tubes to change it.
 ## Routing
 
 The arm's tubes run inside it from the base to the push-in fittings on the forearm; they are one reason for the
-one-turn rule of the joints. From the forearm fittings, the gripper's own tubes cross joints 5 and 6 outside the
+one-turn rule of the joints.
+
+From the forearm fittings, the gripper's own tubes cross joints 5 and 6 outside the
 arm, like an electric gripper's cable: give them enough slack for the range you use, since they, not the flange,
 limit joint 6. Outside the base, give the tubes a loop so the arm cannot pull them.
 

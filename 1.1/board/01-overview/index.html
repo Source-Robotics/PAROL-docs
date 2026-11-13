@@ -1528,18 +1528,24 @@
 
 
 <h1 id="1-overview">1. Overview<a class="headerlink" href="#1-overview" title="Permanent link">&para;</a></h1>
-<p>The control board sits in the base of PAROL6 and does the low-level work: it generates the step pulses for six
-stepper motors, runs the homing sequence, reads the limit switches, the inputs and the <abbr title="Emergency stop">E-stop</abbr>, switches the
-outputs, drives an electric gripper over <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr>, and exchanges a data packet with the PC over <abbr title="Universal Serial Bus, the connection between the control board and the PC">USB</abbr> 100 times a
-second. It plans nothing: the PC computes every trajectory and sends the board the joint speeds and positions
-to execute, cycle by cycle.</p>
+<p>The control board sits in the base of PAROL6 and does the low-level work:</p>
+<ul>
+<li>it generates the step pulses for six stepper motors;</li>
+<li>it runs the homing sequence;</li>
+<li>it reads the limit switches, the inputs and the <abbr title="Emergency stop">E-stop</abbr>;</li>
+<li>it switches the outputs;</li>
+<li>it drives an electric gripper over <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr>;</li>
+<li>it exchanges a data packet with the PC over <abbr title="Universal Serial Bus, the connection between the control board and the PC">USB</abbr> 100 times a second.</li>
+</ul>
+<p>It plans nothing: the PC computes every trajectory and sends the board the joint speeds and positions to execute,
+cycle by cycle.</p>
 <figure>
   <a class="glightbox" href="../../assets/img_parol.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Features of the control board" src="../../assets/img_parol.webp" width="750" /></a>
 <br />
 <figcaption>Figure 1.1: Features of the control board.</figcaption>
 </figure>
-<p>It works out of the box with PAROL6 and the commander software or the Python <abbr title="Application Programming Interface">API</abbr>, and it drives any six-axis
-stepper arm that is wired like PAROL6.</p>
+<p>It works out of the box with PAROL6 and the commander software or the Python <abbr title="Application Programming Interface">API</abbr>. It drives any six-axis stepper
+arm that is wired like PAROL6.</p>
 <h2 id="versions">Versions<a class="headerlink" href="#versions" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1563,27 +1569,71 @@ stepper arm that is wired like PAROL6.</p>
 </tbody>
 </table>
 <p>The two are functionally identical and run the same firmware.</p>
-<figure>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">v2.0</label><label for="__tabbed_1_2">v1.2</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><figure markdown="span">
   <a class="glightbox" href="../../assets/PAROL6V2.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Control board v2.0" src="../../assets/PAROL6V2.webp" width="600" /></a>
-<br />
-<figcaption>Figure 1.2: Control board v2.0.</figcaption>
-</figure>
-<figure>
+  <figcaption>Figure 1.2: Control board v2.0.</figcaption>
+</figure></p>
+</div>
+<div class="tabbed-block">
+<p><figure markdown="span">
   <a class="glightbox" href="../../assets/PCB1.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Control board v1.2 (discontinued)" src="../../assets/PCB1.webp" width="600" /></a>
-<br />
-<figcaption>Figure 1.3: Control board v1.2 (discontinued).</figcaption>
-</figure>
+  <figcaption>Figure 1.3: Control board v1.2 (discontinued).</figcaption>
+</figure></p>
+</div>
+</div>
+</div>
 <h2 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h2>
-<p>Every board is tested end to end before it ships, and comes with the test firmware preloaded, so that you can
-check the wiring of your robot before the main firmware goes on (<a href="../09-test-firmware/">The test firmware</a>).</p>
+<p>Every board is tested end to end before it ships, and comes with the test firmware preloaded. So you can check the
+wiring of your robot before the main firmware goes on (<a href="../09-test-firmware/">The test firmware</a>).</p>
 <h2 id="where-it-is-published">Where it is published<a class="headerlink" href="#where-it-is-published" title="Permanent link">&para;</a></h2>
-<p>The firmware, main and test, is in the robot repository:
-<a href="https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/tree/V1.1/PAROL6%20control%20board%20main%20software">PAROL6 control board main software</a>
-and <a href="https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/tree/V1.1/PAROL6%20control%20board%20test%20code">PAROL6 control board test code</a>.
-The board is sold <a href="https://source-robotics.com/products/parol6-control-board">in the shop</a>.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The main firmware</td>
+<td><a href="https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/tree/V1.1/PAROL6%20control%20board%20main%20software">PAROL6 control board main software</a>, in the robot repository</td>
+</tr>
+<tr>
+<td>The test firmware</td>
+<td><a href="https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/tree/V1.1/PAROL6%20control%20board%20test%20code">PAROL6 control board test code</a>, in the robot repository</td>
+</tr>
+<tr>
+<td>The board</td>
+<td>Sold <a href="https://source-robotics.com/products/parol6-control-board">in the shop</a></td>
+</tr>
+</tbody>
+</table>
 <p>The board schematics and PCB design are not available as open source materials due to licensing agreements and
 confidentiality terms established with our development partners. These proprietary design elements are subject
 to contractual obligations that restrict their public distribution.</p>
+
+  
+  
+  
+    <nav class="page-nav" aria-label="Footer">
+      
+        <a href="../" class="md-button page-nav__prev" rel="prev" aria-label="Previous: PAROL6 Control Board Manual">
+          <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg></span>
+          <span>Previous: PAROL6 Control Board Manual</span>
+        </a>
+      
+      
+        <a href="../02-safety/" class="md-button md-button--primary page-nav__next" rel="next" aria-label="Next: 2. Safety">
+          <span>Next: 2. Safety</span>
+          <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg></span>
+        </a>
+      
+    </nav>
+  
+
 
 
 
@@ -1604,7 +1654,7 @@ to contractual obligations that restrict their public distribution.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 3, 2026 14:55:17 UTC">November 3, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 10, 2026 19:59:59 UTC">November 10, 2026</span>
   </span>
 
     
@@ -1868,6 +1918,17 @@ Robot models and pictures made from them: <a href="https://github.com/Source-Rob
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M492.5 69.8c-.2-.3-.4-.6-.8-.7-38.1-17.5-78.4-30-119.7-37.1-.4-.1-.8 0-1.1.1s-.6.4-.8.8c-5.5 9.9-10.5 20.2-14.9 30.6-44.6-6.8-89.9-6.8-134.4 0-4.5-10.5-9.5-20.7-15.1-30.6-.2-.3-.5-.6-.8-.8s-.7-.2-1.1-.2C162.5 39 122.2 51.5 84.1 69c-.3.1-.6.4-.8.7C7.1 183.5-13.8 294.6-3.6 404.2c0 .3.1.5.2.8s.3.4.5.6c44.4 32.9 94 58 146.8 74.2.4.1.8.1 1.1 0s.7-.4.9-.7c11.3-15.4 21.4-31.8 30-48.8.1-.2.2-.5.2-.8s0-.5-.1-.8-.2-.5-.4-.6-.4-.3-.7-.4c-15.8-6.1-31.2-13.4-45.9-21.9-.3-.2-.5-.4-.7-.6s-.3-.6-.3-.9 0-.6.2-.9.3-.5.6-.7c3.1-2.3 6.2-4.7 9.1-7.1.3-.2.6-.4.9-.4s.7 0 1 .1c96.2 43.9 200.4 43.9 295.5 0 .3-.1.7-.2 1-.2s.7.2.9.4c2.9 2.4 6 4.9 9.1 7.2.2.2.4.4.6.7s.2.6.2.9-.1.6-.3.9-.4.5-.6.6c-14.7 8.6-30 15.9-45.9 21.8-.2.1-.5.2-.7.4s-.3.4-.4.7-.1.5-.1.8.1.5.2.8c8.8 17 18.8 33.3 30 48.8.2.3.6.6.9.7s.8.1 1.1 0c52.9-16.2 102.6-41.3 147.1-74.2.2-.2.4-.4.5-.6s.2-.5.2-.8c12.3-126.8-20.5-236.9-86.9-334.5zm-302 267.7c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.4 59.2-52.8 59.2m195.4 0c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.2 59.2-52.8 59.2"/></svg>
     </a>
   
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.tiktok.com/@source.robotics" target="_blank" rel="noopener" title="www.tiktok.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M448.5 209.9c-44 .1-87-13.6-122.8-39.2v178.7c0 33.1-10.1 65.4-29 92.6s-45.6 48-76.6 59.6-64.8 13.5-96.9 5.3-60.9-25.9-82.7-50.8-35.3-56-39-88.9 2.9-66.1 18.6-95.2 40-52.7 69.6-67.7 62.9-20.5 95.7-16v89.9c-15-4.7-31.1-4.6-46 .4s-27.9 14.6-37 27.3-14 28.1-13.9 43.9 5.2 31 14.5 43.7 22.4 22.1 37.4 26.9 31.1 4.8 46-.1 28-14.4 37.2-27.1 14.2-28.1 14.2-43.8V0h88c-.1 7.4.6 14.9 1.9 22.2 3.1 16.3 9.4 31.9 18.7 45.7s21.3 25.6 35.2 34.6c19.9 13.1 43.2 20.1 67 20.1V210z"/></svg>
+    </a>
+  
 </div>
       
     </div>
@@ -1976,6 +2037,8 @@ Robot models and pictures made from them: <a href="https://github.com/Source-Rob
         <script src="../../javascripts/copy-markdown.js"></script>
       
         <script src="../../javascripts/joint-calculator.js"></script>
+      
+        <script src="../../javascripts/bom-kits.js"></script>
       
         <script src="../../javascripts/arm-viewer-loader.js"></script>
       

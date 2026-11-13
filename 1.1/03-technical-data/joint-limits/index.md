@@ -3,7 +3,9 @@
 ## Joint numbering and positive directions
 
 Joints are numbered from the base up. Joints 1, 2 and 3 are also called the base, shoulder and elbow joints, and
-joints 4, 5 and 6 wrist 1, wrist 2 and wrist 3, the names the robot model and ROS use. Each picture shows one joint
+joints 4, 5 and 6 wrist 1, wrist 2 and wrist 3, the names the robot model and ROS use.
+
+Each picture shows one joint
 turned 30° in its positive direction, in colour, over the pose in grey. The arrow at the joint points the same
 way, and the commander software's left arrows jog in that direction.
 
@@ -23,7 +25,9 @@ way, and the commander software's left arrows jog in that direction.
 
 The **standby pose** is the pose of the Denavit-Hartenberg table and the kinematics sheets, and the reference
 for the limits below: the upper arm vertical, the forearm horizontal, the arm pointing away from the
-electronics case at the back of the base. **After homing** the robot stands in the same pose turned 90° about joint 1, counter-clockwise
+electronics case at the back of the base.
+
+**After homing** the robot stands in the same pose turned 90° about joint 1, counter-clockwise
 seen from above: the firmware sets joint 1 to +90° when it finishes homing.
 
 | Pose | Joint 1 | Joint 2 | Joint 3 | Joint 4 | Joint 5 | Joint 6 |
@@ -64,7 +68,9 @@ The joint limits of PAROL6's model in [robot_descriptions](https://github.com/So
 
 Joints 1 to 5 are stopped at both ends by printed blocker parts, the mechanical stops a little past the limits
 above. The limit switch or sensor that homes a joint sits near its blocker, so that it triggers just before the
-joint reaches it. Joint 6 has no blocker: with the bare flange nothing stops it, and with a tool only the tool's
+joint reaches it.
+
+Joint 6 has no blocker: with the bare flange nothing stops it, and with a tool only the tool's
 cables and tubes do.
 
 !!! warning "Grippers and bases change the limits"

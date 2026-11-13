@@ -1615,8 +1615,25 @@
 
 
 <h1 id="the-gui">The <abbr title="Graphical User Interface">GUI</abbr><a class="headerlink" href="#the-gui" title="Permanent link">&para;</a></h1>
-<p>Two windows: the <strong>commander</strong>, where everything is done, and the <strong>simulator</strong>, a 3D view of the robot that
-follows it once the robot is connected and homed.</p>
+<p>Two windows:</p>
+<table>
+<thead>
+<tr>
+<th>Window</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The <strong>commander</strong></td>
+<td>Everything is done here</td>
+</tr>
+<tr>
+<td>The <strong>simulator</strong></td>
+<td>A 3D view of the robot that follows it once the robot is connected and homed</td>
+</tr>
+</tbody>
+</table>
 <figure>
   <a class="glightbox" href="../../../assets/GUI2.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="The commander window, with the joint jog menu" src="../../../assets/GUI2.webp" width="800" /></a>
 <br />
@@ -1634,16 +1651,62 @@ follows it once the robot is connected and homed.</p>
 <figcaption>Figure 3: The connection bar.</figcaption>
 </figure>
 <p>At the bottom: the serial port field and <strong>Connect</strong>. <code>COMx</code> on Windows, <code>ttyACMx</code> on Linux. The response log
-starts showing the robot's data when the connection is up; press Connect again if it does not. The <strong>Simulator</strong>
-and <strong>Real robot</strong> buttons have no function at present. <strong>Clear error</strong> resets the homing state; unlike
-<strong>Enable</strong> it does not re-enable a disabled robot.</p>
+starts showing the robot's data when the connection is up; press Connect again if it does not.</p>
+<table>
+<thead>
+<tr>
+<th>Button</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Connect</strong></td>
+<td>Connects to the port in the field</td>
+</tr>
+<tr>
+<td><strong>Simulator</strong>, <strong>Real robot</strong></td>
+<td>Nothing at present</td>
+</tr>
+<tr>
+<td><strong>Clear error</strong></td>
+<td>Resets the homing state. Unlike <strong>Enable</strong>, it does not re-enable a disabled robot.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="the-move-menu">The Move menu<a class="headerlink" href="#the-move-menu" title="Permanent link">&para;</a></h2>
 <p>The left part of the window is the jog menu, with two variants:</p>
-<p><strong>Joint jog</strong>: six pairs of arrows, left for the positive direction and right for the negative. The speed slider
-below sets the jog speed as a percentage; it affects jogging only, not programs. Works before homing.</p>
-<p><strong>Cartesian jog</strong>: X, Y, Z and the rotations, in the <strong><abbr title="World Reference Frame, the coordinate frame fixed to the robot's base">WRF</abbr></strong> (the base) or the <strong><abbr title="Tool Reference Frame, the coordinate frame fixed to the tool">TRF</abbr></strong> (the tool), chosen with the
-switch; <strong><abbr title="Tool Reference Frame, the coordinate frame fixed to the tool">TRF</abbr></strong> is the default. The rotation buttons only work in the <abbr title="Tool Reference Frame, the coordinate frame fixed to the tool">TRF</abbr>: in the <abbr title="World Reference Frame, the coordinate frame fixed to the robot's base">WRF</abbr> they do nothing. Home the
-robot first (the software does not check), and the jog stops at a singularity (<a href="../../../theory/configurations-and-singularities/">Configurations and singularities</a>).</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Joint jog</th>
+<th>Cartesian jog</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Buttons</td>
+<td>Six pairs of arrows: left for the positive direction, right for the negative</td>
+<td>X, Y, Z and the rotations</td>
+</tr>
+<tr>
+<td>Frame</td>
+<td></td>
+<td>The <strong><abbr title="World Reference Frame, the coordinate frame fixed to the robot's base">WRF</abbr></strong> (the base) or the <strong><abbr title="Tool Reference Frame, the coordinate frame fixed to the tool">TRF</abbr></strong> (the tool), chosen with the switch; <strong><abbr title="Tool Reference Frame, the coordinate frame fixed to the tool">TRF</abbr></strong> is the default</td>
+</tr>
+<tr>
+<td>Before homing</td>
+<td>Works</td>
+<td>Home the robot first: the software does not check</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The speed slider below the arrows sets the jog speed as a percentage. It affects jogging only, not programs.</li>
+<li>The rotation buttons only work in the <abbr title="Tool Reference Frame, the coordinate frame fixed to the tool">TRF</abbr>: in the <abbr title="World Reference Frame, the coordinate frame fixed to the robot's base">WRF</abbr> they do nothing.</li>
+<li>A Cartesian jog stops at a singularity (<a href="../../../theory/configurations-and-singularities/">Configurations and singularities</a>).</li>
+</ul>
 <figure>
   <a class="glightbox" href="../../../assets/GUI1.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="The Cartesian jog menu" src="../../../assets/GUI1.webp" width="800" /></a>
 <br />
@@ -1655,29 +1718,84 @@ robot first (the software does not check), and the jog stops at a singularity (<
 <br />
 <figcaption>Figure 5: Joint angles, the tool pose and the speed slider.</figcaption>
 </figure>
-<p>The six joint angles and the tool pose in the <abbr title="World Reference Frame, the coordinate frame fixed to the robot's base">WRF</abbr>, live. <strong>Home</strong> starts the homing sequence; <strong>Enable</strong> clears
-errors and enables the robot; <strong>Disable</strong> disables it, the motors still holding. <strong>Park</strong> does not move the
-robot: it inserts a three-line program at the cursor of the program window, <code>Begin()</code>, a <code>MoveJoint</code> to the park
-pose with <code>t=4</code>, and <code>End()</code>, which you then run with <strong>Start</strong>.</p>
+<p>The six joint angles and the tool pose in the <abbr title="World Reference Frame, the coordinate frame fixed to the robot's base">WRF</abbr>, live.</p>
+<table>
+<thead>
+<tr>
+<th>Button</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Home</strong></td>
+<td>Starts the homing sequence</td>
+</tr>
+<tr>
+<td><strong>Enable</strong></td>
+<td>Clears errors and enables the robot</td>
+</tr>
+<tr>
+<td><strong>Disable</strong></td>
+<td>Disables it, the motors still holding</td>
+</tr>
+<tr>
+<td><strong>Park</strong></td>
+<td>Does not move the robot: it inserts a three-line program at the cursor of the program window, <code>Begin()</code>, a <code>MoveJoint</code> to the park pose with <code>t=4</code>, and <code>End()</code>, which you then run with <strong>Start</strong></td>
+</tr>
+</tbody>
+</table>
 <h2 id="the-program-window">The program window<a class="headerlink" href="#the-program-window" title="Permanent link">&para;</a></h2>
 <figure>
   <a class="glightbox" href="../../../assets/program_window.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="The program editor" src="../../../assets/program_window.PNG" width="800" /></a>
 <br />
 <figcaption>Figure 6: The program editor.</figcaption>
 </figure>
-<p>An RBTscript program, one command per line (<a href="../../../programming/03-commander/rbtscript/">RBTscript</a>). <strong>Start</strong> runs it from <code>Begin()</code>,
-<strong>Stop</strong> halts it. <strong>Start</strong> first saves the editor's text: into the file you opened, if any, overwriting it,
-and into <code>Programs/execute_script.txt</code>.</p>
+<p>An RBTscript program, one command per line (<a href="../../../programming/03-commander/rbtscript/">RBTscript</a>).</p>
+<table>
+<thead>
+<tr>
+<th>Button</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Start</strong></td>
+<td>Runs it from <code>Begin()</code>. It first saves the editor's text: into the file you opened, if any, overwriting it, and into <code>Programs/execute_script.txt</code>.</td>
+</tr>
+<tr>
+<td><strong>Stop</strong></td>
+<td>Halts it</td>
+</tr>
+</tbody>
+</table>
 <figure>
   <a class="glightbox" href="../../../assets/start_stop.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Start and stop" src="../../../assets/start_stop.PNG" width="350" /></a>
 <br />
 <figcaption>Figure 7: Start and stop.</figcaption>
 </figure>
-<p>The command list inserts a command at the cursor: with <em>Current</em> selected, a motion command is inserted with the
-robot's current joint angles or pose as its arguments, which is how you teach a pose; with <em>Custom</em> the
-arguments are left for you.</p>
+<p>The command list inserts a command at the cursor:</p>
+<table>
+<thead>
+<tr>
+<th>Selected</th>
+<th>A motion command is inserted with</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>Current</em></td>
+<td>The robot's current joint angles or pose as its arguments: this is how you teach a pose</td>
+</tr>
+<tr>
+<td><em>Custom</em></td>
+<td>Its arguments left for you</td>
+</tr>
+</tbody>
+</table>
 <figure>
-  <a class="glightbox" href="../../../assets/Commands.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="The command list" src="../../../assets/Commands.PNG" width="250" /></a>
+  <a class="glightbox" href="../../../assets/Commands.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="The command list" src="../../../assets/Commands.PNG" width="180" /></a>
 <br />
 <figcaption>Figure 8: The command list.</figcaption>
 </figure>
@@ -1687,8 +1805,8 @@ arguments are left for you.</p>
 <br />
 <figcaption>Figure 9: The response log.</figcaption>
 </figure>
-<p>What the robot and the program are doing, and why a command was refused: the first place to look when something
-does not happen (<a href="../../../05-operation/errors-and-recovery/">Errors and recovery</a>).</p>
+<p>What the robot and the program are doing, and why a command was refused. It is the first place to look when
+something does not happen (<a href="../../../05-operation/errors-and-recovery/">Errors and recovery</a>).</p>
 <h2 id="the-io-tab">The IO tab<a class="headerlink" href="#the-io-tab" title="Permanent link">&para;</a></h2>
 <figure>
   <a class="glightbox" href="../../../assets/IO_tab.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="The IO tab" src="../../../assets/IO_tab.PNG" width="650" /></a>
@@ -1702,15 +1820,36 @@ does not happen (<a href="../../../05-operation/errors-and-recovery/">Errors and
 <br />
 <figcaption>Figure 11: The gripper tab.</figcaption>
 </figure>
-<p>For the SSG-48 and MSG grippers. After homing: <strong>Clear gripper error</strong>, then <strong>Calibrate gripper</strong>, then wait until
-the tab shows <code>Calibration status is: 1</code> (about 3 s for the SSG-48, 5 to 6 s for the MSG on its longer rails).
-Then set the position, speed and current with the sliders and press <strong>Move GoTo</strong>. The feedback section shows the
-gripper's position and current, its calibrated and <abbr title="Emergency stop">E-stop</abbr> error bits, and its whole status byte as a number
-(labelled <em>Gripper object detection is</em>). <strong>Change gripper ID</strong> sets the <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> ID the board addresses, 0 as the
-grippers ship.</p>
+<p>For the SSG-48 and MSG grippers. After homing:</p>
+<ol>
+<li>Press <strong>Clear gripper error</strong>.</li>
+<li>Press <strong>Calibrate gripper</strong>.</li>
+<li>Wait until the tab shows <code>Calibration status is: 1</code>: about 3 s for the SSG-48, 5 to 6 s for the MSG on its
+   longer rails.</li>
+<li>Set the position, speed and current with the sliders.</li>
+<li>Press <strong>Move GoTo</strong>.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Part of the tab</th>
+<th>Shows or does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The feedback section</td>
+<td>The gripper's position and current, its calibrated and <abbr title="Emergency stop">E-stop</abbr> error bits, and its whole status byte as a number (labelled <em>Gripper object detection is</em>)</td>
+</tr>
+<tr>
+<td><strong>Change gripper ID</strong></td>
+<td>Sets the <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> ID the board addresses, 0 as the grippers ship</td>
+</tr>
+</tbody>
+</table>
 <h2 id="the-calibrate-and-plot-buttons">The Calibrate and Plot buttons<a class="headerlink" href="#the-calibrate-and-plot-buttons" title="Permanent link">&para;</a></h2>
 <p>The menu also has <strong>Calibrate</strong> and <strong>Plot</strong>. Both open the same panel, with <strong>Disable motor</strong>, <strong>Enable motor</strong>,
-<strong>Go to limit</strong> and a joint menu; none of them does anything in the current version.</p>
+<strong>Go to limit</strong> and a joint menu. None of them does anything in the current version.</p>
 <h2 id="the-settings-tab">The Settings tab<a class="headerlink" href="#the-settings-tab" title="Permanent link">&para;</a></h2>
 <figure>
   <a class="glightbox" href="../../../assets/Settings_tab.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="The settings tab" src="../../../assets/Settings_tab.PNG" width="650" /></a>
@@ -1719,10 +1858,30 @@ grippers ship.</p>
 </figure>
 <p>Dark or light mode, and the scaling of the <abbr title="Graphical User Interface">GUI</abbr> for your display.</p>
 <h2 id="the-terminal">The terminal<a class="headerlink" href="#the-terminal" title="Permanent link">&para;</a></h2>
-<p>The terminal the program was started from prints a block of data every few seconds: the positions and speeds
-from the robot, the homed, I/O and error bytes, the timing, the gripper data, the commanded data and the <abbr title="Graphical User Interface">GUI</abbr>'s
-state. <code>Time between 2 commands in ms</code> is the one to watch: near 0.010 is right. The value is in seconds, whatever
-the label says: 0.010 is the 10 ms cycle.</p>
+<p>The terminal the program was started from prints a block of data every few seconds: the positions and speeds from
+the robot, the homed, I/O and error bytes, the timing, the gripper data, the commanded data and the <abbr title="Graphical User Interface">GUI</abbr>'s state.</p>
+<p><code>Time between 2 commands in ms</code> is the one to watch: near 0.010 is right. The value is in seconds, whatever the
+label says: 0.010 is the 10 ms cycle.</p>
+
+  
+  
+  
+    <nav class="page-nav" aria-label="Footer">
+      
+        <a href="../installation/" class="md-button page-nav__prev" rel="prev" aria-label="Previous: Installation">
+          <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg></span>
+          <span>Previous: Installation</span>
+        </a>
+      
+      
+        <a href="../../waldo-commander/" class="md-button md-button--primary page-nav__next" rel="next" aria-label="Next: Waldo Commander (web)">
+          <span>Next: Waldo Commander (web)</span>
+          <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg></span>
+        </a>
+      
+    </nav>
+  
+
 
 
 
@@ -1743,7 +1902,7 @@ the label says: 0.010 is the 10 ms cycle.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 3, 2026 14:55:17 UTC">November 3, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 10, 2026 19:53:41 UTC">November 10, 2026</span>
   </span>
 
     
@@ -2007,6 +2166,17 @@ Robot models and pictures made from them: <a href="https://github.com/Source-Rob
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M492.5 69.8c-.2-.3-.4-.6-.8-.7-38.1-17.5-78.4-30-119.7-37.1-.4-.1-.8 0-1.1.1s-.6.4-.8.8c-5.5 9.9-10.5 20.2-14.9 30.6-44.6-6.8-89.9-6.8-134.4 0-4.5-10.5-9.5-20.7-15.1-30.6-.2-.3-.5-.6-.8-.8s-.7-.2-1.1-.2C162.5 39 122.2 51.5 84.1 69c-.3.1-.6.4-.8.7C7.1 183.5-13.8 294.6-3.6 404.2c0 .3.1.5.2.8s.3.4.5.6c44.4 32.9 94 58 146.8 74.2.4.1.8.1 1.1 0s.7-.4.9-.7c11.3-15.4 21.4-31.8 30-48.8.1-.2.2-.5.2-.8s0-.5-.1-.8-.2-.5-.4-.6-.4-.3-.7-.4c-15.8-6.1-31.2-13.4-45.9-21.9-.3-.2-.5-.4-.7-.6s-.3-.6-.3-.9 0-.6.2-.9.3-.5.6-.7c3.1-2.3 6.2-4.7 9.1-7.1.3-.2.6-.4.9-.4s.7 0 1 .1c96.2 43.9 200.4 43.9 295.5 0 .3-.1.7-.2 1-.2s.7.2.9.4c2.9 2.4 6 4.9 9.1 7.2.2.2.4.4.6.7s.2.6.2.9-.1.6-.3.9-.4.5-.6.6c-14.7 8.6-30 15.9-45.9 21.8-.2.1-.5.2-.7.4s-.3.4-.4.7-.1.5-.1.8.1.5.2.8c8.8 17 18.8 33.3 30 48.8.2.3.6.6.9.7s.8.1 1.1 0c52.9-16.2 102.6-41.3 147.1-74.2.2-.2.4-.4.5-.6s.2-.5.2-.8c12.3-126.8-20.5-236.9-86.9-334.5zm-302 267.7c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.4 59.2-52.8 59.2m195.4 0c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.2 59.2-52.8 59.2"/></svg>
     </a>
   
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.tiktok.com/@source.robotics" target="_blank" rel="noopener" title="www.tiktok.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M448.5 209.9c-44 .1-87-13.6-122.8-39.2v178.7c0 33.1-10.1 65.4-29 92.6s-45.6 48-76.6 59.6-64.8 13.5-96.9 5.3-60.9-25.9-82.7-50.8-35.3-56-39-88.9 2.9-66.1 18.6-95.2 40-52.7 69.6-67.7 62.9-20.5 95.7-16v89.9c-15-4.7-31.1-4.6-46 .4s-27.9 14.6-37 27.3-14 28.1-13.9 43.9 5.2 31 14.5 43.7 22.4 22.1 37.4 26.9 31.1 4.8 46-.1 28-14.4 37.2-27.1 14.2-28.1 14.2-43.8V0h88c-.1 7.4.6 14.9 1.9 22.2 3.1 16.3 9.4 31.9 18.7 45.7s21.3 25.6 35.2 34.6c19.9 13.1 43.2 20.1 67 20.1V210z"/></svg>
+    </a>
+  
 </div>
       
     </div>
@@ -2115,6 +2285,8 @@ Robot models and pictures made from them: <a href="https://github.com/Source-Rob
         <script src="../../../javascripts/copy-markdown.js"></script>
       
         <script src="../../../javascripts/joint-calculator.js"></script>
+      
+        <script src="../../../javascripts/bom-kits.js"></script>
       
         <script src="../../../javascripts/arm-viewer-loader.js"></script>
       

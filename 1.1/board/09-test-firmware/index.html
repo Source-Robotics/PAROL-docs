@@ -1572,10 +1572,30 @@
 
 
 <h1 id="9-the-test-firmware">9. The test firmware<a class="headerlink" href="#9-the-test-firmware" title="Permanent link">&para;</a></h1>
-<p>The test firmware turns the board into a bench instrument. At power-on it checks the six stepper drivers over <abbr title="Serial Peripheral Interface, the bus between the microcontroller and the stepper drivers">SPI</abbr>
-and prints the result, then turns all six motors slowly, blinks the LEDs and toggles the two outputs; on request it
-prints the <abbr title="Emergency stop">E-stop</abbr>, the inputs, the supply voltage and the limit switches over <abbr title="Universal Serial Bus, the connection between the control board and the PC">USB</abbr>. It is what every board ships
-with, and the right tool for a freshly wired robot before the base is closed.</p>
+<p>The test firmware turns the board into a bench instrument. It is what every board ships with, and the right tool for
+a freshly wired robot before the base is closed.</p>
+<table>
+<thead>
+<tr>
+<th>When</th>
+<th>It</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>At power-on</td>
+<td>Checks the six stepper drivers over <abbr title="Serial Peripheral Interface, the bus between the microcontroller and the stepper drivers">SPI</abbr> and prints the result</td>
+</tr>
+<tr>
+<td>Then, by itself</td>
+<td>Turns all six motors slowly, blinks the LEDs and toggles the two outputs</td>
+</tr>
+<tr>
+<td>On request</td>
+<td>Prints the <abbr title="Emergency stop">E-stop</abbr>, the inputs, the supply voltage and the limit switches over <abbr title="Universal Serial Bus, the connection between the control board and the PC">USB</abbr></td>
+</tr>
+</tbody>
+</table>
 <div class="admonition danger">
 <p class="admonition-title">The motors turn as soon as it starts</p>
 <p>The test firmware enables all six drivers when it boots and turns every motor slowly, at 1000 steps per second,
@@ -1584,23 +1604,59 @@ without being asked, with no limits and no homing, until the power is switched o
 against its stops.</p>
 </div>
 <h2 id="connecting">Connecting<a class="headerlink" href="#connecting" title="Permanent link">&para;</a></h2>
-<p>Upload the firmware if the board does not have it (<a href="../08-firmware/">Firmware</a>), then open a serial terminal on the
-board's <abbr title="Universal Serial Bus, the connection between the control board and the PC">USB</abbr> port: PlatformIO's monitor, PuTTY or <code>screen</code>. The board is a <abbr title="Universal Serial Bus, the connection between the control board and the PC">USB</abbr> device, so the baud rate does not
-matter; PlatformIO's monitor uses the 3000000 set in the project's <code>platformio.ini</code>. Make the terminal send a line
-feed at the end of each line: the firmware acts on a command only when the line feed arrives, so a terminal that
-sends only a carriage return on Enter gets no answer. Two ways to power the board for the test:</p>
-<ul>
-<li>the programming adapter's 3.3 V, with the 24 V supply disconnected: the board talks, but the drivers have no
-  power and report errors;</li>
-<li>the 24 V supply: the board is off until you press the power button, or supply 3.3 V from the adapter as well.</li>
-</ul>
+<ol>
+<li>Upload the firmware if the board does not have it (<a href="../08-firmware/">Firmware</a>).</li>
+<li>Open a serial terminal on the board's <abbr title="Universal Serial Bus, the connection between the control board and the PC">USB</abbr> port: PlatformIO's monitor, PuTTY or <code>screen</code>.</li>
+<li>Make the terminal send a line feed at the end of each line.</li>
+</ol>
+<details class="info">
+<summary>The baud rate, and why the line feed matters</summary>
+<p>The board is a <abbr title="Universal Serial Bus, the connection between the control board and the PC">USB</abbr> device, so the baud rate does not matter; PlatformIO's monitor uses the 3000000 set in the
+project's <code>platformio.ini</code>. The firmware acts on a command only when the line feed arrives, so a terminal that
+sends only a carriage return on Enter gets no answer.</p>
+</details>
+<p>Two ways to power the board for the test:</p>
+<table>
+<thead>
+<tr>
+<th>Power</th>
+<th>What you get</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The programming adapter's 3.3 V, with the 24 V supply disconnected</td>
+<td>The board talks, but the drivers have no power and report errors</td>
+</tr>
+<tr>
+<td>The 24 V supply</td>
+<td>The board is off until you press the power button, or supply 3.3 V from the adapter as well</td>
+</tr>
+</tbody>
+</table>
 <h2 id="what-it-does-by-itself">What it does by itself<a class="headerlink" href="#what-it-does-by-itself" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>About three seconds after power-on</strong> it reads every driver over <abbr title="Serial Peripheral Interface, the bus between the microcontroller and the stepper drivers">SPI</abbr> and prints a report per joint: <code>joint N
-  Connection is: GOOD</code> or <code>BAD</code>, then the driver's current, hold and run current settings and its fault flags.</li>
-<li><strong>From then on</strong> all six motors turn slowly and keep turning.</li>
-<li><strong>Every second</strong> the two LEDs blink and outputs 1 and 2 toggle.</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>When</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>About three seconds after power-on</strong></td>
+<td>It reads every driver over <abbr title="Serial Peripheral Interface, the bus between the microcontroller and the stepper drivers">SPI</abbr> and prints a report per joint: <code>joint N Connection is: GOOD</code> or <code>BAD</code>, then the driver's current, hold and run current settings and its fault flags</td>
+</tr>
+<tr>
+<td><strong>From then on</strong></td>
+<td>All six motors turn slowly and keep turning</td>
+</tr>
+<tr>
+<td><strong>Every second</strong></td>
+<td>The two LEDs blink and outputs 1 and 2 toggle</td>
+</tr>
+</tbody>
+</table>
 <h2 id="commands">Commands<a class="headerlink" href="#commands" title="Permanent link">&para;</a></h2>
 <p><code>#</code> followed by the name, case as written, and the line feed. Four commands do something:</p>
 <table>
@@ -1634,36 +1690,78 @@ command</code>: the parser knows the names, but the firmware does nothing with t
 commands</a> is the reference list.</p>
 <h2 id="testing-can">Testing <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr><a class="headerlink" href="#testing-can" title="Permanent link">&para;</a></h2>
 <p><abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> has its own test, next to the test firmware in the repository's <code>PAROL6 control board test code</code> folder and not
-part of its build: the sketch <code>can_12_12</code> sends a frame with ID 0x446 every 500 ms at 1 Mbit/s and prints every
-frame it receives, and <code>can_parol6_test.py</code> is the PC side, a python-can script for a <abbr title="Universal Serial Bus, the connection between the control board and the PC">USB</abbr>-<abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> adapter (slcan, 1
-Mbit/s; set its port, <code>COM44</code> in the file) that prints the frames it receives with their node and command IDs.</p>
+part of its build:</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The sketch <code>can_12_12</code></td>
+<td>Sends a frame with ID 0x446 every 500 ms at 1 Mbit/s, and prints every frame it receives</td>
+</tr>
+<tr>
+<td><code>can_parol6_test.py</code></td>
+<td>The PC side: a python-can script for a <abbr title="Universal Serial Bus, the connection between the control board and the PC">USB</abbr>-<abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> adapter (slcan, 1 Mbit/s; set its port, <code>COM44</code> in the file) that prints the frames it receives with their node and command IDs</td>
+</tr>
+</tbody>
+</table>
 <h2 id="what-good-looks-like">What good looks like<a class="headerlink" href="#what-good-looks-like" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Drivers, at power-on</label><label for="__tabbed_1_2">#LIMIT</label><label for="__tabbed_1_3">#IO</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <p>All six drivers answering, in the report at power-on:</p>
-<figure>
+<p><figure markdown="span">
   <a class="glightbox" href="../../assets/STEPPER_GOOD.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Serial output with all drivers responding" src="../../assets/STEPPER_GOOD.PNG" width="600" /></a>
-<br />
-<figcaption>Figure 9.1: Serial output with all drivers responding.</figcaption>
-</figure>
+  <figcaption>Figure 9.1: Serial output with all drivers responding.</figcaption>
+</figure></p>
 <p>A driver missing or faulty:</p>
-<figure>
+<p><figure markdown="span">
   <a class="glightbox" href="../../assets/BAD_STEPPER_DRIVER.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Serial output with a faulty driver" src="../../assets/BAD_STEPPER_DRIVER.PNG" width="600" /></a>
-<br />
-<figcaption>Figure 9.2: Serial output with a faulty driver.</figcaption>
-</figure>
-<p>With good drivers and the 24 V on, the motors turn slowly at 200 to 300 mA. A triggered limit switch, with
-<code>#LIMIT</code>:</p>
-<figure>
+  <figcaption>Figure 9.2: Serial output with a faulty driver.</figcaption>
+</figure></p>
+<p>With good drivers and the 24 V on, the motors turn slowly at 200 to 300 mA.</p>
+</div>
+<div class="tabbed-block">
+<p>A triggered limit switch, with <code>#LIMIT</code>:</p>
+<p><figure markdown="span">
   <a class="glightbox" href="../../assets/LIMIT_GOOD.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="A limit switch triggered" src="../../assets/LIMIT_GOOD.PNG" width="550" /></a>
-<br />
-<figcaption>Figure 9.3: A limit switch triggered.</figcaption>
-</figure>
-<p>The I/O report, with <code>#IO</code>; change the <abbr title="Emergency stop">E-stop</abbr> or an input and the values follow:</p>
-<figure>
+  <figcaption>Figure 9.3: A limit switch triggered.</figcaption>
+</figure></p>
+</div>
+<div class="tabbed-block">
+<p>The I/O report, with <code>#IO</code>. Change the <abbr title="Emergency stop">E-stop</abbr> or an input, and the values follow:</p>
+<p><figure markdown="span">
   <a class="glightbox" href="../../assets/GOOD_IO.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="The IO report" src="../../assets/GOOD_IO.PNG" width="550" /></a>
-<br />
-<figcaption>Figure 9.4: The IO report.</figcaption>
-</figure>
+  <figcaption>Figure 9.4: The IO report.</figcaption>
+</figure></p>
+</div>
+</div>
+</div>
 <p>Outputs 1 and 2 toggle every second, and the two LEDs blink.</p>
+
+  
+  
+  
+    <nav class="page-nav" aria-label="Footer">
+      
+        <a href="../08-firmware/" class="md-button page-nav__prev" rel="prev" aria-label="Previous: 8. Firmware">
+          <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg></span>
+          <span>Previous: 8. Firmware</span>
+        </a>
+      
+      
+        <a href="../10-serial-protocol/" class="md-button md-button--primary page-nav__next" rel="next" aria-label="Next: 10. The serial protocol">
+          <span>Next: 10. The serial protocol</span>
+          <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg></span>
+        </a>
+      
+    </nav>
+  
+
 
 
 
@@ -1684,7 +1782,7 @@ Mbit/s; set its port, <code>COM44</code> in the file) that prints the frames it 
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 3, 2026 14:55:17 UTC">November 3, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 10, 2026 19:59:59 UTC">November 10, 2026</span>
   </span>
 
     
@@ -1948,6 +2046,17 @@ Robot models and pictures made from them: <a href="https://github.com/Source-Rob
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M492.5 69.8c-.2-.3-.4-.6-.8-.7-38.1-17.5-78.4-30-119.7-37.1-.4-.1-.8 0-1.1.1s-.6.4-.8.8c-5.5 9.9-10.5 20.2-14.9 30.6-44.6-6.8-89.9-6.8-134.4 0-4.5-10.5-9.5-20.7-15.1-30.6-.2-.3-.5-.6-.8-.8s-.7-.2-1.1-.2C162.5 39 122.2 51.5 84.1 69c-.3.1-.6.4-.8.7C7.1 183.5-13.8 294.6-3.6 404.2c0 .3.1.5.2.8s.3.4.5.6c44.4 32.9 94 58 146.8 74.2.4.1.8.1 1.1 0s.7-.4.9-.7c11.3-15.4 21.4-31.8 30-48.8.1-.2.2-.5.2-.8s0-.5-.1-.8-.2-.5-.4-.6-.4-.3-.7-.4c-15.8-6.1-31.2-13.4-45.9-21.9-.3-.2-.5-.4-.7-.6s-.3-.6-.3-.9 0-.6.2-.9.3-.5.6-.7c3.1-2.3 6.2-4.7 9.1-7.1.3-.2.6-.4.9-.4s.7 0 1 .1c96.2 43.9 200.4 43.9 295.5 0 .3-.1.7-.2 1-.2s.7.2.9.4c2.9 2.4 6 4.9 9.1 7.2.2.2.4.4.6.7s.2.6.2.9-.1.6-.3.9-.4.5-.6.6c-14.7 8.6-30 15.9-45.9 21.8-.2.1-.5.2-.7.4s-.3.4-.4.7-.1.5-.1.8.1.5.2.8c8.8 17 18.8 33.3 30 48.8.2.3.6.6.9.7s.8.1 1.1 0c52.9-16.2 102.6-41.3 147.1-74.2.2-.2.4-.4.5-.6s.2-.5.2-.8c12.3-126.8-20.5-236.9-86.9-334.5zm-302 267.7c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.4 59.2-52.8 59.2m195.4 0c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.2 59.2-52.8 59.2"/></svg>
     </a>
   
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.tiktok.com/@source.robotics" target="_blank" rel="noopener" title="www.tiktok.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M448.5 209.9c-44 .1-87-13.6-122.8-39.2v178.7c0 33.1-10.1 65.4-29 92.6s-45.6 48-76.6 59.6-64.8 13.5-96.9 5.3-60.9-25.9-82.7-50.8-35.3-56-39-88.9 2.9-66.1 18.6-95.2 40-52.7 69.6-67.7 62.9-20.5 95.7-16v89.9c-15-4.7-31.1-4.6-46 .4s-27.9 14.6-37 27.3-14 28.1-13.9 43.9 5.2 31 14.5 43.7 22.4 22.1 37.4 26.9 31.1 4.8 46-.1 28-14.4 37.2-27.1 14.2-28.1 14.2-43.8V0h88c-.1 7.4.6 14.9 1.9 22.2 3.1 16.3 9.4 31.9 18.7 45.7s21.3 25.6 35.2 34.6c19.9 13.1 43.2 20.1 67 20.1V210z"/></svg>
+    </a>
+  
 </div>
       
     </div>
@@ -2056,6 +2165,8 @@ Robot models and pictures made from them: <a href="https://github.com/Source-Rob
         <script src="../../javascripts/copy-markdown.js"></script>
       
         <script src="../../javascripts/joint-calculator.js"></script>
+      
+        <script src="../../javascripts/bom-kits.js"></script>
       
         <script src="../../javascripts/arm-viewer-loader.js"></script>
       

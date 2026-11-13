@@ -1,9 +1,10 @@
 # Reference frames
 
 A frame is a coordinate system: an origin and three axes, X, Y and Z, at right angles. A position is three
-numbers in a frame; the same point has different numbers in different frames. PAROL6's software uses two frames
-you choose between, the world frame and the tool frame, and several it keeps to itself, the flange frame among
-them.
+numbers in a frame; the same point has different numbers in different frames.
+
+PAROL6's software uses two frames you choose between, the world frame and the tool frame, and several it keeps to
+itself, the flange frame among them.
 
 ## The right-hand rule
 
@@ -54,31 +55,47 @@ dashed where it runs inside the robot. The directions in the table are those of 
 ## WRF, the world reference frame
 
 Fixed to the robot's base, as in the table: X the way the arm points in the standby pose, Y the way it points
-after homing, Z up. Everything that does not move with the arm is described in it: the table, the parts, the
-positions a program teaches. `MoveCart` in RBTscript and `move_l` in the API take WRF poses by default. The
-commander software and the Python API agree on it.
+after homing, Z up.
+
+Everything that does not move with the arm is described in it: the table, the parts, the positions a program
+teaches. `MoveCart` in RBTscript and `move_l` in the API take WRF poses by default. The commander software and the
+Python API agree on it.
 
 ## TRF, the tool reference frame
 
 Fixed to the tool: the origin at the tool centre point, the axes those of the flange frame. It moves with the
-arm. Z points out of the tool along the joint 6 axis, the way the SSG-48's and the MSG's jaws point; the pneumatic
-gripper's fingers hang beside the axis and point along −X. A move **in** the TRF is relative to where the tool is
-now: "100 mm out along the tool" is `MoveCartRelTRF(0,0,100,0,0,0)` in the commander, and
-`move_l([0, 0, -100, 0, 0, 0], frame="TRF", rel=True)` in the Python API, whose Z points the other way (above). It
-goes in a different world direction every time, depending on the tool's orientation. Approaching a part along
-the gripper's axis, retreating after a grip, and rotating the tool about its own axis are TRF moves. Jog slowly
-in the TRF before you run a TRF move written for the other program.
+arm.
+
+Z points out of the tool along the joint 6 axis, the way the SSG-48's and the MSG's jaws point. The pneumatic
+gripper's fingers hang beside the axis and point along −X.
+
+A move **in** the TRF is relative to where the tool is now. "100 mm out along the tool" is:
+
+| Program | The move |
+|---|---|
+| The commander | `MoveCartRelTRF(0,0,100,0,0,0)` |
+| The Python API, whose Z points the other way (above) | `move_l([0, 0, -100, 0, 0, 0], frame="TRF", rel=True)` |
+
+It goes in a different world direction every time, depending on the tool's orientation. Approaching a part along
+the gripper's axis, retreating after a grip, and rotating the tool about its own axis are TRF moves.
+
+!!! warning "A TRF move written for the other program"
+    Jog slowly in the TRF before you run a TRF move written for the other program.
 
 ## The flange frame
 
 ![The flange frame on the flange face, in the standby pose: X up, Y to the robot's right, Z out of the flange along the joint 6 axis](https://docs.source-robotics.com/PAROL-docs/1.1/assets/figures/parol6_flange_frame.webp){ width="520" }
 ![The flange frame on the flange face, in the standby pose: X up, Y to the robot's right, Z out of the flange along the joint 6 axis](https://docs.source-robotics.com/PAROL-docs/1.1/assets/figures/parol6_flange_frame_dark.webp){ width="520" }
 
-Every tool is measured from the flange frame. Its origin is on the joint 6 axis at the flange face, 50.5 mm from
-the wrist centre (the point where the axes of joints 4, 5 and 6 meet), and its Z axis points out of the flange
-along that axis. X and Y turn with joint 6: in the standby pose, with joint 6 at 180°, X points up. The Python
-API's built-in model puts the origin 37 mm from the wrist centre, 13.5 mm short of the face, measures its tool
-offsets from there, and has Y and Z the other way (above).
+Every tool is measured from the flange frame.
+
+- Its origin is on the joint 6 axis at the flange face, 50.5 mm from the wrist centre (the point where the axes of
+  joints 4, 5 and 6 meet).
+- Its Z axis points out of the flange along that axis.
+- X and Y turn with joint 6: in the standby pose, with joint 6 at 180°, X points up.
+
+The Python API's built-in model puts the origin 37 mm from the wrist centre, 13.5 mm short of the face, measures
+its tool offsets from there, and has Y and Z the other way (above).
 
 ## The TCP of each tool
 
@@ -93,10 +110,13 @@ offsets from there, and has Y and Z the other way (above).
 
 Every tool frame has the flange frame's axes: the Python API's tool definitions are offsets, with no rotation,
 and their negative z is out of the tool. A TCP beside the tool axis lies along the flange frame's −X, below the
-joint 6 axis in the standby pose. The model's TCP sits between the fingers, near their tips; the API's offsets
-come from the earlier model and differ from the model's by up to about 14 mm. The pictures above are drawn at the
-model's TCP. `set_tcp_offset()` and `set_tcp_transform()` move the TCP for a correction or a tool
-of your own ([Tools and the TCP](https://docs.source-robotics.com/PAROL-docs/1.1/programming/02-python-api/tools-and-tcp/)).
+joint 6 axis in the standby pose.
+
+The model's TCP sits between the fingers, near their tips. The API's offsets come from the earlier model and
+differ from the model's by up to about 14 mm. The pictures above are drawn at the model's TCP.
+
+`set_tcp_offset()` and `set_tcp_transform()` move the TCP for a correction or a tool of your own
+([Tools and the TCP](https://docs.source-robotics.com/PAROL-docs/1.1/programming/02-python-api/tools-and-tcp/)).
 
 ## Jogging in a frame
 
@@ -112,9 +132,11 @@ In the TRF column, +Z is out of the tool in the commander and into the wrist in 
 
 ## Orientation
 
-A pose gives the tool frame's orientation in the world frame as three angles in degrees. The Python API reads
-them as intrinsic XYZ rotations, R = Rx · Ry · Rz, of its own tool frame: after homing, with the tool horizontal
-and pointing away from the base, an API pose ends in 90, 0, 90. [Pose and orientation](https://docs.source-robotics.com/PAROL-docs/1.1/theory/pose-and-orientation/) explains the angles.
+A pose gives the tool frame's orientation in the world frame as three angles in degrees.
+
+The Python API reads them as intrinsic XYZ rotations, R = Rx · Ry · Rz, of its own tool frame. After homing, with
+the tool horizontal and pointing away from the base, an API pose ends in 90, 0, 90.
+[Pose and orientation](https://docs.source-robotics.com/PAROL-docs/1.1/theory/pose-and-orientation/) explains the angles.
 
 ## The frames inside
 

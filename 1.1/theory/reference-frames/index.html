@@ -1745,9 +1745,9 @@
 
 <h1 id="reference-frames">Reference frames<a class="headerlink" href="#reference-frames" title="Permanent link">&para;</a></h1>
 <p>A frame is a coordinate system: an origin and three axes, X, Y and Z, at right angles. A position is three
-numbers in a frame; the same point has different numbers in different frames. PAROL6's software uses two frames
-you choose between, the world frame and the tool frame, and several it keeps to itself, the flange frame among
-them.</p>
+numbers in a frame; the same point has different numbers in different frames.</p>
+<p>PAROL6's software uses two frames you choose between, the world frame and the tool frame, and several it keeps to
+itself, the flange frame among them.</p>
 <h2 id="the-right-hand-rule">The right-hand rule<a class="headerlink" href="#the-right-hand-rule" title="Permanent link">&para;</a></h2>
 <p>All frames are right-handed: with the right hand's thumb along X and the index finger along Y, the middle finger
 points along Z. For rotations, the thumb along the axis, the fingers curl in the positive direction. Every
@@ -1833,18 +1833,40 @@ flange. The code examples on these pages are written for the <abbr title="Applic
 </table>
 <h2 id="wrf-the-world-reference-frame"><abbr title="World Reference Frame, the coordinate frame fixed to the robot's base">WRF</abbr>, the world reference frame<a class="headerlink" href="#wrf-the-world-reference-frame" title="Permanent link">&para;</a></h2>
 <p>Fixed to the robot's base, as in the table: X the way the arm points in the standby pose, Y the way it points
-after homing, Z up. Everything that does not move with the arm is described in it: the table, the parts, the
-positions a program teaches. <code>MoveCart</code> in RBTscript and <code>move_l</code> in the <abbr title="Application Programming Interface">API</abbr> take <abbr title="World Reference Frame, the coordinate frame fixed to the robot's base">WRF</abbr> poses by default. The
-commander software and the Python <abbr title="Application Programming Interface">API</abbr> agree on it.</p>
+after homing, Z up.</p>
+<p>Everything that does not move with the arm is described in it: the table, the parts, the positions a program
+teaches. <code>MoveCart</code> in RBTscript and <code>move_l</code> in the <abbr title="Application Programming Interface">API</abbr> take <abbr title="World Reference Frame, the coordinate frame fixed to the robot's base">WRF</abbr> poses by default. The commander software and the
+Python <abbr title="Application Programming Interface">API</abbr> agree on it.</p>
 <h2 id="trf-the-tool-reference-frame"><abbr title="Tool Reference Frame, the coordinate frame fixed to the tool">TRF</abbr>, the tool reference frame<a class="headerlink" href="#trf-the-tool-reference-frame" title="Permanent link">&para;</a></h2>
 <p>Fixed to the tool: the origin at the tool centre point, the axes those of the flange frame. It moves with the
-arm. Z points out of the tool along the joint 6 axis, the way the SSG-48's and the MSG's jaws point; the pneumatic
-gripper's fingers hang beside the axis and point along −X. A move <strong>in</strong> the <abbr title="Tool Reference Frame, the coordinate frame fixed to the tool">TRF</abbr> is relative to where the tool is
-now: "100 mm out along the tool" is <code>MoveCartRelTRF(0,0,100,0,0,0)</code> in the commander, and
-<code>move_l([0, 0, -100, 0, 0, 0], frame="TRF", rel=True)</code> in the Python <abbr title="Application Programming Interface">API</abbr>, whose Z points the other way (above). It
-goes in a different world direction every time, depending on the tool's orientation. Approaching a part along
-the gripper's axis, retreating after a grip, and rotating the tool about its own axis are <abbr title="Tool Reference Frame, the coordinate frame fixed to the tool">TRF</abbr> moves. Jog slowly
-in the <abbr title="Tool Reference Frame, the coordinate frame fixed to the tool">TRF</abbr> before you run a <abbr title="Tool Reference Frame, the coordinate frame fixed to the tool">TRF</abbr> move written for the other program.</p>
+arm.</p>
+<p>Z points out of the tool along the joint 6 axis, the way the SSG-48's and the MSG's jaws point. The pneumatic
+gripper's fingers hang beside the axis and point along −X.</p>
+<p>A move <strong>in</strong> the <abbr title="Tool Reference Frame, the coordinate frame fixed to the tool">TRF</abbr> is relative to where the tool is now. "100 mm out along the tool" is:</p>
+<table>
+<thead>
+<tr>
+<th>Program</th>
+<th>The move</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The commander</td>
+<td><code>MoveCartRelTRF(0,0,100,0,0,0)</code></td>
+</tr>
+<tr>
+<td>The Python <abbr title="Application Programming Interface">API</abbr>, whose Z points the other way (above)</td>
+<td><code>move_l([0, 0, -100, 0, 0, 0], frame="TRF", rel=True)</code></td>
+</tr>
+</tbody>
+</table>
+<p>It goes in a different world direction every time, depending on the tool's orientation. Approaching a part along
+the gripper's axis, retreating after a grip, and rotating the tool about its own axis are <abbr title="Tool Reference Frame, the coordinate frame fixed to the tool">TRF</abbr> moves.</p>
+<div class="admonition warning">
+<p class="admonition-title">A <abbr title="Tool Reference Frame, the coordinate frame fixed to the tool">TRF</abbr> move written for the other program</p>
+<p>Jog slowly in the <abbr title="Tool Reference Frame, the coordinate frame fixed to the tool">TRF</abbr> before you run a <abbr title="Tool Reference Frame, the coordinate frame fixed to the tool">TRF</abbr> move written for the other program.</p>
+</div>
 <h2 id="the-flange-frame">The flange frame<a class="headerlink" href="#the-flange-frame" title="Permanent link">&para;</a></h2>
 <figure>
   <a class="glightbox" href="../../assets/figures/parol6_flange_frame.webp#only-light" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="The flange frame on the flange face, in the standby pose: X up, Y to the robot's right, Z out of the flange along the joint 6 axis" src="../../assets/figures/parol6_flange_frame.webp#only-light" width="520" /></a>
@@ -1852,11 +1874,15 @@ in the <abbr title="Tool Reference Frame, the coordinate frame fixed to the tool
 <br />
 <figcaption>Figure 5: The flange frame on the flange face, in the standby pose: X up, Y to the robot's right, Z out of the flange along the joint 6 axis.</figcaption>
 </figure>
-<p>Every tool is measured from the flange frame. Its origin is on the joint 6 axis at the flange face, 50.5 mm from
-the wrist centre (the point where the axes of joints 4, 5 and 6 meet), and its Z axis points out of the flange
-along that axis. X and Y turn with joint 6: in the standby pose, with joint 6 at 180°, X points up. The Python
-<abbr title="Application Programming Interface">API</abbr>'s built-in model puts the origin 37 mm from the wrist centre, 13.5 mm short of the face, measures its tool
-offsets from there, and has Y and Z the other way (above).</p>
+<p>Every tool is measured from the flange frame.</p>
+<ul>
+<li>Its origin is on the joint 6 axis at the flange face, 50.5 mm from the wrist centre (the point where the axes of
+  joints 4, 5 and 6 meet).</li>
+<li>Its Z axis points out of the flange along that axis.</li>
+<li>X and Y turn with joint 6: in the standby pose, with joint 6 at 180°, X points up.</li>
+</ul>
+<p>The Python <abbr title="Application Programming Interface">API</abbr>'s built-in model puts the origin 37 mm from the wrist centre, 13.5 mm short of the face, measures
+its tool offsets from there, and has Y and Z the other way (above).</p>
 <h2 id="the-tcp-of-each-tool">The <abbr title="Tool Center Point, the point on the tool that the robot positions">TCP</abbr> of each tool<a class="headerlink" href="#the-tcp-of-each-tool" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1922,10 +1948,11 @@ offsets from there, and has Y and Z the other way (above).</p>
 </table>
 <p>Every tool frame has the flange frame's axes: the Python <abbr title="Application Programming Interface">API</abbr>'s tool definitions are offsets, with no rotation,
 and their negative z is out of the tool. A <abbr title="Tool Center Point, the point on the tool that the robot positions">TCP</abbr> beside the tool axis lies along the flange frame's −X, below the
-joint 6 axis in the standby pose. The model's <abbr title="Tool Center Point, the point on the tool that the robot positions">TCP</abbr> sits between the fingers, near their tips; the <abbr title="Application Programming Interface">API</abbr>'s offsets
-come from the earlier model and differ from the model's by up to about 14 mm. The pictures above are drawn at the
-model's <abbr title="Tool Center Point, the point on the tool that the robot positions">TCP</abbr>. <code>set_tcp_offset()</code> and <code>set_tcp_transform()</code> move the <abbr title="Tool Center Point, the point on the tool that the robot positions">TCP</abbr> for a correction or a tool
-of your own (<a href="../../programming/02-python-api/tools-and-tcp/">Tools and the <abbr title="Tool Center Point, the point on the tool that the robot positions">TCP</abbr></a>).</p>
+joint 6 axis in the standby pose.</p>
+<p>The model's <abbr title="Tool Center Point, the point on the tool that the robot positions">TCP</abbr> sits between the fingers, near their tips. The <abbr title="Application Programming Interface">API</abbr>'s offsets come from the earlier model and
+differ from the model's by up to about 14 mm. The pictures above are drawn at the model's <abbr title="Tool Center Point, the point on the tool that the robot positions">TCP</abbr>.</p>
+<p><code>set_tcp_offset()</code> and <code>set_tcp_transform()</code> move the <abbr title="Tool Center Point, the point on the tool that the robot positions">TCP</abbr> for a correction or a tool of your own
+(<a href="../../programming/02-python-api/tools-and-tcp/">Tools and the <abbr title="Tool Center Point, the point on the tool that the robot positions">TCP</abbr></a>).</p>
 <h2 id="jogging-in-a-frame">Jogging in a frame<a class="headerlink" href="#jogging-in-a-frame" title="Permanent link">&para;</a></h2>
 <p>The commander's Cartesian jog and the <abbr title="Application Programming Interface">API</abbr>'s <code>jog_l</code> take the frame: <abbr title="World Reference Frame, the coordinate frame fixed to the robot's base">WRF</abbr> jogs move the tool along the base's
 axes, <abbr title="Tool Reference Frame, the coordinate frame fixed to the tool">TRF</abbr> jogs along the tool's own. Switch to <abbr title="Tool Reference Frame, the coordinate frame fixed to the tool">TRF</abbr> to go straight in or out of a part whatever its angle.</p>
@@ -1952,15 +1979,36 @@ axes, <abbr title="Tool Reference Frame, the coordinate frame fixed to the tool"
 </tbody>
 </table>
 <h2 id="orientation">Orientation<a class="headerlink" href="#orientation" title="Permanent link">&para;</a></h2>
-<p>A pose gives the tool frame's orientation in the world frame as three angles in degrees. The Python <abbr title="Application Programming Interface">API</abbr> reads
-them as intrinsic XYZ rotations, R = Rx · Ry · Rz, of its own tool frame: after homing, with the tool horizontal
-and pointing away from the base, an <abbr title="Application Programming Interface">API</abbr> pose ends in 90, 0, 90. <a href="../pose-and-orientation/">Pose and orientation</a> explains the angles.</p>
+<p>A pose gives the tool frame's orientation in the world frame as three angles in degrees.</p>
+<p>The Python <abbr title="Application Programming Interface">API</abbr> reads them as intrinsic XYZ rotations, R = Rx · Ry · Rz, of its own tool frame. After homing, with
+the tool horizontal and pointing away from the base, an <abbr title="Application Programming Interface">API</abbr> pose ends in 90, 0, 90.
+<a href="../pose-and-orientation/">Pose and orientation</a> explains the angles.</p>
 <h2 id="the-frames-inside">The frames inside<a class="headerlink" href="#the-frames-inside" title="Permanent link">&para;</a></h2>
 <p>The kinematic model keeps a frame at every joint, each defined relative to the previous one by the
 Denavit-Hartenberg parameters, and the flange frame. The tool frame is the flange frame moved by the tool's
 transform; the Python <abbr title="Application Programming Interface">API</abbr>'s tool definitions and <code>set_tcp_transform()</code> set that transform
 (<a href="../../programming/02-python-api/tools-and-tcp/">Tools and the <abbr title="Tool Center Point, the point on the tool that the robot positions">TCP</abbr></a>). The commander's model has the pneumatic gripper's
 transform built in.</p>
+
+  
+  
+  
+    <nav class="page-nav" aria-label="Footer">
+      
+        <a href="../joints-and-poses/" class="md-button page-nav__prev" rel="prev" aria-label="Previous: Joints, directions and the standby pose">
+          <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg></span>
+          <span>Previous: Joints, directions and the standby pose</span>
+        </a>
+      
+      
+        <a href="../pose-and-orientation/" class="md-button md-button--primary page-nav__next" rel="next" aria-label="Next: Pose and orientation">
+          <span>Next: Pose and orientation</span>
+          <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg></span>
+        </a>
+      
+    </nav>
+  
+
 
 
 
@@ -1981,7 +2029,7 @@ transform built in.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 4, 2026 10:22:48 UTC">November 4, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 10, 2026 20:14:20 UTC">November 10, 2026</span>
   </span>
 
     
@@ -2245,6 +2293,17 @@ Robot models and pictures made from them: <a href="https://github.com/Source-Rob
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M492.5 69.8c-.2-.3-.4-.6-.8-.7-38.1-17.5-78.4-30-119.7-37.1-.4-.1-.8 0-1.1.1s-.6.4-.8.8c-5.5 9.9-10.5 20.2-14.9 30.6-44.6-6.8-89.9-6.8-134.4 0-4.5-10.5-9.5-20.7-15.1-30.6-.2-.3-.5-.6-.8-.8s-.7-.2-1.1-.2C162.5 39 122.2 51.5 84.1 69c-.3.1-.6.4-.8.7C7.1 183.5-13.8 294.6-3.6 404.2c0 .3.1.5.2.8s.3.4.5.6c44.4 32.9 94 58 146.8 74.2.4.1.8.1 1.1 0s.7-.4.9-.7c11.3-15.4 21.4-31.8 30-48.8.1-.2.2-.5.2-.8s0-.5-.1-.8-.2-.5-.4-.6-.4-.3-.7-.4c-15.8-6.1-31.2-13.4-45.9-21.9-.3-.2-.5-.4-.7-.6s-.3-.6-.3-.9 0-.6.2-.9.3-.5.6-.7c3.1-2.3 6.2-4.7 9.1-7.1.3-.2.6-.4.9-.4s.7 0 1 .1c96.2 43.9 200.4 43.9 295.5 0 .3-.1.7-.2 1-.2s.7.2.9.4c2.9 2.4 6 4.9 9.1 7.2.2.2.4.4.6.7s.2.6.2.9-.1.6-.3.9-.4.5-.6.6c-14.7 8.6-30 15.9-45.9 21.8-.2.1-.5.2-.7.4s-.3.4-.4.7-.1.5-.1.8.1.5.2.8c8.8 17 18.8 33.3 30 48.8.2.3.6.6.9.7s.8.1 1.1 0c52.9-16.2 102.6-41.3 147.1-74.2.2-.2.4-.4.5-.6s.2-.5.2-.8c12.3-126.8-20.5-236.9-86.9-334.5zm-302 267.7c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.4 59.2-52.8 59.2m195.4 0c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.2 59.2-52.8 59.2"/></svg>
     </a>
   
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.tiktok.com/@source.robotics" target="_blank" rel="noopener" title="www.tiktok.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M448.5 209.9c-44 .1-87-13.6-122.8-39.2v178.7c0 33.1-10.1 65.4-29 92.6s-45.6 48-76.6 59.6-64.8 13.5-96.9 5.3-60.9-25.9-82.7-50.8-35.3-56-39-88.9 2.9-66.1 18.6-95.2 40-52.7 69.6-67.7 62.9-20.5 95.7-16v89.9c-15-4.7-31.1-4.6-46 .4s-27.9 14.6-37 27.3-14 28.1-13.9 43.9 5.2 31 14.5 43.7 22.4 22.1 37.4 26.9 31.1 4.8 46-.1 28-14.4 37.2-27.1 14.2-28.1 14.2-43.8V0h88c-.1 7.4.6 14.9 1.9 22.2 3.1 16.3 9.4 31.9 18.7 45.7s21.3 25.6 35.2 34.6c19.9 13.1 43.2 20.1 67 20.1V210z"/></svg>
+    </a>
+  
 </div>
       
     </div>
@@ -2353,6 +2412,8 @@ Robot models and pictures made from them: <a href="https://github.com/Source-Rob
         <script src="../../javascripts/copy-markdown.js"></script>
       
         <script src="../../javascripts/joint-calculator.js"></script>
+      
+        <script src="../../javascripts/bom-kits.js"></script>
       
         <script src="../../javascripts/arm-viewer-loader.js"></script>
       

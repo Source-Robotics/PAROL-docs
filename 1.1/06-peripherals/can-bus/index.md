@@ -12,7 +12,9 @@ error, or an empty status poll when nothing changed) and relays the gripper's an
   ([CAN bus](https://docs.source-robotics.com/PAROL-docs/1.1/board/07-can/)).
 
 A second CAN controller is on the board, but its transceiver is not populated: CAN 2 is for your own
-experiments. More axes on the bus, a seventh axis or a second gripper, are not supported by the firmware or the
+experiments.
+
+More axes on the bus, a seventh axis or a second gripper, are not supported by the firmware or the
 software yet; the protocol the grippers speak is documented in the [STEPFOC](https://docs.source-robotics.com/STEPFOC-docs/)
 and [Spectral Micro](https://docs.source-robotics.com/Spectral-BLDC-docs/) references for anyone who wants to
 extend it.

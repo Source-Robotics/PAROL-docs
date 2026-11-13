@@ -80,19 +80,24 @@ Other countries can use other colours: check, and do not guess.
 ## The E-stop
 
 The E-stop must be a normally closed contact: pressing it, unplugging it or cutting its wire opens the circuit,
-and all of these stop the robot, which is what you want. A normally open button does not work. The control board
-has two E-stop connectors on the same input, so a second button can be wired in series: pressing either button
-stops the robot.
+and all of these stop the robot, which is what you want. A normally open button does not work.
 
-The kit's button sits in its own printed box with a PG7 cable gland, on a cable as long as you need. [Emergency stop](https://docs.source-robotics.com/PAROL-docs/1.1/02-safety/emergency-stop/)
-says what happens when it is pressed, and the [Control Board Manual](https://docs.source-robotics.com/PAROL-docs/1.1/board/06-io-and-estop/) has the wiring
-diagram.
+The control board has two E-stop connectors on the same input, so a second button can be wired in series:
+pressing either button stops the robot.
+
+![E-stop wiring to the control board](https://docs.source-robotics.com/PAROL-docs/1.1/assets/ESTOP_CON.webp){ width="800" }
+
+The kit's button sits in its own printed box with a PG7 cable gland, on a cable as long as you need.
+[Emergency stop](https://docs.source-robotics.com/PAROL-docs/1.1/02-safety/emergency-stop/) says what happens when it is pressed, and the
+[Control Board Manual](https://docs.source-robotics.com/PAROL-docs/1.1/board/06-io-and-estop/) has the wiring diagram.
 
 ## The gripper
 
 An electric gripper (SSG-48, MSG) plugs into the M8 connector at the forearm, which carries 24 V and CAN:
 [Electric grippers](https://docs.source-robotics.com/PAROL-docs/1.1/end-effectors/). Pneumatic tubes from the valve go to the two push-in
 fittings at the base: [Pneumatics](https://docs.source-robotics.com/PAROL-docs/1.1/06-peripherals/pneumatics/).
+
+![The gripper socket at the forearm, seen from the front, with its four signals](https://docs.source-robotics.com/PAROL-docs/1.1/assets/GRIP_CON.webp){ width="600" }
 
 ## Inputs and outputs
 

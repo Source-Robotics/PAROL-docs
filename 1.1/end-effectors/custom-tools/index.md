@@ -2,25 +2,37 @@
 
 ## Mounting
 
-Clamp onto the 8 mm shaft of joint 6 with a shaft coupler from the BOM, or print a holder with a coupler
-connector: the SSG-48 repository has a template, `STEPS/coupler_connector_generic_STEP.STEP` (and
-`Gripper STL parts/connector_coupler_generic.STL`), and the `STL/WRIST/wrist.STL` in the robot's files shows the
-mating geometry. Keep the tool within the payload and short: every millimetre past the
-flange is leverage against joints 4 and 5.
+Two ways to fix a tool to the 8 mm shaft of joint 6:
+
+| Way | What you use |
+|---|---|
+| Clamp it | A shaft coupler from the BOM |
+| Print a holder with a coupler connector | The SSG-48 repository's template, `STEP files/Couplers/coupler_connector_generic_STEP.STEP` (and `Print files/Couplers/connector_coupler_generic.STL`). The `STL/WRIST/wrist.STL` in the robot's files shows the mating geometry. |
+
+Keep the tool within the payload, and short: every millimetre past the flange is leverage against joints 4 and 5.
 
 ## The joint 5 homing feature
 
 Joint 5 finds its reference by driving the forearm's limit switch against a feature of the tool holder. Your
-holder needs a surface in the same place as the pneumatic gripper holder's; compare with `Pneumatic_gripper_holder.STL`.
-Then measure the homing offset: home, jog joint 5 until the pin fits the witness marks, and set
-`j5_homing_offset` in `main.cpp` to the steps that gives ([Mastering](https://docs.source-robotics.com/PAROL-docs/1.1/05-operation/mastering/)).
+holder needs a surface in the same place as the pneumatic gripper holder's; compare with
+`Pneumatic_gripper_holder.STL`.
+
+Then measure the homing offset ([Mastering](https://docs.source-robotics.com/PAROL-docs/1.1/05-operation/mastering/)):
+
+1. Home.
+2. Jog joint 5 until the pin fits the witness marks.
+3. Set `j5_homing_offset` in `main.cpp` to the steps that gives.
 
 ## Connections
 
-Up to 24 V and CAN at the M8 connector (its pins: [The gripper socket](https://docs.source-robotics.com/PAROL-docs/1.1/end-effectors/flange/#the-gripper-socket)), two air
-lines, and the control board's two inputs and two outputs at the
-base. A tool that needs more, a camera's USB for instance, runs its cable outside the arm, with enough slack for
-joints 4, 5 and 6 and fixed so the arm cannot catch it.
+| What | Where |
+|---|---|
+| Up to 24 V and CAN | The M8 connector (its pins: [The gripper socket](https://docs.source-robotics.com/PAROL-docs/1.1/end-effectors/flange/#the-gripper-socket)) |
+| Two air lines | At the forearm |
+| The control board's two inputs and two outputs | At the base |
+
+A tool that needs more, a camera's USB for instance, runs its cable outside the arm, with enough slack for joints
+4, 5 and 6, and fixed so the arm cannot catch it.
 
 ## The tool frame
 
@@ -39,12 +51,14 @@ rbt.wait_command(index)
     commander's and these pages' ([The flange frame](https://docs.source-robotics.com/PAROL-docs/1.1/theory/reference-frames/#the-flange-frame)), so a tip in
     front of the flange has a negative z there ([known issue KI-11](https://docs.source-robotics.com/PAROL-docs/1.1/08-troubleshooting/known-issues/)).
 
-A permanent tool goes into the API's tool registry as a `ToolConfig` with its collision mesh, so that the
-collision checker knows its shape ([Tools and the TCP](https://docs.source-robotics.com/PAROL-docs/1.1/programming/02-python-api/tools-and-tcp/)). The
-commander software has no tool setting: its poses are for the standard pneumatic gripper, and a different tool
-means editing its robot model.
+| Program | A permanent tool |
+|---|---|
+| Python API | Goes into the tool registry as a `ToolConfig` with its collision mesh, so that the collision checker knows its shape ([Tools and the TCP](https://docs.source-robotics.com/PAROL-docs/1.1/programming/02-python-api/tools-and-tcp/)) |
+| Commander software | Has no tool setting: its poses are for the standard pneumatic gripper, and a different tool means editing its robot model |
 
 ## Check before you run
 
-Jog joint 5 and joint 6 through their ranges slowly with the tool mounted and watch for contact with the forearm:
-the software's joint limits do not know the tool's shape.
+Jog joint 5 and joint 6 through their ranges slowly with the tool mounted.
+
+!!! success "Check"
+    No contact with the forearm. The software's joint limits do not know the tool's shape.

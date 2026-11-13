@@ -9,7 +9,9 @@ software. Each does a part of the job.
 
 Six revolute joints, driven by NEMA 17 stepper motors through planetary gearboxes and belts, in PETG printed links.
 Joints 1, 2 and 3 position the wrist; joints 4, 5 and 6 form a spherical wrist that orients the tool. Joint 6
-ends in the flange the tool mounts on. The tool connections are on the forearm: an M8 connector for an electric
+ends in the flange the tool mounts on.
+
+The tool connections are on the forearm: an M8 connector for an electric
 gripper and two push-in fittings for pneumatic lines. Each joint has a limit switch or an inductive sensor that
 gives it a reference when the robot homes.
 
@@ -44,7 +46,9 @@ counted in steps from the homing reference. Both facts shape how the robot is us
 
 The [PAROL6 control board](https://docs.source-robotics.com/PAROL-docs/1.1/board/) sits in the base: an STM32F446 microcontroller, six TMC5160 stepper
 drivers, two isolated inputs and two isolated outputs, the E-stop input, a CAN bus for electric grippers, and USB
-to the PC. Its firmware generates the step pulses, runs the homing sequence, reads the switches and the inputs,
+to the PC.
+
+Its firmware generates the step pulses, runs the homing sequence, reads the switches and the inputs,
 drives the outputs and the gripper, and exchanges a packet with the PC at 100 Hz. It does not plan motion: it
 executes the joint speeds and positions the PC sends it, 100 times a second.
 

@@ -327,3 +327,31 @@
 .sr-repo--docs .md-source__repository { font-size: 0.55rem; }
 .md-nav__source .sr-repo { padding: 0.35rem 0.4rem; }
 .md-nav__source .sr-repo--docs { padding-top: 0; }
+
+/* Previous / Next at the end of every page's text (overrides/partials/page-nav.html): Previous left, Next right; on a
+   phone one above the other, full width */
+.md-typeset .page-nav { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.6rem; margin: 2.4rem 0 1.2rem; }
+.md-typeset .page-nav .md-button { display: inline-flex; align-items: center; gap: 0.5em; margin: 0; max-width: 100%; }
+.md-typeset .page-nav__next { margin-left: auto; text-align: right; }
+@media screen and (max-width: 44.9375em) {
+  .md-typeset .page-nav .md-button { width: 100%; justify-content: center; text-align: center; }
+}
+#print-site-page .page-nav { display: none !important; }
+@media print { .page-nav { display: none !important; } }
+
+/* The kit selector on the Bill of materials page (docs/javascripts/bom-kits.js): status colours, so green and amber
+   (the colour rule); darker in the light theme so the words stay readable on white */
+.md-typeset { --bom-in: #0a7d4b; --bom-out: #a85d00; }
+[data-md-color-scheme="slate"] .md-typeset { --bom-in: #19c37d; --bom-out: #e8a33d; }
+.md-typeset .bom-kits__choose { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin: 1.2em 0 0.6em; }
+.md-typeset .bom-kits__choose .md-button { margin: 0; font-size: 0.7rem; padding: 0.45em 1.1em; }
+.md-typeset .bom-kits__q { font-weight: 700; margin-right: 0.3rem; }
+.md-typeset .bom-kits__summary { margin: 0.4em 0 1.2em; padding: 0.5rem 0.8rem; border-left: 0.2rem solid var(--bom-in);
+  background: var(--md-code-bg-color); font-size: 0.75rem; }
+.md-typeset .bom-kits__in { color: var(--bom-in); font-weight: 700; white-space: nowrap; }
+.md-typeset .bom-kits__in svg { width: 1.1em; height: 1.1em; fill: currentColor; vertical-align: -0.2em; margin-right: 0.2em; }
+.md-typeset .bom-kits__out { color: var(--bom-out); font-weight: 700; white-space: nowrap; }
+.md-typeset .bom-kits__skip { color: var(--md-default-fg-color--light); font-weight: 700; }
+.md-typeset .bom-kits__note { font-weight: 400; color: var(--md-default-fg-color--light); white-space: normal; }
+#print-site-page .bom-kits { display: none !important; }
+@media print { .bom-kits { display: none !important; } }

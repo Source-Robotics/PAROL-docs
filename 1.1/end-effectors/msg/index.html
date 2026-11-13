@@ -1456,9 +1456,10 @@
 <h1 id="msg-compliant-ai-stepper-gripper">MSG compliant AI stepper gripper<a class="headerlink" href="#msg-compliant-ai-stepper-gripper" title="Permanent link">&para;</a></h1>
 <p><a class="glightbox" href="../../assets/msg_hero.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="The MSG gripper" class="hero" src="../../assets/msg_hero.webp" /></a></p>
 <p>Source Robotics' modular stepper gripper: a STEPFOC driver in gripper mode, three rail lengths, three stepper
-lengths and a camera mount. It plugs into the M8 connector at the forearm and the control board drives it over
-<abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> with the same commands as the SSG-48. Its own manual, <a href="https://docs.source-robotics.com/MSG-gripper-docs/">MSG-gripper-docs</a>,
-covers the gripper; this page covers PAROL6.</p>
+lengths and a camera mount. It plugs into the M8 connector at the forearm, and the control board drives it over
+<abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> with the same commands as the SSG-48.</p>
+<p>Its own manual, <a href="https://docs.source-robotics.com/MSG-gripper-docs/">MSG-gripper-docs</a>, covers the gripper; this
+page covers PAROL6.</p>
 <table>
 <thead>
 <tr>
@@ -1487,16 +1488,21 @@ covers the gripper; this page covers PAROL6.</p>
 </table>
 <h2 id="mounting">Mounting<a class="headerlink" href="#mounting" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Replace the gripper's <code>ring_cover</code> with <code>ring_cover-PAROL6</code> from the repository's <code>Common parts</code>: it bolts to
-   the robot's last joint, and the coupler plate's shaft coupler (8 mm bore, two M4 clamp screws) takes the
-   joint 6 shaft (<a href="https://docs.source-robotics.com/MSG-gripper-docs/latest/04-installation/mounting/">Mounting on a robot</a>).</li>
-<li>Slide the gripper onto the shaft, orient it with the camera looking down between the jaws, and tighten the
-   two clamp screws with blue threadlocker (<a href="../../07-maintenance/couplers/">Couplers and threadlocker</a>).</li>
-<li>Connect the <a href="https://source-robotics.com/products/gripper-cable">PAROL6 gripper cable</a> between the gripper
-   and the M8 connector at the forearm.</li>
-<li>The camera is a plain <abbr title="Universal Serial Bus, the connection between the control board and the PC">USB</abbr> camera with its own cable: route it outside the arm, with slack for joints 4, 5
-   and 6, and fix it so the arm cannot catch it.</li>
+<li>Replace the gripper's <code>ring_cover</code> with <code>ring_cover-PAROL6</code> from the repository's <code>Common parts</code>. It bolts to
+   the robot's last joint, and the coupler plate's shaft coupler (8 mm bore, two M4 clamp screws) takes the joint 6
+   shaft (<a href="https://docs.source-robotics.com/MSG-gripper-docs/latest/04-installation/mounting/">Mounting on a robot</a>).</li>
+<li>Slide the gripper onto the shaft, and orient it with the camera looking down between the jaws.</li>
+<li>Tighten the two clamp screws with blue threadlocker (<a href="../../07-maintenance/couplers/">Couplers and threadlocker</a>).</li>
+<li>Connect the <a href="https://source-robotics.com/products/gripper-cable">PAROL6 gripper cable</a> between the gripper and
+   the M8 connector at the forearm.</li>
+<li>The camera is a plain <abbr title="Universal Serial Bus, the connection between the control board and the PC">USB</abbr> camera with its own cable. Route it outside the arm, with slack for joints 4, 5 and
+   6, and fix it so the arm cannot catch it.</li>
 </ol>
+<figure>
+  <a class="glightbox" href="../../assets/MSG_and_camera.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="The MSG gripper on PAROL6" src="../../assets/MSG_and_camera.webp" width="600" /></a>
+<br />
+<figcaption>Figure 1: The MSG gripper on PAROL6.</figcaption>
+</figure>
 <div class="admonition danger">
 <p class="admonition-title">Only the PAROL6 cable</p>
 <p>PAROL6 and PAR6 put the four signals on different pins. The PAR6 cable reverses the gripper's supply, and a
@@ -1507,50 +1513,83 @@ manual's cable page.</p>
 <p>Leave the gripper's <abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> node ID at 0 and its termination switch, reachable through the stepper cover, on: it is
 the last node on the robot's bus (<a href="../../06-peripherals/can-bus/"><abbr title="Controller Area Network, the bus between the control board and the electric grippers">CAN</abbr> bus</a>).</p>
 <h2 id="tool-centre-point">Tool centre point<a class="headerlink" href="#tool-centre-point" title="Permanent link">&para;</a></h2>
-<p>The tool centre point (<abbr title="Tool Center Point, the point on the tool that the robot positions">TCP</abbr>) is a6 = 134.3 mm from the joint 6 centre along the tool axis and a7 = 28.35 mm to the
-side. Both jaw variants share one <abbr title="Tool Center Point, the point on the tool that the robot positions">TCP</abbr>: an operating point, not a measured grasp centre. The sheet is the robot's
-model from <a href="https://github.com/Source-Robotics/robot_descriptions">robot_descriptions</a> (version 2.15.1) with every
-joint at 0. Tell the software about the tool (<a href="../../programming/02-python-api/tools-and-tcp/">Tools and the <abbr title="Tool Center Point, the point on the tool that the robot positions">TCP</abbr></a>);
-every tool is compared on <a href="../../03-technical-data/kinematics/">Dimensions and kinematics</a>.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>MSG, both jaw variants</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a6, from the joint 6 centre along the tool axis</td>
+<td>134.3 mm</td>
+</tr>
+<tr>
+<td>a7, to the side</td>
+<td>28.35 mm</td>
+</tr>
+</tbody>
+</table>
+<p>Both jaw variants share one <abbr title="Tool Center Point, the point on the tool that the robot positions">TCP</abbr>: an operating point, not a measured grasp centre.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Solid jaws</label><label for="__tabbed_1_2">Soft TPU jaws</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p><figure markdown="span">
   <a class="glightbox" href="../../assets/kinematics/parol6_msg.webp#only-light" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="PAROL6 with the MSG, solid jaws: dimensions to the TCP and the DH table" src="../../assets/kinematics/parol6_msg.webp#only-light" width="600" /></a>
   <a class="glightbox" href="../../assets/kinematics/parol6_msg_dark.webp#only-dark" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="PAROL6 with the MSG, solid jaws: dimensions to the TCP and the DH table" src="../../assets/kinematics/parol6_msg_dark.webp#only-dark" width="600" /></a>
-  <figcaption>Figure 1: PAROL6 with the MSG, solid jaws: dimensions to the <abbr title="Tool Center Point, the point on the tool that the robot positions">TCP</abbr> and the <abbr title="Denavit-Hartenberg, the convention that describes a robot's geometry with four numbers per joint">DH</abbr> table.</figcaption>
+  <figcaption>Figure 2: PAROL6 with the MSG, solid jaws: dimensions to the <abbr title="Tool Center Point, the point on the tool that the robot positions">TCP</abbr> and the <abbr title="Denavit-Hartenberg, the convention that describes a robot's geometry with four numbers per joint">DH</abbr> table.</figcaption>
 </figure></p>
 </div>
 <div class="tabbed-block">
 <p><figure markdown="span">
   <a class="glightbox" href="../../assets/kinematics/parol6_msg_tpu_glue.webp#only-light" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="PAROL6 with the MSG, soft TPU jaws: dimensions to the TCP and the DH table" src="../../assets/kinematics/parol6_msg_tpu_glue.webp#only-light" width="600" /></a>
   <a class="glightbox" href="../../assets/kinematics/parol6_msg_tpu_glue_dark.webp#only-dark" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="PAROL6 with the MSG, soft TPU jaws: dimensions to the TCP and the DH table" src="../../assets/kinematics/parol6_msg_tpu_glue_dark.webp#only-dark" width="600" /></a>
-  <figcaption>Figure 2: PAROL6 with the MSG, soft TPU jaws: dimensions to the <abbr title="Tool Center Point, the point on the tool that the robot positions">TCP</abbr> and the <abbr title="Denavit-Hartenberg, the convention that describes a robot's geometry with four numbers per joint">DH</abbr> table.</figcaption>
+  <figcaption>Figure 3: PAROL6 with the MSG, soft TPU jaws: dimensions to the <abbr title="Tool Center Point, the point on the tool that the robot positions">TCP</abbr> and the <abbr title="Denavit-Hartenberg, the convention that describes a robot's geometry with four numbers per joint">DH</abbr> table.</figcaption>
 </figure></p>
 </div>
 </div>
 </div>
+<p>The sheet is the robot's model from <a href="https://github.com/Source-Robotics/robot_descriptions">robot_descriptions</a>
+(version 2.15.1) with every joint at 0. Tell the software about the tool
+(<a href="../../programming/02-python-api/tools-and-tcp/">Tools and the <abbr title="Tool Center Point, the point on the tool that the robot positions">TCP</abbr></a>); every tool is compared on
+<a href="../../03-technical-data/kinematics/">Dimensions and kinematics</a>.</p>
 <h2 id="the-joint-5-homing-offset">The joint 5 homing offset<a class="headerlink" href="#the-joint-5-homing-offset" title="Permanent link">&para;</a></h2>
 <p>Joint 5 homes against the tool, and the MSG's ring cover is not the pneumatic gripper holder that the firmware's
-default offset (8900) assumes. After the first homing, check joint 5 with the pin through the witness marks; if
-it is off, measure the offset and set <code>j5_homing_offset</code> in <code>main.cpp</code> as <a href="../../05-operation/mastering/">Mastering</a>
-describes.</p>
+default offset (8900) assumes.</p>
+<ol>
+<li>After the first homing, check joint 5 with the pin through the witness marks.</li>
+<li>If it is off, measure the offset and set <code>j5_homing_offset</code> in <code>main.cpp</code>, as
+   <a href="../../05-operation/mastering/">Mastering</a> describes.</li>
+</ol>
 <h2 id="driving-it">Driving it<a class="headerlink" href="#driving-it" title="Permanent link">&para;</a></h2>
 <p>The gripper must be calibrated after every power-up: it opens fully and closes fully to find its end stops, and
-does not move before that. Clear any error first, then calibrate, then wait until the gripper reports itself
-calibrated before the first move: about 5 to 6 s on the longer rails.</p>
+does not move before that.</p>
+<ol>
+<li>Clear any error.</li>
+<li>Calibrate.</li>
+<li>Wait until the gripper reports itself calibrated before the first move: about 5 to 6 s on the longer rails.</li>
+</ol>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Commander software</label><label for="__tabbed_2_2">Python <abbr title="Application Programming Interface">API</abbr></label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>The <strong>Gripper</strong> tab: after homing the robot press <strong>Clear gripper error</strong>, then <strong>Calibrate gripper</strong>, and
-wait until the tab shows <code>Calibration status is: 1</code>. Then set position, speed and current with the sliders
-and press <strong>Move GoTo</strong>. The feedback section shows the current, the position and the status
-(<a href="../../gui/commander/the-gui/">The <abbr title="Graphical User Interface">GUI</abbr></a>). In RBTscript, after clearing the error in the tab:
-<code>Gripper_cal()</code>, <code>Delay(7)</code>, then <code>Gripper(position, speed, current)</code>
-(<a href="../../programming/03-commander/rbtscript/#gripper">RBTscript</a>).</p>
+<p>In the <strong>Gripper</strong> tab, after homing the robot:</p>
+<ol>
+<li>Press <strong>Clear gripper error</strong>.</li>
+<li>Press <strong>Calibrate gripper</strong>, and wait until the tab shows <code>Calibration status is: 1</code>.</li>
+<li>Set position, speed and current with the sliders.</li>
+<li>Press <strong>Move GoTo</strong>.</li>
+</ol>
+<p>The feedback section shows the current, the position and the status (<a href="../../gui/commander/the-gui/">The <abbr title="Graphical User Interface">GUI</abbr></a>).</p>
+<p><figure markdown="span">
+  <a class="glightbox" href="../../assets/parol_grip_gui.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="The gripper tab" src="../../assets/parol_grip_gui.PNG" width="700" /></a>
+  <figcaption>Figure 4: The gripper tab.</figcaption>
+</figure></p>
+<p>In RBTscript, after clearing the error in the tab: <code>Gripper_cal()</code>, <code>Delay(7)</code>, then
+<code>Gripper(position, speed, current)</code> (<a href="../../programming/03-commander/rbtscript/#gripper">RBTscript</a>).</p>
 </div>
 <div class="tabbed-block">
-<p><div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">rbt</span><span class="o">.</span><span class="n">select_tool</span><span class="p">(</span><span class="s2">"MSG"</span><span class="p">,</span> <span class="n">variant_key</span><span class="o">=</span><span class="s2">"150mm"</span><span class="p">)</span>           <span class="c1"># 100mm, 150mm or 200mm: the rail</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">rbt</span><span class="o">.</span><span class="n">select_tool</span><span class="p">(</span><span class="s2">"MSG"</span><span class="p">,</span> <span class="n">variant_key</span><span class="o">=</span><span class="s2">"150mm"</span><span class="p">)</span>           <span class="c1"># 100mm, 150mm or 200mm: the rail</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">rbt</span><span class="o">.</span><span class="n">tool</span><span class="o">.</span><span class="n">calibrate</span><span class="p">()</span>                                   <span class="c1"># queued; the API counts it done after 2 s</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">rbt</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>                                           <span class="c1"># the rest of the calibration, with a margin</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">rbt</span><span class="o">.</span><span class="n">tool</span><span class="o">.</span><span class="n">set_position</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">speed</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">current</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>     <span class="c1"># fractions of the ranges; 0.4 is 1180 mA</span>
@@ -1559,55 +1598,115 @@ and press <strong>Move GoTo</strong>. The feedback section shows the current, th
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">rbt</span><span class="o">.</span><span class="n">tool</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>                                     <span class="c1"># drop the grip, the jaws stay</span>
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">rbt</span><span class="o">.</span><span class="n">tool</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>                                        <span class="c1"># immediate: halt where the jaws are</span>
 </span></code></pre></div>
-Tool actions are queued with the motion, so a move after <code>close()</code> waits for the grip; a <code>move</code> on a gripper
-that was never calibrated is refused when its turn comes. The <abbr title="Application Programming Interface">API</abbr> does not read the calibrated bit and has
-no clear-error action at this version: clear an error in the commander's Gripper tab or with Motor <abbr title="Graphical User Interface">GUI</abbr>
-(<a href="../../programming/02-python-api/tools-and-tcp/#calibrating">Tools and the <abbr title="Tool Center Point, the point on the tool that the robot positions">TCP</abbr></a>,
-<a href="../../reference/python/tools/">Tools</a>).</p>
+<ul>
+<li>Tool actions are queued with the motion, so a move after <code>close()</code> waits for the grip.</li>
+<li>A <code>move</code> on a gripper that was never calibrated is refused when its turn comes.</li>
+<li>The <abbr title="Application Programming Interface">API</abbr> does not read the calibrated bit and has no clear-error action at this version: clear an error in the
+  commander's Gripper tab or with Motor <abbr title="Graphical User Interface">GUI</abbr> (<a href="../../programming/02-python-api/tools-and-tcp/#calibrating">Tools and the <abbr title="Tool Center Point, the point on the tool that the robot positions">TCP</abbr></a>,
+  <a href="../../reference/python/tools/">Tools</a>).</li>
+</ul>
 </div>
 </div>
 </div>
 <h2 id="current-and-force">Current and force<a class="headerlink" href="#current-and-force" title="Permanent link">&para;</a></h2>
-<p>The current limit is the grip force, and the slope depends on the stepper: about 20 N per ampere with the
-21.5 mm stepper, 25 with the 40 mm, 36 with the 60 mm. Stay within the stepper's maximum, 1.5 A, 2.0 A or 2.1 A.
-The gripper manual's <a href="https://docs.source-robotics.com/MSG-gripper-docs/latest/03-technical-data/force-and-speed/">Force and speed</a>
-has the curves.</p>
-<p>The commander takes the current in milliamps, 100 to 1000 mA, which is within every stepper's maximum. The
-Python <abbr title="Application Programming Interface">API</abbr> takes it as a fraction of 100 to 2800 mA, a range above every stepper's maximum, so keep the fraction
-at or below the value for your stepper:</p>
+<p>The current limit is the grip force, and the slope depends on the stepper:</p>
 <table>
 <thead>
 <tr>
 <th>Stepper</th>
+<th>Grip force per ampere</th>
 <th>Maximum current</th>
-<th>Highest <code>current=</code> fraction</th>
+<th>Highest <code>current=</code> fraction in the Python <abbr title="Application Programming Interface">API</abbr></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>21.5 mm</td>
+<td>About 20 N</td>
 <td>1.5 A</td>
 <td>0.51</td>
 </tr>
 <tr>
 <td>40 mm</td>
+<td>About 25 N</td>
 <td>2.0 A</td>
 <td>0.70</td>
 </tr>
 <tr>
 <td>60 mm</td>
+<td>About 36 N</td>
 <td>2.1 A</td>
 <td>0.74</td>
 </tr>
 </tbody>
 </table>
+<p>Stay within the stepper's maximum. The gripper manual's
+<a href="https://docs.source-robotics.com/MSG-gripper-docs/latest/03-technical-data/force-and-speed/">Force and speed</a>
+has the curves.</p>
+<table>
+<thead>
+<tr>
+<th>Program</th>
+<th>Takes the current as</th>
+<th>Within every stepper's maximum?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Commander software</td>
+<td>Milliamps, 100 to 1000 mA</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Python <abbr title="Application Programming Interface">API</abbr></td>
+<td>A fraction of 100 to 2800 mA</td>
+<td>No: keep the fraction at or below the value for your stepper, in the table above</td>
+</tr>
+</tbody>
+</table>
 <h2 id="status">Status<a class="headerlink" href="#status" title="Permanent link">&para;</a></h2>
 <p>The robot passes the gripper's status byte through: calibrated, in motion, object detected (while closing, while
-opening, or none), and its error bits. The commander's Gripper tab shows the calibrated and <abbr title="Emergency stop">E-stop</abbr> error
-bits, and the whole status byte as a number (labelled <em>Gripper object detection is</em>). The Python <abbr title="Application Programming Interface">API</abbr>'s <code>tool.status()</code> gives the jaw position and the current; its
-<code>engaged</code> and <code>part_detected</code> do not follow the status byte's bits at this version
-(<a href="../../programming/02-python-api/tools-and-tcp/#tool-status">Tool status</a>). The gripper manual's errors page says
-what each error needs: <a href="https://docs.source-robotics.com/MSG-gripper-docs/latest/06-operation/errors/">Errors and recovery</a>.</p>
+opening, or none), and its error bits.</p>
+<table>
+<thead>
+<tr>
+<th>Program</th>
+<th>Shows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Commander, Gripper tab</td>
+<td>The calibrated and <abbr title="Emergency stop">E-stop</abbr> error bits, and the whole status byte as a number (labelled <em>Gripper object detection is</em>)</td>
+</tr>
+<tr>
+<td>Python <abbr title="Application Programming Interface">API</abbr>, <code>tool.status()</code></td>
+<td>The jaw position and the current. Its <code>engaged</code> and <code>part_detected</code> do not follow the status byte's bits at this version (<a href="../../programming/02-python-api/tools-and-tcp/#tool-status">Tool status</a>)</td>
+</tr>
+</tbody>
+</table>
+<p>The gripper manual's errors page says what each error needs:
+<a href="https://docs.source-robotics.com/MSG-gripper-docs/latest/06-operation/errors/">Errors and recovery</a>.</p>
+
+  
+  
+  
+    <nav class="page-nav" aria-label="Footer">
+      
+        <a href="../ssg-48/" class="md-button page-nav__prev" rel="prev" aria-label="Previous: SSG-48 electric gripper">
+          <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg></span>
+          <span>Previous: SSG-48 electric gripper</span>
+        </a>
+      
+      
+        <a href="../custom-tools/" class="md-button md-button--primary page-nav__next" rel="next" aria-label="Next: Your own tool">
+          <span>Next: Your own tool</span>
+          <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg></span>
+        </a>
+      
+    </nav>
+  
+
 
 
 
@@ -1628,7 +1727,7 @@ what each error needs: <a href="https://docs.source-robotics.com/MSG-gripper-doc
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 5, 2026 16:14:53 UTC">November 5, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 10, 2026 19:17:19 UTC">November 10, 2026</span>
   </span>
 
     
@@ -1892,6 +1991,17 @@ Robot models and pictures made from them: <a href="https://github.com/Source-Rob
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M492.5 69.8c-.2-.3-.4-.6-.8-.7-38.1-17.5-78.4-30-119.7-37.1-.4-.1-.8 0-1.1.1s-.6.4-.8.8c-5.5 9.9-10.5 20.2-14.9 30.6-44.6-6.8-89.9-6.8-134.4 0-4.5-10.5-9.5-20.7-15.1-30.6-.2-.3-.5-.6-.8-.8s-.7-.2-1.1-.2C162.5 39 122.2 51.5 84.1 69c-.3.1-.6.4-.8.7C7.1 183.5-13.8 294.6-3.6 404.2c0 .3.1.5.2.8s.3.4.5.6c44.4 32.9 94 58 146.8 74.2.4.1.8.1 1.1 0s.7-.4.9-.7c11.3-15.4 21.4-31.8 30-48.8.1-.2.2-.5.2-.8s0-.5-.1-.8-.2-.5-.4-.6-.4-.3-.7-.4c-15.8-6.1-31.2-13.4-45.9-21.9-.3-.2-.5-.4-.7-.6s-.3-.6-.3-.9 0-.6.2-.9.3-.5.6-.7c3.1-2.3 6.2-4.7 9.1-7.1.3-.2.6-.4.9-.4s.7 0 1 .1c96.2 43.9 200.4 43.9 295.5 0 .3-.1.7-.2 1-.2s.7.2.9.4c2.9 2.4 6 4.9 9.1 7.2.2.2.4.4.6.7s.2.6.2.9-.1.6-.3.9-.4.5-.6.6c-14.7 8.6-30 15.9-45.9 21.8-.2.1-.5.2-.7.4s-.3.4-.4.7-.1.5-.1.8.1.5.2.8c8.8 17 18.8 33.3 30 48.8.2.3.6.6.9.7s.8.1 1.1 0c52.9-16.2 102.6-41.3 147.1-74.2.2-.2.4-.4.5-.6s.2-.5.2-.8c12.3-126.8-20.5-236.9-86.9-334.5zm-302 267.7c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.4 59.2-52.8 59.2m195.4 0c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.2 59.2-52.8 59.2"/></svg>
     </a>
   
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.tiktok.com/@source.robotics" target="_blank" rel="noopener" title="www.tiktok.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M448.5 209.9c-44 .1-87-13.6-122.8-39.2v178.7c0 33.1-10.1 65.4-29 92.6s-45.6 48-76.6 59.6-64.8 13.5-96.9 5.3-60.9-25.9-82.7-50.8-35.3-56-39-88.9 2.9-66.1 18.6-95.2 40-52.7 69.6-67.7 62.9-20.5 95.7-16v89.9c-15-4.7-31.1-4.6-46 .4s-27.9 14.6-37 27.3-14 28.1-13.9 43.9 5.2 31 14.5 43.7 22.4 22.1 37.4 26.9 31.1 4.8 46-.1 28-14.4 37.2-27.1 14.2-28.1 14.2-43.8V0h88c-.1 7.4.6 14.9 1.9 22.2 3.1 16.3 9.4 31.9 18.7 45.7s21.3 25.6 35.2 34.6c19.9 13.1 43.2 20.1 67 20.1V210z"/></svg>
+    </a>
+  
 </div>
       
     </div>
@@ -2000,6 +2110,8 @@ Robot models and pictures made from them: <a href="https://github.com/Source-Rob
         <script src="../../javascripts/copy-markdown.js"></script>
       
         <script src="../../javascripts/joint-calculator.js"></script>
+      
+        <script src="../../javascripts/bom-kits.js"></script>
       
         <script src="../../javascripts/arm-viewer-loader.js"></script>
       

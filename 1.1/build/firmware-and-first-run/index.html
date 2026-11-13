@@ -672,9 +672,43 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../quick-start/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../quick-start/" class="md-nav__link">
+      
   
   
   <span class="md-ellipsis">
@@ -688,7 +722,13 @@
   
   
 
-      </a>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -2635,20 +2675,21 @@
 
 
 <h1 id="firmware-and-first-run">Firmware and first run<a class="headerlink" href="#firmware-and-first-run" title="Permanent link">&para;</a></h1>
+<p>Five parts, in order: check the board with the test firmware, upload the main firmware, switch on, fix any joint
+that turns the wrong way, and home.</p>
 <h2 id="1-the-test-firmware">1. The test firmware<a class="headerlink" href="#1-the-test-firmware" title="Permanent link">&para;</a></h2>
-<p>A control board from the shop ships with the test firmware. Use it, with the base open and the motors not yet
-driving the arm, to check every driver, every switch and sensor, and the I/O from a serial terminal: on the bench
-before the arm is assembled, as in <a href="../electronics-and-wiring/#test-before-you-close-the-base">Electronics and wiring</a>.
-At power-on it prints a report on
-each driver (<code>joint N Connection is: GOOD</code> or <code>BAD</code>) and turns every motor slowly; <code>#LIMIT</code> then shows the
-switches and <code>#IO</code> the <abbr title="Emergency stop">E-stop</abbr>, the inputs and the supply voltage. <a href="../../board/09-test-firmware/">The test firmware</a>
-has the commands and what good output looks like.</p>
+<p>A control board from the shop ships with the test firmware. Use it with the base open and the motors not yet
+driving the arm: on the bench, before the arm is assembled, as in
+<a href="../electronics-and-wiring/#test-before-you-close-the-base">Electronics and wiring</a>.</p>
 <div class="admonition danger">
 <p class="admonition-title">Danger</p>
 <p>The test firmware turns all six motors slowly from the moment it boots until the power is switched off; no
 command stops them. On an assembled arm joints 1 to 5 reach their blockers within about a minute and keep
 pushing. Use it with the motors free to turn, never on an assembled robot.</p>
 </div>
+<p>At power-on it prints a report on each driver (<code>joint N Connection is: GOOD</code> or <code>BAD</code>) and turns every motor
+slowly. <code>#LIMIT</code> then shows the switches, and <code>#IO</code> the <abbr title="Emergency stop">E-stop</abbr>, the inputs and the supply voltage.</p>
+<p><a href="../../board/09-test-firmware/">The test firmware</a> has the commands and what good output looks like.</p>
 <div class="admonition success">
 <p class="admonition-title">Check</p>
 <p>Six <code>Connection is: GOOD</code> lines in the report; <code>#LIMIT</code> names each switch while you press it; <code>#IO</code> follows
@@ -2656,17 +2697,26 @@ the <abbr title="Emergency stop">E-stop</abbr> and the inputs and shows the supp
 <a href="../../board/11-troubleshooting/">Control board troubleshooting</a>.</p>
 </div>
 <h2 id="2-upload-the-main-firmware">2. Upload the main firmware<a class="headerlink" href="#2-upload-the-main-firmware" title="Permanent link">&para;</a></h2>
-<p>The main firmware is in the repository under <code>PAROL6 control board main software</code>; it is a PlatformIO project
-for VS Code. Install VS Code and the PlatformIO extension, open the folder, and upload with an ST-Link through the
-programming adapter, with the 24 V supply disconnected: <a href="../../board/08-firmware/">Firmware</a> has the procedure and
-the warnings.</p>
+<p>The main firmware is in the repository under <code>PAROL6 control board main software</code>. It is a PlatformIO project for
+VS Code.</p>
+<ol>
+<li>Install VS Code and the PlatformIO extension.</li>
+<li>Open the folder.</li>
+<li>Disconnect the 24 V supply.</li>
+<li>Upload with an ST-Link through the programming adapter.</li>
+</ol>
+<p><a href="../../board/08-firmware/">Firmware</a> has the procedure and the warnings.</p>
 <div class="admonition success">
 <p class="admonition-title">Check</p>
 <p>PlatformIO ends the upload with <code>SUCCESS</code>. If not: <a href="../../board/11-troubleshooting/">Control board troubleshooting</a>.</p>
 </div>
 <h2 id="3-first-power-on">3. First power-on<a class="headerlink" href="#3-first-power-on" title="Permanent link">&para;</a></h2>
-<p>Unplug the programming adapter, plug in the supply, hold the forearm and press the button. Six clicks, and the
-arm holds. Start the commander software, connect, and open the joint jog menu.</p>
+<ol>
+<li>Unplug the programming adapter.</li>
+<li>Plug in the supply.</li>
+<li>Hold the forearm and press the button. Six clicks, and the arm holds.</li>
+<li>Start the commander software, connect, and open the joint jog menu.</li>
+</ol>
 <div class="admonition success">
 <p class="admonition-title">Check</p>
 <p>Six clicks, the fan runs, the arm holds itself, and the commander shows the robot's data. If not:
@@ -2674,47 +2724,82 @@ arm holds. Start the commander software, connect, and open the joint jog menu.</
 </div>
 <h2 id="a-joint-turns-the-wrong-way">4. A joint turns the wrong way<a class="headerlink" href="#a-joint-turns-the-wrong-way" title="Permanent link">&para;</a></h2>
 <p>Jog each joint briefly. The joint must turn as in the figure, which shows each joint's positive direction
-(<a href="../../03-technical-data/joint-limits/">Joint limits and directions</a>). Before homing, the commander checks jogs
-against the joint limits with a position count that starts at 0, so some directions are refused with
-<code>Error: Robot jog -&gt; Position out of range</code>:</p>
-<ul>
-<li><strong>Joint 2</strong>: press its <strong>right</strong> arrow (negative). It must turn opposite to the figure; its left arrow does
-  nothing until the robot is homed.</li>
-<li><strong>Joints 1, 3, 4, 5 and 6</strong>: press the <strong>left</strong> arrow (positive). It must turn as in the figure.</li>
-</ul>
+(<a href="../../03-technical-data/joint-limits/">Joint limits and directions</a>).</p>
 <figure>
   <a class="glightbox" href="../../assets/kinematics/parol6_joint_directions.webp#only-light" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Each joint turned 30 degrees in its positive direction, in colour, over the pose in grey" src="../../assets/kinematics/parol6_joint_directions.webp#only-light" width="900" /></a>
   <a class="glightbox" href="../../assets/kinematics/parol6_joint_directions_dark.webp#only-dark" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Each joint turned 30 degrees in its positive direction, in colour, over the pose in grey" src="../../assets/kinematics/parol6_joint_directions_dark.webp#only-dark" width="900" /></a>
 <br />
 <figcaption>Figure 1: Each joint turned 30 degrees in its positive direction, in colour, over the pose in grey.</figcaption>
 </figure>
-<p>A joint that turns the other way is the most common first-run problem, and it is fixed in the firmware, not by
+<ul>
+<li><strong>Joint 2</strong>: press its <strong>right</strong> arrow (negative). It must turn opposite to the figure; its left arrow does
+  nothing until the robot is homed.</li>
+<li><strong>Joints 1, 3, 4, 5 and 6</strong>: press the <strong>left</strong> arrow (positive). It must turn as in the figure.</li>
+</ul>
+<details class="info">
+<summary>Why joint 2 jogs only one way before homing</summary>
+<p>Before homing, the commander checks jogs against the joint limits with a position count that starts at 0, so
+some directions are refused with <code>Error: Robot jog -&gt; Position out of range</code>.</p>
+</details>
+<p>A joint that turns the other way is the most common first-run problem. It is fixed in the firmware, not by
 rewiring:</p>
+<ol>
+<li>
+<p>In <code>motor_init.cpp</code>, in <code>Init_Joint_N</code>, switch <code>direction_reversed</code> between 0 and 1:</p>
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// motor_init.cpp, in Init_Joint_N: switch between 0 and 1</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">Joint__</span><span class="o">-&gt;</span><span class="n">direction_reversed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 </span></code></pre></div>
-<p>Upload again and check again. Swapping one motor phase's wires has the same effect, if you prefer to open the
-base.</p>
+</li>
+<li>
+<p>Upload again.</p>
+</li>
+<li>Check again.</li>
+</ol>
+<p>Swapping one motor phase's wires has the same effect, if you prefer to open the base.</p>
 <div class="admonition success">
 <p class="admonition-title">Check</p>
 <p>The left arrows of joints 1 and 3 to 6 turn them as in the figure, and joint 2's right arrow turns it the
 opposite way.</p>
 </div>
 <h2 id="5-home">5. Home<a class="headerlink" href="#5-home" title="Permanent link">&para;</a></h2>
-<p>With every direction right, set joint 6 and check the tool's homing offset as in
-<a href="../../05-operation/homing/#before-you-press-home">Before you press Home</a>, then press <strong>Home</strong> and stay at the
-<abbr title="Emergency stop">E-stop</abbr>. The sequence is on <a href="../../05-operation/homing/">Homing</a>;
-if a joint grinds at a stop, press the <abbr title="Emergency stop">E-stop</abbr> and see <a href="../../08-troubleshooting/homing-failures/">Homing failures</a>.</p>
+<ol>
+<li>With every direction right, set joint 6 and check the tool's homing offset, as in
+   <a href="../../05-operation/homing/#before-you-press-home">Before you press Home</a>.</li>
+<li>Press <strong>Home</strong>, and stay at the <abbr title="Emergency stop">E-stop</abbr>.</li>
+</ol>
+<p>The sequence is on <a href="../../05-operation/homing/">Homing</a>. If a joint grinds at a stop, press the <abbr title="Emergency stop">E-stop</abbr> and see
+<a href="../../08-troubleshooting/homing-failures/">Homing failures</a>.</p>
 <div class="admonition success">
 <p class="admonition-title">Check</p>
 <p>Homing finishes, the simulator matches the robot, and the pin passes through the witness marks of each joint,
 which line up in the after-homing pose (<a href="../../05-operation/mastering/#witness-marks">Witness marks</a>).</p>
 </div>
 <h2 id="the-commanders-terminal-output">The commander's terminal output<a class="headerlink" href="#the-commanders-terminal-output" title="Permanent link">&para;</a></h2>
-<p>While it runs, the commander prints the robot's data to its terminal: the positions, the homed and I/O bytes,
-the errors, the gripper data, and <code>Time between 2 commands in ms</code>, which should be near 0.010 (the number is in
-seconds, despite the label: 0.010 is 10 ms). Watch it for a few minutes while jogging: if it is often much higher,
-the PC is too slow (<a href="../../08-troubleshooting/communication/">Communication</a>).</p>
+<p>While it runs, the commander prints the robot's data to its terminal: the positions, the homed and I/O bytes, the
+errors, the gripper data, and <code>Time between 2 commands in ms</code>.</p>
+<p>That last number should be near 0.010. It is in seconds, despite the label: 0.010 is 10 ms. Watch it for a few
+minutes while jogging. If it is often much higher, the PC is too slow
+(<a href="../../08-troubleshooting/communication/">Communication</a>).</p>
+
+  
+  
+  
+    <nav class="page-nav" aria-label="Footer">
+      
+        <a href="../electronics-and-wiring/" class="md-button page-nav__prev" rel="prev" aria-label="Previous: Electronics and wiring">
+          <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg></span>
+          <span>Previous: Electronics and wiring</span>
+        </a>
+      
+      
+        <a href="../../appendix/release-notes/" class="md-button md-button--primary page-nav__next" rel="next" aria-label="Next: Release notes">
+          <span>Next: Release notes</span>
+          <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg></span>
+        </a>
+      
+    </nav>
+  
+
 
 
 
@@ -2735,7 +2820,7 @@ the PC is too slow (<a href="../../08-troubleshooting/communication/">Communicat
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 3, 2026 14:55:17 UTC">November 3, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 11, 2026 13:31:56 UTC">November 11, 2026</span>
   </span>
 
     
@@ -2999,6 +3084,17 @@ Robot models and pictures made from them: <a href="https://github.com/Source-Rob
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M492.5 69.8c-.2-.3-.4-.6-.8-.7-38.1-17.5-78.4-30-119.7-37.1-.4-.1-.8 0-1.1.1s-.6.4-.8.8c-5.5 9.9-10.5 20.2-14.9 30.6-44.6-6.8-89.9-6.8-134.4 0-4.5-10.5-9.5-20.7-15.1-30.6-.2-.3-.5-.6-.8-.8s-.7-.2-1.1-.2C162.5 39 122.2 51.5 84.1 69c-.3.1-.6.4-.8.7C7.1 183.5-13.8 294.6-3.6 404.2c0 .3.1.5.2.8s.3.4.5.6c44.4 32.9 94 58 146.8 74.2.4.1.8.1 1.1 0s.7-.4.9-.7c11.3-15.4 21.4-31.8 30-48.8.1-.2.2-.5.2-.8s0-.5-.1-.8-.2-.5-.4-.6-.4-.3-.7-.4c-15.8-6.1-31.2-13.4-45.9-21.9-.3-.2-.5-.4-.7-.6s-.3-.6-.3-.9 0-.6.2-.9.3-.5.6-.7c3.1-2.3 6.2-4.7 9.1-7.1.3-.2.6-.4.9-.4s.7 0 1 .1c96.2 43.9 200.4 43.9 295.5 0 .3-.1.7-.2 1-.2s.7.2.9.4c2.9 2.4 6 4.9 9.1 7.2.2.2.4.4.6.7s.2.6.2.9-.1.6-.3.9-.4.5-.6.6c-14.7 8.6-30 15.9-45.9 21.8-.2.1-.5.2-.7.4s-.3.4-.4.7-.1.5-.1.8.1.5.2.8c8.8 17 18.8 33.3 30 48.8.2.3.6.6.9.7s.8.1 1.1 0c52.9-16.2 102.6-41.3 147.1-74.2.2-.2.4-.4.5-.6s.2-.5.2-.8c12.3-126.8-20.5-236.9-86.9-334.5zm-302 267.7c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.4 59.2-52.8 59.2m195.4 0c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.2 59.2-52.8 59.2"/></svg>
     </a>
   
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.tiktok.com/@source.robotics" target="_blank" rel="noopener" title="www.tiktok.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M448.5 209.9c-44 .1-87-13.6-122.8-39.2v178.7c0 33.1-10.1 65.4-29 92.6s-45.6 48-76.6 59.6-64.8 13.5-96.9 5.3-60.9-25.9-82.7-50.8-35.3-56-39-88.9 2.9-66.1 18.6-95.2 40-52.7 69.6-67.7 62.9-20.5 95.7-16v89.9c-15-4.7-31.1-4.6-46 .4s-27.9 14.6-37 27.3-14 28.1-13.9 43.9 5.2 31 14.5 43.7 22.4 22.1 37.4 26.9 31.1 4.8 46-.1 28-14.4 37.2-27.1 14.2-28.1 14.2-43.8V0h88c-.1 7.4.6 14.9 1.9 22.2 3.1 16.3 9.4 31.9 18.7 45.7s21.3 25.6 35.2 34.6c19.9 13.1 43.2 20.1 67 20.1V210z"/></svg>
+    </a>
+  
 </div>
       
     </div>
@@ -3107,6 +3203,8 @@ Robot models and pictures made from them: <a href="https://github.com/Source-Rob
         <script src="../../javascripts/copy-markdown.js"></script>
       
         <script src="../../javascripts/joint-calculator.js"></script>
+      
+        <script src="../../javascripts/bom-kits.js"></script>
       
         <script src="../../javascripts/arm-viewer-loader.js"></script>
       

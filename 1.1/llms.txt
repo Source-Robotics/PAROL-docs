@@ -8,7 +8,11 @@ Every page of this site is also available as Markdown at its address followed by
 ## PAROL6 Robot Manual
 
 - [PAROL6 Robot Manual](https://docs.source-robotics.com/PAROL-docs/1.1/index.md): Source Robotics d.o.o.
-- [Quick start](https://docs.source-robotics.com/PAROL-docs/1.1/quick-start/index.md): From the PAROL6 you have just built to one that is homed and moves on command, on one page.
+- [Quick start](https://docs.source-robotics.com/PAROL-docs/1.1/quick-start/index.md): From an assembled PAROL6 to a robot that is homed and moves on command, in four parts.
+- [1. Install the software](https://docs.source-robotics.com/PAROL-docs/1.1/quick-start/1-software/index.md): The robot software is written in Python, and Git downloads it.
+- [2. Upload the firmware](https://docs.source-robotics.com/PAROL-docs/1.1/quick-start/2-firmware/index.md): You need the ST-Link programmer and the programming adapter.
+- [3. Connect and switch on](https://docs.source-robotics.com/PAROL-docs/1.1/quick-start/3-connect/index.md): The firmware is on the board and the software is on your PC.
+- [4. First moves](https://docs.source-robotics.com/PAROL-docs/1.1/quick-start/4-first-moves/index.md): The robot is on and the software is connected.
 - [About this manual](https://docs.source-robotics.com/PAROL-docs/1.1/about/index.md): The PAROL6 Robot Manual covers the PAROL6 desktop robotic arm from the box, or the printer, to a robot that runs programs: what the robot is, how to install it safely, how it is switched on, homed, jogged and run, which
 - [1. Overview](https://docs.source-robotics.com/PAROL-docs/1.1/01-overview/index.md): PAROL6 is a 3D-printed six-axis desktop robotic arm with a 408 mm reach and a 1 kg payload, built to work like an industrial arm in its mechanics, its control software and the way you use it.
 - [The robot system](https://docs.source-robotics.com/PAROL-docs/1.1/01-overview/robot-system/index.md): A working PAROL6 is three things: the arm, the control board inside its base, and a PC running the high-level software.
@@ -29,16 +33,16 @@ Every page of this site is also available as Markdown at its address followed by
 - [Currents and temperatures](https://docs.source-robotics.com/PAROL-docs/1.1/03-technical-data/operating-temperatures/index.md): The control board sets each motor's running current in the firmware.
 - [4. Installation](https://docs.source-robotics.com/PAROL-docs/1.1/04-installation/index.md): Where to put the robot, how to fix it, what to connect, and the first power-on.
 - [Installation site](https://docs.source-robotics.com/PAROL-docs/1.1/04-installation/installation-site/index.md): The Planning the cell page covers the safety side: who can reach the robot, guarding, and what the software can and cannot stop.
-- [Mounting the robot](https://docs.source-robotics.com/PAROL-docs/1.1/04-installation/mounting/index.md): Six holes in the base, spaced for 30×30 mm aluminium profiles.
+- [Mounting the robot](https://docs.source-robotics.com/PAROL-docs/1.1/04-installation/mounting/index.md): There are four ways to fix the base: bolted to a plate or a profile frame, clamped to a desk, on a frame with printed connectors, or on a plate you have machined or cut.
 - [Connecting](https://docs.source-robotics.com/PAROL-docs/1.1/04-installation/connecting/index.md): The robot needs three connections to run.
 - [First power-on](https://docs.source-robotics.com/PAROL-docs/1.1/04-installation/first-power-on/index.md): The first time, and every time after that:
 - [5. Operation](https://docs.source-robotics.com/PAROL-docs/1.1/05-operation/index.md): How the robot is switched on and off, homed, jogged and run, what happens when something goes wrong, and how it is mastered.
-- [Switching on and off](https://docs.source-robotics.com/PAROL-docs/1.1/05-operation/switching-on-off/index.md): 1. E-stop connected and released; power supply on; USB to the PC.
-- [Homing](https://docs.source-robotics.com/PAROL-docs/1.1/05-operation/homing/index.md): After power-up the robot does not know where its joints are: the motors count steps, and the count starts at zero wherever the arm happens to stand.
+- [Switching on and off](https://docs.source-robotics.com/PAROL-docs/1.1/05-operation/switching-on-off/index.md): Before you start: the E-stop is connected and released, the power supply is on, and the USB cable goes to the PC.
+- [Homing](https://docs.source-robotics.com/PAROL-docs/1.1/05-operation/homing/index.md): After power-up the robot does not know where its joints are.
 - [Jogging](https://docs.source-robotics.com/PAROL-docs/1.1/05-operation/jogging/index.md): Jogging moves one joint, or the tool along one axis, for as long as you hold a button or repeat a command.
 - [Running programs](https://docs.source-robotics.com/PAROL-docs/1.1/05-operation/running-programs/index.md): A program is a list of moves, delays, I/O and gripper commands.
-- [Errors and recovery](https://docs.source-robotics.com/PAROL-docs/1.1/05-operation/errors-and-recovery/index.md): Every 10 ms the control board sends the PC the joints' positions and speeds, which joints are homed, the state of the inputs, outputs and E-stop, the gripper's status, and two error bytes reserved for the drivers' temper
-- [Mastering](https://docs.source-robotics.com/PAROL-docs/1.1/05-operation/mastering/index.md): Homing brings each joint to its switch and then a fixed number of steps to the after-homing pose.
+- [Errors and recovery](https://docs.source-robotics.com/PAROL-docs/1.1/05-operation/errors-and-recovery/index.md): Every 10 ms the control board sends the PC:
+- [Mastering](https://docs.source-robotics.com/PAROL-docs/1.1/05-operation/mastering/index.md): Homing brings each joint to its switch, and then a fixed number of steps to the after-homing pose.
 - [6. Peripherals](https://docs.source-robotics.com/PAROL-docs/1.1/06-peripherals/index.md): Everything the robot talks to besides the PC and the tool: switches and sensors on its inputs, valves and lamps on its outputs, the air for the pneumatic gripper, and the CAN bus for the electric grippers.
 - [Inputs and outputs](https://docs.source-robotics.com/PAROL-docs/1.1/06-peripherals/io/index.md): The control board has two isolated inputs and two isolated outputs on screw terminals at the side of the board, reachable through the base.
 - [Pneumatics](https://docs.source-robotics.com/PAROL-docs/1.1/06-peripherals/pneumatics/index.md): Two 4 mm tubes run inside the arm from the push-in fittings at the base to the forearm, where the pneumatic or vacuum gripper connects.
@@ -59,7 +63,7 @@ Every page of this site is also available as Markdown at its address followed by
 - [Printing the parts](https://docs.source-robotics.com/PAROL-docs/1.1/build/printing/index.md): PETG. The motors run warm and the parts around them see 60 to 70 °C in long use, which PLA does not survive; PETG softens around 80 °C, prints without an enclosure, and bonds layers well.
 - [Mechanical assembly](https://docs.source-robotics.com/PAROL-docs/1.1/build/mechanical-assembly/index.md): The assembly is documented step by step in the Parol building instructions PDF and shown in the video playlist.
 - [Electronics and wiring](https://docs.source-robotics.com/PAROL-docs/1.1/build/electronics-and-wiring/index.md): The control board goes into the base with its fan and its six driver modules; the motors, switches, sensors, the gripper connector, the E-stop and the power connector are wired to it.
-- [Firmware and first run](https://docs.source-robotics.com/PAROL-docs/1.1/build/firmware-and-first-run/index.md): A control board from the shop ships with the test firmware.
+- [Firmware and first run](https://docs.source-robotics.com/PAROL-docs/1.1/build/firmware-and-first-run/index.md): Five parts, in order: check the board with the test firmware, upload the main firmware, switch on, fix any joint that turns the wrong way, and home.
 - [Release notes](https://docs.source-robotics.com/PAROL-docs/1.1/appendix/release-notes/index.md): The PAROL6 files as of November 2026, with downloads on the release page: the STL files, the building instructions, the BOM with a reference image for every part, the print table and checksums.
 - [Versions and compatibility](https://docs.source-robotics.com/PAROL-docs/1.1/appendix/compatibility/index.md)
 - [Community projects](https://docs.source-robotics.com/PAROL-docs/1.1/appendix/community/index.md): Software, hardware modifications and experiments built around PAROL6 by its community.
@@ -69,13 +73,13 @@ Every page of this site is also available as Markdown at its address followed by
 ## Control Board
 
 - [PAROL6 Control Board Manual](https://docs.source-robotics.com/PAROL-docs/1.1/board/index.md): The PAROL6 control board is the controller of the PAROL6 arm: a 32-bit microcontroller, six stepper drivers, the inputs and outputs, the E-stop input, CAN and USB on a board the size of a pack of playing cards, which is
-- [1. Overview](https://docs.source-robotics.com/PAROL-docs/1.1/board/01-overview/index.md): The control board sits in the base of PAROL6 and does the low-level work: it generates the step pulses for six stepper motors, runs the homing sequence, reads the limit switches, the inputs and the E-stop, switches the o
+- [1. Overview](https://docs.source-robotics.com/PAROL-docs/1.1/board/01-overview/index.md): The control board sits in the base of PAROL6 and does the low-level work:
 - [2. Safety](https://docs.source-robotics.com/PAROL-docs/1.1/board/02-safety/index.md)
 - [3. Technical data](https://docs.source-robotics.com/PAROL-docs/1.1/board/03-technical-data/index.md): The PAROL6 firmware runs the motors well below the drivers' ratings: 0.8 to 1.7 A (Currents and temperatures).
 - [4. Connectors and pinout](https://docs.source-robotics.com/PAROL-docs/1.1/board/04-connectors/index.md): The microcontroller pins as the firmware defines them (iodefs.h), for anyone who writes firmware or probes the board:
 - [5. Stepper drivers](https://docs.source-robotics.com/PAROL-docs/1.1/board/05-stepper-drivers/index.md): The board takes six TMC5160 driver modules in the StepStick format, configured over SPI by the firmware.
 - [6. Inputs, outputs and E-stop](https://docs.source-robotics.com/PAROL-docs/1.1/board/06-io-and-estop/index.md): Two inputs and two outputs on optocouplers, with their own supply rails HVSEL and GNDSEL on the terminal blocks.
-- [7. CAN bus](https://docs.source-robotics.com/PAROL-docs/1.1/board/07-can/index.md): In PAROL6, CAN 1 runs with 24 V and GND to the M8 socket at the forearm.
+- [7. CAN bus](https://docs.source-robotics.com/PAROL-docs/1.1/board/07-can/index.md): CAN 1 runs with 24 V and GND to the M8 socket at the forearm.
 - [8. Firmware](https://docs.source-robotics.com/PAROL-docs/1.1/board/08-firmware/index.md): Two firmware programs exist for the board, both in the robot repository as PlatformIO projects:
 - [9. The test firmware](https://docs.source-robotics.com/PAROL-docs/1.1/board/09-test-firmware/index.md): The test firmware turns the board into a bench instrument.
 - [10. The serial protocol](https://docs.source-robotics.com/PAROL-docs/1.1/board/10-serial-protocol/index.md): The PC and the board exchange one packet each per control cycle over USB, a virtual serial port (the PC software opens it at 3 000 000 baud, a setting USB ignores).
@@ -89,14 +93,14 @@ Every page of this site is also available as Markdown at its address followed by
 - [Vacuum gripper](https://docs.source-robotics.com/PAROL-docs/1.1/end-effectors/vacuum-gripper/index.md): A suction cup on a vacuum generator, fed by the same valve and tubes as the pneumatic gripper.
 - [SSG-48 electric gripper](https://docs.source-robotics.com/PAROL-docs/1.1/end-effectors/ssg-48/index.md): Source Robotics' 48 mm electric gripper: a Spectral Micro BLDC driver in gripper mode.
 - [MSG electric gripper](https://docs.source-robotics.com/PAROL-docs/1.1/end-effectors/msg/index.md): Source Robotics' modular stepper gripper: a STEPFOC driver in gripper mode, three rail lengths, three stepper lengths and a camera mount.
-- [Your own tool](https://docs.source-robotics.com/PAROL-docs/1.1/end-effectors/custom-tools/index.md): Clamp onto the 8 mm shaft of joint 6 with a shaft coupler from the BOM, or print a holder with a coupler connector: the SSG-48 repository has a template, STEPS/couplerconnectorgenericSTEP.STEP (and Gripper STL parts/conn
+- [Your own tool](https://docs.source-robotics.com/PAROL-docs/1.1/end-effectors/custom-tools/index.md): Two ways to fix a tool to the 8 mm shaft of joint 6:
 
 ## GUI interfaces
 
 - [PAROL6 GUI Guide](https://docs.source-robotics.com/PAROL-docs/1.1/gui/index.md): The graphical programs for PAROL6 and its grippers: which one to open for which job, how to install it, and what is on its screen.
 - [The commander software](https://docs.source-robotics.com/PAROL-docs/1.1/gui/commander/index.md): The PAROL6 commander software is the desktop program for using the robot by hand: a GUI with joint and Cartesian jogging, a 3D simulator that mirrors the robot, a response log, a program editor and interpreter for RBTscr
 - [Installation](https://docs.source-robotics.com/PAROL-docs/1.1/gui/commander/installation/index.md): The commander goes into its own folder with its own virtual environment (.venv), on every operating system.
-- [The GUI](https://docs.source-robotics.com/PAROL-docs/1.1/gui/commander/the-gui/index.md): Two windows: the commander, where everything is done, and the simulator, a 3D view of the robot that follows it once the robot is connected and homed.
+- [The GUI](https://docs.source-robotics.com/PAROL-docs/1.1/gui/commander/the-gui/index.md): Two windows:
 - [Waldo Commander (web)](https://docs.source-robotics.com/PAROL-docs/1.1/gui/waldo-commander/index.md): It is built on waldoctl, the abstraction layer the Python API implements, so what it offers tracks the API's features.
 - [Motor GUI](https://docs.source-robotics.com/PAROL-docs/1.1/gui/motor-gui/index.md): On PAROL6 the control board drives the gripper, so Motor GUI is not part of everyday use.
 
@@ -143,7 +147,7 @@ Every page of this site is also available as Markdown at its address followed by
 
 - [Theory corner](https://docs.source-robotics.com/PAROL-docs/1.1/theory/index.md): The theory behind a six-axis robot arm and its software, explained in the order you meet it: what a joint angle and a pose are, which frames the numbers are in, how the software goes from one to the other, why some poses
 - [Units](https://docs.source-robotics.com/PAROL-docs/1.1/theory/units/index.md): Robotics mixes units, and PAROL6's software converts between them at several places.
-- [Joints, directions and the standby pose](https://docs.source-robotics.com/PAROL-docs/1.1/theory/joints-and-poses/index.md): Joints are numbered 1 to 6 from the base up: J1 turns the whole arm about the vertical axis, J2 is the shoulder, J3 the elbow, J4 rotates the forearm, J5 pitches the wrist, J6 rotates the tool.
+- [Joints, directions and the standby pose](https://docs.source-robotics.com/PAROL-docs/1.1/theory/joints-and-poses/index.md): Joints are numbered 1 to 6 from the base up:
 - [Reference frames](https://docs.source-robotics.com/PAROL-docs/1.1/theory/reference-frames/index.md): A frame is a coordinate system: an origin and three axes, X, Y and Z, at right angles.
 - [Pose and orientation](https://docs.source-robotics.com/PAROL-docs/1.1/theory/pose-and-orientation/index.md): A pose is a position and an orientation together: where the tool is and which way it points.
 - [Forward and inverse kinematics](https://docs.source-robotics.com/PAROL-docs/1.1/theory/kinematics/index.md): Kinematics is the geometry of the arm: how the joint angles decide where the tool is, and the other way round.
