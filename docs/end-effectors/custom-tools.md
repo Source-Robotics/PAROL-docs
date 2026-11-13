@@ -7,7 +7,7 @@ Two ways to fix a tool to the 8 mm shaft of joint 6:
 | Way | What you use |
 |---|---|
 | Clamp it | A shaft coupler from the BOM |
-| Print a holder with a coupler connector | The SSG-48 repository's template, `STEPS/coupler_connector_generic_STEP.STEP` (and `Gripper STL parts/connector_coupler_generic.STL`). The `STL/WRIST/wrist.STL` in the robot's files shows the mating geometry. |
+| Print a holder with a coupler connector | The SSG-48 repository's template, `STEP files/Couplers/coupler_connector_generic_STEP.STEP` (and `Print files/Couplers/connector_coupler_generic.STL`). The `STL/WRIST/wrist.STL` in the robot's files shows the mating geometry. |
 
 Keep the tool within the payload, and short: every millimetre past the flange is leverage against joints 4 and 5.
 
