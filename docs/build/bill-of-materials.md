@@ -2,7 +2,7 @@
 
 !!! note "This is a copy"
     The original is [BOM/README.md](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/blob/main/BOM/README.md) in the robot's repository; this page is that
-    file as of 2026-11-16 (commit `f75c32b`), with the reference images shown inline. If a link is broken or a part
+    file as of 2026-11-16 (commit `638fbe2`), with the reference images shown inline. If a link is broken or a part
     is wrong, [open an issue](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/issues/new) there, and the fix lands here with the next sync. If you would
     rather not source the parts yourself, the shop's [kits](index.md#kits) carry most of them: pick yours below,
     and each row says whether it is included.
@@ -43,8 +43,8 @@ Most items have links where you can buy the item, and some of them are affiliate
 
 | Name | Type | Quantity | Description | Link | ALT link | Reference Image |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| Gearbox 20:1 | Nema 17 20:1 | 2 | EG precision planetary | [Link](https://www.omc-stepperonline.com/eg-series-planetary-gearbox-gear-ratio-20-1-backlash-20-arc-min-for-nema-17-stepper-motor-eg17-g20?tracking=6543849d6ff69) | [Alt Link](https://s.click.aliexpress.com/e/_oEhMNU5)<br>[amazon.de](https://www.amazon.de/dp/B0DZH424BW?tag=sourcerobotic-20) | ![stepper 20_1](../assets/bom/stepper_20_1.jpg){ width="120" } |
-| Gearbox 10:1 | Nema 17 10:1 | 1 | EG precision planetary | [Link](https://www.omc-stepperonline.com/eg-series-planetary-gearbox-gear-ratio-10-1-backlash-15-arc-min-for-nema-17-stepper-motor-eg17-g10?tracking=6543849d6ff69) | [Alt Link](https://s.click.aliexpress.com/e/_oEhMNU5)<br>[amazon.de](https://www.amazon.de/dp/B0BPGV5N18?tag=sourcerobotic-20) | ![stepper 10_1](../assets/bom/stepper_10_1.jpg){ width="120" } |
+| Gearbox 20:1 | Nema 17 20:1 | 2 | EG precision planetary (amazon.de: MGL series) | [Link](https://www.omc-stepperonline.com/eg-series-planetary-gearbox-gear-ratio-20-1-backlash-20-arc-min-for-nema-17-stepper-motor-eg17-g20?tracking=6543849d6ff69) | [Alt Link](https://s.click.aliexpress.com/e/_oEhMNU5)<br>[amazon.de](https://www.amazon.de/dp/B0DZH424BW?tag=sourcerobotic-20) | ![stepper 20_1](../assets/bom/stepper_20_1.jpg){ width="120" } |
+| Gearbox 10:1 | Nema 17 10:1 | 1 | EG precision planetary (amazon.de: MG series) | [Link](https://www.omc-stepperonline.com/eg-series-planetary-gearbox-gear-ratio-10-1-backlash-15-arc-min-for-nema-17-stepper-motor-eg17-g10?tracking=6543849d6ff69) | [Alt Link](https://s.click.aliexpress.com/e/_oEhMNU5)<br>[amazon.de](https://www.amazon.de/dp/B0BPGV5N18?tag=sourcerobotic-20) | ![stepper 10_1](../assets/bom/stepper_10_1.jpg){ width="120" } |
 
 
 ## Motors
