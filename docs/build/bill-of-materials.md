@@ -2,7 +2,7 @@
 
 !!! note "This is a copy"
     The original is [BOM/README.md](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/blob/main/BOM/README.md) in the robot's repository; this page is that
-    file as of 2026-11-17 (commit `5fcf2c8`), with the reference images shown inline. If a link is broken or a part
+    file as of 2026-11-17 (commit `99ad393`), with the reference images shown inline. If a link is broken or a part
     is wrong, [open an issue](https://github.com/Source-Robotics/PAROL6-Desktop-robot-arm/issues/new) there, and the fix lands here with the next sync. If you would
     rather not source the parts yourself, the shop's [kits](index.md#kits) carry most of them: pick yours below,
     and each row says whether it is included.
@@ -78,14 +78,14 @@ Most items have links where you can buy the item. Many of them are affiliate lin
 
 | Name | Type | Quantity | Description | Link | ALT link | Reference Image |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| Shaft coupler | Shaft coupler | 3 | 8 mm hole shaft, M4 screw holes | [Link](https://s.click.aliexpress.com/e/_c2xnQgI7) | [amazon.de](https://www.amazon.de/dp/B0FNWRLWR4?tag=sourcerobotic-20) | ![shaft coupler gripper](../assets/bom/shaft_coupler_gripper.png){ width="120" } |
+| Shaft coupler | Shaft coupler | 3 | 8 mm hole shaft, M4 screw holes | [Link](https://s.click.aliexpress.com/e/_c2xnQgI7) | [amazon.de](https://www.amazon.de/dp/B0FNWRLWR4?tag=sourcerobotic-20)<br>[amazon.com](https://www.amazon.com/dp/B08335MYGW?tag=sourcerobotic-20) | ![shaft coupler gripper](../assets/bom/shaft_coupler_gripper.png){ width="120" } |
 
 
 ## Bearings
 
 | Name | Type | Quantity | Description | Link | ALT link | Reference Image |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| Bearing 1 | AXK3552 | 1 | 35X52X4, needs to have top and bottom plate | [Link](https://s.click.aliexpress.com/e/_Dk4bHg7) | [amazon.de](https://www.amazon.de/dp/B0GGTZ9VXN?tag=sourcerobotic-20) | ![AXK3552 needle bearing](../assets/bom/AXK3552_needle_bearing.png){ width="120" } |
+| Bearing 1 | AXK3552 | 1 | 35X52X4, needs to have top and bottom plate | [Link](https://s.click.aliexpress.com/e/_Dk4bHg7) | [amazon.de](https://www.amazon.de/dp/B0GGTZ9VXN?tag=sourcerobotic-20)<br>[amazon.com](https://www.amazon.com/dp/B0F9B1QQK4?tag=sourcerobotic-20) | ![AXK3552 needle bearing](../assets/bom/AXK3552_needle_bearing.png){ width="120" } |
 | Bearing 2 | NSK HR32906J | 5 | Joint 5, 4 and 3 | [Link](https://s.click.aliexpress.com/e/_DcJMtBl) | [amazon.de](https://www.amazon.de/dp/B0FYN5596Y?tag=sourcerobotic-20)<br>[amazon.com](https://www.amazon.com/s?k=HR32906J&tag=sourcerobotic-20) | ![Tapered bearing](../assets/bom/Tapered_bearing.png){ width="120" } |
 | Bearing 3 | NSK HR32907J | 4 | Joint 1 and 2 | [Link](https://s.click.aliexpress.com/e/_DcJMtBl) | [amazon.de](https://www.amazon.de/dp/B0FM43TP7H?tag=sourcerobotic-20)<br>[amazon.com](https://www.amazon.com/s?k=HR32907J&tag=sourcerobotic-20) | ![Tapered bearing](../assets/bom/Tapered_bearing.png){ width="120" } |
 | Tension bearing | Ball bearing 3x8x4 | 20 | Used for belt tension | [Link](https://s.click.aliexpress.com/e/_DCjfgFV) | [amazon.de](https://www.amazon.de/dp/B0G41JKDPX?tag=sourcerobotic-20)<br>[amazon.com](https://www.amazon.com/dp/B07FVYPMPX?tag=sourcerobotic-20) | ![small tension bearings](../assets/bom/small_tension_bearings.png){ width="120" } |
